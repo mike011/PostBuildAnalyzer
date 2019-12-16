@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.020151">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: rm -rf ./test_output" time="0.019991">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: scan" time="27.199589">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: Switch to ios generate_code_coverage_report lane" time="0.011544">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: slather" time="4.972123">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

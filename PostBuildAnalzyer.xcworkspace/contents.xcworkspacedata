@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:PostBuildAnalzyer/../example/Before/Before.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PostBuildAnalzyer/PostBuildAnalzyer.xcodeproj">
    </FileRef>
 </Workspace>

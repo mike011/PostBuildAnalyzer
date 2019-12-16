@@ -10,7 +10,7 @@ import Foundation
 
 class PostBuildAnalzyer {
 
-    var analzyer = [Analzyer]()
+    private var analzyer = [Analzyer]()
 
     init(logFile: String, lintFile: String?) {
         analzyer.append(WarningCountAnalyzer(logFile: logFile))

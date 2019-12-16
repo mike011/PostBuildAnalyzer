@@ -1,0 +1,219 @@
+User defaults from command line:
+    IDEBuildOperationResultBundlePath = /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example (Before).test_result
+    IDEDerivedDataPathOverride = /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv
+
+Build settings from command line:
+    GCC_WARN_INHIBIT_ALL_WARNINGS = YES
+    ONLY_ACTIVE_ARCH = YES
+    OTHER_SWIFT_FLAGS = -Xfrontend -warn-long-expression-type-checking=100 -Xfrontend -debug-time-function-bodies
+    VALID_ARCHS = x86_64
+
+Writing result bundle at path:
+	/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example (Before).test_result
+
+note: Using new build system
+note: Planning build
+note: Using build description from disk
+CompileSwiftSources normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'Example' from project 'Before')
+    cd /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+    export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+    export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -incremental -module-name Example -Onone -enable-batch-mode -enforce-exclusivity=checked @/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example.SwiftFileList -DDEBUG -Xfrontend -warn-long-expression-type-checking=100 -Xfrontend -debug-time-function-bodies -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -target x86_64-apple-macos10.15 -g -module-cache-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Index/DataStore -swift-version 5 -I /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -F /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -c -j4 -output-file-map /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example-OutputFileMap.json -parseable-output -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example.swiftmodule -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-generated-files.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-own-target-headers.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-project-headers.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/include -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources-normal/x86_64 -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources/x86_64 -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources -Xcc -DDEBUG=1 -emit-objc-header -emit-objc-header-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example-Swift.h -import-underlying-module -Xcc -ivfsoverlay -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/unextended-module-overlay.yaml -working-directory /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+
+CompileSwift normal x86_64 /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift (in target 'Example' from project 'Before')
+    cd /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -frontend -c -primary-file /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCoverageUp.swift /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCoverageDropped.swift /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassNotCovered.swift /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCoverageDown.swift -emit-module-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered\~partial.swiftmodule -emit-module-doc-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered\~partial.swiftdoc -serialize-diagnostics-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered.dia -emit-dependencies-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered.d -emit-reference-dependencies-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered.swiftdeps -target x86_64-apple-macos10.15 -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -I /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -F /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -enable-testing -g -import-underlying-module -module-cache-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/ModuleCache.noindex -profile-generate -profile-coverage-mapping -swift-version 5 -enforce-exclusivity=checked -Onone -D DEBUG -warn-long-expression-type-checking=100 -debug-time-function-bodies -serialize-debugging-options -Xcc -working-directory -Xcc /Users/michael/Documents/git/PostBuildAnalyzer/example/Before -enable-anonymous-context-mangled-names -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-generated-files.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-own-target-headers.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-project-headers.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/include -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources-normal/x86_64 -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources/x86_64 -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources -Xcc -DDEBUG=1 -Xcc -ivfsoverlay -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/unextended-module-overlay.yaml -module-name Example -o /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered.o -index-store-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Index/DataStore -index-system-modules
+/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'
+        if let index = s.index(of: "a") {
+                         ^
+/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: note: use 'firstIndex(of:)' instead
+        if let index = s.index(of: "a") {
+                         ^~~~~
+                         firstIndex
+/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:16:15: warning: 'substring(to:)' is deprecated: Please use String slicing subscript with a 'partial range upto' operator.
+            s.substring(to: index)
+              ^
+/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:16:15: warning: result of call to 'substring(to:)' is unused
+            s.substring(to: index)
+              ^        ~~~~~~~~~~~
+39.87ms	/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:13:10	instance method existingFunctionCovered()
+0.01ms	<invalid loc>	initializer init()
+0.09ms	<invalid loc>	getter Setting
+0.03ms	<invalid loc>	getter Insertion
+0.03ms	<invalid loc>	getter Removal
+0.03ms	<invalid loc>	getter Replacement
+0.05ms	<invalid loc>	getter NSKeyValueUnionSetMutation
+0.03ms	<invalid loc>	getter NSKeyValueMinusSetMutation
+0.03ms	<invalid loc>	getter NSKeyValueIntersectSetMutation
+0.03ms	<invalid loc>	getter NSKeyValueSetSetMutation
+2.13ms	<invalid loc>	getter new
+0.18ms	<invalid loc>	getter New
+0.11ms	<invalid loc>	getter old
+0.10ms	<invalid loc>	getter Old
+0.10ms	<invalid loc>	getter initial
+0.10ms	<invalid loc>	getter Initial
+0.09ms	<invalid loc>	getter prior
+0.09ms	<invalid loc>	getter Prior
+0.01ms	<invalid loc>	initializer init()
+0.01ms	<invalid loc>	initializer init(coder:)
+0.01ms	<invalid loc>	initializer init(coder:)
+0.01ms	<invalid loc>	initializer init(location:length:)
+0.47ms	<invalid loc>	getter omitWords
+0.11ms	<invalid loc>	getter OmitWords
+0.10ms	<invalid loc>	getter omitPunctuation
+0.10ms	<invalid loc>	getter OmitPunctuation
+0.10ms	<invalid loc>	getter omitWhitespace
+0.10ms	<invalid loc>	getter OmitWhitespace
+0.16ms	<invalid loc>	getter omitOther
+0.14ms	<invalid loc>	getter OmitOther
+0.10ms	<invalid loc>	getter joinNames
+0.10ms	<invalid loc>	getter JoinNames
+0.06ms	<invalid loc>	getter OrderedAscending
+0.03ms	<invalid loc>	getter OrderedSame
+0.03ms	<invalid loc>	getter OrderedDescending
+0.41ms	<invalid loc>	getter caseInsensitive
+0.10ms	<invalid loc>	getter NSCaseInsensitiveSearch
+0.12ms	<invalid loc>	getter literal
+0.10ms	<invalid loc>	getter NSLiteralSearch
+0.09ms	<invalid loc>	getter backwards
+0.09ms	<invalid loc>	getter NSBackwardsSearch
+0.09ms	<invalid loc>	getter anchored
+0.09ms	<invalid loc>	getter NSAnchoredSearch
+0.09ms	<invalid loc>	getter numeric
+0.09ms	<invalid loc>	getter NSNumericSearch
+0.10ms	<invalid loc>	getter diacriticInsensitive
+0.09ms	<invalid loc>	getter NSDiacriticInsensitiveSearch
+0.09ms	<invalid loc>	getter widthInsensitive
+0.09ms	<invalid loc>	getter NSWidthInsensitiveSearch
+0.09ms	<invalid loc>	getter forcedOrdering
+0.10ms	<invalid loc>	getter NSForcedOrderingSearch
+0.10ms	<invalid loc>	getter regularExpression
+0.09ms	<invalid loc>	getter NSRegularExpressionSearch
+0.38ms	<invalid loc>	getter allowLossy
+0.12ms	<invalid loc>	getter AllowLossy
+0.11ms	<invalid loc>	getter externalRepresentation
+0.09ms	<invalid loc>	getter ExternalRepresentation
+0.38ms	<invalid loc>	getter byLines
+0.10ms	<invalid loc>	getter ByLines
+0.10ms	<invalid loc>	getter byParagraphs
+0.11ms	<invalid loc>	getter ByParagraphs
+0.10ms	<invalid loc>	getter byComposedCharacterSequences
+0.11ms	<invalid loc>	getter ByComposedCharacterSequences
+0.09ms	<invalid loc>	getter byWords
+0.09ms	<invalid loc>	getter ByWords
+0.10ms	<invalid loc>	getter bySentences
+0.09ms	<invalid loc>	getter BySentences
+0.09ms	<invalid loc>	getter reverse
+0.11ms	<invalid loc>	getter Reverse
+0.09ms	<invalid loc>	getter substringNotRequired
+0.09ms	<invalid loc>	getter SubstringNotRequired
+0.11ms	<invalid loc>	getter localized
+0.09ms	<invalid loc>	getter Localized
+0.01ms	<invalid loc>	initializer init(charactersNoCopy:length:freeWhenDone:)
+0.01ms	<invalid loc>	initializer init(characters:length:)
+0.01ms	<invalid loc>	initializer init(utf8String:)
+0.01ms	<invalid loc>	initializer init(UTF8String:)
+0.01ms	<invalid loc>	initializer init(string:)
+0.01ms	<invalid loc>	initializer init(format:arguments:)
+0.01ms	<invalid loc>	initializer init(format:locale:arguments:)
+0.01ms	<invalid loc>	initializer init(data:encoding:)
+0.01ms	<invalid loc>	initializer init(bytes:length:encoding:)
+0.01ms	<invalid loc>	initializer init(bytesNoCopy:length:encoding:freeWhenDone:)
+0.01ms	<invalid loc>	initializer init(UTF8String:)
+0.01ms	<invalid loc>	initializer init(cString:encoding:)
+0.01ms	<invalid loc>	initializer init(CString:encoding:)
+0.01ms	<invalid loc>	initializer init(CString:encoding:)
+0.01ms	<invalid loc>	initializer init(contentsOf:encoding:)
+0.01ms	<invalid loc>	initializer init(contentsOfURL:encoding:)
+0.01ms	<invalid loc>	initializer init(contentsOfFile:encoding:)
+0.01ms	<invalid loc>	initializer init(contentsOfURL:encoding:)
+0.01ms	<invalid loc>	initializer init(contentsOf:usedEncoding:)
+0.01ms	<invalid loc>	initializer init(contentsOfURL:usedEncoding:)
+0.01ms	<invalid loc>	initializer init(contentsOfFile:usedEncoding:)
+0.01ms	<invalid loc>	initializer init(contentsOfURL:usedEncoding:)
+0.07ms	<invalid loc>	getter All
+0.03ms	<invalid loc>	getter Group
+0.03ms	<invalid loc>	getter OwnProcess
+0.01ms	<invalid loc>	initializer init(contentsOfFile:)
+0.01ms	<invalid loc>	initializer init(contentsOf:)
+0.01ms	<invalid loc>	initializer init(contentsOfURL:)
+0.01ms	<invalid loc>	initializer init(cStringNoCopy:length:freeWhenDone:)
+0.01ms	<invalid loc>	initializer init(CStringNoCopy:length:freeWhenDone:)
+0.01ms	<invalid loc>	initializer init(cString:length:)
+0.01ms	<invalid loc>	initializer init(CString:length:)
+0.01ms	<invalid loc>	initializer init(cString:)
+0.01ms	<invalid loc>	initializer init(CString:)
+0.02ms	/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:11:7	initializer init()
+0.01ms	<invalid loc>	initializer init(a:b:c:d:tx:ty:)
+0.01ms	<invalid loc>	initializer init(x:y:)
+0.01ms	<invalid loc>	initializer init(width:height:)
+0.01ms	<invalid loc>	initializer init(dx:dy:)
+0.01ms	<invalid loc>	initializer init(origin:size:)
+
+MergeSwiftModule normal x86_64 (in target 'Example' from project 'Before')
+    cd /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift -frontend -merge-modules -emit-module /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCovered\~partial.swiftmodule /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCoverageUp\~partial.swiftmodule /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCoverageDropped\~partial.swiftmodule /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassNotCovered\~partial.swiftmodule /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/ExistingClassCoverageDown\~partial.swiftmodule -parse-as-library -sil-merge-partial-modules -disable-diagnostic-passes -disable-sil-perf-optzns -target x86_64-apple-macos10.15 -enable-objc-interop -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -I /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -F /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -enable-testing -g -import-underlying-module -module-cache-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/ModuleCache.noindex -profile-generate -profile-coverage-mapping -swift-version 5 -enforce-exclusivity=checked -Onone -D DEBUG -warn-long-expression-type-checking=100 -debug-time-function-bodies -serialize-debugging-options -Xcc -working-directory -Xcc /Users/michael/Documents/git/PostBuildAnalyzer/example/Before -enable-anonymous-context-mangled-names -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-generated-files.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-own-target-headers.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Example-project-headers.hmap -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/include -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources-normal/x86_64 -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources/x86_64 -Xcc -I/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/DerivedSources -Xcc -DDEBUG=1 -Xcc -ivfsoverlay -Xcc /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/unextended-module-overlay.yaml -emit-module-doc-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example.swiftdoc -emit-objc-header-path /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example-Swift.h -module-name Example -o /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example.swiftmodule
+
+Ld /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/Example.framework/Versions/A/Example normal x86_64 (in target 'Example' from project 'Before')
+    cd /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -target x86_64-apple-macos10.15 -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -L/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -F/Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug -filelist /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example.LinkFileList -install_name @rpath/Example.framework/Versions/A/Example -Xlinker -rpath -Xlinker @executable_path/../Frameworks -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -object_path_lto -Xlinker /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example_lto.o -Xlinker -export_dynamic -Xlinker -no_deduplicate -fprofile-instr-generate -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example.swiftmodule -compatibility_version 1 -current_version 1 -Xlinker -dependency_info -Xlinker /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/Example.build/Objects-normal/x86_64/Example_dependency_info.dat -o /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/Example.framework/Versions/A/Example
+
+CodeSign /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/Example.framework/Versions/A (in target 'Example' from project 'Before')
+    cd /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+    export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    
+Signing Identity:     "Mac Developer: Michael Charland (98VD4D9K6H)"
+
+    /usr/bin/codesign --force --sign A25679D38D46EF22940DAC50B81DF47335A3E44B --timestamp=none /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/Example.framework/Versions/A
+
+
+Result bundle written to path:
+	/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example (Before).test_result
+
+** BUILD SUCCEEDED **
+
+note: Using new build system
+note: Planning build
+note: Using build description from disk
+CopySwiftLibs /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/ExampleTests.xctest (in target 'ExampleTests' from project 'Before')
+    cd /Users/michael/Documents/git/PostBuildAnalyzer/example/Before
+    export CODESIGN_ALLOCATE=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+    export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk
+    builtin-swiftStdLibTool --copy --verbose --sign A25679D38D46EF22940DAC50B81DF47335A3E44B --scan-executable /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/ExampleTests.xctest/Contents/MacOS/ExampleTests --scan-folder /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/ExampleTests.xctest/Contents/Frameworks --scan-folder /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/ExampleTests.xctest/Contents/PlugIns --scan-folder /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/Example.framework --platform macosx --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Products/Debug/ExampleTests.xctest/Contents/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/michael/Library/Developer/Xcode/DerivedData/Before-dvvmpsymdljtmrbyscfoegkesxgv/Build/Intermediates.noindex/Before.build/Debug/ExampleTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+Testing started on 'My Mac'
+Test Suite 'All tests' started at 2019-12-16 09:27:49.474
+Test Suite 'ExampleTests.xctest' started at 2019-12-16 09:27:49.475
+Test Suite 'ExistingClassCoverageDownTests' started at 2019-12-16 09:27:49.475
+Test Case '-[ExampleTests.ExistingClassCoverageDownTests testFunctionOne]' started.
+Test Case '-[ExampleTests.ExistingClassCoverageDownTests testFunctionOne]' passed (0.138 seconds).
+Test Case '-[ExampleTests.ExistingClassCoverageDownTests testFunctionTwo]' started.
+Test Case '-[ExampleTests.ExistingClassCoverageDownTests testFunctionTwo]' passed (0.000 seconds).
+Test Suite 'ExistingClassCoverageDownTests' passed at 2019-12-16 09:27:49.615.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.138 (0.140) seconds
+Test Suite 'ExistingClassCoverageDroppedTests' started at 2019-12-16 09:27:49.615
+Test Case '-[ExampleTests.ExistingClassCoverageDroppedTests testExistingClassCoverageDropped]' started.
+Test Case '-[ExampleTests.ExistingClassCoverageDroppedTests testExistingClassCoverageDropped]' passed (0.001 seconds).
+Test Suite 'ExistingClassCoverageDroppedTests' passed at 2019-12-16 09:27:49.617.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'ExistingClassCoverageUpTests' started at 2019-12-16 09:27:49.617
+Test Case '-[ExampleTests.ExistingClassCoverageUpTests testFunctionOne]' started.
+Test Case '-[ExampleTests.ExistingClassCoverageUpTests testFunctionOne]' passed (0.000 seconds).
+Test Suite 'ExistingClassCoverageUpTests' passed at 2019-12-16 09:27:49.618.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'ExistingClassCoveredTests' started at 2019-12-16 09:27:49.618
+Test Case '-[ExampleTests.ExistingClassCoveredTests testExistingClassCoveredTests]' started.
+Test Case '-[ExampleTests.ExistingClassCoveredTests testExistingClassCoveredTests]' passed (0.004 seconds).
+Test Suite 'ExistingClassCoveredTests' passed at 2019-12-16 09:27:49.623.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.004 (0.004) seconds
+Test Suite 'ExampleTests.xctest' passed at 2019-12-16 09:27:49.623.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.143 (0.148) seconds
+Test Suite 'All tests' passed at 2019-12-16 09:27:49.624.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.143 (0.149) seconds
+
+Test session results, code coverage, and logs:
+	/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example (Before).test_result
+
+** TEST SUCCEEDED **
+

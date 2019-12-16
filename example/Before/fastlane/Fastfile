@@ -1,0 +1,45 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :test do
+    sh "rm -rf ./test_output"
+    scan(
+        project: "Before.xcodeproj",
+        scheme: "Example (Before)",
+        configuration: "Debug",
+        buildlog_path: "./fastlane/test_output",
+        xcargs: "GCC_WARN_INHIBIT_ALL_WARNINGS=YES ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64 OTHER_SWIFT_FLAGS='-Xfrontend -warn-long-expression-type-checking=100 -Xfrontend -debug-time-function-bodies'",
+        code_coverage: true,
+        result_bundle: true,
+        output_directory: "./fastlane/test_output"
+      )
+      lint
+  end
+
+  desc "Check style and conventions (swiftlint)"
+  lane :lint do
+    if !(File.directory?("./test_output/"))
+      sh 'mkdir ./test_output/'
+    end
+    swiftlint(
+      reporter: "html",
+      config_file: ".swiftlint.yml",
+      output_file: "fastlane/test_output/lint.html")
+ end
+end

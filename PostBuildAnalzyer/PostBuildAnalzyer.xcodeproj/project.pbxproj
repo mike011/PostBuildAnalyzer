@@ -32,6 +32,23 @@
 		35DE8A52238CA87D00F9D48C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A26238CA79600F9D48C /* main.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4C3157A623A7C9F80062EC74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C3157A123A7C9F70062EC74 /* Before.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CA6CD182378F35E0010ACC9;
+			remoteInfo = Example;
+		};
+		4C3157A823A7C9F80062EC74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C3157A123A7C9F70062EC74 /* Before.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CA6CD212378F35E0010ACC9;
+			remoteInfo = ExampleTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		35DE8A21238CA79600F9D48C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -65,6 +82,7 @@
 		35DE8A46238CA85500F9D48C /* CoverageComparisonTestsSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverageComparisonTestsSingle.swift; sourceTree = "<group>"; };
 		35DE8A47238CA85500F9D48C /* RowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowTests.swift; sourceTree = "<group>"; };
 		35DE8A48238CA85500F9D48C /* PostBuildAnalzyerTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PostBuildAnalzyerTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C3157A123A7C9F70062EC74 /* Before.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Before.xcodeproj; path = ../example/Before/Before.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +106,7 @@
 		35DE8A1A238CA79600F9D48C = {
 			isa = PBXGroup;
 			children = (
+				4C3157A123A7C9F70062EC74 /* Before.xcodeproj */,
 				35DE8A25238CA79600F9D48C /* PostBuildAnalzyer */,
 				35DE8A32238CA7CB00F9D48C /* PostBuildAnalzyerTests */,
 				35DE8A24238CA79600F9D48C /* Products */,
@@ -107,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				35DE8A26238CA79600F9D48C /* main.swift */,
+				358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */,
 				35DE8A3E238CA83000F9D48C /* ComparisonWebPage.swift */,
 				35DE8A39238CA83000F9D48C /* Coverage.swift */,
 				35DE8A3C238CA83000F9D48C /* Coverage10.swift */,
@@ -117,7 +137,6 @@
 				358857CF23A57F160081F6A2 /* WarningCountAnalyzer.swift */,
 				358857D123A57F2D0081F6A2 /* SlowFilesAnalyzer.swift */,
 				358857D523A57F7C0081F6A2 /* LintAnalyzer.swift */,
-				358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */,
 			);
 			path = PostBuildAnalzyer;
 			sourceTree = "<group>";
@@ -133,6 +152,15 @@
 				35B8AB55239499CF00A90A56 /* UtilsTests.swift */,
 			);
 			path = PostBuildAnalzyerTests;
+			sourceTree = "<group>";
+		};
+		4C3157A223A7C9F70062EC74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C3157A723A7C9F80062EC74 /* Example.framework */,
+				4C3157A923A7C9F80062EC74 /* ExampleTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +228,12 @@
 			mainGroup = 35DE8A1A238CA79600F9D48C;
 			productRefGroup = 35DE8A24238CA79600F9D48C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4C3157A223A7C9F70062EC74 /* Products */;
+					ProjectRef = 4C3157A123A7C9F70062EC74 /* Before.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				35DE8A22238CA79600F9D48C /* PostBuildAnalzyer */,
@@ -207,6 +241,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4C3157A723A7C9F80062EC74 /* Example.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Example.framework;
+			remoteRef = 4C3157A623A7C9F80062EC74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C3157A923A7C9F80062EC74 /* ExampleTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ExampleTests.xctest;
+			remoteRef = 4C3157A823A7C9F80062EC74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		35DE8A2F238CA7CB00F9D48C /* Resources */ = {
