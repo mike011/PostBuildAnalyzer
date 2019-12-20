@@ -12,10 +12,12 @@ class PostBuildAnalzyer {
 
     private var analzyer = [Analzyer]()
 
-    init(logFile: String, lintFile: String?) {
-        analzyer.append(WarningCountAnalyzer(logFile: logFile))
-        analzyer.append(SlowFilesAnalyzer(logFile: logFile))
-        if let lintFile = lintFile {
+    init(logFile: [String], lintFile: [String]) {
+        if !logFile.isEmpty {
+            analzyer.append(WarningAnalyzer(logFile: logFile))
+            analzyer.append(SlowFilesAnalyzer(logFile: logFile))
+        }
+        if !lintFile.isEmpty {
             analzyer.append(LintAnalyzer(lintFile: lintFile))
         }
     }

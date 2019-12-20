@@ -23,7 +23,9 @@ let outputPath = arguments[2]
 let lintFileName = arguments[3]
 
 func go() {
-    let pba = PostBuildAnalzyer(logFile: logFileName, lintFile: lintFileName)
+    let logFile = Utils.load(file: logFileName)
+    let lintFile = Utils.load(file: lintFileName)
+    let pba = PostBuildAnalzyer(logFile: logFile, lintFile: lintFile)
     pba.createReports()
     pba.write()
 }

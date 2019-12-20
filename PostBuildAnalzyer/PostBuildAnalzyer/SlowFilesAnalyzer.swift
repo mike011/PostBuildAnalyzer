@@ -10,7 +10,8 @@ import Foundation
 
 class SlowFilesAnalyzer: Analzyer {
 
-    init(logFile: String) {
+    init(logFile: [String]) {
+        
     }
 
     func createReport() {

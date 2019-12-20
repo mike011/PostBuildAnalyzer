@@ -10,7 +10,7 @@ import Foundation
 
 class LintAnalyzer: Analzyer {
 
-    init(lintFile: String) {
+    init(lintFile: [String]) {
     }
 
     func createReport() {

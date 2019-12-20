@@ -8,9 +8,16 @@
 
 import Foundation
 
-class WarningCountAnalyzer: Analzyer {
+class WarningAnalyzer: Analzyer {
 
-    init(logFile: String) {
+    var warnings = [String]()
+
+    init(logFile: [String]) {
+        for line in logFile {
+            if line.contains(": warning: ") {
+                warnings.append(line)
+            }
+        }
     }
 
     func createReport() {
