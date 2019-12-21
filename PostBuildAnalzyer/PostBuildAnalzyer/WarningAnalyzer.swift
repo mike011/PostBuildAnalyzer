@@ -10,14 +10,14 @@ import Foundation
 
 class WarningAnalyzer: Analzyer {
 
-    var warnings = [SimpleWarning]()
+    var warnings = [Warning]()
 
     init(logFile: [String]) {
         for line in logFile {
             if line.contains(LDWarning.lookFor) {
                 warnings.append(LDWarning(description: line))
-            } else if line.contains(Warning.lookFor) {
-                warnings.append(Warning(line: line))
+            } else if line.contains(FileWarning.lookFor) {
+                warnings.append(FileWarning(firstLine: line))
             }
         }
     }

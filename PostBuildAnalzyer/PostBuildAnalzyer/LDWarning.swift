@@ -8,12 +8,15 @@
 
 import Foundation
 
-class LDWarning: SimpleWarning {
+class LDWarning: Warning {
     static let lookFor = "ld: warning: "
 
-    var descripton: String
+    var count: Int
+    var description: String
+
 
     init(description: String) {
-        self.descripton = String(description.dropFirst(LDWarning.lookFor.count))
+        self.description = String(description.dropFirst(LDWarning.lookFor.count))
+        count = 1
     }
 }

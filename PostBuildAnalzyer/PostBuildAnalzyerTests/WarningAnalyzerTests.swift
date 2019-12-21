@@ -24,12 +24,12 @@ class WarningAnalyzerTests: XCTestCase {
         XCTAssertFalse(wa.warnings.isEmpty)
     }
 
-    func testAWarningFullLine() {
+    func testAWarningFullLine() throws {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Personal/Resources/Media.xcassets:./Inhouse Ad/Personal_Avatar-1.imageset: warning: The image set name \"Personal_Avatar-1\" is used by multiple image sets.")
         let wa = WarningAnalyzer(logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertNotNil(wa.warnings[0] as? Warning)
+        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? FileWarning))
     }
 
     func testAWarningMultiline() {
@@ -40,7 +40,7 @@ class WarningAnalyzerTests: XCTestCase {
 
         let wa = WarningAnalyzer(logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertNotNil(wa.warnings[0] as? Warning)
+        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? FileWarning))
     }
 
     func testLDWarning() {
@@ -48,6 +48,6 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/TextNow/TextNow/Features/Ads/SDKs/IASDKVideo'")
         let wa = WarningAnalyzer(logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertNotNil(wa.warnings[0] as? LDWarning)
+        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
     }
 }

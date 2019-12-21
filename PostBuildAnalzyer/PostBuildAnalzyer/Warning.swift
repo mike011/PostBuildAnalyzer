@@ -8,22 +8,8 @@
 
 import Foundation
 
-class Warning: SimpleWarning {
-    static var lookFor = ": warning: "
-
-    var descripton: String
-    var file: String
-    var lineNumber: Int
-    var indent: Int
-    var warning: String
-    var count: Int
-
-    init(line: String) {
-        file = ""
-        lineNumber = 0
-        indent = 0
-        warning = ""
-        count = 1
-        descripton = line
-    }
+protocol Warning {
+    static var lookFor: String { get }
+    var description: String { get }
+    var count: Int { get }
 }
