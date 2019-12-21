@@ -29,7 +29,11 @@ class PostBuildAnalzyer {
         }
     }
 
-    func write() {
-        
+    func write(toLocation: String) {
+        print("|A|Name|Amount|")
+        print("|--|---|--|")
+        for line in reports {
+            print(line)
+        }
     }
 }

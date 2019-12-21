@@ -30,7 +30,7 @@ func go(arguments: [String]) {
     let lintFile = Utils.load(file: lintFileName)
     let pba = PostBuildAnalzyer(logFile: logFile, lintFile: lintFile)
     pba.createReports()
-    pba.write()
+    pba.write(toLocation: outputPath)
 }
 go(arguments: arguments)
 
