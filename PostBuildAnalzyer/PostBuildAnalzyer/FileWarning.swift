@@ -20,7 +20,7 @@ class FileWarning: Warning {
 
     init(firstLine: String) {
 
-        if let regex = try? NSRegularExpression(pattern: ":\\d{2}:\\d{2}" + FileWarning.lookFor) {
+        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarning.lookFor) {
             guard regex.matches(firstLine) else {
                 description = firstLine
                 return
@@ -45,18 +45,16 @@ class FileWarning: Warning {
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
         start = line.index(end, offsetBy: 1)
-        description = String(line[start...]).trimmingCharacters(in: .whitespacesAndNewlines)
+        description = String(line[start...]).trimSpaces()
         count = 1
     }
 
     func add(line: String) {
-        details.append(line)
-    }
-}
-
-private extension NSRegularExpression {
-    func matches(_ string: String) -> Bool {
-        let range = NSRange(location: 0, length: string.utf16.count)
-        return firstMatch(in: string, options: [], range: range) != nil
+        let trimmed = line.trimSpaces()
+        if trimmed.contains("^") {
+            details.append(String(repeating: " ", count: indent) + "^")
+        } else {
+            details.append(trimmed)
+        }
     }
 }

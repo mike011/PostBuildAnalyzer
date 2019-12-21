@@ -58,3 +58,18 @@ public class Utils {
         return string.components(separatedBy: "\n")
     }
 }
+
+extension NSRegularExpression {
+    func matches(_ string: String) -> Bool {
+        let range = NSRange(location: 0, length: string.utf16.count)
+        return firstMatch(in: string, options: [], range: range) != nil
+    }
+}
+
+extension String {
+    func trimSpaces() -> String {
+        return trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+
+

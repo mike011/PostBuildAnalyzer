@@ -17,4 +17,12 @@ class UtilsTests: XCTestCase {
     func testGetParentFileForURL() {
         XCTAssertEqual(Utils.getParentURL(web: "http://www.nba.com/b.json").absoluteString, URL(string:"http://www.nba.com/")?.absoluteURL.absoluteString)
     }
+
+    func testTrimSpaces() {
+        XCTAssertEqual(" ".trimSpaces(), "")
+        XCTAssertEqual("a ".trimSpaces(), "a")
+        XCTAssertEqual(" a".trimSpaces(), "a")
+        XCTAssertEqual(" a ".trimSpaces(), "a")
+        XCTAssertEqual("       a                     ".trimSpaces(), "a")
+    }
 }
