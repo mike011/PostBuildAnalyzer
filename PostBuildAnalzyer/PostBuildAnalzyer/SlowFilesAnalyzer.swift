@@ -14,7 +14,7 @@ class SlowFilesAnalyzer: Analzyer {
         
     }
 
-    func createReport() {
-
+    func createReport() -> [String] {
+        return [String]()
     }
 }

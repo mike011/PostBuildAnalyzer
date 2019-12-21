@@ -44,7 +44,11 @@ public class Utils {
         return url.deletingLastPathComponent()
     }
 
-    public static func load(file: String) -> [String] {
+    public static func load(file: String?) -> [String] {
+
+        guard let file = file else {
+            return [String]()
+        }
 
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: file) {

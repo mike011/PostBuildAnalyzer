@@ -9,13 +9,25 @@
 import Foundation
 
 class FileWarning: Warning {
+
     static var lookFor = ": warning: "
 
+    /// The file in which the error occurred
     var file = ""
+
+    /// The line number on which the error occurred
     var lineNumber = 0
+
+    /// The spot on the line where the error occurred
     var indent = 0
+
+    /// A description of why the error occurred
     var description: String
+
+    /// The line in which the error occurred
     var details = [String]()
+
+    /// How many times the error occurred
     var count: Int = 1
 
     init(firstLine: String) {
@@ -51,10 +63,25 @@ class FileWarning: Warning {
 
     func add(line: String) {
         let trimmed = line.trimSpaces()
-        if trimmed.contains("^") {
-            details.append(String(repeating: " ", count: indent) + "^")
-        } else {
+        if !trimmed.contains("^") {
             details.append(trimmed)
         }
+    }
+
+    func getFirstColumn() -> String {
+        return "⚠️"
+    }
+
+    func getSecondColumn() -> String {
+        var col2 = "File: \(file)<br>"
+        col2 += "Line: \(lineNumber)\tWarning: \(description)<br>"
+        for detail in details {
+            col2 += detail + "<br>"
+        }
+        return String(col2.dropLast("<br>".count))
+    }
+
+    func getThirdColumn() -> String {
+        return "\(count) times"
     }
 }

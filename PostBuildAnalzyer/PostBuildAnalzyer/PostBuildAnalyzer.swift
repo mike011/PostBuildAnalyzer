@@ -10,20 +10,23 @@ import Foundation
 
 class PostBuildAnalzyer {
 
-    private var analzyer = [Analzyer]()
+    private var analzyers = [Analzyer]()
+    var reports = [String]()
 
     init(logFile: [String], lintFile: [String]) {
         if !logFile.isEmpty {
-            analzyer.append(WarningAnalyzer(logFile: logFile))
-            analzyer.append(SlowFilesAnalyzer(logFile: logFile))
+            analzyers.append(WarningAnalyzer(logFile: logFile))
+            analzyers.append(SlowFilesAnalyzer(logFile: logFile))
         }
         if !lintFile.isEmpty {
-            analzyer.append(LintAnalyzer(lintFile: lintFile))
+            analzyers.append(LintAnalyzer(lintFile: lintFile))
         }
     }
 
     func createReports() {
-        
+        for analzyer in analzyers {
+            reports += analzyer.createReport()
+        }
     }
 
     func write() {

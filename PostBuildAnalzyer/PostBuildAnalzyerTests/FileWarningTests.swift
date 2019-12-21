@@ -35,12 +35,63 @@ class FileWarningTests: XCTestCase {
         XCTAssertEqual(warning.indent, 267)
     }
 
-    func testAddLine() {
-        let warning = FileWarning(firstLine:"e/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated")
+    func getSampleWarning() -> FileWarning {
+        let warning = FileWarning(firstLine:"Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated")
         warning.add(line: "if let index = s.index(of: \"a\") {")
         warning.add(line: "               ^")
-        XCTAssertEqual(warning.details.count, 2)
+        return warning
+    }
+
+    func getAnotherSampleWarning() -> FileWarning {
+        let warning = FileWarning(firstLine:"Documents/git/PostBuildAnalyzer/example/Before/Example/Frank.swift:16:15: warning: result of call to 'substring(to:)' is unused")
+        warning.add(line: "s.substring(to: index)")
+        warning.add(line: "  ^        ~~~~~~~~~~~")
+        warning.count = 2
+        return warning
+    }
+
+    func testAddLine() {
+        let warning = getSampleWarning()
+        XCTAssertEqual(warning.details.count, 1)
         XCTAssertEqual(warning.details[0], "if let index = s.index(of: \"a\") {")
-        XCTAssertEqual(warning.details[1], "                          ^")
+    }
+
+    func testFirstColumn() {
+        let warning = getSampleWarning()
+        XCTAssertEqual(warning.getFirstColumn(), "⚠️")
+    }
+
+    func testSecondColumn() {
+        let warning = getSampleWarning()
+        var col2 = "File: Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift<br>"
+        col2 += "Line: 15\tWarning: 'index(of:)' is deprecated<br>"
+        col2 += "if let index = s.index(of: \"a\") {"
+        XCTAssertEqual(warning.getSecondColumn(), col2)
+    }
+
+    func testThirdColumn() {
+        let warning = getSampleWarning()
+        XCTAssertEqual(warning.getThirdColumn(), "1 times")
+    }
+
+    func testThirdColumn2() {
+        let warning = getAnotherSampleWarning()
+        XCTAssertEqual(warning.getThirdColumn(), "2 times")
+    }
+
+    func testToHTML() {
+        let warning = getSampleWarning()
+        var col1 = "File: Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift<br>"
+        col1 += "Line: 15\tWarning:result of call to 'substring(to:)' is unused<br>"
+        col1 += "s.substring(to: index)<br>"
+       // XCTAssertEqual(warning.toHTML(), "|⚠️|\(col1)|1 times|")
+    }
+
+    func testToHTML2() {
+        let warning = getAnotherSampleWarning()
+        var col1 = "File: Documents/git/PostBuildAnalyzer/example/Before/Example/Frank.swift"
+        col1 += "Line: 15\tWarning:result of call to 'substring(to:)' is unused<br>"
+        col1 += "s.substring(to: index)<br>"
+      //  XCTAssertEqual(warning.toHTML(), "|⚠️|\(col1)|2 times|")
     }
 }

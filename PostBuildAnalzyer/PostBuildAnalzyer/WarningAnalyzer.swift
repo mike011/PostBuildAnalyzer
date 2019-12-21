@@ -30,7 +30,11 @@ class WarningAnalyzer: Analzyer {
         }
     }
 
-    func createReport() {
-
+    func createReport() -> [String] {
+        var result = [String]()
+        for warning in warnings {
+            result.append(warning.toHTML())
+        }
+        return result
     }
 }

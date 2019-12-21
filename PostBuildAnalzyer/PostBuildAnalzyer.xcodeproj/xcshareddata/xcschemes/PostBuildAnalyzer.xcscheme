@@ -72,24 +72,12 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/michael.charland/git/textnow-ios-service-framework/fastlane/test_output/develop_coverage.json"
+            argument = "&quot;/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example-Example (Before).log&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/michael.charland/git/textnow-ios-service-framework/fastlane/test_output/coverage.json"
+            argument = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/"
             isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "https://mike011.github.io/PostBuildAnalzyer/before/"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "https://mike011.github.io/PostBuildAnalzyer/after/"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/michael.charland/git/textnow-ios-service-framework/fastlane/test_output/fileChanged.txt"
-            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>

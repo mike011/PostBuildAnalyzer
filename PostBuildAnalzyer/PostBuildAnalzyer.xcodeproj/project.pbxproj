@@ -28,9 +28,6 @@
 		358857D823A57FC80081F6A2 /* PostBuildAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */; };
 		35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8AB55239499CF00A90A56 /* UtilsTests.swift */; };
 		35DE8A27238CA79600F9D48C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A26238CA79600F9D48C /* main.swift */; };
-		35DE8A49238CA85500F9D48C /* CoverageCompareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A45238CA85500F9D48C /* CoverageCompareTests.swift */; };
-		35DE8A4A238CA85500F9D48C /* CoverageComparisonTestsSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A46238CA85500F9D48C /* CoverageComparisonTestsSingle.swift */; };
-		35DE8A4B238CA85500F9D48C /* RowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A47238CA85500F9D48C /* RowTests.swift */; };
 		4C1C0BCE23ADA20B004DC5F3 /* FileWarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,9 +60,6 @@
 		35DE8A26238CA79600F9D48C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		35DE8A31238CA7CB00F9D48C /* PostBuildAnalzyerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostBuildAnalzyerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DE8A35238CA7CB00F9D48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35DE8A45238CA85500F9D48C /* CoverageCompareTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverageCompareTests.swift; sourceTree = "<group>"; };
-		35DE8A46238CA85500F9D48C /* CoverageComparisonTestsSingle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverageComparisonTestsSingle.swift; sourceTree = "<group>"; };
-		35DE8A47238CA85500F9D48C /* RowTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowTests.swift; sourceTree = "<group>"; };
 		4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWarningTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,23 +81,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		350DDE5F23AD258500F48143 /* old */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = old;
-			sourceTree = "<group>";
-		};
-		350DDE6023AD28EA00F48143 /* old */ = {
-			isa = PBXGroup;
-			children = (
-				35DE8A45238CA85500F9D48C /* CoverageCompareTests.swift */,
-				35DE8A46238CA85500F9D48C /* CoverageComparisonTestsSingle.swift */,
-				35DE8A47238CA85500F9D48C /* RowTests.swift */,
-			);
-			path = old;
-			sourceTree = "<group>";
-		};
 		35DE8A1A238CA79600F9D48C = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +102,6 @@
 		35DE8A25238CA79600F9D48C /* PostBuildAnalzyer */ = {
 			isa = PBXGroup;
 			children = (
-				350DDE5F23AD258500F48143 /* old */,
 				35DE8A26238CA79600F9D48C /* main.swift */,
 				358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */,
 				358857D323A57F4B0081F6A2 /* Analyzer.swift */,
@@ -143,7 +119,6 @@
 		35DE8A32238CA7CB00F9D48C /* PostBuildAnalzyerTests */ = {
 			isa = PBXGroup;
 			children = (
-				350DDE6023AD28EA00F48143 /* old */,
 				35DE8A35238CA7CB00F9D48C /* Info.plist */,
 				4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */,
 				350DDE7B23AD62C900F48143 /* LDWarningTests.swift */,
@@ -265,13 +240,10 @@
 				350DDE7023AD2FD200F48143 /* FileWarning.swift in Sources */,
 				350DDE6323AD290E00F48143 /* WarningAnalyzer.swift in Sources */,
 				350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */,
-				35DE8A4B238CA85500F9D48C /* RowTests.swift in Sources */,
 				350DDE7C23AD62C900F48143 /* LDWarningTests.swift in Sources */,
-				35DE8A4A238CA85500F9D48C /* CoverageComparisonTestsSingle.swift in Sources */,
 				350DDE6523AD2AD800F48143 /* SlowFilesAnalyzer.swift in Sources */,
 				4C1C0BCE23ADA20B004DC5F3 /* FileWarningTests.swift in Sources */,
 				350DDE7923AD61D100F48143 /* Warning.swift in Sources */,
-				35DE8A49238CA85500F9D48C /* CoverageCompareTests.swift in Sources */,
 				350DDE7A23AD61DA00F48143 /* LDWarning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,9 +43,28 @@ class WarningAnalyzerTests: XCTestCase {
         let warning = try XCTUnwrap(wa.warnings[0] as? FileWarning)
         XCTAssertNotNil(warning)
         XCTAssertFalse(warning.details.isEmpty)
-        XCTAssertEqual(warning.details.count, 2)
+        XCTAssertEqual(warning.details.count, 1)
         XCTAssertEqual(warning.details[0], "#warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
-        XCTAssertEqual(warning.details[1], "  ^")
+    }
+
+    func testMultipleFileWarningThatAreMultiline() throws {
+        var logFile = [String]()
+        logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" ^")
+        logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" ^")
+
+        let wa = WarningAnalyzer(logFile: logFile)
+        XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertEqual(wa.warnings.count, 2)
+        let warning = try XCTUnwrap(wa.warnings[0] as? FileWarning)
+        XCTAssertNotNil(warning)
+        XCTAssertEqual(warning.details.count, 1)
+        let warning2 = try XCTUnwrap(wa.warnings[1] as? FileWarning)
+        XCTAssertNotNil(warning2)
+        XCTAssertEqual(warning2.details.count, 1)
     }
 
     func testLDWarning() {
@@ -53,6 +72,32 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         let wa = WarningAnalyzer(logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertEqual(wa.warnings.count, 1)
         XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
     }
+
+    func testMultipleLDWarning() {
+        var logFile = [String]()
+        logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
+        logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
+        let wa = WarningAnalyzer(logFile: logFile)
+        XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertEqual(wa.warnings.count, 2)
+        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
+        XCTAssertNotNil(try XCTUnwrap(wa.warnings[1] as? LDWarning))
+    }
+
+    func testMultipleFileWarningThatAreMultilineGetReport() throws {
+        var logFile = [String]()
+        logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" ^")
+        logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append(" ^")
+
+        let wa = WarningAnalyzer(logFile: logFile)
+        XCTAssertEqual(wa.createReport().count, 2)
+    }
+
 }

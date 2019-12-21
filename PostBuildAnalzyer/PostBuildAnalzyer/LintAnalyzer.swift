@@ -13,7 +13,7 @@ class LintAnalyzer: Analzyer {
     init(lintFile: [String]) {
     }
 
-    func createReport() {
-        
+    func createReport() -> [String] {
+        return [String]()
     }
 }
