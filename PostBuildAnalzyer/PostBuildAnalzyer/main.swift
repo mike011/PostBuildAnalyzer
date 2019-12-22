@@ -10,26 +10,31 @@ import Foundation
 
 let arguments = CommandLine.arguments
 
-if arguments.count != 4, arguments.count != 5 {
+if arguments.count < 5 || arguments.count > 7 {
     print("Missing arguments \(arguments.count) found, expected the following: ")
     print("\t1 - Repo name")
-    print("\t2 - Build log output file")
-    print("\t3 - Output folder location")
-    print("\t4 - (Optional) SwiftLint html file location")
+    print("\t2 - Develop Build log report file")
+    print("\t3 - PR Build log output file")
+    print("\t4 - Output folder location")
+    print("\t5 - (Optional) Develop SwiftLint html file location")
+    print("\t6 - (Optional) PR SwiftLint html file location")
     fatalError()
 }
 
 func go(arguments: [String]) {
     let repoName = arguments[1]
-    let logFileName = arguments[2]
-    let outputPath = arguments[3]
-    var lintFileName: String?
-    if arguments.count > 4 {
-        lintFileName = arguments[4]
+    let developLogReportFileName = arguments[2]
+    let prLogFileName = arguments[3]
+    let outputPath = arguments[4]
+    var prLintFileName: String?
+    var developLintFileName: String?
+    if arguments.count > 6 {
+        prLintFileName = arguments[5]
+        developLintFileName = arguments[6]
     }
 
-    let logFile = Utils.load(file: logFileName)
-    let lintFile = Utils.load(file: lintFileName)
+    let logFile = Utils.load(file: prLogFileName)
+    let lintFile = Utils.load(file: prLintFileName)
     let pba = PostBuildAnalzyer(repoName: repoName, logFile: logFile, lintFile: lintFile)
     pba.createReports()
     pba.write(toLocation: outputPath)

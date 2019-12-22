@@ -9,7 +9,18 @@
 import Foundation
 
 class WarningAnalyzer: Analzyer {
-    var warnings = [Warning]()
+    var symbol = "⚠️"
+    var title = "Build Warnings"
+    var developWarningCount: Int {
+        return developWarnings.count
+    }
+
+    var prWarningCount: Int {
+        return prWarnings.count
+    }
+
+    var developWarnings = [Warning]()
+    var prWarnings = [Warning]()
 
     init(repoName: String, logFile: [String]) {
         var fileWarning: FileWarning?
@@ -20,18 +31,18 @@ class WarningAnalyzer: Analzyer {
                 fileWarning = nil
             }
             if line.contains(LDWarning.lookFor) {
-                warnings.append(LDWarning(description: line))
+                prWarnings.append(LDWarning(description: line))
             } else if line.contains(FileWarning.lookFor) {
                 let newFileWarning = FileWarning(repoName: repoName, firstLine: line)
-                warnings.append(newFileWarning)
+                prWarnings.append(newFileWarning)
                 fileWarning = newFileWarning
             }
         }
     }
 
-    func createReport() -> [String] {
+    func createNewReport() -> [String] {
         var result = [String]()
-        for warning in warnings {
+        for warning in prWarnings {
             result.append(warning.toHTML())
         }
         return result

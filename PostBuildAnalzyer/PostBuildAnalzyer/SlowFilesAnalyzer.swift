@@ -9,9 +9,14 @@
 import Foundation
 
 class SlowFilesAnalyzer: Analzyer {
+    var symbol = ""
+    var title = ""
+    var developWarningCount = 0
+    var prWarningCount = 0
+
     init(logFile: [String]) {}
 
-    func createReport() -> [String] {
+    func createNewReport() -> [String] {
         return [String]()
     }
 }

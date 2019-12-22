@@ -13,22 +13,22 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append("Not a warning")
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertTrue(wa.warnings.isEmpty)
+        XCTAssertTrue(wa.prWarnings.isEmpty)
     }
 
     func testAWarningKeyboard() {
         var logFile = [String]()
         logFile.append(": warning: ")
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertFalse(wa.prWarnings.isEmpty)
     }
 
     func testAWarningFullLine() {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Personal/Resources/Media.xcassets:./Inhouse Ad/Personal_Avatar-1.imageset: warning: The image set name \"Personal_Avatar-1\" is used by multiple image sets.")
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? FileWarning))
+        XCTAssertFalse(wa.prWarnings.isEmpty)
+        XCTAssertNotNil(try XCTUnwrap(wa.prWarnings[0] as? FileWarning))
     }
 
     func testAWarningMultiline() throws {
@@ -38,8 +38,8 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertFalse(wa.warnings.isEmpty)
-        let warning = try XCTUnwrap(wa.warnings[0] as? FileWarning)
+        XCTAssertFalse(wa.prWarnings.isEmpty)
+        let warning = try XCTUnwrap(wa.prWarnings[0] as? FileWarning)
         XCTAssertNotNil(warning)
         XCTAssertFalse(warning.details.isEmpty)
         XCTAssertEqual(warning.details.count, 1)
@@ -56,12 +56,12 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertEqual(wa.warnings.count, 2)
-        let warning = try XCTUnwrap(wa.warnings[0] as? FileWarning)
+        XCTAssertFalse(wa.prWarnings.isEmpty)
+        XCTAssertEqual(wa.prWarnings.count, 2)
+        let warning = try XCTUnwrap(wa.prWarnings[0] as? FileWarning)
         XCTAssertNotNil(warning)
         XCTAssertEqual(warning.details.count, 1)
-        let warning2 = try XCTUnwrap(wa.warnings[1] as? FileWarning)
+        let warning2 = try XCTUnwrap(wa.prWarnings[1] as? FileWarning)
         XCTAssertNotNil(warning2)
         XCTAssertEqual(warning2.details.count, 1)
     }
@@ -70,9 +70,9 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertEqual(wa.warnings.count, 1)
-        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
+        XCTAssertFalse(wa.prWarnings.isEmpty)
+        XCTAssertEqual(wa.prWarnings.count, 1)
+        XCTAssertNotNil(try XCTUnwrap(wa.prWarnings[0] as? LDWarning))
     }
 
     func testMultipleLDWarning() {
@@ -80,10 +80,10 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertEqual(wa.warnings.count, 2)
-        XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
-        XCTAssertNotNil(try XCTUnwrap(wa.warnings[1] as? LDWarning))
+        XCTAssertFalse(wa.prWarnings.isEmpty)
+        XCTAssertEqual(wa.prWarnings.count, 2)
+        XCTAssertNotNil(try XCTUnwrap(wa.prWarnings[0] as? LDWarning))
+        XCTAssertNotNil(try XCTUnwrap(wa.prWarnings[1] as? LDWarning))
     }
 
     func testMultipleFileWarningThatAreMultilineGetReport() throws {
@@ -96,6 +96,6 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertEqual(wa.createReport().count, 2)
+        XCTAssertEqual(wa.createNewReport().count, 2)
     }
 }

@@ -24,15 +24,25 @@ class PostBuildAnalzyer {
 
     func createReports() {
         for analzyer in analzyers {
-            reports += analzyer.createReport()
+            reports += analzyer.createNewReport()
         }
     }
 
     func write(toLocation: String) {
-        print("|A|Name|Amount|")
-        print("|---|---|---|")
+        print("<H3>New Warnings</H3>")
+        print("| |Name|Amount|")
+        print("|:-:|---|:-:|")
         for line in reports {
             print(line)
+        }
+
+        print("<H3>Overall Warnings</H3>")
+        print("||📉|Warning|Master|PR|")
+        print("|:-:|:-:|---|:-:|:-:|")
+        for analzyer in analzyers {
+            if let report = analzyer.createOverallReport() {
+                print(report)
+            }
         }
     }
 }

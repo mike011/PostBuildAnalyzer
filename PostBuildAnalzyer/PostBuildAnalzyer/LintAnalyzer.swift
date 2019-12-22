@@ -9,9 +9,30 @@
 import Foundation
 
 class LintAnalyzer: Analzyer {
+    var symbol = ""
+    var title = ""
+    var developWarningCount = 0
+    var prWarningCount = 0
+
     init(lintFile: [String]) {}
 
-    func createReport() -> [String] {
+    func createNewReport() -> [String] {
         return [String]()
+    }
+
+    func getFirstColumn() -> String {
+        return ""
+    }
+
+    func getSecondColumn() -> String {
+        return ""
+    }
+
+    func getThirdColumn() -> String {
+        return ""
+    }
+
+    func getForthColumn() -> String {
+        return ""
     }
 }

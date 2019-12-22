@@ -106,10 +106,10 @@
 			children = (
 				35DE8A26238CA79600F9D48C /* main.swift */,
 				358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */,
-				358857D323A57F4B0081F6A2 /* Analyzer.swift */,
 				350DDE7723AD618700F48143 /* Warning.swift */,
 				350DDE6E23AD2FCD00F48143 /* FileWarning.swift */,
 				350DDE7323AD5AF700F48143 /* LDWarning.swift */,
+				358857D323A57F4B0081F6A2 /* Analyzer.swift */,
 				358857CF23A57F160081F6A2 /* WarningAnalyzer.swift */,
 				358857D123A57F2D0081F6A2 /* SlowFilesAnalyzer.swift */,
 				358857D523A57F7C0081F6A2 /* LintAnalyzer.swift */,
