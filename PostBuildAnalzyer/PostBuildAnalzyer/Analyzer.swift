@@ -18,16 +18,21 @@ protocol Analzyer {
 }
 
 extension Analzyer {
-    func createOverallReport() -> String? {
-        if developWarningCount == 0, developWarningCount == prWarningCount {
-            return nil
-        }
+    private var change: String {
         var change = " "
         if developWarningCount > prWarningCount {
             change = "👍"
         } else if developWarningCount < prWarningCount {
             change = "👎"
         }
+        return change
+    }
+
+    func createOverallReport() -> String? {
+        if developWarningCount == 0, developWarningCount == prWarningCount {
+            return nil
+        }
+
         return "|\(change)|\(symbol)|\(title)|\(developWarningCount)|\(prWarningCount)|"
     }
 }

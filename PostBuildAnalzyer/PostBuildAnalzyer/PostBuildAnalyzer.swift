@@ -30,7 +30,7 @@ class PostBuildAnalzyer {
 
     func write(toLocation: String) {
         print("<H3>New Warnings</H3>")
-        print("| |Name|Amount|")
+        print("| |Description|Amount|")
         print("|:-:|---|:-:|")
         for line in reports {
             print(line)
