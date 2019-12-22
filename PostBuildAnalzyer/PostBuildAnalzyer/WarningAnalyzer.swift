@@ -12,7 +12,7 @@ class WarningAnalyzer: Analzyer {
 
     var warnings = [Warning]()
 
-    init(logFile: [String]) {
+    init(repoName: String, logFile: [String]) {
         var fileWarning: FileWarning?
         for line in logFile {
             if fileWarning != nil, line.starts(with: " ") {
@@ -23,7 +23,7 @@ class WarningAnalyzer: Analzyer {
             if line.contains(LDWarning.lookFor) {
                 warnings.append(LDWarning(description: line))
             } else if line.contains(FileWarning.lookFor) {
-                let newFileWarning = FileWarning(firstLine: line)
+                let newFileWarning = FileWarning(repoName: repoName, firstLine: line)
                 warnings.append(newFileWarning)
                 fileWarning = newFileWarning
             }

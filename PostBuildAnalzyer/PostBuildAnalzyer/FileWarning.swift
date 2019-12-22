@@ -30,7 +30,7 @@ class FileWarning: Warning {
     /// How many times the error occurred
     var count: Int = 1
 
-    init(firstLine: String) {
+    init(repoName: String, firstLine: String) {
 
         if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarning.lookFor) {
             guard regex.matches(firstLine) else {
@@ -42,6 +42,10 @@ class FileWarning: Warning {
         var line = firstLine
         var end = line.firstIndex(of: ":")!
         file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
+        if file.contains(repoName) {
+            let range = file.range(of: repoName + "/")!
+            file = String(file[range.upperBound...])
+        }
 
         var start = line.index(end, offsetBy: 1)
         line = String(line[start...])

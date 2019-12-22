@@ -72,6 +72,10 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
+            argument = "PostBuildAnalyzer"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "&quot;/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example-Example (Before).log&quot;"
             isEnabled = "YES">
          </CommandLineArgument>

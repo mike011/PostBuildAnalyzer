@@ -13,9 +13,9 @@ class PostBuildAnalzyer {
     private var analzyers = [Analzyer]()
     var reports = [String]()
 
-    init(logFile: [String], lintFile: [String]) {
+    init(repoName: String, logFile: [String], lintFile: [String]) {
         if !logFile.isEmpty {
-            analzyers.append(WarningAnalyzer(logFile: logFile))
+            analzyers.append(WarningAnalyzer(repoName: repoName, logFile: logFile))
             analzyers.append(SlowFilesAnalyzer(logFile: logFile))
         }
         if !lintFile.isEmpty {
@@ -31,7 +31,7 @@ class PostBuildAnalzyer {
 
     func write(toLocation: String) {
         print("|A|Name|Amount|")
-        print("|--|---|--|")
+        print("|---|---|---|")
         for line in reports {
             print(line)
         }

@@ -29,6 +29,7 @@
 		35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8AB55239499CF00A90A56 /* UtilsTests.swift */; };
 		35DE8A27238CA79600F9D48C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A26238CA79600F9D48C /* main.swift */; };
 		4C1C0BCE23ADA20B004DC5F3 /* FileWarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */; };
+		4C1C0BD023AED2F2004DC5F3 /* WarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,7 @@
 		35DE8A31238CA7CB00F9D48C /* PostBuildAnalzyerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostBuildAnalzyerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DE8A35238CA7CB00F9D48C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWarningTests.swift; sourceTree = "<group>"; };
+		4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				350DDE7B23AD62C900F48143 /* LDWarningTests.swift */,
 				35B8AB55239499CF00A90A56 /* UtilsTests.swift */,
 				350DDE6123AD290400F48143 /* WarningAnalyzerTests.swift */,
+				4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */,
 			);
 			path = PostBuildAnalzyerTests;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1C0BD023AED2F2004DC5F3 /* WarningTests.swift in Sources */,
 				350DDE6623AD2ADA00F48143 /* LintAnalyzer.swift in Sources */,
 				350DDE6223AD290400F48143 /* WarningAnalyzerTests.swift in Sources */,
 				350DDE6423AD2AD400F48143 /* Analyzer.swift in Sources */,
