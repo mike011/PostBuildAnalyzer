@@ -9,29 +9,6 @@
 import Foundation
 
 public class Utils {
-//    public static func getCoverageFile(file: String) -> Project? {
-//
-//        let fileManager = FileManager.default
-//        if !fileManager.fileExists(atPath: file) {
-//            print("File not found: \(file)")
-//            return nil
-//        }
-//
-//        let url = URL(fileURLWithPath: file)
-//
-//        let json = try! Data(contentsOf: url)
-//
-//        let decoder = JSONDecoder()
-//        do {
-//            return try decoder.decode(Project.self, from: json)
-//        } catch {
-//            let elements: [Element] = try!
-//                decoder.decode([Element].self, from: json)
-//            let target = Target(coveredLines: 0, lineCoverage: 0, files: elements[0].files, name: "", executableLines: 0, buildProductPath: "")
-//            return Project(coveredLines: 0, lineCoverage: 0, targets: [target], executableLines: 0)
-//        }
-//    }
-
     public static func getParentURL(file: String) -> URL {
         let url = URL(fileURLWithPath: file)
         return url.deletingLastPathComponent()
