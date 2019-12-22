@@ -10,15 +10,15 @@ import Foundation
 
 class Warnings {
     func firstWarning() {
-        let s = "adffds"
-        if let index = s.index(of: "a") {
+        let short = "adffds"
+        if let index = short.index(of: "a") {
             return
         }
     }
 
     func secondWarning() {
-        let s = "adffds"
-        if let index = s.index(of: "a") {
+        let short = "adffds"
+        if let index = short.index(of: "a") {
             return
         }
     }

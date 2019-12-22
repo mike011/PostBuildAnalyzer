@@ -71,13 +71,25 @@ class FileWarning: Warning {
         }
     }
 
-    var detaledDescripiton: String {
-        var col2 = "File: \(file)<br>"
-        col2 += "Line: \(lineNumber)\tWarning: \(description)<br>"
-        for detail in details {
-            col2 += detail + "<br>"
+    func getURL() -> String {
+        let branch = "master"
+        let repo = "https://github.com/mike011/PostBuildAnalyzer"
+        return "\(repo)/blob/\(branch)/\(file)#L\(lineNumber)"
+    }
+
+    func getFilename() -> String {
+        if let start = file.lastIndex(of: "/"), let end = file.range(of: ".swift") {
+            return String(file[start ..< end.lowerBound].dropFirst())
         }
-        return String(col2.dropLast("<br>".count))
+        return file
+    }
+
+    func getAHREF() -> String {
+        return "<a href=\"\(getURL())\">\(getFilename())</a>"
+    }
+
+    var detaledDescripiton: String {
+        return "\(getAHREF()) on line \(lineNumber)<br><i>\(description)</i>"
     }
 
     var measuredValue: String {
