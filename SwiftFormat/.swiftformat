@@ -1,0 +1,16 @@
+# file options
+
+--exclude /**/Carthage/**/*.swift,/**/Pods/**/*.swift,/**/gems/**/*.swift
+
+# format options
+
+--self init-only
+--wraparguments before-first
+
+# disabled rules
+
+--disable numberFormatting
+--disable redundantReturn
+--disable trailingCommas
+--disable fileHeader
+--disable unusedArguments

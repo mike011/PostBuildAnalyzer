@@ -10,9 +10,7 @@
 import XCTest
 
 class NewClassCoveredTests: XCTestCase {
-
     func testNewClassCovered() {
         NewClassCovered().newClassCovered()
     }
-
 }

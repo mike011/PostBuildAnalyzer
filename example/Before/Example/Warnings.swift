@@ -9,18 +9,17 @@
 import Foundation
 
 class Warnings {
-
     func firstWarning() {
         let s = "adffds"
         if let index = s.index(of: "a") {
-           return
+            return
         }
     }
 
     func secondWarning() {
         let s = "adffds"
         if let index = s.index(of: "a") {
-           return
+            return
         }
     }
 }

@@ -10,7 +10,6 @@
 import XCTest
 
 class ExistingClassCoveredTests: XCTestCase {
-
     func testExistingClassCoveredTests() {
         ExistingClassCovered().existingFunctionCovered()
     }

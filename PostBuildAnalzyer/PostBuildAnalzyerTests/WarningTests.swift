@@ -27,7 +27,6 @@ private class TestWarning: Warning {
 }
 
 class WarningTests: XCTestCase {
-
     func testToHTML() {
         let warning = TestWarning()
         XCTAssertEqual(warning.toHTML(), "|A|B|C|")

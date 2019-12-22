@@ -9,7 +9,6 @@
 import Foundation
 
 class PostBuildAnalzyer {
-
     private var analzyers = [Analzyer]()
     var reports = [String]()
 

@@ -9,10 +9,9 @@
 import XCTest
 
 class FileWarningTests: XCTestCase {
-
     func testWarning() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
-        let warning = FileWarning(repoName: "PostBuildAnalyzer", firstLine:description)
+        let warning = FileWarning(repoName: "PostBuildAnalyzer", firstLine: description)
         XCTAssertEqual(warning.file, "example/Before/Example/ExistingClassCovered.swift")
         XCTAssertEqual(warning.lineNumber, 15)
         XCTAssertEqual(warning.indent, 26)
@@ -23,27 +22,27 @@ class FileWarningTests: XCTestCase {
 
     func testWarningSingleDigitNumbers() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:1:2: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
-        let warning = FileWarning(repoName: "", firstLine:description)
+        let warning = FileWarning(repoName: "", firstLine: description)
         XCTAssertEqual(warning.lineNumber, 1)
         XCTAssertEqual(warning.indent, 2)
     }
 
     func testWarningTripleDigitNumbers() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:145:267: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
-        let warning = FileWarning(repoName: "", firstLine:description)
+        let warning = FileWarning(repoName: "", firstLine: description)
         XCTAssertEqual(warning.lineNumber, 145)
         XCTAssertEqual(warning.indent, 267)
     }
 
     func getSampleWarning() -> FileWarning {
-        let warning = FileWarning(repoName: "PostBuildAnalyzer", firstLine:"Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated")
+        let warning = FileWarning(repoName: "PostBuildAnalyzer", firstLine: "Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated")
         warning.add(line: "if let index = s.index(of: \"a\") {")
         warning.add(line: "               ^")
         return warning
     }
 
     func getAnotherSampleWarning() -> FileWarning {
-        let warning = FileWarning(repoName: "PostBuildAnalyzer", firstLine:"Documents/git/PostBuildAnalyzer/example/Before/Example/Frank.swift:16:15: warning: result of call to 'substring(to:)' is unused")
+        let warning = FileWarning(repoName: "PostBuildAnalyzer", firstLine: "Documents/git/PostBuildAnalyzer/example/Before/Example/Frank.swift:16:15: warning: result of call to 'substring(to:)' is unused")
         warning.add(line: "s.substring(to: index)")
         warning.add(line: "  ^        ~~~~~~~~~~~")
         warning.count = 2

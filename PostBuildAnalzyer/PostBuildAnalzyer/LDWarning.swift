@@ -9,7 +9,6 @@
 import Foundation
 
 class LDWarning: Warning {
-
     static let lookFor = "ld: warning: "
 
     var count: Int
@@ -17,7 +16,7 @@ class LDWarning: Warning {
 
     init(description: String) {
         self.description = String(description.dropFirst(LDWarning.lookFor.count))
-        count = 1
+        self.count = 1
     }
 
     func getFirstColumn() -> String {

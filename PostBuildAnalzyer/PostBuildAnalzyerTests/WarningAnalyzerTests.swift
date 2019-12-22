@@ -9,7 +9,6 @@
 import XCTest
 
 class WarningAnalyzerTests: XCTestCase {
-
     func testNotAWarning() {
         var logFile = [String]()
         logFile.append("Not a warning")
@@ -99,5 +98,4 @@ class WarningAnalyzerTests: XCTestCase {
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
         XCTAssertEqual(wa.createReport().count, 2)
     }
-
 }

@@ -10,7 +10,7 @@ import Foundation
 
 let arguments = CommandLine.arguments
 
-if arguments.count != 4 && arguments.count != 5 {
+if arguments.count != 4, arguments.count != 5 {
     print("Missing arguments \(arguments.count) found, expected the following: ")
     print("\t1 - Repo name")
     print("\t2 - Build log output file")
@@ -34,5 +34,5 @@ func go(arguments: [String]) {
     pba.createReports()
     pba.write(toLocation: outputPath)
 }
-go(arguments: arguments)
 
+go(arguments: arguments)

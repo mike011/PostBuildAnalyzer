@@ -9,7 +9,6 @@
 import Foundation
 
 class WarningAnalyzer: Analzyer {
-
     var warnings = [Warning]()
 
     init(repoName: String, logFile: [String]) {

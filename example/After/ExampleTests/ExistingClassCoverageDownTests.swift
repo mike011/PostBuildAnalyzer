@@ -12,7 +12,6 @@ import Foundation
 import XCTest
 
 class ExistingClassCoverageDownTests: XCTestCase {
-
     func testFunctionOne() {
         ExistingClassCoverageDown().functionOne()
     }

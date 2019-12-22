@@ -9,10 +9,7 @@
 import Foundation
 
 class ExistingClassCoverageDown {
+    func functionOne() {}
 
-    func functionOne() {
-    }
-
-    func functionTwo() {
-    }
+    func functionTwo() {}
 }

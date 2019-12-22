@@ -9,7 +9,6 @@
 import Foundation
 
 class ComparisonWebPage {
-
     private let row: Row
     private let devLink: String
     private let prLink: String
@@ -23,8 +22,7 @@ class ComparisonWebPage {
     func writeToFile(url: URL) {
         do {
             try getContents().write(to: url, atomically: true, encoding: String.Encoding.utf8)
-        }
-        catch let error as NSError {
+        } catch let error as NSError {
             print("Ooops! Something went wrong: \(error)")
         }
     }

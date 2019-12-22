@@ -6,6 +6,7 @@
 import Foundation
 
 // MARK: - Project
+
 public struct Project: Codable {
     let coveredLines: Double
     let lineCoverage: Double
@@ -14,6 +15,7 @@ public struct Project: Codable {
 }
 
 // MARK: - Target
+
 public struct Target: Codable {
     let coveredLines: Int
     let lineCoverage: Double
@@ -24,6 +26,7 @@ public struct Target: Codable {
 }
 
 // MARK: - File
+
 public struct File: Codable {
     public let coveredLines: Int
     public let lineCoverage: Double
@@ -34,6 +37,7 @@ public struct File: Codable {
 }
 
 // MARK: - Function
+
 struct Function: Codable {
     let coveredLines, lineNumber, executionCount: Int
     let lineCoverage: Double

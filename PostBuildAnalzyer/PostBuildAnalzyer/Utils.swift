@@ -45,7 +45,6 @@ public class Utils {
     }
 
     public static func load(file: String?) -> [String] {
-
         guard let file = file else {
             return [String]()
         }
@@ -75,5 +74,3 @@ extension String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
-
-

@@ -9,6 +9,5 @@
 import Foundation
 
 class NewClassNoCoverage {
-    func newClassNoCoverage() {
-    }
+    func newClassNoCoverage() {}
 }

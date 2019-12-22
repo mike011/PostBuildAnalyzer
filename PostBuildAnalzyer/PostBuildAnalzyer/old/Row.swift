@@ -30,15 +30,15 @@ struct Row {
             return "💯"
         } else if afterCoverage == 0 {
             return "🚫"
-        } else if(beforeCoverage > afterCoverage) {
+        } else if beforeCoverage > afterCoverage {
             change = "👎"
-        } else if(afterCoverage > beforeCoverage) {
+        } else if afterCoverage > beforeCoverage {
             change = "👍"
         }
         return change
     }
 
-    private func getCoverage(amount: Double) -> String{
+    private func getCoverage(amount: Double) -> String {
         if amount == 1 {
             return "💯"
         } else if amount == 0 {
@@ -46,6 +46,7 @@ struct Row {
         }
         return "👍"
     }
+
     let sourceFile: String
     let beforeCoverage: Double?
     let afterCoverage: Double?
@@ -90,15 +91,12 @@ extension Row: Hashable {
     }
 }
 
-private extension Double
-{
-    func truncate()-> Double
-    {
-        return Double(floor(pow(10.0, Double(2)) * self)/pow(10.0, Double(2)))
+private extension Double {
+    func truncate() -> Double {
+        return Double(floor(pow(10.0, Double(2)) * self) / pow(10.0, Double(2)))
     }
 
-    func roundIt()-> Double
-    {
+    func roundIt() -> Double {
         return Darwin.round(100 * self) / 100
     }
 }

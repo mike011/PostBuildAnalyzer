@@ -9,7 +9,6 @@
 import Foundation
 
 public class CoverageComparison {
-
     let writeLocation: URL
     let before: Project
     let after: Project
@@ -34,7 +33,7 @@ public class CoverageComparison {
         for target in before.targets {
             for beforeFile in target.files {
                 let filename = beforeFile.name
-                if fileList.isEmpty || !fileList.filter({beforeFile.path.contains($0)}).isEmpty {
+                if fileList.isEmpty || !fileList.filter({ beforeFile.path.contains($0) }).isEmpty {
                     let beforeCoverage = beforeFile.lineCoverage
                     var afterCoverage: Double?
                     for afterTarget in after.targets {
@@ -53,7 +52,7 @@ public class CoverageComparison {
         for target in after.targets {
             for afterFile in target.files {
                 let filename = afterFile.name
-                if fileList.isEmpty || !fileList.filter({afterFile.path.contains($0)}).isEmpty {
+                if fileList.isEmpty || !fileList.filter({ afterFile.path.contains($0) }).isEmpty {
                     var beforeCoverage: Double?
                     let afterCoverage = afterFile.lineCoverage
                     for beforeTarget in before.targets {

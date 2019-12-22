@@ -10,7 +10,6 @@
 import XCTest
 
 class ExistingClassCoverageDroppedTests: XCTestCase {
-
     func testExistingClassCoverageDropped() {
         ExistingClassCoverageDropped().existingClassCoverageDropped()
     }

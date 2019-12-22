@@ -9,6 +9,5 @@
 import Foundation
 
 class NewClassCovered {
-    func newClassCovered() {
-    }
+    func newClassCovered() {}
 }

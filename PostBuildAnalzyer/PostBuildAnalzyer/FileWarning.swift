@@ -9,7 +9,6 @@
 import Foundation
 
 class FileWarning: Warning {
-
     static var lookFor = ": warning: "
 
     /// The file in which the error occurred
@@ -31,38 +30,37 @@ class FileWarning: Warning {
     var count: Int = 1
 
     init(repoName: String, firstLine: String) {
-
         if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarning.lookFor) {
             guard regex.matches(firstLine) else {
-                description = firstLine
+                self.description = firstLine
                 return
             }
         }
 
         var line = firstLine
         var end = line.firstIndex(of: ":")!
-        file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
+        self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
         if file.contains(repoName) {
             let range = file.range(of: repoName + "/")!
-            file = String(file[range.upperBound...])
+            self.file = String(file[range.upperBound...])
         }
 
         var start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
-        lineNumber = Int(String(line[..<end]))!
+        self.lineNumber = Int(String(line[..<end]))!
 
         start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
-        indent = Int(String(line[..<end]))!
+        self.indent = Int(String(line[..<end]))!
 
         start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
         start = line.index(end, offsetBy: 1)
-        description = String(line[start...]).trimSpaces()
-        count = 1
+        self.description = String(line[start...]).trimSpaces()
+        self.count = 1
     }
 
     func add(line: String) {

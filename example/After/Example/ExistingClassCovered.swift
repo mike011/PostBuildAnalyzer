@@ -9,6 +9,5 @@
 import Foundation
 
 class ExistingClassCovered {
-
     func existingFunctionCovered() {}
 }

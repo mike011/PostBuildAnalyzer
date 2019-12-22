@@ -9,16 +9,9 @@
 import Foundation
 
 class ExistingClassCoverageUp {
+    func functionOne() {}
 
-    func functionOne() {
+    func functionTwo() {}
 
-    }
-
-    func functionTwo() {
-        
-    }
-
-    func functionThree() {
-
-    }
+    func functionThree() {}
 }
