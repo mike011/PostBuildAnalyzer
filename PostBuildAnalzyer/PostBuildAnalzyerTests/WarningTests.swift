@@ -9,26 +9,18 @@
 import XCTest
 
 private class TestWarning: Warning {
+    var symbol = "Symbol"
+    var detaledDescripiton = "Detailed Description"
+    var measuredValue = "Measured Value"
+
     static var lookFor = "lookFor"
     var description = "description"
     var count = 1
-
-    func getFirstColumn() -> String {
-        return "A"
-    }
-
-    func getSecondColumn() -> String {
-        return "B"
-    }
-
-    func getThirdColumn() -> String {
-        return "C"
-    }
 }
 
 class WarningTests: XCTestCase {
     func testToHTML() {
         let warning = TestWarning()
-        XCTAssertEqual(warning.toHTML(), "|A|B|C|")
+        XCTAssertEqual(warning.toHTML(), "|Symbol|Detailed Description|Measured Value|")
     }
 }

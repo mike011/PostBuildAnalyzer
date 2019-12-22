@@ -10,6 +10,7 @@ import Foundation
 
 class FileWarning: Warning {
     static var lookFor = ": warning: "
+    let symbol = "⚠️"
 
     /// The file in which the error occurred
     var file = ""
@@ -70,11 +71,7 @@ class FileWarning: Warning {
         }
     }
 
-    func getFirstColumn() -> String {
-        return "⚠️"
-    }
-
-    func getSecondColumn() -> String {
+    var detaledDescripiton: String {
         var col2 = "File: \(file)<br>"
         col2 += "Line: \(lineNumber)\tWarning: \(description)<br>"
         for detail in details {
@@ -83,7 +80,7 @@ class FileWarning: Warning {
         return String(col2.dropLast("<br>".count))
     }
 
-    func getThirdColumn() -> String {
+    var measuredValue: String {
         return "\(count) times"
     }
 }

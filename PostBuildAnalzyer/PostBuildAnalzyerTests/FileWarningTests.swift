@@ -55,26 +55,26 @@ class FileWarningTests: XCTestCase {
         XCTAssertEqual(warning.details[0], "if let index = s.index(of: \"a\") {")
     }
 
-    func testFirstColumn() {
+    func testSymbol() {
         let warning = getSampleWarning()
-        XCTAssertEqual(warning.getFirstColumn(), "⚠️")
+        XCTAssertEqual(warning.symbol, "⚠️")
     }
 
-    func testSecondColumn() {
+    func testDetailedDescripiton() {
         let warning = getSampleWarning()
         var col2 = "File: example/Before/Example/ExistingClassCovered.swift<br>"
         col2 += "Line: 15\tWarning: 'index(of:)' is deprecated<br>"
         col2 += "if let index = s.index(of: \"a\") {"
-        XCTAssertEqual(warning.getSecondColumn(), col2)
+        XCTAssertEqual(warning.detaledDescripiton, col2)
     }
 
-    func testThirdColumn() {
+    func testMesauredValue() {
         let warning = getSampleWarning()
-        XCTAssertEqual(warning.getThirdColumn(), "1 times")
+        XCTAssertEqual(warning.measuredValue, "1 times")
     }
 
-    func testThirdColumn2() {
+    func testMesauredValueWithMultipleValues() {
         let warning = getAnotherSampleWarning()
-        XCTAssertEqual(warning.getThirdColumn(), "2 times")
+        XCTAssertEqual(warning.measuredValue, "2 times")
     }
 }
