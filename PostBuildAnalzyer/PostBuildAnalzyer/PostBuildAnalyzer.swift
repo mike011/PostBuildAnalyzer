@@ -15,7 +15,7 @@ class PostBuildAnalzyer {
     init(repoName: String, logFile: [String], lintFile: [String]) {
         if !logFile.isEmpty {
             analzyers.append(WarningAnalyzer(repoName: repoName, logFile: logFile))
-            analzyers.append(SlowFilesAnalyzer(logFile: logFile))
+            analzyers.append(SlowExpressionAnalyzer(timeInMS: 100, logFile: logFile))
         }
         if !lintFile.isEmpty {
             analzyers.append(LintAnalyzer(lintFile: lintFile))
