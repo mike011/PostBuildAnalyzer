@@ -11,10 +11,6 @@ import Foundation
 class LintAnalzyer: Analyzer {
     var warnings: [Warning]
 
-//    func createReport() -> Report {
-//        return LintReport()
-//    }
-
     init(lintFile: [String]) {
         self.warnings = [LintWarning]()
     }

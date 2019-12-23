@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		350DDE6223AD290400F48143 /* WarningAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE6123AD290400F48143 /* WarningAnalyzerTests.swift */; };
-		350DDE6323AD290E00F48143 /* WarningReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857CF23A57F160081F6A2 /* WarningReport.swift */; };
-		350DDE6423AD2AD400F48143 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D323A57F4B0081F6A2 /* Report.swift */; };
-		350DDE6523AD2AD800F48143 /* SlowExpressionReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D123A57F2D0081F6A2 /* SlowExpressionReport.swift */; };
-		350DDE6623AD2ADA00F48143 /* LintReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D523A57F7C0081F6A2 /* LintReport.swift */; };
 		350DDE6C23AD2E3300F48143 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE6B23AD2E3300F48143 /* Utils.swift */; };
 		350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE6B23AD2E3300F48143 /* Utils.swift */; };
 		350DDE6F23AD2FCD00F48143 /* FileWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE6E23AD2FCD00F48143 /* FileWarning.swift */; };
@@ -21,10 +17,6 @@
 		350DDE7923AD61D100F48143 /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE7723AD618700F48143 /* Warning.swift */; };
 		350DDE7A23AD61DA00F48143 /* LDWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE7323AD5AF700F48143 /* LDWarning.swift */; };
 		350DDE7C23AD62C900F48143 /* LDWarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350DDE7B23AD62C900F48143 /* LDWarningTests.swift */; };
-		358857D023A57F160081F6A2 /* WarningReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857CF23A57F160081F6A2 /* WarningReport.swift */; };
-		358857D223A57F2D0081F6A2 /* SlowExpressionReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D123A57F2D0081F6A2 /* SlowExpressionReport.swift */; };
-		358857D423A57F4B0081F6A2 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D323A57F4B0081F6A2 /* Report.swift */; };
-		358857D623A57F7C0081F6A2 /* LintReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D523A57F7C0081F6A2 /* LintReport.swift */; };
 		358857D823A57FC80081F6A2 /* PostBuildAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */; };
 		35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8AB55239499CF00A90A56 /* UtilsTests.swift */; };
 		35DE8A27238CA79600F9D48C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DE8A26238CA79600F9D48C /* main.swift */; };
@@ -69,10 +61,6 @@
 		350DDE7323AD5AF700F48143 /* LDWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDWarning.swift; sourceTree = "<group>"; };
 		350DDE7723AD618700F48143 /* Warning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
 		350DDE7B23AD62C900F48143 /* LDWarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDWarningTests.swift; sourceTree = "<group>"; };
-		358857CF23A57F160081F6A2 /* WarningReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningReport.swift; sourceTree = "<group>"; };
-		358857D123A57F2D0081F6A2 /* SlowExpressionReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionReport.swift; sourceTree = "<group>"; };
-		358857D323A57F4B0081F6A2 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
-		358857D523A57F7C0081F6A2 /* LintReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintReport.swift; sourceTree = "<group>"; };
 		358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBuildAnalyzer.swift; sourceTree = "<group>"; };
 		35B8AB55239499CF00A90A56 /* UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTests.swift; sourceTree = "<group>"; };
 		35DE8A23238CA79600F9D48C /* PostBuildAnalzyer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PostBuildAnalzyer; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +125,6 @@
 				358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */,
 				4C0BC39B23B10EE900DACAB1 /* Analzyers */,
 				4C0BC39423B10A9900DACAB1 /* Warnings */,
-				4C0BC39523B10AA100DACAB1 /* Reports */,
 				350DDE6B23AD2E3300F48143 /* Utils.swift */,
 			);
 			path = PostBuildAnalzyer;
@@ -149,7 +136,6 @@
 				4C0BC3AA23B11CEE00DACAB1 /* PostBuildComparisonTests.swift */,
 				4C0BC39623B10AEF00DACAB1 /* Warnings */,
 				4C0BC39723B10AF200DACAB1 /* Analyzers */,
-				4C0BC3A923B11C9800DACAB1 /* Reports */,
 				35DE8A35238CA7CB00F9D48C /* Info.plist */,
 				35B8AB55239499CF00A90A56 /* UtilsTests.swift */,
 			);
@@ -166,17 +152,6 @@
 				4C0BC3A723B11ACD00DACAB1 /* LintWarning.swift */,
 			);
 			path = Warnings;
-			sourceTree = "<group>";
-		};
-		4C0BC39523B10AA100DACAB1 /* Reports */ = {
-			isa = PBXGroup;
-			children = (
-				358857D323A57F4B0081F6A2 /* Report.swift */,
-				358857D523A57F7C0081F6A2 /* LintReport.swift */,
-				358857D123A57F2D0081F6A2 /* SlowExpressionReport.swift */,
-				358857CF23A57F160081F6A2 /* WarningReport.swift */,
-			);
-			path = Reports;
 			sourceTree = "<group>";
 		};
 		4C0BC39623B10AEF00DACAB1 /* Warnings */ = {
@@ -203,18 +178,11 @@
 			isa = PBXGroup;
 			children = (
 				4C0BC3A323B10F2400DACAB1 /* Analyzer.swift */,
-				4C0BC39D23B10F0300DACAB1 /* WarningAnalyzer.swift */,
 				4C0BC39F23B10F0E00DACAB1 /* LintAnalyzer.swift */,
 				4C0BC3A123B10F1900DACAB1 /* SlowExpresionAnalyzer.swift */,
+				4C0BC39D23B10F0300DACAB1 /* WarningAnalyzer.swift */,
 			);
 			path = Analzyers;
-			sourceTree = "<group>";
-		};
-		4C0BC3A923B11C9800DACAB1 /* Reports */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Reports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,8 +276,6 @@
 			files = (
 				350DDE7423AD5AF700F48143 /* LDWarning.swift in Sources */,
 				35DE8A27238CA79600F9D48C /* main.swift in Sources */,
-				358857D023A57F160081F6A2 /* WarningReport.swift in Sources */,
-				358857D223A57F2D0081F6A2 /* SlowExpressionReport.swift in Sources */,
 				4C0BC39923B10BDC00DACAB1 /* SlowExpression.swift in Sources */,
 				4C0BC3A623B117BF00DACAB1 /* PostBuildComparison.swift in Sources */,
 				4C0BC3A823B11ACD00DACAB1 /* LintWarning.swift in Sources */,
@@ -317,12 +283,10 @@
 				4C0BC39E23B10F0300DACAB1 /* WarningAnalyzer.swift in Sources */,
 				4C0BC3A423B10F2400DACAB1 /* Analyzer.swift in Sources */,
 				350DDE6C23AD2E3300F48143 /* Utils.swift in Sources */,
-				358857D423A57F4B0081F6A2 /* Report.swift in Sources */,
 				358857D823A57FC80081F6A2 /* PostBuildAnalyzer.swift in Sources */,
 				4C0BC3A223B10F1900DACAB1 /* SlowExpresionAnalyzer.swift in Sources */,
 				350DDE6F23AD2FCD00F48143 /* FileWarning.swift in Sources */,
 				4C0BC3A023B10F0E00DACAB1 /* LintAnalyzer.swift in Sources */,
-				358857D623A57F7C0081F6A2 /* LintReport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,21 +296,17 @@
 			files = (
 				4C1C0BD023AED2F2004DC5F3 /* WarningTests.swift in Sources */,
 				4C441E9A23B03E8F00A733C1 /* TestWarning.swift in Sources */,
-				350DDE6623AD2ADA00F48143 /* LintReport.swift in Sources */,
 				4C0BC3AB23B11CEE00DACAB1 /* PostBuildComparisonTests.swift in Sources */,
 				4C0BC3AC23B11D5000DACAB1 /* SlowExpresionAnalyzer.swift in Sources */,
 				350DDE6223AD290400F48143 /* WarningAnalyzerTests.swift in Sources */,
 				4C0BC3AE23B11D5800DACAB1 /* LintAnalyzer.swift in Sources */,
-				350DDE6423AD2AD400F48143 /* Report.swift in Sources */,
 				35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */,
 				4C0BC3B223B11DD600DACAB1 /* LintWarning.swift in Sources */,
 				4C0BC3AF23B11D5A00DACAB1 /* Analyzer.swift in Sources */,
 				4C0BC39A23B10BF800DACAB1 /* SlowExpression.swift in Sources */,
 				350DDE7023AD2FD200F48143 /* FileWarning.swift in Sources */,
-				350DDE6323AD290E00F48143 /* WarningReport.swift in Sources */,
 				350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */,
 				350DDE7C23AD62C900F48143 /* LDWarningTests.swift in Sources */,
-				350DDE6523AD2AD800F48143 /* SlowExpressionReport.swift in Sources */,
 				4C1C0BCE23ADA20B004DC5F3 /* FileWarningTests.swift in Sources */,
 				350DDE7923AD61D100F48143 /* Warning.swift in Sources */,
 				4C0BC3AD23B11D5300DACAB1 /* WarningAnalyzer.swift in Sources */,

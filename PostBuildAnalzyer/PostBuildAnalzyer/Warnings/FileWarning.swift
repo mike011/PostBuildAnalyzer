@@ -12,17 +12,25 @@ class FileWarning: Warning {
     static var lookFor = ": warning: "
     let symbol = "⚠️"
 
+    /// The url of repository
+    /// eg: https://github.com/mike011/PostBuildAnalyzer
+    let repoURL: String
+
+    /// The branch the build is on.
+    /// eg: master
+    let branch: String
+
     /// The line that is being parsed.
     let line: String
 
     /// The file in which the error occurred
-    var file = ""
+    var file: String
 
     /// The line number on which the error occurred
-    var lineNumber = 0
+    var lineNumber: Int
 
     /// The spot on the line where the error occurred
-    var indent = 0
+    var indent: Int
 
     /// A description of why the error occurred
     var description: String
@@ -33,11 +41,16 @@ class FileWarning: Warning {
     /// How many times the error occurred
     var count = 1
 
-    init(repoName: String, firstLine: String) {
+    init(repoURL: String, branch: String, firstLine: String) {
+        self.repoURL = repoURL
+        self.branch = branch
         self.line = firstLine
         if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarning.lookFor) {
             guard regex.matches(firstLine) else {
                 self.description = firstLine
+                self.file = ""
+                self.lineNumber = -1
+                self.indent = -1
                 return
             }
         }
@@ -45,8 +58,8 @@ class FileWarning: Warning {
         var line = firstLine
         var end = line.firstIndex(of: ":")!
         self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
-        if file.contains(repoName) {
-            let range = file.range(of: repoName + "/")!
+        if file.contains(Self.getRepoName(fromRepoURL: repoURL)) {
+            let range = file.range(of: Self.getRepoName(fromRepoURL: repoURL) + "/")!
             self.file = String(file[range.upperBound...])
         }
 
@@ -68,6 +81,10 @@ class FileWarning: Warning {
         self.count = 1
     }
 
+    static func getRepoName(fromRepoURL repoURL: String) -> String {
+        return ""
+    }
+
     func add(line: String) {
         let trimmed = line.trimSpaces()
         if !trimmed.contains("^") {
@@ -76,9 +93,7 @@ class FileWarning: Warning {
     }
 
     func getURL() -> String {
-        let branch = "master"
-        let repo = "https://github.com/mike011/PostBuildAnalyzer"
-        return "\(repo)/blob/\(branch)/\(file)#L\(lineNumber)"
+        return "\(repoURL)/blob/\(branch)/\(file)#L\(lineNumber)"
     }
 
     func getFilename() -> String {

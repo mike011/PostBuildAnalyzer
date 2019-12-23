@@ -30,8 +30,4 @@ class SlowExpressionAnalyzer: Analyzer {
             }
         }
     }
-
-//    func createReport() -> Report {
-//        return SlowExpressionReport()
-//    }
 }

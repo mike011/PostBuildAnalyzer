@@ -72,7 +72,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "PostBuildAnalyzer"
+            argument = "https://github.com/Enflick/textnow-ios5"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -84,7 +84,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "reportFile"
+            argument = "/Users/michael/Downloads/TextNow-TextNowSwift-Free.log "
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

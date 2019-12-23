@@ -16,7 +16,7 @@ class PostBuildComparsion {
     init?(arguments: [String]) {
         if arguments.count < 5 || arguments.count > 7 {
             print("Missing arguments \(arguments.count) found, expected the following: ")
-            print("\t1 - Repo name")
+            print("\t1 - The URL of the repo")
             print("\t2 - Output folder location")
             print("\t3 - PR Build log output file")
             print("\t4 - Develop Build log report file")
@@ -25,7 +25,7 @@ class PostBuildComparsion {
             return nil
         }
 
-        let repoName = arguments[1]
+        let repoURL = arguments[1]
         outputPath = arguments[2]
         let beforeLogFileName = arguments[3]
         let afterLogFileName = arguments[4]
@@ -43,20 +43,28 @@ class PostBuildComparsion {
         let afterLintFile = Utils.load(file: afterLintFileName)
         let timeInMS = 100
 
-        self.before = PostBuildAnalzyer(repoName: repoName, timeInMS: timeInMS, logFile: beforeLogFile, lintFile: beforeLintFile)
-        self.after = PostBuildAnalzyer(repoName: repoName, timeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
+        self.before = PostBuildAnalzyer(repoURL: repoURL, branch: "master", timeInMS: timeInMS, logFile: beforeLogFile, lintFile: beforeLintFile)
+        self.after = PostBuildAnalzyer(repoURL: repoURL, branch: "develop", timeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
+    }
+
+    private var change: String {
+        var change = " "
+        if before.warningCount > after.warningCount {
+            change = "👍"
+        } else if before.warningCount < after.warningCount {
+            change = "👎"
+        }
+        return change
     }
 
     public func printTable() {
         print("<H3>New Warnings</H3>")
         print("| |Description|Amount|")
         print("|:-:|---|:-:|")
-        for warning in before.getWarnings() {
+        for warning in after.warnings {
             print(warning.toHTML())
         }
-
-        print("<H3>Overall Warnings</H3>")
-        print("||📉|Warning|Master|PR|")
-        print("|:-:|:-:|---|:-:|:-:|")
+        let compare = "Before: \(before.warningCount) <br> After: \(after.warningCount)"
+        print("|\(change)| Overall Warnings|\(compare)|")
     }
 }
