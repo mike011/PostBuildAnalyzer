@@ -12,11 +12,19 @@ class WarningAnalyzer: Analzyer {
     var symbol = "⚠️"
     var title = "Build Warnings"
     var developWarningCount: Int {
-        return developWarnings.count
+        var total = 0
+        for prWarning in developWarnings {
+            total += prWarning.count
+        }
+        return total
     }
 
     var prWarningCount: Int {
-        return prWarnings.count
+        var total = 0
+        for prWarning in prWarnings {
+            total += prWarning.count
+        }
+        return total
     }
 
     var developWarnings = [Warning]()
@@ -34,10 +42,23 @@ class WarningAnalyzer: Analzyer {
                 prWarnings.append(LDWarning(description: line))
             } else if line.contains(FileWarning.lookFor) {
                 let newFileWarning = FileWarning(repoName: repoName, firstLine: line)
-                prWarnings.append(newFileWarning)
+                if var found = get(warning: newFileWarning, in: prWarnings) {
+                    found.count += 1
+                } else {
+                    prWarnings.append(newFileWarning)
+                }
                 fileWarning = newFileWarning
             }
         }
+    }
+
+    func get(warning lookFor: Warning, in warnings: [Warning]) -> Warning? {
+        for warning in warnings {
+            if lookFor.line == warning.line {
+                return warning
+            }
+        }
+        return nil
     }
 
     func createNewReport() -> [String] {

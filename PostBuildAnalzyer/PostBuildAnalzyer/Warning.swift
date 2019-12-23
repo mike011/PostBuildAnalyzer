@@ -10,8 +10,9 @@ import Foundation
 
 protocol Warning {
     static var lookFor: String { get }
+    var line: String { get }
     var description: String { get }
-    var count: Int { get }
+    var count: Int { get set }
 
     var symbol: String { get }
     var detaledDescripiton: String { get }

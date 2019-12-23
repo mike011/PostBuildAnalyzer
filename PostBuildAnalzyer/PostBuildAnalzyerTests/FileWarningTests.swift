@@ -62,7 +62,7 @@ class FileWarningTests: XCTestCase {
 
     func testGetFileName() {
         let warning = getSampleWarning()
-        XCTAssertEqual(warning.getFilename(), "ExistingClassCovered")
+        XCTAssertEqual(warning.getFilename(), "ExistingClassCovered.swift")
     }
 
     func testGetURL() {
@@ -72,7 +72,7 @@ class FileWarningTests: XCTestCase {
 
     func testDetailedDescripiton() {
         let warning = getSampleWarning()
-        var col2 = "<a href=\"https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15\">ExistingClassCovered</a> on line 15<br>"
+        var col2 = "<a href=\"https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15\">ExistingClassCovered.swift</a> on line 15<br>"
         col2 += "<i>'index(of:)' is deprecated</i>"
         XCTAssertEqual(warning.detaledDescripiton, col2)
     }

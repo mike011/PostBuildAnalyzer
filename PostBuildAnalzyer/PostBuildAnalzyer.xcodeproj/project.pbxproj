@@ -31,6 +31,7 @@
 		4C1C0BCE23ADA20B004DC5F3 /* FileWarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */; };
 		4C1C0BD023AED2F2004DC5F3 /* WarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */; };
 		4C1C0BD223AF07BF004DC5F3 /* AnalyzerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BD123AF07BF004DC5F3 /* AnalyzerUnitTests.swift */; };
+		4C441E9A23B03E8F00A733C1 /* TestWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C441E9923B03E8F00A733C1 /* TestWarning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWarningTests.swift; sourceTree = "<group>"; };
 		4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningTests.swift; sourceTree = "<group>"; };
 		4C1C0BD123AF07BF004DC5F3 /* AnalyzerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzerUnitTests.swift; sourceTree = "<group>"; };
+		4C441E9923B03E8F00A733C1 /* TestWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWarning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				35DE8A35238CA7CB00F9D48C /* Info.plist */,
+				4C441E9923B03E8F00A733C1 /* TestWarning.swift */,
 				4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */,
 				4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */,
 				350DDE7B23AD62C900F48143 /* LDWarningTests.swift */,
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C1C0BD023AED2F2004DC5F3 /* WarningTests.swift in Sources */,
+				4C441E9A23B03E8F00A733C1 /* TestWarning.swift in Sources */,
 				350DDE6623AD2ADA00F48143 /* LintAnalyzer.swift in Sources */,
 				350DDE6223AD290400F48143 /* WarningAnalyzerTests.swift in Sources */,
 				350DDE6423AD2AD400F48143 /* Analyzer.swift in Sources */,

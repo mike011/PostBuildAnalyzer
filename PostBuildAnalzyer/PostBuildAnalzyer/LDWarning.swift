@@ -14,10 +14,12 @@ class LDWarning: Warning {
     var detaledDescripiton = ""
     var measuredValue = ""
 
+    let line: String
     var count: Int
     var description: String
 
     init(description: String) {
+        self.line = description
         self.description = String(description.dropFirst(LDWarning.lookFor.count))
         self.count = 1
     }

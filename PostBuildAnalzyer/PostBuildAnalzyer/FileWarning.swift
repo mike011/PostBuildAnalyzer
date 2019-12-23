@@ -12,6 +12,9 @@ class FileWarning: Warning {
     static var lookFor = ": warning: "
     let symbol = "⚠️"
 
+    /// The line that is being parsed.
+    let line: String
+
     /// The file in which the error occurred
     var file = ""
 
@@ -28,9 +31,10 @@ class FileWarning: Warning {
     var details = [String]()
 
     /// How many times the error occurred
-    var count: Int = 1
+    var count = 1
 
     init(repoName: String, firstLine: String) {
+        self.line = firstLine
         if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarning.lookFor) {
             guard regex.matches(firstLine) else {
                 self.description = firstLine
@@ -78,8 +82,8 @@ class FileWarning: Warning {
     }
 
     func getFilename() -> String {
-        if let start = file.lastIndex(of: "/"), let end = file.range(of: ".swift") {
-            return String(file[start ..< end.lowerBound].dropFirst())
+        if let start = file.lastIndex(of: "/") {
+            return String(file[start...].dropFirst())
         }
         return file
     }

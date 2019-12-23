@@ -8,16 +8,6 @@
 
 import XCTest
 
-private class TestWarning: Warning {
-    var symbol = "Symbol"
-    var detaledDescripiton = "Detailed Description"
-    var measuredValue = "Measured Value"
-
-    static var lookFor = "lookFor"
-    var description = "description"
-    var count = 1
-}
-
 class WarningTests: XCTestCase {
     func testToHTML() {
         let warning = TestWarning()

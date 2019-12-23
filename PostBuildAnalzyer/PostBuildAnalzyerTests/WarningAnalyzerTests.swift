@@ -51,7 +51,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
-        logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:3: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
@@ -96,6 +96,41 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = WarningAnalyzer(repoName: "", logFile: logFile)
-        XCTAssertEqual(wa.createNewReport().count, 2)
+        let report = wa.createNewReport()
+        XCTAssertEqual(report.count, 1)
+    }
+
+    func testMultipleWarningsRepeated() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append(": warning: ")
+        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        XCTAssertFalse(wa.prWarnings.isEmpty)
+        XCTAssertEqual(wa.prWarnings[0].count, 2)
+        XCTAssertEqual(wa.prWarningCount, 2)
+    }
+
+    func testContainsNotFound() {
+        let wa = WarningAnalyzer(repoName: "", logFile: [String]())
+
+        let w = TestWarning(line: "A")
+
+        var ws = [Warning]()
+        ws.append(TestWarning(line: "X"))
+        ws.append(TestWarning(line: "Y"))
+
+        XCTAssertNil(wa.get(warning: w, in: ws))
+    }
+
+    func testContainsFound() {
+        let wa = WarningAnalyzer(repoName: "", logFile: [String]())
+
+        let w = TestWarning(line: "Y")
+
+        var ws = [Warning]()
+        ws.append(TestWarning(line: "X"))
+        ws.append(TestWarning(line: "Y"))
+
+        XCTAssertNotNil(wa.get(warning: w, in: ws))
     }
 }
