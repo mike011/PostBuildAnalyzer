@@ -92,7 +92,7 @@ class FileWarning: Warning {
         return "<a href=\"\(getURL())\">\(getFilename())</a>"
     }
 
-    var detaledDescripiton: String {
+    var detailedDescripiton: String {
         return "\(getAHREF()) on line \(lineNumber)<br><i>\(description)</i>"
     }
 

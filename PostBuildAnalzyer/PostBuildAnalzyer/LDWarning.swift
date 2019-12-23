@@ -10,9 +10,7 @@ import Foundation
 
 class LDWarning: Warning {
     static let lookFor = "ld: warning: "
-    let symbol = "⏱"
-    var detaledDescripiton = ""
-    var measuredValue = ""
+    let symbol = "⚠️"
 
     let line: String
     var count: Int
@@ -22,5 +20,13 @@ class LDWarning: Warning {
         self.line = description
         self.description = String(description.dropFirst(LDWarning.lookFor.count))
         self.count = 1
+    }
+
+    var detailedDescripiton: String {
+        return description
+    }
+
+    var measuredValue: String {
+        return "\(count) times"
     }
 }

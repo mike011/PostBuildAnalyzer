@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C3157AC23A7CC290062EC74 /* Warnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3157AB23A7CC290062EC74 /* Warnings.swift */; };
 		4C3157AE23A7CC340062EC74 /* SlowFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3157AD23A7CC340062EC74 /* SlowFiles.swift */; };
-		4C3157B023A7CC400062EC74 /* LintWarnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3157AF23A7CC400062EC74 /* LintWarnings.swift */; };
 		4CA6CD222378F35E0010ACC9 /* Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA6CD182378F35E0010ACC9 /* Example.framework */; };
 		4CA6CD292378F35E0010ACC9 /* Example.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA6CD1B2378F35E0010ACC9 /* Example.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA6CD342378F4670010ACC9 /* ExistingClassNotCovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD322378F4670010ACC9 /* ExistingClassNotCovered.swift */; };
@@ -234,7 +233,6 @@
 				4CA6CD85237F1DF40010ACC9 /* ExistingClassCoverageUp.swift in Sources */,
 				4CA6CD53237B55650010ACC9 /* ExistingClassCoverageDropped.swift in Sources */,
 				4CA6CD342378F4670010ACC9 /* ExistingClassNotCovered.swift in Sources */,
-				4C3157B023A7CC400062EC74 /* LintWarnings.swift in Sources */,
 				4C3157AC23A7CC290062EC74 /* Warnings.swift in Sources */,
 				4CA6CD84237F1DF40010ACC9 /* ExistingClassCoverageDown.swift in Sources */,
 			);
@@ -392,6 +390,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = NOT_A_REAL_PATH;
 				INFOPLIST_FILE = Example/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -418,6 +417,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = NOT_A_REAL_PATH;
 				INFOPLIST_FILE = Example/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -181,7 +181,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Michael Charland";
 				TargetAttributes = {
 					35DE8A22238CA79600F9D48C = {
@@ -198,6 +198,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 35DE8A1A238CA79600F9D48C;
 			productRefGroup = 35DE8A24238CA79600F9D48C /* Products */;
@@ -381,6 +382,7 @@
 		35DE8A2B238CA79600F9D48C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CY96495443;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -392,6 +394,7 @@
 		35DE8A2C238CA79600F9D48C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CY96495443;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;

@@ -15,12 +15,12 @@ protocol Warning {
     var count: Int { get set }
 
     var symbol: String { get }
-    var detaledDescripiton: String { get }
+    var detailedDescripiton: String { get }
     var measuredValue: String { get }
 }
 
 extension Warning {
     func toHTML() -> String {
-        return "|\(symbol)|\(detaledDescripiton)|\(measuredValue)|"
+        return "|\(symbol)|\(detailedDescripiton)|\(measuredValue)|"
     }
 }

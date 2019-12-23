@@ -11,7 +11,7 @@ import Foundation
 class TestWarning: Warning {
     var line: String
     var symbol = "Symbol"
-    var detaledDescripiton = "Detailed Description"
+    var detailedDescripiton = "Detailed Description"
     var measuredValue = "Measured Value"
 
     static var lookFor = "lookFor"
