@@ -12,21 +12,21 @@ class WarningAnalyzerTests: XCTestCase {
     func testNotAWarning() {
         var logFile = [String]()
         logFile.append("Not a warning")
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertTrue(wa.warnings.isEmpty)
     }
 
     func testAWarningKeyboard() {
         var logFile = [String]()
         logFile.append(": warning: ")
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
     }
 
     func testAWarningFullLine() {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Personal/Resources/Media.xcassets:./Inhouse Ad/Personal_Avatar-1.imageset: warning: The image set name \"Personal_Avatar-1\" is used by multiple image sets.")
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
         XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? FileWarning))
     }
@@ -37,7 +37,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
         let warning = try XCTUnwrap(wa.warnings[0] as? FileWarning)
         XCTAssertNotNil(warning)
@@ -55,7 +55,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
         XCTAssertEqual(wa.warnings.count, 2)
         let warning = try XCTUnwrap(wa.warnings[0] as? FileWarning)
@@ -69,7 +69,7 @@ class WarningAnalyzerTests: XCTestCase {
     func testLDWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
         XCTAssertEqual(wa.warnings.count, 1)
         XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
@@ -79,7 +79,7 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
         XCTAssertEqual(wa.warnings.count, 2)
         XCTAssertNotNil(try XCTUnwrap(wa.warnings[0] as? LDWarning))
@@ -95,7 +95,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertEqual(wa.warnings.count, 1)
         XCTAssertEqual(wa.warnings[0].count, 2)
     }
@@ -104,13 +104,13 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append(": warning: ")
-        let wa = WarningAnalyzer(repoName: "", logFile: logFile)
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
         XCTAssertEqual(wa.warnings[0].count, 2)
     }
 
     func testContainsNotFound() {
-        let wa = WarningAnalyzer(repoName: "", logFile: [String]())
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: [String]())
 
         let w = TestWarning(line: "A")
 
@@ -122,7 +122,7 @@ class WarningAnalyzerTests: XCTestCase {
     }
 
     func testContainsFound() {
-        let wa = WarningAnalyzer(repoName: "", logFile: [String]())
+        let wa = WarningAnalyzer(repoURL: "", branch: "", logFile: [String]())
 
         let w = TestWarning(line: "Y")
 

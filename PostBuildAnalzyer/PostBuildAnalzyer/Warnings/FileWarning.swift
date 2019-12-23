@@ -58,11 +58,6 @@ class FileWarning: Warning {
         var line = firstLine
         var end = line.firstIndex(of: ":")!
         self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
-        if file.contains(Self.getRepoName(fromRepoURL: repoURL)) {
-            let range = file.range(of: Self.getRepoName(fromRepoURL: repoURL) + "/")!
-            self.file = String(file[range.upperBound...])
-        }
-
         var start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
@@ -82,7 +77,10 @@ class FileWarning: Warning {
     }
 
     static func getRepoName(fromRepoURL repoURL: String) -> String {
-        return ""
+        if let range = repoURL.range(of: "/", options: .backwards) {
+            return String(repoURL[range.upperBound...])
+        }
+        return repoURL
     }
 
     func add(line: String) {
@@ -93,6 +91,14 @@ class FileWarning: Warning {
     }
 
     func getURL() -> String {
+        let circleFolder = "/Users/distiller/project/"
+        if file.contains(Self.getRepoName(fromRepoURL: repoURL)) {
+            let range = file.range(of: Self.getRepoName(fromRepoURL: repoURL) + "/")!
+            file = String(file[range.upperBound...])
+        } else if file.contains(circleFolder) {
+            let range = file.range(of: circleFolder)!
+            file = String(file[range.upperBound...])
+        }
         return "\(repoURL)/blob/\(branch)/\(file)#L\(lineNumber)"
     }
 
@@ -108,7 +114,11 @@ class FileWarning: Warning {
     }
 
     var detailedDescripiton: String {
-        return "\(getAHREF()) on line \(lineNumber)<br><i>\(description)</i>"
+        if file.isEmpty {
+            return description
+        } else {
+            return "\(getAHREF()) on line \(lineNumber)<br><i>\(description)</i>"
+        }
     }
 
     var measuredValue: String {

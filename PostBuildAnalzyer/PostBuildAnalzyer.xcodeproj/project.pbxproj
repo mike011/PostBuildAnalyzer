@@ -158,9 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				4C441E9923B03E8F00A733C1 /* TestWarning.swift */,
-				4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */,
 				4C1C0BCD23ADA20B004DC5F3 /* FileWarningTests.swift */,
 				350DDE7B23AD62C900F48143 /* LDWarningTests.swift */,
+				4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */,
 			);
 			path = Warnings;
 			sourceTree = "<group>";
