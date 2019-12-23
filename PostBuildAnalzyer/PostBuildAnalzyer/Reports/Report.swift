@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Analzyer {
+protocol Report {
     var symbol: String { get }
     var title: String { get }
     var developWarningCount: Int { get }
@@ -17,7 +17,7 @@ protocol Analzyer {
     func createNewReport() -> [String]
 }
 
-extension Analzyer {
+extension Report {
     private var change: String {
         var change = " "
         if developWarningCount > prWarningCount {

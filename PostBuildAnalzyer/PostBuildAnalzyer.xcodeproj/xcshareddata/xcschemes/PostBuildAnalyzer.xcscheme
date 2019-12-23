@@ -76,7 +76,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "reportFile"
+            argument = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -84,7 +84,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/"
+            argument = "reportFile"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

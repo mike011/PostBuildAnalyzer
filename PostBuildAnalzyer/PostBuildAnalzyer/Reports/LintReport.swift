@@ -8,13 +8,11 @@
 
 import Foundation
 
-class LintAnalyzer: Analzyer {
+class LintReport: Report {
     var symbol = ""
     var title = ""
     var developWarningCount = 0
     var prWarningCount = 0
-
-    init(lintFile: [String]) {}
 
     func createNewReport() -> [String] {
         return [String]()

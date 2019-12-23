@@ -9,40 +9,40 @@
 import Foundation
 
 class PostBuildAnalzyer {
-    private var analzyers = [Analzyer]()
-    var reports = [String]()
+    private var analzyers = [Analyzer]()
+    //  var reports = [Report]()
 
-    init(repoName: String, logFile: [String], lintFile: [String]) {
+    init(repoName: String, timeInMS: Int, logFile: [String], lintFile: [String]) {
         if !logFile.isEmpty {
             analzyers.append(WarningAnalyzer(repoName: repoName, logFile: logFile))
-            analzyers.append(SlowExpressionAnalyzer(timeInMS: 100, logFile: logFile))
+            analzyers.append(SlowExpressionAnalyzer(timeInMS: timeInMS, logFile: logFile))
         }
         if !lintFile.isEmpty {
-            analzyers.append(LintAnalyzer(lintFile: lintFile))
-        }
-    }
-
-    func createReports() {
-        for analzyer in analzyers {
-            reports += analzyer.createNewReport()
+            analzyers.append(LintAnalzyer(lintFile: lintFile))
         }
     }
 
     func write(toLocation: String) {
-        print("<H3>New Warnings</H3>")
-        print("| |Description|Amount|")
-        print("|:-:|---|:-:|")
-        for line in reports {
-            print(line)
-        }
+//
+//        for report in reports {
+//            for html in report.createNewReport() {
+//                print(html)
+//            }
+//        }
+//
+//
+//        for report in reports {
+//            if let html = report.createOverallReport() {
+//                print(html)
+//            }
+//        }
+    }
 
-        print("<H3>Overall Warnings</H3>")
-        print("||📉|Warning|Master|PR|")
-        print("|:-:|:-:|---|:-:|:-:|")
-        for analzyer in analzyers {
-            if let report = analzyer.createOverallReport() {
-                print(report)
-            }
+    func getWarnings() -> [Warning] {
+        var warnings = [Warning]()
+        for analyzer in analzyers {
+            warnings += analyzer.warnings
         }
+        return warnings
     }
 }
