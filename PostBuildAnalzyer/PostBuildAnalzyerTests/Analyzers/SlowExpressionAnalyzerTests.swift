@@ -9,16 +9,16 @@
 import XCTest
 
 class SlowExpressionAnalyzerTests: XCTestCase {
-    func SKIPtestNotASlowExpression() {
+    func testNotASlowExpression() {
         var logFile = [String]()
         logFile.append("Not a slow expression")
         let wa = SlowExpressionAnalyzer(timeInMS: 0, logFile: logFile)
         XCTAssertTrue(wa.warnings.isEmpty)
     }
 
-    func SKIPtestASlowExpression() {
+    func testASlowExpression() {
         var logFile = [String]()
-        logFile.append("5.34ms")
+        logFile.append("0.01ms    <invalid loc>    initializer init()")
         let wa = SlowExpressionAnalyzer(timeInMS: 0, logFile: logFile)
         XCTAssertFalse(wa.warnings.isEmpty)
     }

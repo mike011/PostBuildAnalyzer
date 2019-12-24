@@ -24,9 +24,9 @@ class SlowExpressionAnalyzer: Analyzer {
         self.timeInMS = timeInMS
 
         for line in logFile {
-            if let regex = try? NSRegularExpression(pattern: "\\d+\\.\\d{2}ms" + FileWarning.lookFor),
+            if let regex = try? NSRegularExpression(pattern: "\\d+\\.\\d{2}ms" + SlowExpression.lookFor),
                 regex.matches(line) {
-                warnings.append(SlowExpression())
+                warnings.append(SlowExpression(line: line))
             }
         }
     }
