@@ -11,7 +11,7 @@ import Foundation
 class LDWarningController: WarningController {
     init(description: String) {
         let model = LDWarningModel(description: description)
-        let view = FileWarningView()
+        let view = LinkerWarningView()
         super.init(model: model, view: view)
     }
 }

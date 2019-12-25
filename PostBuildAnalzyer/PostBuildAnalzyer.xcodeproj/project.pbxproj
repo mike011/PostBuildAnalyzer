@@ -35,6 +35,7 @@
 		4CF3BA3C23B30E130087F262 /* FileWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3A23B30E130087F262 /* FileWarning.swift */; };
 		4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3D23B30ED60087F262 /* WarningController.swift */; };
 		4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */; };
+		4CF3BA4223B3D73D0087F262 /* LinkerWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA4123B3D73D0087F262 /* LinkerWarningView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +75,7 @@
 		4CF3BA3A23B30E130087F262 /* FileWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWarning.swift; sourceTree = "<group>"; };
 		4CF3BA3D23B30ED60087F262 /* WarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningController.swift; sourceTree = "<group>"; };
 		4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningVIew.swift; sourceTree = "<group>"; };
+		4CF3BA4123B3D73D0087F262 /* LinkerWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkerWarningView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				4CF3BA3D23B30ED60087F262 /* WarningController.swift */,
 				350DDE7723AD618700F48143 /* WarningModel.swift */,
 				4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */,
+				4CF3BA4123B3D73D0087F262 /* LinkerWarningView.swift */,
 			);
 			path = Warnings;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				350DDE7423AD5AF700F48143 /* LDWarning.swift in Sources */,
 				4C0BC3B623B2A4DB00DACAB1 /* Link.swift in Sources */,
 				35DE8A27238CA79600F9D48C /* main.swift in Sources */,
+				4CF3BA4223B3D73D0087F262 /* LinkerWarningView.swift in Sources */,
 				4C0BC39923B10BDC00DACAB1 /* SlowExpression.swift in Sources */,
 				4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */,
 				4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */,

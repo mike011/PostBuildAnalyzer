@@ -22,7 +22,6 @@ class FileWarningModel: WarningModel {
     var line: String
 
     static var lookFor = ": warning: "
-    let symbol = "⚠️"
 
     /// The url of repository
     /// eg: https://github.com/mike011/PostBuildAnalyzer
