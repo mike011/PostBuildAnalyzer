@@ -30,3 +30,9 @@ class LDWarning: Warning {
         return "\(count) times"
     }
 }
+
+extension PostBuildAnalzyer {
+    func isLDWarning(line: String) -> Bool {
+        return line.contains(LDWarning.lookFor)
+    }
+}

@@ -41,10 +41,10 @@ class PostBuildComparsion {
 
         let afterLogFile = Utils.load(file: afterLogFileName)
         let afterLintFile = Utils.load(file: afterLintFileName)
-        let timeInMS = 100
+        let timeInMS = 100.0
 
-        self.before = PostBuildAnalzyer(repoURL: repoURL, branch: "master", timeInMS: timeInMS, logFile: beforeLogFile, lintFile: beforeLintFile)
-        self.after = PostBuildAnalzyer(repoURL: repoURL, branch: "develop", timeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
+        self.before = PostBuildAnalzyer(repoURL: repoURL, branch: "master", minimumTimeInMS: timeInMS, logFile: beforeLogFile, lintFile: beforeLintFile)
+        self.after = PostBuildAnalzyer(repoURL: repoURL, branch: "pr", minimumTimeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
     }
 
     private var change: String {

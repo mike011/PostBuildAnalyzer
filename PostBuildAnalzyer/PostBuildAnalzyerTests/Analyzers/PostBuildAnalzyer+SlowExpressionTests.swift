@@ -12,14 +12,14 @@ class SlowExpressionAnalyzerTests: XCTestCase {
     func testNotASlowExpression() {
         var logFile = [String]()
         logFile.append("Not a slow expression")
-        let wa = SlowExpressionAnalyzer(timeInMS: 0, logFile: logFile)
+        let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
         XCTAssertTrue(wa.warnings.isEmpty)
     }
 
     func testASlowExpression() {
         var logFile = [String]()
         logFile.append("0.01ms    <invalid loc>    initializer init()")
-        let wa = SlowExpressionAnalyzer(timeInMS: 0, logFile: logFile)
+        let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
         XCTAssertFalse(wa.warnings.isEmpty)
     }
 }

@@ -38,15 +38,15 @@ class SlowExpression: Warning {
             self.timeInMS = -1
         } else {
             // 0.94ms    /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:19:10    instance method secondWarning()
-            var line = firstLine
-            var start = line.firstIndex(of: "m")!
-            let time = String(line[..<start])
-            self.timeInMS = Double(time) ?? 0.0
+            let line = firstLine
+            self.timeInMS = Self.parseTimeInMS(line: line)
 //            var end = line.firstIndex(of: " ")!
 
             self.file = ""
             self.lineNumber = -1
             self.indent = -1
+
+            self.detailedDescripiton = line
 //
 //            self.file = String(line[start..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
 //            start = line.index(end, offsetBy: 1)
@@ -65,5 +65,20 @@ class SlowExpression: Warning {
 //            start = line.index(end, offsetBy: 1)
 //            self.description = String(line[start...]).trimSpaces()
         }
+    }
+
+    static func parseTimeInMS(line: String) -> Double {
+        let start = line.firstIndex(of: "m")!
+        let time = String(line[..<start])
+        return Double(time) ?? 0.0
+    }
+}
+
+extension PostBuildAnalzyer {
+    static func isSlowExpression(line: String, minimumTimeInMS: Double) -> Bool {
+        if let regex = try? NSRegularExpression(pattern: "\\d+\\.\\d{2}ms" + SlowExpression.lookFor) {
+            return regex.matches(line) && SlowExpression.parseTimeInMS(line: line) > minimumTimeInMS && !line.contains("invalid loc")
+        }
+        return false
     }
 }

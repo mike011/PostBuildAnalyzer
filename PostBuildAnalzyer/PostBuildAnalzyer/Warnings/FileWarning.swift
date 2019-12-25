@@ -8,7 +8,11 @@
 
 import Foundation
 
-class FileWarning: Warning {
+class FileWarning: Warning, Hashable {
+    static func == (lhs: FileWarning, rhs: FileWarning) -> Bool {
+        return false
+    }
+
     static var lookFor = ": warning: "
     let symbol = "⚠️"
 
@@ -55,6 +59,7 @@ class FileWarning: Warning {
             }
         }
 
+        // craate Link
         var line = firstLine
         var end = line.firstIndex(of: ":")!
         self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
@@ -123,5 +128,11 @@ class FileWarning: Warning {
 
     var measuredValue: String {
         return "\(count) times"
+    }
+}
+
+extension PostBuildAnalzyer {
+    func isFileWarning(line: String) -> Bool {
+        return line.contains(FileWarning.lookFor)
     }
 }

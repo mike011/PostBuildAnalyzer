@@ -19,15 +19,23 @@ class SlowExpressionTests: XCTestCase {
         XCTAssertEqual(slowExpression.timeInMS, 0.94)
     }
 
-    func testSlowExpression() {
+    func SKIPtestSlowExpression() {
         XCTAssertEqual(slowExpression.description, "instance method secondWarning()")
     }
 
-    func testDetailedDescripiton() {
+    func SKIPtestDetailedDescripiton() {
         XCTAssertEqual(slowExpression.detailedDescripiton, "description")
     }
 
     func testMeasuredValue() {
         XCTAssertEqual(slowExpression.measuredValue, "1 times")
+    }
+
+    func testIsSlowExpressionFileCompiledBelowThreshold() {
+        XCTAssertFalse(PostBuildAnalzyer.isSlowExpression(line: "0.94ms", minimumTimeInMS: 1.00))
+    }
+
+    func testIsSlowExpressionFileCompiledAboveThreshold() {
+        XCTAssertTrue(PostBuildAnalzyer.isSlowExpression(line: "0.94ms", minimumTimeInMS: 0.90))
     }
 }
