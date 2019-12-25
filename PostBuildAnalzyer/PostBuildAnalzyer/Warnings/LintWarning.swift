@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LintWarning: Warning {
+class LintWarning: WarningDetailsProtocol {
     static var lookFor: String = ""
 
     var line: String = ""

@@ -8,7 +8,18 @@
 
 import Foundation
 
-class FileWarning: Warning, Hashable, Equatable {
+// This is the View
+class FileWarning: Warning {
+    init(repoURL: String, branch: String, firstLine: String) {
+        let fp = FileWarningDetails(repoURL: repoURL, branch: branch, firstLine: firstLine)
+        super.init(line: firstLine, wp: fp)
+    }
+}
+
+// This is the Model
+class FileWarningDetails: WarningDetailsProtocol {
+    var line: String
+
     static var lookFor = ": warning: "
     let symbol = "⚠️"
 
@@ -19,9 +30,6 @@ class FileWarning: Warning, Hashable, Equatable {
     /// The branch the build is on.
     /// eg: master
     let branch: String
-
-    /// The line that is being parsed.
-    let line: String
 
     /// The file in which the error occurred
     var file: String
@@ -42,15 +50,15 @@ class FileWarning: Warning, Hashable, Equatable {
     var count = 1
 
     init(repoURL: String, branch: String, firstLine: String) {
+        self.line = firstLine
         self.repoURL = repoURL
         self.branch = branch
-        self.line = firstLine
-        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarning.lookFor) {
+        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarningDetails.lookFor) {
             guard regex.matches(firstLine) else {
-                self.description = firstLine
                 self.file = ""
                 self.lineNumber = -1
                 self.indent = -1
+                self.description = firstLine
                 return
             }
         }
@@ -59,6 +67,7 @@ class FileWarning: Warning, Hashable, Equatable {
         var line = firstLine
         var end = line.firstIndex(of: ":")!
         self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
+
         var start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
@@ -125,18 +134,10 @@ class FileWarning: Warning, Hashable, Equatable {
     var measuredValue: String {
         return "\(count) times"
     }
-
-    static func == (lhs: FileWarning, rhs: FileWarning) -> Bool {
-        return lhs.line == rhs.line
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(line)
-    }
 }
 
 extension PostBuildAnalzyer {
     func isFileWarning(line: String) -> Bool {
-        return line.contains(FileWarning.lookFor)
+        return line.contains(FileWarningDetails.lookFor)
     }
 }

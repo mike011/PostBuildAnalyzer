@@ -2,25 +2,34 @@
 //  Warning.swift
 //  PostBuildAnalzyer
 //
-//  Created by Michael Charland on 2019-12-20.
+//  Created by Michael Charland on 2019-12-24.
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
 import Foundation
 
-protocol Warning {
-    static var lookFor: String { get }
-    var line: String { get }
-    var description: String { get }
-    var count: Int { get set }
+class Warning: Hashable, Equatable {
+    var wp: WarningDetailsProtocol
 
-    var symbol: String { get }
-    var detailedDescripiton: String { get }
-    var measuredValue: String { get }
-}
+    var count: Int = 0
 
-extension Warning {
+    /// The line that is being parsed.
+    var line: String
+
+    init(line: String, wp: WarningDetailsProtocol) {
+        self.line = line
+        self.wp = wp
+    }
+
+    static func == (lhs: Warning, rhs: Warning) -> Bool {
+        return lhs.line == rhs.line
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(line)
+    }
+
     func toHTML() -> String {
-        return "|\(symbol)|\(detailedDescripiton)|\(measuredValue)|"
+        return wp.toHTML()
     }
 }

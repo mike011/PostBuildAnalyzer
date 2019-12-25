@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SlowExpression: Warning, Hashable, Equatable {
+class SlowExpression: WarningDetailsProtocol, Hashable, Equatable {
     // not used, used regex instead.
     static var lookFor = ""
 
@@ -16,7 +16,7 @@ class SlowExpression: Warning, Hashable, Equatable {
     var description: String = ""
     var count: Int
     var symbol: String = "⏱"
-    var detailedDescripiton: String = ""
+    var detailedDescripiton: String
 
     var timeInMS: Double
     var file: String
@@ -28,6 +28,7 @@ class SlowExpression: Warning, Hashable, Equatable {
     }
 
     init(line firstLine: String) {
+        self.detailedDescripiton = firstLine
         self.line = firstLine
         self.count = 1
 

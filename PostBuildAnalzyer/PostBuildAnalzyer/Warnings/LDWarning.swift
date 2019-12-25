@@ -8,18 +8,26 @@
 
 import Foundation
 
-class LDWarning: Warning, Hashable, Equatable {
+class LDWarning: Warning {
+    init(description: String) {
+        let fp = LDWarningDetails(description: description)
+        super.init(line: description, wp: fp)
+    }
+}
+
+class LDWarningDetails: WarningDetailsProtocol {
+    var line: String
+
+    var count: Int = 1
+
     static let lookFor = "ld: warning: "
     let symbol = "⚠️"
 
-    let line: String
-    var count: Int
     var description: String
 
     init(description: String) {
         self.line = description
-        self.description = String(description.dropFirst(LDWarning.lookFor.count))
-        self.count = 1
+        self.description = String(description.dropFirst(Self.lookFor.count))
     }
 
     var detailedDescripiton: String {
@@ -29,18 +37,10 @@ class LDWarning: Warning, Hashable, Equatable {
     var measuredValue: String {
         return "\(count) times"
     }
-
-    static func == (lhs: LDWarning, rhs: LDWarning) -> Bool {
-        return lhs.line == rhs.line
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(line)
-    }
 }
 
 extension PostBuildAnalzyer {
     func isLDWarning(line: String) -> Bool {
-        return line.contains(LDWarning.lookFor)
+        return line.contains(LDWarningDetails.lookFor)
     }
 }

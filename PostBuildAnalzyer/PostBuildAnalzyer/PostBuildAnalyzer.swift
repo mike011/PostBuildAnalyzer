@@ -9,18 +9,19 @@
 import Foundation
 
 class PostBuildAnalzyer {
-    var fileWarnings = Set<FileWarning>()
-    var lDWarnings = Set<LDWarning>()
+    var warnings = Set<Warning>()
+    // var fileWarnings = Set<FileWarning>()
+    // var lDWarnings = Set<LDWarning>()
     var slowExpressions = Set<SlowExpression>()
 
     var warningCount: Int {
         var warningCount = 0
-        for warning in fileWarnings {
+        for warning in warnings {
             warningCount += warning.count
         }
-        for warning in lDWarnings {
-            warningCount += warning.count
-        }
+//        for warning in lDWarnings {
+//            warningCount += warning.count
+//        }
         for warning in slowExpressions {
             warningCount += warning.count
         }
@@ -37,7 +38,7 @@ class PostBuildAnalzyer {
     private func parseLogFile(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String]) {
         var warning: Warning?
         for line in logFile {
-            if let fileWarning = warning as? FileWarning {
+            if let fileWarning = warning as? FileWarningDetails {
                 if line.starts(with: " ") {
                     fileWarning.add(line: line.trimSpaces())
                 } else {
@@ -48,7 +49,7 @@ class PostBuildAnalzyer {
             if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
                 slowExpressions.insert(SlowExpression(line: line))
             } else if isLDWarning(line: line) {
-                lDWarnings.insert(LDWarning(description: line))
+                warnings.insert(LDWarning(description: line))
             } else if isFileWarning(line: line) {
                 warning = parseFileWarning(repoURL: repoURL, branch: branch, line: line)
             }
@@ -57,19 +58,19 @@ class PostBuildAnalzyer {
 
     private func parseFileWarning(repoURL: String, branch: String, line: String) -> Warning {
         let newFileWarning = FileWarning(repoURL: repoURL, branch: branch, firstLine: line)
-        if var found = get(warning: newFileWarning, in: fileWarnings) {
+        if let found = get(warning: newFileWarning, in: warnings) {
             found.count += 1
             return found
         } else {
-            fileWarnings.insert(newFileWarning)
+            warnings.insert(newFileWarning)
             return newFileWarning
         }
     }
 
-    func get(warning: FileWarning, in warnings: Set<FileWarning>) -> Warning? {
-        if warnings.contains(warning) {
+    func get(warning lookFor: Warning, in warnings: Set<Warning>) -> Warning? {
+        if warnings.contains(lookFor) {
             for warning in warnings {
-                if warning == warning {
+                if warning == lookFor {
                     return warning
                 }
             }

@@ -61,12 +61,12 @@ class PostBuildComparsion {
         print("<H3>New Warnings</H3>")
         print("| |Description|Amount|")
         print("|:-:|---|:-:|")
-        for warning in after.fileWarnings {
+        for warning in after.warnings {
             print(warning.toHTML())
         }
-        for warning in after.lDWarnings {
-            print(warning.toHTML())
-        }
+//        for warning in after.lDWarnings {
+//            print(warning.toHTML())
+//        }
         for warning in after.slowExpressions {
             print(warning.toHTML())
         }
