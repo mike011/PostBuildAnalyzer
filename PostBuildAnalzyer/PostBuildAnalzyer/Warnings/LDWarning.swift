@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LDWarning: Warning {
+class LDWarning: Warning, Hashable, Equatable {
     static let lookFor = "ld: warning: "
     let symbol = "⚠️"
 
@@ -28,6 +28,14 @@ class LDWarning: Warning {
 
     var measuredValue: String {
         return "\(count) times"
+    }
+
+    static func == (lhs: LDWarning, rhs: LDWarning) -> Bool {
+        return lhs.line == rhs.line
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(line)
     }
 }
 

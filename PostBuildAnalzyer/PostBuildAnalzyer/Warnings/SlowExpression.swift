@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SlowExpression: Warning {
+class SlowExpression: Warning, Hashable, Equatable {
     // not used, used regex instead.
     static var lookFor = ""
 
@@ -71,6 +71,14 @@ class SlowExpression: Warning {
         let start = line.firstIndex(of: "m")!
         let time = String(line[..<start])
         return Double(time) ?? 0.0
+    }
+
+    static func == (lhs: SlowExpression, rhs: SlowExpression) -> Bool {
+        return lhs.line == rhs.line
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(line)
     }
 }
 

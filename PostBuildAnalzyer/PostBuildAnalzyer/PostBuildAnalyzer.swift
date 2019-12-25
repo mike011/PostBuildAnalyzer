@@ -10,12 +10,18 @@ import Foundation
 
 class PostBuildAnalzyer {
     var fileWarnings = Set<FileWarning>()
-
-    var warnings = [Warning]()
+    var lDWarnings = Set<LDWarning>()
+    var slowExpressions = Set<SlowExpression>()
 
     var warningCount: Int {
         var warningCount = 0
-        for warning in warnings {
+        for warning in fileWarnings {
+            warningCount += warning.count
+        }
+        for warning in lDWarnings {
+            warningCount += warning.count
+        }
+        for warning in slowExpressions {
             warningCount += warning.count
         }
         return warningCount
@@ -40,30 +46,32 @@ class PostBuildAnalzyer {
             }
 
             if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
-                warnings.append(SlowExpression(line: line))
+                slowExpressions.insert(SlowExpression(line: line))
+            } else if isLDWarning(line: line) {
+                lDWarnings.insert(LDWarning(description: line))
             } else if isFileWarning(line: line) {
                 warning = parseFileWarning(repoURL: repoURL, branch: branch, line: line)
-            } else if isLDWarning(line: line) {
-                warnings.append(LDWarning(description: line))
             }
         }
     }
 
     private func parseFileWarning(repoURL: String, branch: String, line: String) -> Warning {
         let newFileWarning = FileWarning(repoURL: repoURL, branch: branch, firstLine: line)
-        if var found = get(warning: newFileWarning, in: warnings) {
+        if var found = get(warning: newFileWarning, in: fileWarnings) {
             found.count += 1
             return found
         } else {
-            warnings.append(newFileWarning)
+            fileWarnings.insert(newFileWarning)
             return newFileWarning
         }
     }
 
-    func get(warning lookFor: Warning, in warnings: [Warning]) -> Warning? {
-        for warning in warnings {
-            if lookFor.line == warning.line {
-                return warning
+    func get(warning: FileWarning, in warnings: Set<FileWarning>) -> Warning? {
+        if warnings.contains(warning) {
+            for warning in warnings {
+                if warning == warning {
+                    return warning
+                }
             }
         }
         return nil

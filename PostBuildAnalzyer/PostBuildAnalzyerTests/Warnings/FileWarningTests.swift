@@ -102,4 +102,20 @@ class FileWarningTests: XCTestCase {
 
         XCTAssertEqual(warning.detailedDescripiton, "/Users/distiller/project/application/Frank/Bob/Core Data/ILDRates.xcdatamodeld/ILDRates 8.15.0.xcdatamodel:TMORate.dialCodes: warning: TMORate.dialCodes does not have an inverse")
     }
+
+    func testEqualsSameObject() {
+        let warning = FileWarning(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", firstLine: "/Users/distiller/project/application/Frank/Bob/Core Data/ILDRates.xcdatamodeld/ILDRates 8.15.0.xcdatamodel:TMORate.dialCodes: warning: TMORate.dialCodes does not have an inverse")
+
+        let warning2 = FileWarning(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", firstLine: "/Users/distiller/project/application/Frank/Bob/Core Data/ILDRates.xcdatamodeld/ILDRates 8.15.0.xcdatamodel:TMORate.dialCodes: warning: TMORate.dialCodes does not have an inverse")
+
+        XCTAssertEqual(warning, warning2)
+    }
+
+    func testEquals() {
+        let warning = FileWarning(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", firstLine: "/Users/distiller/project/application/Frank/Bob/Core Data/ILDRates.xcdatamodeld/ILDRates 8.15.0.xcdatamodel:TMORate.dialCodes: warning: TMORate.dialCodes does not have an inverse")
+
+        let warning2 = FileWarning(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", firstLine: "/Users/distiller/project/application/Frank/Core Data/ILDRates.xcdatamodeld/ILDRates 8.15.0.xcdatamodel:TMORate.dialCodes: warning: TMORate.dialCodes does not have an inverse")
+
+        XCTAssertNotEqual(warning, warning2)
+    }
 }

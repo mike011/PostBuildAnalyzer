@@ -8,11 +8,7 @@
 
 import Foundation
 
-class FileWarning: Warning, Hashable {
-    static func == (lhs: FileWarning, rhs: FileWarning) -> Bool {
-        return false
-    }
-
+class FileWarning: Warning, Hashable, Equatable {
     static var lookFor = ": warning: "
     let symbol = "⚠️"
 
@@ -128,6 +124,14 @@ class FileWarning: Warning, Hashable {
 
     var measuredValue: String {
         return "\(count) times"
+    }
+
+    static func == (lhs: FileWarning, rhs: FileWarning) -> Bool {
+        return lhs.line == rhs.line
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(line)
     }
 }
 
