@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A container of different types of analysis done when a build has finished.
 class PostBuildAnalzyer {
     var warnings = [String: WarningController]()
     var slowExpressions = Set<SlowExpression>()
@@ -32,32 +33,17 @@ class PostBuildAnalzyer {
 
     private func parseLogFile(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String]) {
         for line in logFile {
-            if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
-                slowExpressions.insert(SlowExpression(line: line))
-            } else if isLDWarning(line: line) {
-                //       warnings.insert(LDWarningController(description: line))
-            } else if isFileWarning(line: line) {
-                parseFileWarning(repoURL: repoURL, branch: branch, line: line)
-            }
-        }
-    }
-
-    private func parseFileWarning(repoURL: String, branch: String, line: String) {
-        if let warning = warnings[line] {
-            warning.addDuplicate()
-        } else {
-            warnings[line] = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
-        }
-    }
-
-    func get(warning lookFor: WarningController, in warnings: Set<WarningController>) -> WarningController? {
-        if warnings.contains(lookFor) {
-            for warning in warnings {
-                if warning == lookFor {
-                    return warning
+            if let warning = warnings[line] {
+                warning.addDuplicate()
+            } else {
+                if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
+                    slowExpressions.insert(SlowExpression(line: line))
+                } else if isLinkerWarning(line: line) {
+                    warnings[line] = LinkerWarningController(description: line)
+                } else if isFileWarning(line: line) {
+                    warnings[line] = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
                 }
             }
         }
-        return nil
     }
 }

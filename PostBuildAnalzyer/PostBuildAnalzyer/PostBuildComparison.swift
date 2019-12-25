@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Compares 2 sets of analzyer data. For example the linting of two builds, slow expressions, and warnings.
 class PostBuildComparsion {
     private let before: PostBuildAnalzyer
     private let after: PostBuildAnalzyer

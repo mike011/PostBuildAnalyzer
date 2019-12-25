@@ -9,7 +9,7 @@
 import Foundation
 
 class LinkerWarningView: WarningView {
-    let symbol = "⚠️"
+    let symbol = "❌"
 
     func getDetailedDescription(model: WarningModel) -> String {
         return model.description
