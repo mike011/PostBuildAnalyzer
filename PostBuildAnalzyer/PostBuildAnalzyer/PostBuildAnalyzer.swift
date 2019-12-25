@@ -17,7 +17,7 @@ class PostBuildAnalzyer {
     var warningCount: Int {
         var warningCount = 0
         for warning in warnings {
-            warningCount += warning.count
+            //  warningCount += warning.count
         }
 //        for warning in lDWarnings {
 //            warningCount += warning.count
@@ -60,7 +60,7 @@ class PostBuildAnalzyer {
     private func parseFileWarning(repoURL: String, branch: String, line: String) -> WarningController {
         let newFileWarning = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
         if let found = get(warning: newFileWarning, in: warnings) {
-            found.count += 1
+            //   found.count += 1
             return found
         } else {
             warnings.insert(newFileWarning)

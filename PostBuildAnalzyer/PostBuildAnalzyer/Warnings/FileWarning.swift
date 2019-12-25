@@ -11,8 +11,9 @@ import Foundation
 // This is the View
 class FileWarningController: WarningController {
     init(repoURL: String, branch: String, firstLine: String) {
-        let fp = FileWarningModel(repoURL: repoURL, branch: branch, firstLine: firstLine)
-        super.init(line: firstLine, wp: fp)
+        let model = FileWarningModel(repoURL: repoURL, branch: branch, firstLine: firstLine)
+        let view = FileWarningView()
+        super.init(model: model, view: view)
     }
 }
 

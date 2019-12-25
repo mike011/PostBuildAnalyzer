@@ -33,7 +33,7 @@
 		4C1C0BD023AED2F2004DC5F3 /* WarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */; };
 		4C441E9A23B03E8F00A733C1 /* TestWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C441E9923B03E8F00A733C1 /* TestWarning.swift */; };
 		4CF3BA3C23B30E130087F262 /* FileWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3A23B30E130087F262 /* FileWarning.swift */; };
-		4CF3BA3E23B30ED60087F262 /* Warning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3D23B30ED60087F262 /* Warning.swift */; };
+		4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3D23B30ED60087F262 /* WarningController.swift */; };
 		4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +72,7 @@
 		4C1C0BCF23AED2F2004DC5F3 /* WarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningTests.swift; sourceTree = "<group>"; };
 		4C441E9923B03E8F00A733C1 /* TestWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWarning.swift; sourceTree = "<group>"; };
 		4CF3BA3A23B30E130087F262 /* FileWarning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWarning.swift; sourceTree = "<group>"; };
-		4CF3BA3D23B30ED60087F262 /* Warning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warning.swift; sourceTree = "<group>"; };
+		4CF3BA3D23B30ED60087F262 /* WarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningController.swift; sourceTree = "<group>"; };
 		4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningVIew.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,7 +144,7 @@
 				4C0BC39823B10BDC00DACAB1 /* SlowExpression.swift */,
 				4C0BC3A723B11ACD00DACAB1 /* LintWarning.swift */,
 				4C0BC3B523B2A4DB00DACAB1 /* Link.swift */,
-				4CF3BA3D23B30ED60087F262 /* Warning.swift */,
+				4CF3BA3D23B30ED60087F262 /* WarningController.swift */,
 				350DDE7723AD618700F48143 /* WarningModel.swift */,
 				4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */,
 			);
@@ -265,7 +265,7 @@
 				4C0BC3B623B2A4DB00DACAB1 /* Link.swift in Sources */,
 				35DE8A27238CA79600F9D48C /* main.swift in Sources */,
 				4C0BC39923B10BDC00DACAB1 /* SlowExpression.swift in Sources */,
-				4CF3BA3E23B30ED60087F262 /* Warning.swift in Sources */,
+				4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */,
 				4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */,
 				4C0BC3A623B117BF00DACAB1 /* PostBuildComparison.swift in Sources */,
 				4C0BC3A823B11ACD00DACAB1 /* LintWarning.swift in Sources */,

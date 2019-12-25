@@ -10,8 +10,9 @@ import Foundation
 
 class LDWarningController: WarningController {
     init(description: String) {
-        let fp = LDWarningModel(description: description)
-        super.init(line: description, wp: fp)
+        let model = LDWarningModel(description: description)
+        let view = FileWarningView()
+        super.init(model: model, view: view)
     }
 }
 

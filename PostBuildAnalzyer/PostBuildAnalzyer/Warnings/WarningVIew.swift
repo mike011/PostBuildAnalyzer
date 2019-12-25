@@ -8,14 +8,20 @@
 
 import Foundation
 
-class WarningView {
-    private let data: WarningModel
+protocol WarningView {
+    func printRow(model: WarningModel)
+}
 
-    init(data: WarningModel) {
-        self.data = data
+extension WarningView {
+    func printRow(model: WarningModel) {
+        print("|\(model.symbol)|\(model.detailedDescripiton)|\(model.measuredValue)|")
     }
+}
 
-    func printRow() {
-        print(data.toHTML())
-    }
+class FileWarningView: WarningView {
+//    var data: WarningModel
+//
+//    init(data: WarningModel) {
+//        self.data = data
+//    }
 }

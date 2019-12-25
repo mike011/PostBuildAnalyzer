@@ -18,9 +18,3 @@ protocol WarningModel {
     var detailedDescripiton: String { get }
     var measuredValue: String { get }
 }
-
-extension WarningModel {
-    func toHTML() -> String {
-        return "|\(symbol)|\(detailedDescripiton)|\(measuredValue)|"
-    }
-}
