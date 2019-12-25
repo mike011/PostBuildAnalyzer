@@ -9,19 +9,14 @@
 import Foundation
 
 class PostBuildAnalzyer {
-    var warnings = Set<WarningController>()
-    // var fileWarnings = Set<FileWarning>()
-    // var lDWarnings = Set<LDWarning>()
+    var warnings = [String: WarningController]()
     var slowExpressions = Set<SlowExpression>()
 
     var warningCount: Int {
         var warningCount = 0
         for warning in warnings {
-            //  warningCount += warning.count
+            warningCount += warning.value.getTotalWarnings()
         }
-//        for warning in lDWarnings {
-//            warningCount += warning.count
-//        }
         for warning in slowExpressions {
             warningCount += warning.count
         }
@@ -36,35 +31,22 @@ class PostBuildAnalzyer {
     }
 
     private func parseLogFile(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String]) {
-        var warning: WarningController?
         for line in logFile {
-            if let fileWarning = warning as? FileWarningController {
-                if line.starts(with: " ") {
-                    // fileWarning.wp.add
-                    //  fileWarning.add(line: line.trimSpaces())
-                } else {
-                    warning = nil
-                }
-            }
-
             if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
                 slowExpressions.insert(SlowExpression(line: line))
             } else if isLDWarning(line: line) {
-                warnings.insert(LDWarningController(description: line))
+                //       warnings.insert(LDWarningController(description: line))
             } else if isFileWarning(line: line) {
-                warning = parseFileWarning(repoURL: repoURL, branch: branch, line: line)
+                parseFileWarning(repoURL: repoURL, branch: branch, line: line)
             }
         }
     }
 
-    private func parseFileWarning(repoURL: String, branch: String, line: String) -> WarningController {
-        let newFileWarning = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
-        if let found = get(warning: newFileWarning, in: warnings) {
-            //   found.count += 1
-            return found
+    private func parseFileWarning(repoURL: String, branch: String, line: String) {
+        if let warning = warnings[line] {
+            warning.addDuplicate()
         } else {
-            warnings.insert(newFileWarning)
-            return newFileWarning
+            warnings[line] = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
         }
     }
 

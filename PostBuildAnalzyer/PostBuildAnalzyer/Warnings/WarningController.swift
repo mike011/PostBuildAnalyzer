@@ -28,4 +28,12 @@ class WarningController: Hashable, Equatable {
     func printView() {
         view.printRow(model: model)
     }
+
+    func addDuplicate() {
+        model.count += 1
+    }
+
+    func getTotalWarnings() -> Int {
+        return model.count
+    }
 }

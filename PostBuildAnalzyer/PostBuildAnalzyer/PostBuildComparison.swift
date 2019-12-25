@@ -62,15 +62,8 @@ class PostBuildComparsion {
         print("| |Description|Amount|")
         print("|:-:|---|:-:|")
         for warning in after.warnings {
-            warning.printView()
-            // print(warning.toHTML())
+            warning.value.printView()
         }
-//        for warning in after.lDWarnings {
-//            print(warning.toHTML())
-//        }
-//        for warning in after.slowExpressions {
-//            print(warning.toHTML())
-//        }
         let compare = "Before: \(before.warningCount) <br> After: \(after.warningCount)"
         print("|\(change)| Overall Warnings|\(compare)|")
     }
