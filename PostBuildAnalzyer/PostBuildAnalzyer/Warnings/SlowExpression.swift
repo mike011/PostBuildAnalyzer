@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SlowExpression: WarningDetailsProtocol, Hashable, Equatable {
+class SlowExpression: WarningModel, Hashable, Equatable {
     // not used, used regex instead.
     static var lookFor = ""
 

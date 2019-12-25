@@ -62,7 +62,8 @@ class PostBuildComparsion {
         print("| |Description|Amount|")
         print("|:-:|---|:-:|")
         for warning in after.warnings {
-            print(warning.toHTML())
+            warning.getView().printRow()
+            // print(warning.toHTML())
         }
 //        for warning in after.lDWarnings {
 //            print(warning.toHTML())

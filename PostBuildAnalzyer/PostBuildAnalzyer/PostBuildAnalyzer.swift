@@ -9,7 +9,7 @@
 import Foundation
 
 class PostBuildAnalzyer {
-    var warnings = Set<Warning>()
+    var warnings = Set<WarningController>()
     // var fileWarnings = Set<FileWarning>()
     // var lDWarnings = Set<LDWarning>()
     var slowExpressions = Set<SlowExpression>()
@@ -36,11 +36,12 @@ class PostBuildAnalzyer {
     }
 
     private func parseLogFile(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String]) {
-        var warning: Warning?
+        var warning: WarningController?
         for line in logFile {
-            if let fileWarning = warning as? FileWarningDetails {
+            if let fileWarning = warning as? FileWarningController {
                 if line.starts(with: " ") {
-                    fileWarning.add(line: line.trimSpaces())
+                    // fileWarning.wp.add
+                    //  fileWarning.add(line: line.trimSpaces())
                 } else {
                     warning = nil
                 }
@@ -49,15 +50,15 @@ class PostBuildAnalzyer {
             if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
                 slowExpressions.insert(SlowExpression(line: line))
             } else if isLDWarning(line: line) {
-                warnings.insert(LDWarning(description: line))
+                warnings.insert(LDWarningController(description: line))
             } else if isFileWarning(line: line) {
                 warning = parseFileWarning(repoURL: repoURL, branch: branch, line: line)
             }
         }
     }
 
-    private func parseFileWarning(repoURL: String, branch: String, line: String) -> Warning {
-        let newFileWarning = FileWarning(repoURL: repoURL, branch: branch, firstLine: line)
+    private func parseFileWarning(repoURL: String, branch: String, line: String) -> WarningController {
+        let newFileWarning = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
         if let found = get(warning: newFileWarning, in: warnings) {
             found.count += 1
             return found
@@ -67,7 +68,7 @@ class PostBuildAnalzyer {
         }
     }
 
-    func get(warning lookFor: Warning, in warnings: Set<Warning>) -> Warning? {
+    func get(warning lookFor: WarningController, in warnings: Set<WarningController>) -> WarningController? {
         if warnings.contains(lookFor) {
             for warning in warnings {
                 if warning == lookFor {

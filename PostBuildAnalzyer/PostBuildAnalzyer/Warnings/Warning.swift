@@ -8,20 +8,20 @@
 
 import Foundation
 
-class Warning: Hashable, Equatable {
-    var wp: WarningDetailsProtocol
+class WarningController: Hashable, Equatable {
+    private var wp: WarningModel
 
     var count: Int = 0
 
     /// The line that is being parsed.
     var line: String
 
-    init(line: String, wp: WarningDetailsProtocol) {
+    init(line: String, wp: WarningModel) {
         self.line = line
         self.wp = wp
     }
 
-    static func == (lhs: Warning, rhs: Warning) -> Bool {
+    static func == (lhs: WarningController, rhs: WarningController) -> Bool {
         return lhs.line == rhs.line
     }
 
@@ -31,5 +31,10 @@ class Warning: Hashable, Equatable {
 
     func toHTML() -> String {
         return wp.toHTML()
+    }
+
+    func getView() -> WarningView {
+        let view = WarningView(data: wp)
+        return view
     }
 }

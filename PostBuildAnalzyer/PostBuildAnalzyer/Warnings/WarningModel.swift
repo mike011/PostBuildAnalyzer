@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol WarningDetailsProtocol {
+protocol WarningModel {
     static var lookFor: String { get }
     var line: String { get }
     var description: String { get }
@@ -19,7 +19,7 @@ protocol WarningDetailsProtocol {
     var measuredValue: String { get }
 }
 
-extension WarningDetailsProtocol {
+extension WarningModel {
     func toHTML() -> String {
         return "|\(symbol)|\(detailedDescripiton)|\(measuredValue)|"
     }

@@ -8,14 +8,14 @@
 
 import Foundation
 
-class LDWarning: Warning {
+class LDWarningController: WarningController {
     init(description: String) {
-        let fp = LDWarningDetails(description: description)
+        let fp = LDWarningModel(description: description)
         super.init(line: description, wp: fp)
     }
 }
 
-class LDWarningDetails: WarningDetailsProtocol {
+class LDWarningModel: WarningModel {
     var line: String
 
     var count: Int = 1
@@ -41,6 +41,6 @@ class LDWarningDetails: WarningDetailsProtocol {
 
 extension PostBuildAnalzyer {
     func isLDWarning(line: String) -> Bool {
-        return line.contains(LDWarningDetails.lookFor)
+        return line.contains(LDWarningModel.lookFor)
     }
 }

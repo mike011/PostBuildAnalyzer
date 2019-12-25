@@ -9,15 +9,15 @@
 import Foundation
 
 // This is the View
-class FileWarning: Warning {
+class FileWarningController: WarningController {
     init(repoURL: String, branch: String, firstLine: String) {
-        let fp = FileWarningDetails(repoURL: repoURL, branch: branch, firstLine: firstLine)
+        let fp = FileWarningModel(repoURL: repoURL, branch: branch, firstLine: firstLine)
         super.init(line: firstLine, wp: fp)
     }
 }
 
 // This is the Model
-class FileWarningDetails: WarningDetailsProtocol {
+class FileWarningModel: WarningModel {
     var line: String
 
     static var lookFor = ": warning: "
@@ -53,7 +53,7 @@ class FileWarningDetails: WarningDetailsProtocol {
         self.line = firstLine
         self.repoURL = repoURL
         self.branch = branch
-        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + FileWarningDetails.lookFor) {
+        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + Self.lookFor) {
             guard regex.matches(firstLine) else {
                 self.file = ""
                 self.lineNumber = -1
@@ -138,6 +138,6 @@ class FileWarningDetails: WarningDetailsProtocol {
 
 extension PostBuildAnalzyer {
     func isFileWarning(line: String) -> Bool {
-        return line.contains(FileWarningDetails.lookFor)
+        return line.contains(FileWarningModel.lookFor)
     }
 }
