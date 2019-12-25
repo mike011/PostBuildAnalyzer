@@ -10,7 +10,7 @@ import Foundation
 
 class LinkerWarningController: WarningController {
     init(description: String) {
-        let model = LDWarningModel(description: description)
+        let model = LinkerWarningModel(description: description)
         let view = LinkerWarningView()
         super.init(model: model, view: view)
     }
@@ -18,6 +18,6 @@ class LinkerWarningController: WarningController {
 
 extension PostBuildAnalzyer {
     func isLinkerWarning(line: String) -> Bool {
-        return line.contains(LDWarningModel.lookFor)
+        return line.contains(LinkerWarningModel.lookFor)
     }
 }

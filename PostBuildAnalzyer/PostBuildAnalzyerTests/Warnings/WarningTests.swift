@@ -8,9 +8,9 @@
 
 import XCTest
 
-class WarningTests: XCTestCase {
-    func testToHTML() {
-        let warning = TestWarning()
-        XCTAssertEqual(warning.toHTML(), "|Symbol|Detailed Description|Measured Value|")
-    }
-}
+// class WarningTests: XCTestCase {
+//    func testToHTML() {
+//        let warning = TestWarning()
+//        XCTAssertEqual(warning.toHTML(), "|Symbol|Detailed Description|Measured Value|")
+//    }
+// }

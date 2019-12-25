@@ -1,5 +1,5 @@
 //
-//  LinkerModel.swift
+//  LinkerWarningModel.swift
 //  PostBuildAnalzyer
 //
 //  Created by Michael Charland on 2019-12-25.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LDWarningModel: WarningModel {
+class LinkerWarningModel: WarningModel {
     var line: String
 
     var count: Int = 1

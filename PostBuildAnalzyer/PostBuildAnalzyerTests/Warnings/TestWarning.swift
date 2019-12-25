@@ -8,17 +8,17 @@
 
 import Foundation
 
-class TestWarning: Warning {
-    var line: String
-    var symbol = "Symbol"
-    var detailedDescripiton = "Detailed Description"
-    var measuredValue = "Measured Value"
-
-    static var lookFor = "lookFor"
-    var description = "description"
-    var count = 1
-
-    init(line: String = "line") {
-        self.line = line
-    }
-}
+// class TestWarning: Warning {
+//    var line: String
+//    var symbol = "Symbol"
+//    var detailedDescripiton = "Detailed Description"
+//    var measuredValue = "Measured Value"
+//
+//    static var lookFor = "lookFor"
+//    var description = "description"
+//    var count = 1
+//
+//    init(line: String = "line") {
+//        self.line = line
+//    }
+// }
