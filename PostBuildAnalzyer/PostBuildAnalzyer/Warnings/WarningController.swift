@@ -35,6 +35,6 @@ class WarningController: Hashable, Equatable {
     }
 
     func getTotalWarnings() -> Int {
-        return model.count
+        return Int(model.count)
     }
 }

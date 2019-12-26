@@ -11,15 +11,11 @@ import Foundation
 /// A container of different types of analysis done when a build has finished.
 class PostBuildAnalzyer {
     var warnings = [String: WarningController]()
-    var slowExpressions = Set<SlowExpression>()
 
     var warningCount: Int {
         var warningCount = 0
         for warning in warnings {
             warningCount += warning.value.getTotalWarnings()
-        }
-        for warning in slowExpressions {
-            warningCount += warning.count
         }
         return warningCount
     }
@@ -37,11 +33,11 @@ class PostBuildAnalzyer {
                 warning.addDuplicate()
             } else {
                 if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
-                    slowExpressions.insert(SlowExpression(line: line))
+                    warnings[line] = SlowExpressionController(repoURL: repoURL, branch: branch, line: line)
                 } else if isLinkerWarning(line: line) {
-                    warnings[line] = LinkerWarningController(description: line)
+                    warnings[line] = LinkerWarningController(line: line)
                 } else if isFileWarning(line: line) {
-                    warnings[line] = FileWarningController(repoURL: repoURL, branch: branch, firstLine: line)
+                    warnings[line] = FileWarningController(repoURL: repoURL, branch: branch, line: line)
                 }
             }
         }

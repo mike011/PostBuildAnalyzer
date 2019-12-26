@@ -9,8 +9,8 @@
 import Foundation
 
 class LinkerWarningController: WarningController {
-    init(description: String) {
-        let model = LinkerWarningModel(description: description)
+    init(line: String) {
+        let model = LinkerWarningModel(line: line)
         let view = LinkerWarningView()
         super.init(model: model, view: view)
     }

@@ -16,6 +16,6 @@ class LinkerWarningView: WarningView {
     }
 
     func getMeasuredValue(model: WarningModel) -> String {
-        return "\(model.count) times"
+        return "\(Int(model.count)) times"
     }
 }

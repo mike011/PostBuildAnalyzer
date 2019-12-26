@@ -62,9 +62,15 @@ class PostBuildComparsion {
         print("<H3>New Warnings</H3>")
         print("| |Description|Amount|")
         print("|:-:|---|:-:|")
+        var rows = [String]()
+
         for warning in after.warnings {
-            warning.value.printView()
+            rows.append(warning.value.printView())
         }
+        for row in rows.sorted() {
+            print(row)
+        }
+
         let compare = "Before: \(before.warningCount) <br> After: \(after.warningCount)"
         print("|\(change)| Overall Warnings|\(compare)|")
     }

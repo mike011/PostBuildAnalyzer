@@ -11,15 +11,15 @@ import Foundation
 class LintWarning: WarningModel {
     static var lookFor: String = ""
 
-    var line: String = ""
+    var line = ""
 
-    var description: String = ""
+    var description = ""
 
-    var count: Int = 0
+    var count = 0
 
-    var symbol: String = ""
+    var symbol = ""
 
-    var detailedDescripiton: String = ""
+    var detailedDescripiton = ""
 
-    var measuredValue: String = ""
+    var measuredValue = ""
 }

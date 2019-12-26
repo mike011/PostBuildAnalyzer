@@ -24,6 +24,7 @@ class FileWarningModel: WarningModel, URLParser {
     /// The file in which the error occurred
     var file: String
 
+    /// The URL of the error that occurred
     var url: URL?
 
     /// The line number on which the error occurred

@@ -24,4 +24,13 @@ class UtilsTests: XCTestCase {
         XCTAssertEqual(" a ".trimSpaces(), "a")
         XCTAssertEqual("       a                     ".trimSpaces(), "a")
     }
+
+    func testSplits() {
+        XCTAssertEqual(Utils.getSplits(description: ""), [String]())
+        XCTAssertEqual(Utils.getSplits(description: " "), [String]())
+        XCTAssertEqual(Utils.getSplits(description: "   "), [String]())
+        XCTAssertEqual(Utils.getSplits(description: "a"), ["a"])
+        XCTAssertEqual(Utils.getSplits(description: " a "), ["a"])
+        XCTAssertEqual(Utils.getSplits(description: " a\tb"), ["a", "b"])
+    }
 }

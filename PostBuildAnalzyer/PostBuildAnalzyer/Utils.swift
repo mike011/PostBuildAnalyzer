@@ -37,6 +37,17 @@ public class Utils {
         let string = datastring! as String
         return string.components(separatedBy: "\n")
     }
+
+    static func getSplits(description: String) -> [String] {
+        var result = [String]()
+        for value in description.components(separatedBy: "\t") {
+            let trimmed = value.trimSpaces()
+            if !trimmed.isEmpty {
+                result.append(trimmed)
+            }
+        }
+        return result
+    }
 }
 
 extension NSRegularExpression {

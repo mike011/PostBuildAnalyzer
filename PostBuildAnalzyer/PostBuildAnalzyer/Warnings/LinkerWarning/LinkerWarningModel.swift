@@ -11,13 +11,13 @@ import Foundation
 class LinkerWarningModel: WarningModel {
     var line: String
 
-    var count: Int = 1
+    var count = 1
 
     static let lookFor = "ld: warning: "
     var description: String
 
-    init(description: String) {
-        self.line = description
-        self.description = String(description.dropFirst(Self.lookFor.count))
+    init(line: String) {
+        self.line = line
+        self.description = String(line.dropFirst(Self.lookFor.count))
     }
 }

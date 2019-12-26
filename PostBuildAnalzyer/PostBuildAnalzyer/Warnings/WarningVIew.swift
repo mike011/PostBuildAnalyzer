@@ -20,7 +20,7 @@ protocol WarningView {
 extension WarningView {
     func printRow(model: WarningModel) -> String {
         let row = "|\(symbol)|\(getDetailedDescription(model: model))|\(getMeasuredValue(model: model))|"
-        print(row)
+        //  print(row)
         return row
     }
 }

@@ -25,7 +25,7 @@ class FileWarningView: WarningView {
     }
 
     func getMeasuredValue(model: WarningModel) -> String {
-        return "\(model.count) times"
+        return "\(Int(model.count)) times"
     }
 
     func getAHREF(model: FileWarningModel) -> String? {
