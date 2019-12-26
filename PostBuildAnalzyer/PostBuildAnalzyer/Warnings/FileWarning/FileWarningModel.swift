@@ -8,7 +8,7 @@
 import Foundation
 
 // This is the Model
-class FileWarningModel: WarningModel {
+class FileWarningModel: WarningModel, URLParser {
     var line: String
 
     static var lookFor = ": warning: "
@@ -24,13 +24,11 @@ class FileWarningModel: WarningModel {
     /// The file in which the error occurred
     var file: String
 
+    var url: URL?
+
     /// The line number on which the error occurred
     var lineNumber: Int
 
-    /// The spot on the line where the error occurred
-    var indent: Int
-
-    /// A description of why the error occurred
     var description: String
 
     /// The line in which the error occurred
@@ -47,7 +45,7 @@ class FileWarningModel: WarningModel {
             guard regex.matches(firstLine) else {
                 self.file = ""
                 self.lineNumber = -1
-                self.indent = -1
+                // self.indent = -1
                 self.description = firstLine
                 return
             }
@@ -55,8 +53,11 @@ class FileWarningModel: WarningModel {
 
         // craate Link
         var line = firstLine
+
         var end = line.firstIndex(of: ":")!
         self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
+        self.lineNumber = Self.getLineNumber(line: line) ?? 0
+        self.url = Self.getURL(from: line, repoURL: repoURL, branch: branch)
 
         var start = line.index(end, offsetBy: 1)
         line = String(line[start...])
@@ -66,21 +67,14 @@ class FileWarningModel: WarningModel {
         start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
-        self.indent = Int(String(line[..<end]))!
 
         start = line.index(end, offsetBy: 1)
         line = String(line[start...])
         end = line.firstIndex(of: ":")!
         start = line.index(end, offsetBy: 1)
+
         self.description = String(line[start...]).trimSpaces()
         self.count = 1
-    }
-
-    static func getRepoName(fromRepoURL repoURL: String) -> String {
-        if let range = repoURL.range(of: "/", options: .backwards) {
-            return String(repoURL[range.upperBound...])
-        }
-        return repoURL
     }
 
     func add(line: String) {
@@ -90,38 +84,11 @@ class FileWarningModel: WarningModel {
         }
     }
 
-    func getURL() -> String {
-        let circleFolder = "/Users/distiller/project/"
-        if file.contains(Self.getRepoName(fromRepoURL: repoURL)) {
-            let range = file.range(of: Self.getRepoName(fromRepoURL: repoURL) + "/")!
-            file = String(file[range.upperBound...])
-        } else if file.contains(circleFolder) {
-            let range = file.range(of: circleFolder)!
-            file = String(file[range.upperBound...])
-        }
-        return "\(repoURL)/blob/\(branch)/\(file)#L\(lineNumber)"
-    }
-
     func getFilename() -> String {
-        if let start = file.lastIndex(of: "/") {
-            return String(file[start...].dropFirst())
+        guard let url = url else {
+            return ""
         }
-        return file
-    }
 
-    func getAHREF() -> String {
-        return "<a href=\"\(getURL())\">\(getFilename())</a>"
-    }
-
-    var detailedDescripiton: String {
-        if file.isEmpty {
-            return description
-        } else {
-            return "\(getAHREF()) on line \(lineNumber)<br><i>\(description)</i>"
-        }
-    }
-
-    var measuredValue: String {
-        return "\(count) times"
+        return url.lastPathComponent
     }
 }

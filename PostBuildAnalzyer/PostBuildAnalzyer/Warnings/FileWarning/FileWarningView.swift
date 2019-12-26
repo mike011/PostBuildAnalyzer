@@ -16,18 +16,21 @@ class FileWarningView: WarningView {
             return ""
         }
 
-        if model.file.isEmpty {
-            return model.description
-        } else {
-            return "\(getAHREF(model: model)) on line \(model.lineNumber)<br><i>\(model.description)</i>"
+        guard let ahref = getAHREF(model: model) else {
+            return model.line
         }
+
+        return "\(ahref) on line \(model.lineNumber)<br><i>\(model.description)</i>"
     }
 
     func getMeasuredValue(model: WarningModel) -> String {
         return "\(model.count) times"
     }
 
-    func getAHREF(model: FileWarningModel) -> String {
-        return "<a href=\"\(model.getURL())\">\(model.getFilename())</a>"
+    func getAHREF(model: FileWarningModel) -> String? {
+        guard let url = model.url else {
+            return nil
+        }
+        return "<a href=\"\(url.absoluteString)\">\(model.getFilename())</a>"
     }
 }

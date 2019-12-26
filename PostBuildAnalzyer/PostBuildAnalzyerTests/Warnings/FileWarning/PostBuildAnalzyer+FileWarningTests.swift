@@ -42,7 +42,6 @@ class WarningAnalyzerTests: XCTestCase {
         let warning = try XCTUnwrap(wa.warnings[logFile[0]])
         XCTAssertNotNil(warning)
         XCTAssertEqual(warning.getTotalWarnings(), 1)
-//        /XCTAssertEqual(warning., "#warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
     }
 
     func testMultipleFileWarningThatAreMultiline() throws {
@@ -57,12 +56,6 @@ class WarningAnalyzerTests: XCTestCase {
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
         XCTAssertFalse(wa.warnings.isEmpty)
         XCTAssertEqual(wa.warnings.count, 2)
-        let warning = try XCTUnwrap(wa.warnings.values)
-//        XCTAssertNotNil(warning)
-//        XCTAssertEqual(warning.getTotalWarnings(), 1)
-//        let warning2 = try XCTUnwrap(wa.warnings.popFirst())
-//        XCTAssertNotNil(warning2)
-//        XCTAssertEqual(warning2.getTotalWarnings(), 1)
     }
 
     func testLDWarning() {
@@ -79,10 +72,8 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo2'")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-//        XCTAssertFalse(wa.warnings.isEmpty)
-//        XCTAssertEqual(wa.warnings.getTotalWarnings(), 2)
-//        XCTAssertNotNil(try XCTUnwrap(wa.warnings.popFirst()))
-//        XCTAssertNotNil(try XCTUnwrap(wa.warnings.popFirst()))
+        XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertEqual(wa.warnings.count, 2)
     }
 
     func testMultipleFileWarningThatAreMultilineGetReport() throws {
@@ -96,7 +87,6 @@ class WarningAnalyzerTests: XCTestCase {
 
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
         XCTAssertEqual(wa.warnings.count, 1)
-//        XCTAssertEqual(wa.warnings.popFirst()?.getTotalWarnings(), 2)
     }
 
     func testMultipleWarningsRepeated() {
@@ -105,6 +95,5 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(": warning: ")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
         XCTAssertFalse(wa.warnings.isEmpty)
-//        XCTAssertEqual(wa.warnings.popFirst()?.getTotalWarnings(), 2)
     }
 }

@@ -25,8 +25,9 @@ class WarningController: Hashable, Equatable {
         hasher.combine(model.line)
     }
 
-    func printView() {
-        view.printRow(model: model)
+    @discardableResult
+    func printView() -> String {
+        return view.printRow(model: model)
     }
 
     func addDuplicate() {

@@ -12,11 +12,15 @@ protocol WarningView {
     var symbol: String { get }
     func getDetailedDescription(model: WarningModel) -> String
     func getMeasuredValue(model: WarningModel) -> String
-    func printRow(model: WarningModel)
+
+    @discardableResult
+    func printRow(model: WarningModel) -> String
 }
 
 extension WarningView {
-    func printRow(model: WarningModel) {
-        print("|\(symbol)|\(getDetailedDescription(model: model))|\(getMeasuredValue(model: model))|")
+    func printRow(model: WarningModel) -> String {
+        let row = "|\(symbol)|\(getDetailedDescription(model: model))|\(getMeasuredValue(model: model))|"
+        print(row)
+        return row
     }
 }
