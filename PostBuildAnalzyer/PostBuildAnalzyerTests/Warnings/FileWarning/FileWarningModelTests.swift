@@ -80,7 +80,6 @@ class FileWarningTests: XCTestCase {
         let line = "/Users/distiller/project/application/A/A/Core Data/A.xcdatamodeld/A 6.1.4.xcdatamodel:TMOAccountInfo.premiumState: warning: error"
         let warning = FileWarningModel(repoURL: "http://a.c/A", branch: "b", line: line)
         XCTAssertEqual(warning.file, "A/Core Data/A.xcdatamodeld/A 6.1.4.xcdatamodel:TMOAccountInfo.premiumState")
-        XCTAssertNil(warning.url)
         XCTAssertNil(warning.lineNumber)
         XCTAssertEqual(warning.description, "error")
     }

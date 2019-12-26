@@ -23,7 +23,11 @@ extension URLParser {
             urlString += "#L\(lineNumber)"
         }
 
-        return URL(string: urlString)
+        return URL(string: escape(urlString))
+    }
+
+    static func escape(_ string: String) -> String {
+        return string.replacingOccurrences(of: " ", with: "%20")
     }
 
     static func getRepoName(fromRepoURL repoURL: String) -> String {
