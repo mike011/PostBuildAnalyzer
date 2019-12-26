@@ -16,11 +16,12 @@ class FileWarningView: WarningView {
             return ""
         }
 
-        guard let ahref = getAHREF(model: model) else {
-            return model.line
+        guard let ahref = getAHREF(model: model),
+            let lineNumber = model.lineNumber else {
+            return "\(model.file)<br><i>\(model.description)</i>"
         }
 
-        return "\(ahref) on line \(model.lineNumber)<br><i>\(model.description)</i>"
+        return "\(ahref) on line \(lineNumber)<br><i>\(model.description)</i>"
     }
 
     func getMeasuredValue(model: WarningModel) -> String {

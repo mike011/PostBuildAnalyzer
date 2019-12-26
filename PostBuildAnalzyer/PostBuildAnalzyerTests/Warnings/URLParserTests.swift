@@ -12,14 +12,14 @@ class TestParser: URLParser {}
 
 class URLParserTests: XCTestCase {
     func testGetURLRealLifeExample() {
-        let fileWarning = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
-        let url = TestParser.getURL(from: fileWarning, repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master")
+        let line = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift"
+        let url = TestParser.getURL(file: line, lineNumber: 15, repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master")
         XCTAssertEqual(url, URL(string: "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15"))
     }
 
     func testGetURLNoColons() {
-        let fileWarning = "No colons"
-        let url = TestParser.getURL(from: fileWarning, repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master")
+        let line = "No colons"
+        let url = TestParser.getURL(file: line, lineNumber: nil, repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master")
         XCTAssertNil(url)
     }
 
@@ -29,23 +29,23 @@ class URLParserTests: XCTestCase {
     }
 
     func testGetPath() {
-        XCTAssertEqual(TestParser.getPath(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15", repoName: "PostBuildAnalyzer"), "example/Before/Example/ExistingClassCovered.swift")
+        XCTAssertEqual(TestParser.getPath(file: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift", repoName: "PostBuildAnalyzer"), "example/Before/Example/ExistingClassCovered.swift")
     }
 
     func testGetPathCircle() {
-        XCTAssertEqual(TestParser.getPath(line: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift:15", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
+        XCTAssertEqual(TestParser.getPath(file: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
     }
 
     func testGetPathNotParsedInvalidFolder() {
-        XCTAssertNil(TestParser.getPath(line: "/Users/project/example/Before/Example/ExistingClassCovered.swift:15", repoName: ""))
+        XCTAssertNil(TestParser.getPath(file: "/Users/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""))
     }
 
     func testGetPathNotParsedNoColon() {
-        XCTAssertNil(TestParser.getPath(line: "/Users/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""))
+        XCTAssertNil(TestParser.getPath(file: "/Users/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""))
     }
 
     func testGetLineNumber() {
-        XCTAssertEqual(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:"), 15)
+        XCTAssertEqual(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:11"), 15)
     }
 
     func testGetLineNumberNoStartColon() {

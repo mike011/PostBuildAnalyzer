@@ -27,60 +27,47 @@ class FileWarningModel: WarningModel, URLParser {
     var url: URL?
 
     /// The line number on which the error occurred
-    var lineNumber: Int
+    var lineNumber: Int?
 
     var description: String
-
-    /// The line in which the error occurred
-    var details = [String]()
 
     /// How many times the error occurred
     var count = 1
 
-    init(repoURL: String, branch: String, firstLine: String) {
-        self.line = firstLine
+    init(repoURL: String, branch: String, line: String) {
+        self.line = line
         self.repoURL = repoURL
         self.branch = branch
-        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+" + Self.lookFor) {
-            guard regex.matches(firstLine) else {
-                self.file = ""
-                self.lineNumber = -1
-                // self.indent = -1
-                self.description = firstLine
-                return
+
+        guard let lookForIndex = line.range(of: Self.lookFor) else {
+            self.file = ""
+            self.description = line
+            return
+        }
+
+        self.file = String(line[..<lookForIndex.lowerBound])
+        self.description = String(line[lookForIndex.upperBound...])
+
+        // Does the file contains the line and line and index numbers?
+        if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+"),
+            regex.matches(file) {
+            if let colonIndex = file.firstIndex(of: ":") {
+                let parsedFileName = String(file[..<colonIndex])
+
+                let startIndex = file.index(colonIndex, offsetBy: 1)
+                let rest = String(file[startIndex...])
+                if let colonIndex = rest.firstIndex(of: ":") {
+                    self.lineNumber = Int(String(rest[..<colonIndex]))
+                }
+
+                self.file = parsedFileName
             }
         }
 
-        // craate Link
-        var line = firstLine
+        self.url = Self.getURL(file: file, lineNumber: lineNumber, repoURL: repoURL, branch: branch)
 
-        var end = line.firstIndex(of: ":")!
-        self.file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
-        self.lineNumber = Self.getLineNumber(line: line) ?? 0
-        self.url = Self.getURL(from: line, repoURL: repoURL, branch: branch)
-
-        var start = line.index(end, offsetBy: 1)
-        line = String(line[start...])
-        end = line.firstIndex(of: ":")!
-        self.lineNumber = Int(String(line[..<end]))!
-
-        start = line.index(end, offsetBy: 1)
-        line = String(line[start...])
-        end = line.firstIndex(of: ":")!
-
-        start = line.index(end, offsetBy: 1)
-        line = String(line[start...])
-        end = line.firstIndex(of: ":")!
-        start = line.index(end, offsetBy: 1)
-
-        self.description = String(line[start...]).trimSpaces()
-        self.count = 1
-    }
-
-    func add(line: String) {
-        let trimmed = line.trimSpaces()
-        if !trimmed.contains("^") {
-            details.append(trimmed)
+        if let file = Self.getPath(file: file, repoName: Self.getRepoName(fromRepoURL: repoURL)) {
+            self.file = file
         }
     }
 

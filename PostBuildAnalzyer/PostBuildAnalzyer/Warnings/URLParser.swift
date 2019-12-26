@@ -11,16 +11,19 @@ import Foundation
 protocol URLParser {}
 
 extension URLParser {
-    static func getURL(from line: String, repoURL: String, branch: String) -> URL? {
+    static func getURL(file: String, lineNumber: Int?, repoURL: String, branch: String) -> URL? {
         let repoName = Self.getRepoName(fromRepoURL: repoURL)
 
-        guard line.contains(":"),
-            let path = Self.getPath(line: line, repoName: repoName),
-            let lineNumber = Self.getLineNumber(line: line) else {
+        guard let path = Self.getPath(file: file, repoName: repoName) else {
             return nil
         }
 
-        return URL(string: "\(repoURL)/blob/\(branch)/\(path)#L\(lineNumber)")
+        var urlString = "\(repoURL)/blob/\(branch)/\(path)"
+        if let lineNumber = lineNumber {
+            urlString += "#L\(lineNumber)"
+        }
+
+        return URL(string: urlString)
     }
 
     static func getRepoName(fromRepoURL repoURL: String) -> String {
@@ -30,12 +33,7 @@ extension URLParser {
         return repoURL
     }
 
-    static func getPath(line: String, repoName: String) -> String? {
-        guard let end = line.firstIndex(of: ":") else {
-            return nil
-        }
-        let file = String(line[..<end]).trimmingCharacters(in: .whitespacesAndNewlines)
-
+    static func getPath(file: String, repoName: String) -> String? {
         let circleFolder = "/Users/distiller/project/"
         if file.contains(repoName),
             let range = file.range(of: repoName + "/") {

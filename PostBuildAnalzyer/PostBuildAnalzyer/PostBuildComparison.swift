@@ -45,7 +45,7 @@ class PostBuildComparsion {
         let timeInMS = 100.0
 
         self.before = PostBuildAnalzyer(repoURL: repoURL, branch: "master", minimumTimeInMS: timeInMS, logFile: beforeLogFile, lintFile: beforeLintFile)
-        self.after = PostBuildAnalzyer(repoURL: repoURL, branch: "pr", minimumTimeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
+        self.after = PostBuildAnalzyer(repoURL: repoURL, branch: "develop", minimumTimeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
     }
 
     private var change: String {
