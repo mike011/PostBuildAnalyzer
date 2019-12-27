@@ -40,6 +40,10 @@
 		4C5A9E3723B57EAA00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3623B57EAA00C5BA40 /* LinkerWarningTotalRowView.swift */; };
 		4C5A9E3923B57EFE00C5BA40 /* FileWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3823B57EFE00C5BA40 /* FileWarningTotalRowView.swift */; };
 		4C5A9E3B23B582C000C5BA40 /* GrandTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3A23B582C000C5BA40 /* GrandTotalRowView.swift */; };
+		4C5A9E3C23B5923500C5BA40 /* GrandTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3A23B582C000C5BA40 /* GrandTotalRowView.swift */; };
+		4C5A9E3D23B5923A00C5BA40 /* FileWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3823B57EFE00C5BA40 /* FileWarningTotalRowView.swift */; };
+		4C5A9E3E23B5923C00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3623B57EAA00C5BA40 /* LinkerWarningTotalRowView.swift */; };
+		4C5A9E3F23B5924000C5BA40 /* SlowExpressionTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3423B57E7500C5BA40 /* SlowExpressionTotalRowView.swift */; };
 		4CF3BA3C23B30E130087F262 /* FileWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3A23B30E130087F262 /* FileWarningController.swift */; };
 		4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3D23B30ED60087F262 /* WarningController.swift */; };
 		4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */; };
@@ -409,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5A9E3F23B5924000C5BA40 /* SlowExpressionTotalRowView.swift in Sources */,
 				4CF3BA5C23B3E5550087F262 /* FileWarningController.swift in Sources */,
 				4CF3BA5923B3E4590087F262 /* WarningController.swift in Sources */,
 				4CF3BA5623B3E4420087F262 /* FileWarningView.swift in Sources */,
@@ -417,6 +422,7 @@
 				4C5A9E2823B5164400C5BA40 /* SlowExpressionView.swift in Sources */,
 				4CF3BA4723B3DDBE0087F262 /* LinkerWarningView.swift in Sources */,
 				4CF3BA6A23B43C8B0087F262 /* URLParserTests.swift in Sources */,
+				4C5A9E3E23B5923C00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */,
 				4C5A9E2623B5164000C5BA40 /* SlowExpressionController.swift in Sources */,
 				4C5A9E2E23B530E200C5BA40 /* SlowExpressionControllerTests.swift in Sources */,
 				350DDE6223AD290400F48143 /* PostBuildAnalzyer+FileWarningTests.swift in Sources */,
@@ -428,6 +434,7 @@
 				4C5A9E2C23B5199000C5BA40 /* SlowExpressionViewTests.swift in Sources */,
 				4CF3BA6D23B43E2D0087F262 /* URLParser.swift in Sources */,
 				4C5A9E2A23B5198600C5BA40 /* SlowExpressionModelTests.swift in Sources */,
+				4C5A9E3D23B5923A00C5BA40 /* FileWarningTotalRowView.swift in Sources */,
 				4CF3BA5523B3E43B0087F262 /* LinkerWarningModel.swift in Sources */,
 				4CF3BA5823B3E4530087F262 /* WarningVIew.swift in Sources */,
 				350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */,
@@ -440,6 +447,7 @@
 				4CF3BA5723B3E4450087F262 /* FileWarningModel.swift in Sources */,
 				4C0BC3B023B11D5D00DACAB1 /* PostBuildComparison.swift in Sources */,
 				4C0BC39323B10A9200DACAB1 /* PostBuildAnalzyer+SlowExpressionTests.swift in Sources */,
+				4C5A9E3C23B5923500C5BA40 /* GrandTotalRowView.swift in Sources */,
 				4C0BC3B123B11D6000DACAB1 /* PostBuildAnalyzer.swift in Sources */,
 				4CF3BA6023B3F7B30087F262 /* LinkerWarningModelTests.swift in Sources */,
 			);

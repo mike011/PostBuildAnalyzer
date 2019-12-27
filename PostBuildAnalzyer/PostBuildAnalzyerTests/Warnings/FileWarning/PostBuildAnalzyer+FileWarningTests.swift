@@ -13,22 +13,22 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append("Not a warning")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertTrue(wa.warnings.isEmpty)
+        XCTAssertTrue(wa.allWarnings.isEmpty)
     }
 
     func testAWarningKeyboard() {
         var logFile = [String]()
         logFile.append(": warning: ")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertFalse(wa.allWarnings.isEmpty)
     }
 
     func testAWarningFullLine() {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Personal/Resources/Media.xcassets:./Inhouse Ad/Personal_Avatar-1.imageset: warning: The image set name \"Personal_Avatar-1\" is used by multiple image sets.")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertNotNil(try XCTUnwrap(wa.warnings.popFirst()))
+        XCTAssertFalse(wa.allWarnings.isEmpty)
+        XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
     }
 
     func testAWarningMultiline() throws {
@@ -38,8 +38,8 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
-        let warning = try XCTUnwrap(wa.warnings[logFile[0]])
+        XCTAssertFalse(wa.allWarnings.isEmpty)
+        let warning = try XCTUnwrap(wa.allWarnings[0])
         XCTAssertNotNil(warning)
         XCTAssertEqual(warning.getTotalWarnings(), 1)
     }
@@ -54,17 +54,17 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertEqual(wa.warnings.count, 2)
+        XCTAssertFalse(wa.allWarnings.isEmpty)
+        XCTAssertEqual(wa.allWarnings.count, 2)
     }
 
     func testLDWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertEqual(wa.warnings.count, 1)
-        XCTAssertNotNil(try XCTUnwrap(wa.warnings.popFirst()))
+        XCTAssertFalse(wa.allWarnings.isEmpty)
+        XCTAssertEqual(wa.allWarnings.count, 1)
+        XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
     }
 
     func testMultipleLDWarning() {
@@ -72,8 +72,8 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo2'")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
-        XCTAssertEqual(wa.warnings.count, 2)
+        XCTAssertFalse(wa.allWarnings.isEmpty)
+        XCTAssertEqual(wa.allWarnings.count, 2)
     }
 
     func testMultipleFileWarningThatAreMultilineGetReport() throws {
@@ -86,7 +86,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertEqual(wa.warnings.count, 1)
+        XCTAssertEqual(wa.allWarnings.count, 1)
     }
 
     func testMultipleWarningsRepeated() {
@@ -94,6 +94,6 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(": warning: ")
         logFile.append(": warning: ")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", minimumTimeInMS: 0, logFile: logFile, lintFile: [String]())
-        XCTAssertFalse(wa.warnings.isEmpty)
+        XCTAssertFalse(wa.allWarnings.isEmpty)
     }
 }
