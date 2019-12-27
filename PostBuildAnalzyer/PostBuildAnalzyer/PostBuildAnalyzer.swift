@@ -8,16 +8,41 @@
 
 import Foundation
 
-/// A container of different types of analysis done when a build has finished.
 class PostBuildAnalzyer {
-    var warnings = [String: WarningController]()
+    private var warnings = [String: WarningController]()
 
-    var warningCount: Int {
-        var warningCount = 0
+    var rows: [String] {
+        var result = [String]()
         for warning in warnings {
-            warningCount += warning.value.getTotalWarnings()
+            result.append(warning.value.printView())
         }
-        return warningCount
+        return result
+    }
+
+    var allWarnings: [WarningController] {
+        return getWarningController()
+    }
+
+    var fileWarningControler: [FileWarningController] {
+        return getWarningController()
+    }
+
+    var linkerController: [LinkerWarningController] {
+        return getWarningController()
+    }
+
+    var slowExpressionController: [SlowExpressionController] {
+        return getWarningController()
+    }
+
+    func getWarningController<T: WarningController>() -> [T] {
+        var result = [T]()
+        for warning in warnings {
+            if let warning = warning.value as? T {
+                result.append(warning)
+            }
+        }
+        return result
     }
 
     init(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String], lintFile: [String]) {

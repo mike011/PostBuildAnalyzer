@@ -13,6 +13,7 @@ class PostBuildComparsion {
     private let before: PostBuildAnalzyer
     private let after: PostBuildAnalzyer
     private var outputPath: String
+    private var timeInMS: Double
 
     init?(arguments: [String]) {
         if arguments.count < 5 || arguments.count > 7 {
@@ -42,36 +43,32 @@ class PostBuildComparsion {
 
         let afterLogFile = Utils.load(file: afterLogFileName)
         let afterLintFile = Utils.load(file: afterLintFileName)
-        let timeInMS = 100.0
+        timeInMS = 100
 
         self.before = PostBuildAnalzyer(repoURL: repoURL, branch: "master", minimumTimeInMS: timeInMS, logFile: beforeLogFile, lintFile: beforeLintFile)
         self.after = PostBuildAnalzyer(repoURL: repoURL, branch: "develop", minimumTimeInMS: timeInMS, logFile: afterLogFile, lintFile: afterLintFile)
     }
 
-    private var change: String {
-        var change = " "
-        if before.warningCount > after.warningCount {
-            change = "👍"
-        } else if before.warningCount < after.warningCount {
-            change = "👎"
-        }
-        return change
-    }
-
     public func printTable() {
         print("<H3>New Warnings</H3>")
+        print("")
         print("| |Description|Amount|")
-        print("|:-:|---|:-:|")
-        var rows = [String]()
+        print("|:--:|---|:--:|")
 
-        for warning in after.warnings {
-            rows.append(warning.value.printView())
-        }
-        for row in rows.sorted() {
+        for row in after.rows.sorted() {
             print(row)
         }
 
-        let compare = "Before: \(before.warningCount) <br> After: \(after.warningCount)"
-        print("|\(change)| Overall Warnings|\(compare)|")
+        print("<BR>")
+        print("<H3>Total Warnings</H3>")
+        print("")
+        print("| |📉|Description|Before|After|")
+        print("|:-:|---|---|:---:|:--:|")
+
+        print(SlowExpressionTotalRowView(before: before.slowExpressionController, after: after.slowExpressionController, timeInMS: timeInMS).getRow())
+        print(FileWarningTotalRowView(before: before.fileWarningControler, after: after.fileWarningControler).getRow())
+        print(LinkerWarningTotalRowView(before: before.linkerController, after: after.linkerController).getRow())
+
+        print(GrandTotalRowView(before: before.allWarnings, after: after.allWarnings).getRow())
     }
 }

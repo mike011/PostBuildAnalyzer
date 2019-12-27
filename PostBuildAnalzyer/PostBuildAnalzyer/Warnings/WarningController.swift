@@ -9,7 +9,7 @@
 import Foundation
 
 class WarningController: Hashable, Equatable {
-    private var model: WarningModel
+    var model: WarningModel
     private var view: WarningView
 
     init(model: WarningModel, view: WarningView) {
