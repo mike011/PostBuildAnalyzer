@@ -72,19 +72,11 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "https://github.com/Enflick/textnow-ios5"
+            argument = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/before.json"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "&quot;/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/Example-Example (Before).log&quot;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/michael/Downloads/TextNow-TextNowSwift-Free.log "
+            argument = "/Users/michael/Documents/git/PostBuildAnalyzer/example/After/after.json"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

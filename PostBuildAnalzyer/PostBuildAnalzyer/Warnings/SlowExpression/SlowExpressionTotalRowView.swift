@@ -12,18 +12,18 @@ class SlowExpressionTotalRowView: TotalRowView {
     var symbol = "⏱"
 
     var description: String {
-        return "Files with compilation time >= \(timeInMS)ms"
+        return "Files with compilation time >= \(buildTimeThresholdInMS)ms"
     }
 
     var before: [WarningController]
 
     var after: [WarningController]
 
-    var timeInMS: Double
+    var buildTimeThresholdInMS: Double
 
-    init(before: [WarningController], after: [WarningController], timeInMS: Double) {
+    init(before: [WarningController], after: [WarningController], buildTimeThresholdInMS: Double) {
         self.before = before
         self.after = after
-        self.timeInMS = timeInMS
+        self.buildTimeThresholdInMS = buildTimeThresholdInMS
     }
 }

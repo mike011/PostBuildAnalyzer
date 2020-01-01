@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C5A9E4323B9265700C5BA40 /* after.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A9E4223B9265600C5BA40 /* after.json */; };
 		4CA6CD222378F35E0010ACC9 /* Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA6CD182378F35E0010ACC9 /* Example.framework */; };
 		4CA6CD292378F35E0010ACC9 /* Example.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA6CD1B2378F35E0010ACC9 /* Example.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4CA6CD342378F4670010ACC9 /* ExistingClassNotCovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD322378F4670010ACC9 /* ExistingClassNotCovered.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C5A9E4223B9265600C5BA40 /* after.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = after.json; sourceTree = "<group>"; };
 		4CA6CD182378F35E0010ACC9 /* Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA6CD1B2378F35E0010ACC9 /* Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
 		4CA6CD1C2378F35E0010ACC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		4CA6CD0E2378F35E0010ACC9 = {
 			isa = PBXGroup;
 			children = (
+				4C5A9E4223B9265600C5BA40 /* after.json */,
 				4CA6CD1A2378F35E0010ACC9 /* Example */,
 				4CA6CD252378F35E0010ACC9 /* ExampleTests */,
 				4CA6CD192378F35E0010ACC9 /* Products */,
@@ -185,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4CA6CD122378F35E0010ACC9 /* Build configuration list for PBXProject "Example" */;
+			buildConfigurationList = 4CA6CD122378F35E0010ACC9 /* Build configuration list for PBXProject "After" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -209,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5A9E4323B9265700C5BA40 /* after.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +473,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4CA6CD122378F35E0010ACC9 /* Build configuration list for PBXProject "Example" */ = {
+		4CA6CD122378F35E0010ACC9 /* Build configuration list for PBXProject "After" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4CA6CD2A2378F35E0010ACC9 /* Debug */,

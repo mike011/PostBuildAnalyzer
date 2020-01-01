@@ -17,10 +17,10 @@ class SlowExpressionController: WarningController {
 }
 
 extension PostBuildAnalzyer {
-    static func isSlowExpression(line: String, minimumTimeInMS: Double) -> Bool {
+    static func isSlowExpression(line: String, buildTimeThresholdInMS: Double) -> Bool {
         if let regex = try? NSRegularExpression(pattern: "\\d+\\.\\d{2}ms") {
             return regex.matches(line) &&
-                SlowExpressionModel.parseTimeInMS(line: line) > minimumTimeInMS &&
+                SlowExpressionModel.parseTimeInMS(line: line) > buildTimeThresholdInMS &&
                 !line.contains("invalid loc")
         }
         return false

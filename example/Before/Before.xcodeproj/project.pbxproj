@@ -27,6 +27,7 @@
 		4C3157AB23A7CC290062EC74 /* Warnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warnings.swift; sourceTree = "<group>"; };
 		4C3157AD23A7CC340062EC74 /* SlowFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowFiles.swift; sourceTree = "<group>"; };
 		4C3157AF23A7CC400062EC74 /* LintWarnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarnings.swift; sourceTree = "<group>"; };
+		4C5A9E4023B9243900C5BA40 /* before.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = before.json; sourceTree = "<group>"; };
 		4CA6CD182378F35E0010ACC9 /* Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA6CD1B2378F35E0010ACC9 /* Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
 		4CA6CD1C2378F35E0010ACC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		4CA6CD0E2378F35E0010ACC9 = {
 			isa = PBXGroup;
 			children = (
+				4C5A9E4023B9243900C5BA40 /* before.json */,
 				4CA6CD1A2378F35E0010ACC9 /* Example */,
 				4CA6CD252378F35E0010ACC9 /* ExampleTests */,
 				4CA6CD192378F35E0010ACC9 /* Products */,

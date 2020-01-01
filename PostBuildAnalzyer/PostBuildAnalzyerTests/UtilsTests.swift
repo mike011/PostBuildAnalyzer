@@ -33,4 +33,15 @@ class UtilsTests: XCTestCase {
         XCTAssertEqual(Utils.getSplits(description: " a "), ["a"])
         XCTAssertEqual(Utils.getSplits(description: " a\tb"), ["a", "b"])
     }
+
+    func testLoadData() {
+        XCTAssertNil(Utils.loadData(type: Arguments.self, file: nil))
+        XCTAssertNil(Utils.loadData(type: Arguments.self, file: "File does not exist"))
+        XCTAssertNotNil(Utils.loadData(type: Arguments.self, file: EXAMPLE_JSON))
+    }
+
+    func testLoad() {
+        XCTAssertTrue(Utils.load(file: nil).isEmpty)
+        XCTAssertFalse(Utils.load(file: EXAMPLE_JSON).isEmpty)
+    }
 }

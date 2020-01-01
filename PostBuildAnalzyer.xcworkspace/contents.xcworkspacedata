@@ -5,6 +5,9 @@
       location = "group:PostBuildAnalzyer/../example/Before/Before.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:example/After/After.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PostBuildAnalzyer/PostBuildAnalzyer.xcodeproj">
    </FileRef>
 </Workspace>

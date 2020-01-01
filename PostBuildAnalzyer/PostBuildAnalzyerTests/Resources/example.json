@@ -1,0 +1,9 @@
+{
+    "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
+    "branch": "master",
+    "outputFolder": "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/",
+    "logFileName": "Example-Example (Before).log",
+    "baseURLPath": "https://mike011.github.io/PostBuildAnalyzer/before/",
+    "lintFileName": "lint.html",
+    "buildTimeThresholdInMS": 200
+}

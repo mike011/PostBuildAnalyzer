@@ -23,7 +23,7 @@ class PostBuildAnalzyer {
         return getWarningController()
     }
 
-    var fileWarningControler: [FileWarningController] {
+    var fileWarningController: [FileWarningController] {
         return getWarningController()
     }
 
@@ -45,19 +45,27 @@ class PostBuildAnalzyer {
         return result
     }
 
-    init(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String], lintFile: [String]) {
-        if !logFile.isEmpty {
-            parseLogFile(repoURL: repoURL, branch: branch, minimumTimeInMS: minimumTimeInMS, logFile: logFile)
+    convenience init(args: Arguments) {
+        var logFileName = args.outputFolder
+        if args.outputFolder.last != "/" {
+            logFileName += "/"
         }
-        if !lintFile.isEmpty {}
+        logFileName += args.logFileName
+        let logFileContents = Utils.load(file: logFileName)
+        self.init(
+            repoURL: args.repoURL,
+            branch: args.branch,
+            buildTimeThresholdInMS: args.buildTimeThresholdInMS,
+            logFile: logFileContents
+        )
     }
 
-    private func parseLogFile(repoURL: String, branch: String, minimumTimeInMS: Double, logFile: [String]) {
+    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
         for line in logFile {
             if let warning = warnings[line] {
                 warning.addDuplicate()
             } else {
-                if PostBuildAnalzyer.isSlowExpression(line: line, minimumTimeInMS: minimumTimeInMS) {
+                if PostBuildAnalzyer.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
                     warnings[line] = SlowExpressionController(repoURL: repoURL, branch: branch, line: line)
                 } else if isLinkerWarning(line: line) {
                     warnings[line] = LinkerWarningController(line: line)
