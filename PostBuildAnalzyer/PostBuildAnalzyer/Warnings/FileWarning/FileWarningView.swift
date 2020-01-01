@@ -32,6 +32,6 @@ class FileWarningView: WarningView {
         guard let url = model.url else {
             return nil
         }
-        return "<a href=\"\(url.absoluteString)\">\(model.getFilename())</a>"
+        return HTML.getAHREF(url: url, title: model.getFilename())
     }
 }

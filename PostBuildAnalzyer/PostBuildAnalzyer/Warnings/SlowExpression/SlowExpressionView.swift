@@ -26,6 +26,6 @@ class SlowExpressionView: WarningView {
     }
 
     func getAHREF(model: SlowExpressionModel) -> String {
-        return "<a href=\"\(model.url.absoluteString)\">\(model.getFilename())</a>"
+        return HTML.getAHREF(url: model.url, title: model.getFilename())
     }
 }

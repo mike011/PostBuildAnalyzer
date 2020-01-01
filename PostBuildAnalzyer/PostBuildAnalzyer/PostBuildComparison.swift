@@ -76,20 +76,20 @@ class PostBuildComparsion {
 
         let slowExpressions = SlowExpressionTotalRowView(before: before.slowExpressions, after: after.slowExpressions, buildTimeThresholdInMS: buildTimeThresholdInMS)
         if slowExpressions.hasResults {
-            lines.append(slowExpressions.row)
+            lines.append(slowExpressions.row(baseURL: outputPath))
         }
 
         let fileWarnings = FileWarningTotalRowView(before: before.fileWarningController, after: after.fileWarningController)
         if fileWarnings.hasResults {
-            lines.append(fileWarnings.row)
+            lines.append(fileWarnings.row(baseURL: outputPath))
         }
 
         let linkerWarnings = LinkerWarningTotalRowView(before: before.linkerController, after: after.linkerController)
         if linkerWarnings.hasResults {
-            lines.append(linkerWarnings.row)
+            lines.append(linkerWarnings.row(baseURL: outputPath))
         }
 
-        lines.append(grandTotal.row)
+        lines.append(grandTotal.row(baseURL: nil))
         return lines
     }
 }

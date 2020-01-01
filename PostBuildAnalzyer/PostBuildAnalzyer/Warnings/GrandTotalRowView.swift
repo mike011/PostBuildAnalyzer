@@ -20,7 +20,5 @@ class GrandTotalRowView: TotalRowView {
     init(before: [WarningController], after: [WarningController]) {
         self.before = before
         self.after = after
-        // self.before = before.fileWarningsCount + before.linkerCount + before.slowExpressionCount
-        // self.after = after.fileWarningsCount + after.linkerCount + after.slowExpressionCount
     }
 }

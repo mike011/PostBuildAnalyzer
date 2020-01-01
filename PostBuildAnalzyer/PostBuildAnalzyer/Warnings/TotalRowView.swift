@@ -26,9 +26,18 @@ extension TotalRowView {
         return change
     }
 
-    var row: String {
-        // what if before and after are both zero
-        return "|\(change)|\(symbol)|\(description)|\(before.count)|\(after.count)|"
+    func row(baseURL: URL?) -> String {
+        let beforeCount = getAHREF(baseURL: baseURL, page: "before", title: before.count)
+        let afterCount = getAHREF(baseURL: baseURL, page: "after", title: after.count)
+        return "|\(change)|\(symbol)|\(description)|\(beforeCount)|\(afterCount)|"
+    }
+
+    private func getAHREF(baseURL: URL?, page: String, title: Int) -> String {
+        guard let baseURL = baseURL else {
+            return String(title)
+        }
+        let urlString = "\(baseURL.absoluteString)/\(page).html"
+        return HTML.getAHREF(url: URL(string: urlString)!, title: String(title))
     }
 
     var hasResults: Bool {
