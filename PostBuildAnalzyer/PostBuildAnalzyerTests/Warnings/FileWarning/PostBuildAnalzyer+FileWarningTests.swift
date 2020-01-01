@@ -58,7 +58,7 @@ class WarningAnalyzerTests: XCTestCase {
         XCTAssertEqual(wa.allWarnings.count, 2)
     }
 
-    func testLDWarning() {
+    func testLinkerWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         let wa = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
@@ -67,7 +67,7 @@ class WarningAnalyzerTests: XCTestCase {
         XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
     }
 
-    func testMultipleLDWarning() {
+    func testMultipleLinkerWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo2'")

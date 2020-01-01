@@ -26,8 +26,12 @@ extension TotalRowView {
         return change
     }
 
-    func getRow() -> String {
+    var row: String {
         // what if before and after are both zero
         return "|\(change)|\(symbol)|\(description)|\(before.count)|\(after.count)|"
+    }
+
+    var hasResults: Bool {
+        return before.count > 0 || after.count > 0
     }
 }

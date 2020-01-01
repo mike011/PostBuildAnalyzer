@@ -23,7 +23,7 @@ class PostBuildAnalyzerTests: XCTestCase {
         XCTAssertTrue(pba.allWarnings.isEmpty)
         XCTAssertTrue(pba.fileWarningController.isEmpty)
         XCTAssertTrue(pba.linkerController.isEmpty)
-        XCTAssertTrue(pba.slowExpressionController.isEmpty)
+        XCTAssertTrue(pba.slowExpressions.isEmpty)
         XCTAssertTrue(pba.rows.isEmpty)
     }
 
@@ -41,7 +41,7 @@ class PostBuildAnalyzerTests: XCTestCase {
         XCTAssertFalse(pba.allWarnings.isEmpty)
         XCTAssertFalse(pba.fileWarningController.isEmpty)
         XCTAssertTrue(pba.linkerController.isEmpty)
-        XCTAssertTrue(pba.slowExpressionController.isEmpty)
+        XCTAssertTrue(pba.slowExpressions.isEmpty)
         XCTAssertFalse(pba.rows.isEmpty)
     }
 }

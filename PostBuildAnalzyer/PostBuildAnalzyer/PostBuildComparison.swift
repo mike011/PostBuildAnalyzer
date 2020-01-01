@@ -15,14 +15,23 @@ class PostBuildComparsion {
     private var outputPath: URL
     private var buildTimeThresholdInMS: Double
 
-    init(before: Arguments, after: Arguments) {
-        self.before = PostBuildAnalzyer(args: before)
-        self.after = PostBuildAnalzyer(args: after)
-        self.outputPath = URL(string: after.baseURLPath)!
-        self.buildTimeThresholdInMS = before.buildTimeThresholdInMS
+    convenience init(before: Arguments, after: Arguments) {
+        let beforePBA = PostBuildAnalzyer(args: before)
+        let afterPBA = PostBuildAnalzyer(args: after)
+        self.init(
+            before: beforePBA,
+            after: afterPBA,
+            baseURLPath: after.baseURLPath,
+            buildTimeThresholdInMS: after.buildTimeThresholdInMS
+        )
     }
 
-    // init(before: PostBuildAnalzyer, after: PostBuildAnalzyer, baseURLPath: String, )
+    init(before: PostBuildAnalzyer, after: PostBuildAnalzyer, baseURLPath: String, buildTimeThresholdInMS: Double) {
+        self.before = before
+        self.after = after
+        self.outputPath = URL(string: baseURLPath)!
+        self.buildTimeThresholdInMS = buildTimeThresholdInMS
+    }
 
     public func printTable() {
         for line in getNewWarningsTable() {
@@ -35,6 +44,9 @@ class PostBuildComparsion {
 
     func getNewWarningsTable() -> [String] {
         var lines = [String]()
+        guard !after.rows.isEmpty else {
+            return lines
+        }
 
         lines.append("<H3>New Warnings</H3>")
         lines.append("")
@@ -44,23 +56,40 @@ class PostBuildComparsion {
         for row in after.rows.sorted() {
             lines.append(row)
         }
+        lines.append("<BR>")
         return lines
     }
 
     func getTotalWarningsTable() -> [String] {
         var lines = [String]()
 
-        lines.append("<BR>")
+        let grandTotal = GrandTotalRowView(before: before.allWarnings, after: after.allWarnings)
+
+        guard grandTotal.hasResults else {
+            return lines
+        }
+
         lines.append("<H3>Total Warnings</H3>")
         lines.append("")
         lines.append("| |📉|Description|Before|After|")
         lines.append("|:-:|---|---|:---:|:--:|")
 
-        lines.append(SlowExpressionTotalRowView(before: before.slowExpressionController, after: after.slowExpressionController, buildTimeThresholdInMS: buildTimeThresholdInMS).getRow())
-        lines.append(FileWarningTotalRowView(before: before.fileWarningController, after: after.fileWarningController).getRow())
-        lines.append(LinkerWarningTotalRowView(before: before.linkerController, after: after.linkerController).getRow())
+        let slowExpressions = SlowExpressionTotalRowView(before: before.slowExpressions, after: after.slowExpressions, buildTimeThresholdInMS: buildTimeThresholdInMS)
+        if slowExpressions.hasResults {
+            lines.append(slowExpressions.row)
+        }
 
-        lines.append(GrandTotalRowView(before: before.allWarnings, after: after.allWarnings).getRow())
+        let fileWarnings = FileWarningTotalRowView(before: before.fileWarningController, after: after.fileWarningController)
+        if fileWarnings.hasResults {
+            lines.append(fileWarnings.row)
+        }
+
+        let linkerWarnings = LinkerWarningTotalRowView(before: before.linkerController, after: after.linkerController)
+        if linkerWarnings.hasResults {
+            lines.append(linkerWarnings.row)
+        }
+
+        lines.append(grandTotal.row)
         return lines
     }
 }

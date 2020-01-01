@@ -31,7 +31,7 @@ class PostBuildAnalzyer {
         return getWarningController()
     }
 
-    var slowExpressionController: [SlowExpressionController] {
+    var slowExpressions: [SlowExpressionController] {
         return getWarningController()
     }
 

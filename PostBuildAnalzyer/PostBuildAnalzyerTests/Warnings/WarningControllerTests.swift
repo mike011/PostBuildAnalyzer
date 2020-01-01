@@ -36,4 +36,12 @@ class WarningControllerTests: XCTestCase {
         controller.addDuplicate()
         XCTAssertEqual(controller.getTotalWarnings(), 2)
     }
+
+    func testHash() {
+        let controller = WarningController(model: TestWarningModel(), view: TestWarningView())
+        var hasherBefore = Hasher().finalize()
+        var hasher = Hasher()
+        controller.hash(into: &hasher)
+        XCTAssertNotEqual(hasherBefore, hasher.finalize())
+    }
 }
