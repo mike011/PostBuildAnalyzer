@@ -36,7 +36,12 @@ extension TotalRowView {
         guard let baseURL = baseURL else {
             return String(title)
         }
-        let urlString = "\(baseURL.absoluteString)/\(page).html"
+
+        var url = baseURL.absoluteString
+        if url.last != "/" {
+            url += "/"
+        }
+        let urlString = "\(url)\(page).html"
         return HTML.getAHREF(url: URL(string: urlString)!, title: String(title))
     }
 

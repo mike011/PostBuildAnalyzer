@@ -59,6 +59,11 @@ class TotalRowViewTests: XCTestCase {
         XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")), "||S|D|<a href=\"http://a.b/before.html\">0</a>|<a href=\"http://a.b/after.html\">0</a>|")
     }
 
+    func testRowWithExtraSlashes() {
+        let totalRowView = TestTotalRowView()
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b/")), "||S|D|<a href=\"http://a.b/before.html\">0</a>|<a href=\"http://a.b/after.html\">0</a>|")
+    }
+
     func testRowNoURL() {
         let totalRowView = TestTotalRowView()
         XCTAssertEqual(totalRowView.row(baseURL: nil), "||S|D|0|0|")
