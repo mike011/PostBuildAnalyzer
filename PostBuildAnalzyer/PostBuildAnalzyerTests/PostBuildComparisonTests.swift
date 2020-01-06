@@ -9,7 +9,7 @@
 import XCTest
 
 class PostBuildComparisonTests: XCTestCase {
-    private let defaultRowsForNewTable = 5
+    private let defaultRowsForNewTable = 4
     private let defaultRowsForTotalTable = 4
     private let grandTotalRow = 1
 
@@ -29,7 +29,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
-        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertFalse(pbc.getNewWarningsTable().isEmpty)
         XCTAssertEqual(pbc.getNewWarningsTable().count, defaultRowsForNewTable + 1)
     }
@@ -42,7 +42,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: 2")
         let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
-        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertFalse(pbc.getNewWarningsTable().isEmpty)
         XCTAssertEqual(pbc.getNewWarningsTable().count, defaultRowsForNewTable + 2)
     }
@@ -51,7 +51,7 @@ class PostBuildComparisonTests: XCTestCase {
         let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
         let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
 
-        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertTrue(pbc.getNewWarningsTable().isEmpty)
     }
 
@@ -64,14 +64,14 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output/")
         XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 3)
     }
 
     func testGetTotalWarningsTableNoWarnings() {
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertTrue(pbc.getTotalWarningsTable().isEmpty)
     }
 
@@ -82,7 +82,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 1)
     }
@@ -94,7 +94,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 1)
     }
@@ -106,7 +106,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0)
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: "~/Users/dev/git/project/fastlane/test_output")
         XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 1)
     }

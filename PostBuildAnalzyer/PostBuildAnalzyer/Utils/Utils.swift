@@ -77,6 +77,20 @@ public class Utils {
         }
         return result
     }
+
+    static func writeToFile(contents: [String], url: URL) {
+        for content in contents {
+            writeToFile(contents: content, url: url)
+        }
+    }
+
+    static func writeToFile(contents: String, url: URL) {
+        do {
+            try contents.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+        } catch let error as NSError {
+            print("Ooops! Something went wrong: \(error)")
+        }
+    }
 }
 
 extension NSRegularExpression {

@@ -12,8 +12,9 @@ import Foundation
 class PostBuildComparsion {
     private let before: PostBuildAnalzyer
     private let after: PostBuildAnalzyer
-    private var outputPath: URL
+    private var baseURL: URL
     private var buildTimeThresholdInMS: Double
+    private var outputURL: URL
 
     convenience init(before: Arguments, after: Arguments) {
         let beforePBA = PostBuildAnalzyer(args: before)
@@ -22,21 +23,30 @@ class PostBuildComparsion {
             before: beforePBA,
             after: afterPBA,
             baseURLPath: after.baseURLPath,
-            buildTimeThresholdInMS: after.buildTimeThresholdInMS
+            buildTimeThresholdInMS: after.buildTimeThresholdInMS,
+            outputFolder: after.outputFolder
         )
     }
 
-    init(before: PostBuildAnalzyer, after: PostBuildAnalzyer, baseURLPath: String, buildTimeThresholdInMS: Double) {
+    init(
+        before: PostBuildAnalzyer,
+        after: PostBuildAnalzyer,
+        baseURLPath: String,
+        buildTimeThresholdInMS: Double,
+        outputFolder: String
+    ) {
         self.before = before
         self.after = after
-        self.outputPath = URL(string: baseURLPath)!
+        self.baseURL = URL(string: baseURLPath)!
         self.buildTimeThresholdInMS = buildTimeThresholdInMS
+        self.outputURL = URL(string: outputFolder)!
     }
 
     public func printTable() {
         for line in getNewWarningsTable() {
             print(line)
         }
+        print("<BR>")
         for line in getTotalWarningsTable() {
             print(line)
         }
@@ -50,13 +60,20 @@ class PostBuildComparsion {
 
         lines.append("<H3>New Warnings</H3>")
         lines.append("")
+        for line in getWarningsTable(rows: after.rows) {
+            lines.append(line)
+        }
+        return lines
+    }
+
+    func getWarningsTable(rows: [String]) -> [String] {
+        var lines = [String]()
         lines.append("| |Description|Amount|")
         lines.append("|:--:|---|:--:|")
 
-        for row in after.rows.sorted() {
+        for row in rows.sorted() {
             lines.append(row)
         }
-        lines.append("<BR>")
         return lines
     }
 
@@ -81,11 +98,22 @@ class PostBuildComparsion {
 
         for row in rows {
             if row.hasResults {
-                lines.append(row.row(baseURL: outputPath))
+                createHTMLFiles(row: row, outputURL: outputURL)
+                lines.append(row.row(baseURL: baseURL))
             }
         }
 
         lines.append(grandTotal.row(baseURL: nil))
         return lines
+    }
+
+    func createHTMLFiles(row: TotalRowView, outputURL: URL) {
+        let beforeURL = URL(string: outputURL.absoluteString + "/\(row.self.)before.html")!
+        let dataToSave = getWarningsTable(rows: before.rows)
+        Utils.writeToFile(contents: dataToSave, url: beforeURL)
+
+        let afterURL = URL(string: outputURL.absoluteString + "/\(row.self)after.html")!
+        let dataToSave2 = getWarningsTable(rows: after.rows)
+        Utils.writeToFile(contents: dataToSave2, url: afterURL)
     }
 }
