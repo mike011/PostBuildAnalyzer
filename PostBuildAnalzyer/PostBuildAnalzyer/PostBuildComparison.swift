@@ -77,6 +77,49 @@ class PostBuildComparsion {
         return lines
     }
 
+    class Element {}
+
+    class BlankLine: Element {}
+
+    enum Alignment {
+        case Left
+        case Right
+        case Center
+    }
+
+    class Table: Element {
+        func addHeader(titles: [String]) {}
+
+        func set(alignment: [Alignment?]) {}
+
+        func addRow(column: [String]) {}
+    }
+
+    class Header: Element {
+        let level: Int
+        let title: String
+        init(level: Int, title: String) {
+            self.level = level
+            self.title = title
+        }
+    }
+
+    class WebOutput {
+        var content = [Element]()
+
+        func addBlankLine() {
+            content.append(BlankLine())
+        }
+
+        func add(table: Table) {
+            content.append(table)
+        }
+
+        func add(header: Header) {
+            content.append(header)
+        }
+    }
+
     func getTotalWarningsTable() -> [String] {
         var lines = [String]()
 
@@ -85,6 +128,13 @@ class PostBuildComparsion {
         guard grandTotal.hasResults else {
             return lines
         }
+
+        let wo = WebOutput()
+        wo.add(header: Header(level: 3, title: "Total Warnings"))
+        wo.addBlankLine()
+        let table = Table()
+        table.addHeader(titles: [" ", "📉", "Description", "Before", "After"])
+        table.set(alignment: [.Center, nil, nil, .Center, .Center])
 
         lines.append("<H3>Total Warnings</H3>")
         lines.append("")
@@ -108,11 +158,12 @@ class PostBuildComparsion {
     }
 
     func createHTMLFiles(row: TotalRowView, outputURL: URL) {
-        let beforeURL = URL(string: outputURL.absoluteString + "/\(row.self.)before.html")!
+        let caller = String(describing: type(of: row.self))
+        let beforeURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_before.html")!
         let dataToSave = getWarningsTable(rows: before.rows)
         Utils.writeToFile(contents: dataToSave, url: beforeURL)
 
-        let afterURL = URL(string: outputURL.absoluteString + "/\(row.self)after.html")!
+        let afterURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_after.html")!
         let dataToSave2 = getWarningsTable(rows: after.rows)
         Utils.writeToFile(contents: dataToSave2, url: afterURL)
     }
