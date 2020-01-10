@@ -27,6 +27,22 @@
 		4C0BC3B123B11D6000DACAB1 /* PostBuildAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358857D723A57FC80081F6A2 /* PostBuildAnalyzer.swift */; };
 		4C0BC3B223B11DD600DACAB1 /* LintWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BC3A723B11ACD00DACAB1 /* LintWarning.swift */; };
 		4C1C0BCE23ADA20B004DC5F3 /* FileWarningModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C0BCD23ADA20B004DC5F3 /* FileWarningModelTests.swift */; };
+		4C33559B23C8AA7F0005C683 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33559A23C8AA7F0005C683 /* Alignment.swift */; };
+		4C33559D23C8AA8E0005C683 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33559C23C8AA8E0005C683 /* Element.swift */; };
+		4C33559F23C8AAA30005C683 /* BlankLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33559E23C8AAA30005C683 /* BlankLine.swift */; };
+		4C3355A123C8AABB0005C683 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355A023C8AABB0005C683 /* Table.swift */; };
+		4C3355A323C8AACD0005C683 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355A223C8AACD0005C683 /* Header.swift */; };
+		4C3355A523C8AAEC0005C683 /* WebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355A423C8AAEC0005C683 /* WebModel.swift */; };
+		4C3355A623C8ABB30005C683 /* Alignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33559A23C8AA7F0005C683 /* Alignment.swift */; };
+		4C3355A723C8ABB60005C683 /* BlankLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33559E23C8AAA30005C683 /* BlankLine.swift */; };
+		4C3355A823C8ABB90005C683 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C33559C23C8AA8E0005C683 /* Element.swift */; };
+		4C3355A923C8ABBB0005C683 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355A223C8AACD0005C683 /* Header.swift */; };
+		4C3355AA23C8ABBD0005C683 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355A023C8AABB0005C683 /* Table.swift */; };
+		4C3355AB23C8ABC00005C683 /* WebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355A423C8AAEC0005C683 /* WebModel.swift */; };
+		4C3355AE23C8ACED0005C683 /* BlankLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355AD23C8ACED0005C683 /* BlankLineTests.swift */; };
+		4C3355B023C8AFB00005C683 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355AF23C8AFB00005C683 /* HeaderTests.swift */; };
+		4C3355B223C8B13B0005C683 /* TableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B123C8B13B0005C683 /* TableTests.swift */; };
+		4C3355B423C92AF80005C683 /* WebModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B323C92AF80005C683 /* WebModelTests.swift */; };
 		4C5A9E2123B514CF00C5BA40 /* SlowExpressionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E2023B514CF00C5BA40 /* SlowExpressionView.swift */; };
 		4C5A9E2323B514DB00C5BA40 /* SlowExpressionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E2223B514DB00C5BA40 /* SlowExpressionController.swift */; };
 		4C5A9E2523B514E700C5BA40 /* SlowExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E2423B514E700C5BA40 /* SlowExpressionModel.swift */; };
@@ -110,6 +126,16 @@
 		4C0BC3A523B117BF00DACAB1 /* PostBuildComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBuildComparison.swift; sourceTree = "<group>"; };
 		4C0BC3A723B11ACD00DACAB1 /* LintWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarning.swift; sourceTree = "<group>"; };
 		4C1C0BCD23ADA20B004DC5F3 /* FileWarningModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWarningModelTests.swift; sourceTree = "<group>"; };
+		4C33559A23C8AA7F0005C683 /* Alignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment.swift; sourceTree = "<group>"; };
+		4C33559C23C8AA8E0005C683 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
+		4C33559E23C8AAA30005C683 /* BlankLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankLine.swift; sourceTree = "<group>"; };
+		4C3355A023C8AABB0005C683 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		4C3355A223C8AACD0005C683 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		4C3355A423C8AAEC0005C683 /* WebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModel.swift; sourceTree = "<group>"; };
+		4C3355AD23C8ACED0005C683 /* BlankLineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankLineTests.swift; sourceTree = "<group>"; };
+		4C3355AF23C8AFB00005C683 /* HeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTests.swift; sourceTree = "<group>"; };
+		4C3355B123C8B13B0005C683 /* TableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTests.swift; sourceTree = "<group>"; };
+		4C3355B323C92AF80005C683 /* WebModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModelTests.swift; sourceTree = "<group>"; };
 		4C5A9E2023B514CF00C5BA40 /* SlowExpressionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionView.swift; sourceTree = "<group>"; };
 		4C5A9E2223B514DB00C5BA40 /* SlowExpressionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionController.swift; sourceTree = "<group>"; };
 		4C5A9E2423B514E700C5BA40 /* SlowExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionModel.swift; sourceTree = "<group>"; };
@@ -242,6 +268,30 @@
 			path = Warnings;
 			sourceTree = "<group>";
 		};
+		4C33559923C8AA700005C683 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				4C33559A23C8AA7F0005C683 /* Alignment.swift */,
+				4C33559E23C8AAA30005C683 /* BlankLine.swift */,
+				4C33559C23C8AA8E0005C683 /* Element.swift */,
+				4C3355A223C8AACD0005C683 /* Header.swift */,
+				4C3355A023C8AABB0005C683 /* Table.swift */,
+				4C3355A423C8AAEC0005C683 /* WebModel.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		4C3355AC23C8ACD80005C683 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				4C3355AD23C8ACED0005C683 /* BlankLineTests.swift */,
+				4C3355AF23C8AFB00005C683 /* HeaderTests.swift */,
+				4C3355B123C8B13B0005C683 /* TableTests.swift */,
+				4C3355B323C92AF80005C683 /* WebModelTests.swift */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
 		4CECF7E923BB816E00B0E5E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +315,7 @@
 		4CECF7FB23BD0CBB00B0E5E8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4C33559923C8AA700005C683 /* Web */,
 				4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */,
 				4CF3BA6B23B43D110087F262 /* URLParser.swift */,
 				350DDE6B23AD2E3300F48143 /* Utils.swift */,
@@ -275,6 +326,7 @@
 		4CECF7FD23BD0CC800B0E5E8 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4C3355AC23C8ACD80005C683 /* Web */,
 				4CF3BA6923B43C8B0087F262 /* URLParserTests.swift */,
 				35B8AB55239499CF00A90A56 /* UtilsTests.swift */,
 				4CECF7FE23BD0D3C00B0E5E8 /* HMTLTests.swift */,
@@ -452,13 +504,17 @@
 				4C5A9E4523B926AF00C5BA40 /* Arguments.swift in Sources */,
 				350DDE7423AD5AF700F48143 /* LInkerWarningController.swift in Sources */,
 				4C5A9E3923B57EFE00C5BA40 /* FileWarningTotalRowView.swift in Sources */,
+				4C3355A523C8AAEC0005C683 /* WebModel.swift in Sources */,
 				4CF3BA4E23B3DE560087F262 /* LinkerWarningModel.swift in Sources */,
 				4CF3BA4C23B3DE260087F262 /* FileWarningView.swift in Sources */,
 				35DE8A27238CA79600F9D48C /* main.swift in Sources */,
 				4C5A9E3523B57E7500C5BA40 /* SlowExpressionTotalRowView.swift in Sources */,
 				4CF3BA4223B3D73D0087F262 /* LinkerWarningView.swift in Sources */,
+				4C3355A123C8AABB0005C683 /* Table.swift in Sources */,
 				4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */,
+				4C3355A323C8AACD0005C683 /* Header.swift in Sources */,
 				4CF3BA5023B3DF180087F262 /* FileWarningModel.swift in Sources */,
+				4C33559F23C8AAA30005C683 /* BlankLine.swift in Sources */,
 				4CECF7FA23BD0CAD00B0E5E8 /* HTML.swift in Sources */,
 				4C5A9E2323B514DB00C5BA40 /* SlowExpressionController.swift in Sources */,
 				4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */,
@@ -469,7 +525,9 @@
 				4C0BC3A823B11ACD00DACAB1 /* LintWarning.swift in Sources */,
 				4C5A9E2523B514E700C5BA40 /* SlowExpressionModel.swift in Sources */,
 				4CF3BA3C23B30E130087F262 /* FileWarningController.swift in Sources */,
+				4C33559D23C8AA8E0005C683 /* Element.swift in Sources */,
 				350DDE7823AD618700F48143 /* WarningModel.swift in Sources */,
+				4C33559B23C8AA7F0005C683 /* Alignment.swift in Sources */,
 				4C5A9E2123B514CF00C5BA40 /* SlowExpressionView.swift in Sources */,
 				350DDE6C23AD2E3300F48143 /* Utils.swift in Sources */,
 				4C5A9E3223B57E3A00C5BA40 /* TotalRowView.swift in Sources */,
@@ -484,17 +542,20 @@
 				4C5A9E3F23B5924000C5BA40 /* SlowExpressionTotalRowView.swift in Sources */,
 				4CF3BA5C23B3E5550087F262 /* FileWarningController.swift in Sources */,
 				4CF3BA5923B3E4590087F262 /* WarningController.swift in Sources */,
+				4C3355B023C8AFB00005C683 /* HeaderTests.swift in Sources */,
 				4CF3BA5623B3E4420087F262 /* FileWarningView.swift in Sources */,
 				4CF3BA6223B436850087F262 /* WarningViewTests.swift in Sources */,
 				4CECF7FF23BD0D3C00B0E5E8 /* HMTLTests.swift in Sources */,
 				4CF3BA6623B439110087F262 /* TestWarningModel.swift in Sources */,
 				4C5A9E2823B5164400C5BA40 /* SlowExpressionView.swift in Sources */,
+				4C3355AE23C8ACED0005C683 /* BlankLineTests.swift in Sources */,
 				4CF3BA4723B3DDBE0087F262 /* LinkerWarningView.swift in Sources */,
 				4CECF7F323BCF18800B0E5E8 /* TotalRowViewTests.swift in Sources */,
 				4CF3BA6A23B43C8B0087F262 /* URLParserTests.swift in Sources */,
 				4C5A9E3E23B5923C00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */,
 				4C5A9E2623B5164000C5BA40 /* SlowExpressionController.swift in Sources */,
 				4CECF7F623BCF30400B0E5E8 /* TestTotalRowView.swift in Sources */,
+				4C3355A823C8ABB90005C683 /* Element.swift in Sources */,
 				4C5A9E2E23B530E200C5BA40 /* SlowExpressionControllerTests.swift in Sources */,
 				350DDE6223AD290400F48143 /* PostBuildAnalzyer+FileWarningTests.swift in Sources */,
 				35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */,
@@ -502,13 +563,18 @@
 				4CECF7F123BCE5D600B0E5E8 /* PostBuildComparisonTests.swift in Sources */,
 				4C0BC3B223B11DD600DACAB1 /* LintWarning.swift in Sources */,
 				4CF3BA6423B438E00087F262 /* WarningControllerTests.swift in Sources */,
+				4C3355AA23C8ABBD0005C683 /* Table.swift in Sources */,
 				4C5A9E2723B5164200C5BA40 /* SlowExpressionModel.swift in Sources */,
 				4CECF7F823BCF4B600B0E5E8 /* TestWarningController.swift in Sources */,
 				4C5A9E2C23B5199000C5BA40 /* SlowExpressionViewTests.swift in Sources */,
+				4C3355A923C8ABBB0005C683 /* Header.swift in Sources */,
+				4C3355A723C8ABB60005C683 /* BlankLine.swift in Sources */,
 				4CF3BA6D23B43E2D0087F262 /* URLParser.swift in Sources */,
+				4C3355A623C8ABB30005C683 /* Alignment.swift in Sources */,
 				4CECF7FC23BD0CC200B0E5E8 /* HTML.swift in Sources */,
 				4C5A9E2A23B5198600C5BA40 /* SlowExpressionModelTests.swift in Sources */,
 				4C5A9E3D23B5923A00C5BA40 /* FileWarningTotalRowView.swift in Sources */,
+				4C3355AB23C8ABC00005C683 /* WebModel.swift in Sources */,
 				4CF3BA5523B3E43B0087F262 /* LinkerWarningModel.swift in Sources */,
 				4CF3BA5823B3E4530087F262 /* WarningVIew.swift in Sources */,
 				350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */,
@@ -521,12 +587,14 @@
 				350DDE7923AD61D100F48143 /* WarningModel.swift in Sources */,
 				4CECF7EF23BB856E00B0E5E8 /* Resource.swift in Sources */,
 				4C063E6A23B990B500BFAD86 /* ArgumentsTests.swift in Sources */,
+				4C3355B423C92AF80005C683 /* WebModelTests.swift in Sources */,
 				350DDE7A23AD61DA00F48143 /* LInkerWarningController.swift in Sources */,
 				4CF3BA5723B3E4450087F262 /* FileWarningModel.swift in Sources */,
 				4C0BC3B023B11D5D00DACAB1 /* PostBuildComparison.swift in Sources */,
 				4C0BC39323B10A9200DACAB1 /* PostBuildAnalzyer+SlowExpressionTests.swift in Sources */,
 				4C5A9E3C23B5923500C5BA40 /* GrandTotalRowView.swift in Sources */,
 				4C0BC3B123B11D6000DACAB1 /* PostBuildAnalyzer.swift in Sources */,
+				4C3355B223C8B13B0005C683 /* TableTests.swift in Sources */,
 				4CF3BA6023B3F7B30087F262 /* LinkerWarningModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

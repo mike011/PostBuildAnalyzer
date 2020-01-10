@@ -43,7 +43,7 @@ class PostBuildComparsion {
     }
 
     public func printTable() {
-        for line in getNewWarningsTable() {
+        for line in getNewWarningsTable().toHTML() {
             print(line)
         }
         print("<BR>")
@@ -52,18 +52,21 @@ class PostBuildComparsion {
         }
     }
 
-    func getNewWarningsTable() -> [String] {
+    func getNewWarningsTable() -> WebModel {
+        let model = WebModel()
+
         var lines = [String]()
         guard !after.rows.isEmpty else {
-            return lines
+            return model
         }
 
+        model.addHeader(level: 3, title: "New Warnings")
         lines.append("<H3>New Warnings</H3>")
-        lines.append("")
+        lines.append("<BR>")
         for line in getWarningsTable(rows: after.rows) {
             lines.append(line)
         }
-        return lines
+        return model
     }
 
     func getWarningsTable(rows: [String]) -> [String] {
@@ -77,49 +80,6 @@ class PostBuildComparsion {
         return lines
     }
 
-    class Element {}
-
-    class BlankLine: Element {}
-
-    enum Alignment {
-        case Left
-        case Right
-        case Center
-    }
-
-    class Table: Element {
-        func addHeader(titles: [String]) {}
-
-        func set(alignment: [Alignment?]) {}
-
-        func addRow(column: [String]) {}
-    }
-
-    class Header: Element {
-        let level: Int
-        let title: String
-        init(level: Int, title: String) {
-            self.level = level
-            self.title = title
-        }
-    }
-
-    class WebOutput {
-        var content = [Element]()
-
-        func addBlankLine() {
-            content.append(BlankLine())
-        }
-
-        func add(table: Table) {
-            content.append(table)
-        }
-
-        func add(header: Header) {
-            content.append(header)
-        }
-    }
-
     func getTotalWarningsTable() -> [String] {
         var lines = [String]()
 
@@ -129,12 +89,13 @@ class PostBuildComparsion {
             return lines
         }
 
-        let wo = WebOutput()
-        wo.add(header: Header(level: 3, title: "Total Warnings"))
+        let wo = WebModel()
+        wo.addHeader(level: 3, title: "Total Warnings")
         wo.addBlankLine()
-        let table = Table()
-        table.addHeader(titles: [" ", "📉", "Description", "Before", "After"])
-        table.set(alignment: [.Center, nil, nil, .Center, .Center])
+        // TableHeader
+        // let table = Table(headers: )
+        //table.addHeader(titles: [" ", "📉", "Description", "Before", "After"])
+        //table.set(alignment: [.Center, nil, nil, .Center, .Center])
 
         lines.append("<H3>Total Warnings</H3>")
         lines.append("")
