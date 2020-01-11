@@ -32,7 +32,8 @@ class PostBuildComparisonTests: XCTestCase {
         let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getNewWarningsTable().elements.isEmpty)
+        let table = pbc.getNewWarningsTable()
+        XCTAssertFalse(table.elements.isEmpty)
         XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
     }
 

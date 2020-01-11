@@ -5,27 +5,27 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.020151">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.006689">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: rm -rf ./test_output" time="0.019991">
+      <testcase classname="fastlane.lanes" name="1: rm -rf ./test_output" time="0.00945">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: scan" time="27.199589">
+      <testcase classname="fastlane.lanes" name="2: scan" time="8.294602">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: Switch to ios generate_code_coverage_report lane" time="0.011544">
+      <testcase classname="fastlane.lanes" name="3: Switch to ios lint lane" time="0.001305">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: slather" time="4.972123">
+      <testcase classname="fastlane.lanes" name="4: swiftlint" time="0.522432">
         
       </testcase>
     

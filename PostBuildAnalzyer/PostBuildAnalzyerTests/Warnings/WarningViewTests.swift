@@ -9,8 +9,9 @@
 import XCTest
 
 class WarningViewTests: XCTestCase {
-    func testPrintRow() {
-//        let view = TestWarningView()
-//        XCTAssertEqual(view.printRow(model: TestWarningModel()), "|S|detailed descripton|measured value|")
+    func testFillRow() {
+        var view = MockWarningView()
+        view.fillRow(model: MockWarningModel())
+        XCTAssertEqual(view.columns, ["S", "detailed descripton", "measured value"])
     }
 }

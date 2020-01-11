@@ -1,5 +1,0 @@
-2019-11-23 02:32:57 +0000: Received worker from worker provider: 0x7fb568b18610 [0: My Mac (726AD37D-3061-5983-8D38-659A76A39F02)]
-2019-11-23 02:32:59 +0000: Worker 0x7fb568b18610 [10217: My Mac (726AD37D-3061-5983-8D38-659A76A39F02)] finished bootstrapping
-2019-11-23 02:32:59 +0000: Parallelization disabled; test execution driven by the test process
-2019-11-23 02:32:59 +0000: Worker 0x7fb568b18610 [10217: My Mac (726AD37D-3061-5983-8D38-659A76A39F02)] finished successfully
-2019-11-23 02:32:59 +0000: Finished executing tests (cancelled: No)

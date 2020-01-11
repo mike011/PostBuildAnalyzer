@@ -20,23 +20,26 @@ platform :ios do
   lane :test do
     sh "rm -rf ./test_output"
     scan(
-        project: "Example.xcodeproj",
+        project: "After.xcodeproj",
         scheme: "Example (After)",
         configuration: "Debug",
-        xcargs: "GCC_WARN_INHIBIT_ALL_WARNINGS=YES ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64",
+        buildlog_path: "./fastlane/test_output",
+        xcargs: "GCC_WARN_INHIBIT_ALL_WARNINGS=YES ONLY_ACTIVE_ARCH=YES VALID_ARCHS=x86_64 OTHER_SWIFT_FLAGS='-Xfrontend -warn-long-expression-type-checking=100 -Xfrontend -debug-time-function-bodies'",
         code_coverage: true,
         result_bundle: true,
         output_directory: "./fastlane/test_output"
       )
-      generate_code_coverage_report
+      lint
   end
 
-  private_lane :generate_code_coverage_report do
-    slather(
-      scheme: "Example (After)",
-      proj: "Example.xcodeproj",
-      output_directory: "fastlane/test_output/slather",
-      html: true,
-    )
-  end
+  desc "Check style and conventions (swiftlint)"
+  lane :lint do
+    if !(File.directory?("./test_output/"))
+      sh 'mkdir ./test_output/'
+    end
+    swiftlint(
+      reporter: "html",
+      config_file: ".swiftlint.yml",
+      output_file: "fastlane/test_output/lint.html")
+ end
 end

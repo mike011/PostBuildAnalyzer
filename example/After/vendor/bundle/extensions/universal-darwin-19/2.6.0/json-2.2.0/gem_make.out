@@ -1,13 +1,13 @@
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/json-2.2.0/ext/json
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20191120-23992-1d74p49.rb extconf.rb
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/json-2.2.0/ext/json
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20191120-11226-1xqu913.rb extconf.rb
 creating Makefile
 
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/json-2.2.0/ext/json
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/json-2.2.0/ext/json
 make "DESTDIR=" clean
 
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/json-2.2.0/ext/json
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/json-2.2.0/ext/json
 make "DESTDIR="
 make: Nothing to be done for `all'.
 
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/json-2.2.0/ext/json
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/json-2.2.0/ext/json
 make "DESTDIR=" install

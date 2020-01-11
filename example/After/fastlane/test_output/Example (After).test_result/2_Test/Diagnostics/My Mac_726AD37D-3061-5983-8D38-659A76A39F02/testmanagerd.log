@@ -1,6 +1,0 @@
-21:32:59.080 xcodebuild[10117:65687] Got authorization request for pid 10217
-
-21:32:59.080 xcodebuild[10117:65687] Requesting authorization for pid 10217
-
-21:32:59.103 xcodebuild[10117:65688] Got reply to authorization request for pid 10217 (result:error): 1: (null)
-

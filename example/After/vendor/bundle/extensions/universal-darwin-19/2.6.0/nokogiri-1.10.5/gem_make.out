@@ -1,5 +1,5 @@
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
-/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20191120-23992-o5wzoc.rb extconf.rb
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20191120-12057-gjadn9.rb extconf.rb
 checking if the C compiler accepts  -I /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libxml2... yes
 checking if the C compiler accepts -Wno-error=unused-command-line-argument-hard-error-in-future... no
 Building nokogiri using packaged libraries.
@@ -34,13 +34,13 @@ Note, however, that nokogiri is not fully compatible with arbitrary
 versions of libxml2 provided by OS/package vendors.
 ************************************************************************
 Extracting libxml2-2.9.10.tar.gz into tmp/x86_64-apple-darwin19/ports/libxml2/2.9.10... OK
-Running git apply with /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/patches/libxml2/0001-Revert-Do-not-URI-escape-in-server-side-includes.patch... OK
-Running git apply with /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/patches/libxml2/0002-Remove-script-macro-support.patch... OK
-Running git apply with /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/patches/libxml2/0003-Update-entities-to-remove-handling-of-ssi.patch... OK
+Running git apply with /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/patches/libxml2/0001-Revert-Do-not-URI-escape-in-server-side-includes.patch... OK
+Running git apply with /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/patches/libxml2/0002-Remove-script-macro-support.patch... OK
+Running git apply with /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/patches/libxml2/0003-Update-entities-to-remove-handling-of-ssi.patch... OK
 Running 'configure' for libxml2 2.9.10... OK
 Running 'compile' for libxml2 2.9.10... OK
 Running 'install' for libxml2 2.9.10... OK
-Activating libxml2 2.9.10 (from /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ports/x86_64-apple-darwin19/libxml2/2.9.10)...
+Activating libxml2 2.9.10 (from /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ports/x86_64-apple-darwin19/libxml2/2.9.10)...
 ************************************************************************
 IMPORTANT NOTICE:
 
@@ -64,7 +64,7 @@ Extracting libxslt-1.1.34.tar.gz into tmp/x86_64-apple-darwin19/ports/libxslt/1.
 Running 'configure' for libxslt 1.1.34... OK
 Running 'compile' for libxslt 1.1.34... OK
 Running 'install' for libxslt 1.1.34... OK
-Activating libxslt 1.1.34 (from /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ports/x86_64-apple-darwin19/libxslt/1.1.34)...
+Activating libxslt 1.1.34 (from /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ports/x86_64-apple-darwin19/libxslt/1.1.34)...
 checking for -llzma... yes
 checking for xmlParseDoc() in libxml/parser.h... yes
 checking for xsltParseStylesheetDoc() in libxslt/xslt.h... yes
@@ -78,10 +78,10 @@ checking for xmlSchemaSetValidStructuredErrors()... yes
 checking for xmlSchemaSetParserStructuredErrors()... yes
 creating Makefile
 
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
 make "DESTDIR=" clean
 
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
 make "DESTDIR="
 compiling html_document.c
 compiling html_element_description.c
@@ -124,9 +124,9 @@ compiling xslt_stylesheet.c
 linking shared-object nokogiri/nokogiri.bundle
 ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.Internal.sdk/usr/local/lib'
 Cleaning files only used during build.
-rm -rf /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri/tmp/x86_64-apple-darwin19/ports
-rm -rf /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ports
+rm -rf /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri/tmp/x86_64-apple-darwin19/ports
+rm -rf /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ports
 
-current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/After/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
+current directory: /Users/michael/Documents/git/CodeCoverageCompare/example/Before/Example/vendor/bundle/gems/nokogiri-1.10.5/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20191120-23992-x1xfth/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20191120-12057-k83vxp/nokogiri

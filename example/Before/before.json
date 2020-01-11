@@ -5,5 +5,5 @@
     "logFileName": "Example-Example (Before).log",
     "baseURLPath": "https://mike011.github.io/PostBuildAnalyzer/before/",
     "lintFileName": "lint.html",
-    "buildTimeThresholdInMS": 200
+    "buildTimeThresholdInMS": 10
 }

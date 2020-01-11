@@ -40,7 +40,7 @@ class PostBuildAnalyzerTests: XCTestCase {
         let pba = PostBuildAnalzyer(args: args)
         XCTAssertFalse(pba.allWarnings.isEmpty)
         XCTAssertFalse(pba.fileWarningController.isEmpty)
-        XCTAssertTrue(pba.linkerController.isEmpty)
+        XCTAssertFalse(pba.linkerController.isEmpty)
         XCTAssertTrue(pba.slowExpressions.isEmpty)
         XCTAssertFalse(pba.rows.isEmpty)
     }

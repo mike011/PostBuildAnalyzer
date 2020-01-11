@@ -44,4 +44,11 @@ class UtilsTests: XCTestCase {
         XCTAssertTrue(Utils.load(file: nil).isEmpty)
         XCTAssertFalse(Utils.load(file: EXAMPLE_JSON).isEmpty)
     }
+
+    func testWriteToFile() {
+        let url = URL(fileURLWithPath: "temp.txt", relativeTo: FileManager.default.temporaryDirectory)
+        Utils.writeToFile(contents: ["a", "b"], url: url)
+        let contents = Utils.load(file: url.path)
+        XCTAssertFalse(contents.isEmpty)
+    }
 }

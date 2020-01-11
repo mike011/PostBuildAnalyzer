@@ -79,14 +79,23 @@ public class Utils {
     }
 
     static func writeToFile(contents: [String], url: URL) {
-        for content in contents {
-            writeToFile(contents: content, url: url)
-        }
-    }
-
-    static func writeToFile(contents: String, url: URL) {
         do {
-            try contents.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+            if FileManager.default.fileExists(atPath: url.path) {
+                try FileManager.default.removeItem(atPath: url.path)
+            }
+
+            if let data = contents[0].data(using: String.Encoding.utf8) {
+                try data.write(to: url)
+            }
+            let fileHandle = try FileHandle(forWritingTo: url)
+            for content in contents.dropFirst() {
+                fileHandle.seekToEndOfFile()
+                let line = content + "\r\n"
+                if let data = line.data(using: String.Encoding.utf8) {
+                    fileHandle.write(data)
+                }
+            }
+            fileHandle.closeFile()
         } catch let error as NSError {
             print("Ooops! Something went wrong: \(error)")
         }

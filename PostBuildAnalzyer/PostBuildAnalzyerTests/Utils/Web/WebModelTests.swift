@@ -30,12 +30,37 @@ class WebModelTests: XCTestCase {
     func testToHTML() {
         let wm = WebModel()
         wm.addBlankLine()
-        XCTAssertEqual([" "], wm.toHTML())
+        XCTAssertEqual(["<head><meta charset='utf-8'></head>", " "], wm.toHTML())
     }
 
     func testToMarkdown() {
         let wm = WebModel()
         wm.addBlankLine()
         XCTAssertEqual([" "], wm.toMarkdown())
+    }
+
+    func testTableToHTML() {
+        // Given
+        let header = TableHeader(title: "Title", alignment: .Center)
+        let table = Table(headers: [header])
+        table.add(row: MockTableRowModel(columns: ["First"]))
+        let wm = WebModel()
+
+        // When
+        wm.add(table: table)
+        let actual = wm.toHTML()
+
+        // Then
+        var result = [String]()
+        result.append("<head><meta charset='utf-8'></head>")
+        result.append("<table border=\"1\">")
+        result.append("<tr>")
+        result.append("<th>Title</th>")
+        result.append("</tr>")
+        result.append("<tr>")
+        result.append("<td align=\"center\">First</td>")
+        result.append("</tr>")
+        result.append("</table>")
+        XCTAssertStringArray(actual, result)
     }
 }

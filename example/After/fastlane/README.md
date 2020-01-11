@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Description of what the lane does
+### ios lint
+```
+fastlane ios lint
+```
+Check style and conventions (swiftlint)
 
 ----
 

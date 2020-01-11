@@ -29,6 +29,7 @@ class WebModel: Element {
 
     func toHTML() -> [String] {
         var result = [String]()
+        result.append("<head><meta charset='utf-8'></head>")
         for element in elements {
             result += element.toHTML()
         }

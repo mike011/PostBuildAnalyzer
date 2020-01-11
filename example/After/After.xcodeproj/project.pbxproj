@@ -7,20 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C5A9E4323B9265700C5BA40 /* after.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A9E4223B9265600C5BA40 /* after.json */; };
+		4C3157AC23A7CC290062EC74 /* Warnings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3157AB23A7CC290062EC74 /* Warnings.swift */; };
+		4C3157AE23A7CC340062EC74 /* SlowFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3157AD23A7CC340062EC74 /* SlowFiles.swift */; };
 		4CA6CD222378F35E0010ACC9 /* Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA6CD182378F35E0010ACC9 /* Example.framework */; };
 		4CA6CD292378F35E0010ACC9 /* Example.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CA6CD1B2378F35E0010ACC9 /* Example.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4CA6CD342378F4670010ACC9 /* ExistingClassNotCovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD322378F4670010ACC9 /* ExistingClassNotCovered.swift */; };
-		4CA6CD352378F4670010ACC9 /* ExistingClassCovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD332378F4670010ACC9 /* ExistingClassCovered.swift */; };
-		4CA6CD372378F46E0010ACC9 /* ExistingClassCoveredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD362378F46E0010ACC9 /* ExistingClassCoveredTests.swift */; };
-		4CA6CD392378F4EC0010ACC9 /* ExistingClassCoverageDropped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD382378F4EC0010ACC9 /* ExistingClassCoverageDropped.swift */; };
-		4CA6CD3D2378F5400010ACC9 /* NewClassNoCoverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD3C2378F5400010ACC9 /* NewClassNoCoverage.swift */; };
-		4CA6CD3F2378F5610010ACC9 /* NewClassCovered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD3E2378F5610010ACC9 /* NewClassCovered.swift */; };
-		4CA6CD412378F56D0010ACC9 /* NewClassCoveredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD402378F56D0010ACC9 /* NewClassCoveredTests.swift */; };
-		4CA6CD7F237F1CFD0010ACC9 /* ExistingClassCoverageDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD7E237F1CFD0010ACC9 /* ExistingClassCoverageDown.swift */; };
-		4CA6CD81237F1D770010ACC9 /* ExistingClassCoverageUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD80237F1D770010ACC9 /* ExistingClassCoverageUp.swift */; };
-		4CA6CD8C237F1EFB0010ACC9 /* ExistingClassCoverageDownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD8A237F1EFB0010ACC9 /* ExistingClassCoverageDownTests.swift */; };
-		4CA6CD8D237F1EFB0010ACC9 /* ExistingClassCoverageUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6CD8B237F1EFB0010ACC9 /* ExistingClassCoverageUpTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,23 +24,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C5A9E4223B9265600C5BA40 /* after.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = after.json; sourceTree = "<group>"; };
+		4C3157AB23A7CC290062EC74 /* Warnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warnings.swift; sourceTree = "<group>"; };
+		4C3157AD23A7CC340062EC74 /* SlowFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowFiles.swift; sourceTree = "<group>"; };
+		4C3157AF23A7CC400062EC74 /* LintWarnings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarnings.swift; sourceTree = "<group>"; };
+		4C5A9E4023B9243900C5BA40 /* after.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = after.json; sourceTree = "<group>"; };
 		4CA6CD182378F35E0010ACC9 /* Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA6CD1B2378F35E0010ACC9 /* Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
 		4CA6CD1C2378F35E0010ACC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CA6CD212378F35E0010ACC9 /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA6CD282378F35E0010ACC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CA6CD322378F4670010ACC9 /* ExistingClassNotCovered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingClassNotCovered.swift; sourceTree = "<group>"; };
-		4CA6CD332378F4670010ACC9 /* ExistingClassCovered.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingClassCovered.swift; sourceTree = "<group>"; };
-		4CA6CD362378F46E0010ACC9 /* ExistingClassCoveredTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingClassCoveredTests.swift; sourceTree = "<group>"; };
-		4CA6CD382378F4EC0010ACC9 /* ExistingClassCoverageDropped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingClassCoverageDropped.swift; sourceTree = "<group>"; };
-		4CA6CD3C2378F5400010ACC9 /* NewClassNoCoverage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassNoCoverage.swift; sourceTree = "<group>"; };
-		4CA6CD3E2378F5610010ACC9 /* NewClassCovered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassCovered.swift; sourceTree = "<group>"; };
-		4CA6CD402378F56D0010ACC9 /* NewClassCoveredTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClassCoveredTests.swift; sourceTree = "<group>"; };
-		4CA6CD7E237F1CFD0010ACC9 /* ExistingClassCoverageDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingClassCoverageDown.swift; sourceTree = "<group>"; };
-		4CA6CD80237F1D770010ACC9 /* ExistingClassCoverageUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingClassCoverageUp.swift; sourceTree = "<group>"; };
-		4CA6CD8A237F1EFB0010ACC9 /* ExistingClassCoverageDownTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingClassCoverageDownTests.swift; sourceTree = "<group>"; };
-		4CA6CD8B237F1EFB0010ACC9 /* ExistingClassCoverageUpTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingClassCoverageUpTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +57,7 @@
 		4CA6CD0E2378F35E0010ACC9 = {
 			isa = PBXGroup;
 			children = (
-				4C5A9E4223B9265600C5BA40 /* after.json */,
+				4C5A9E4023B9243900C5BA40 /* after.json */,
 				4CA6CD1A2378F35E0010ACC9 /* Example */,
 				4CA6CD252378F35E0010ACC9 /* ExampleTests */,
 				4CA6CD192378F35E0010ACC9 /* Products */,
@@ -94,15 +76,11 @@
 		4CA6CD1A2378F35E0010ACC9 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				4CA6CD332378F4670010ACC9 /* ExistingClassCovered.swift */,
-				4CA6CD322378F4670010ACC9 /* ExistingClassNotCovered.swift */,
-				4CA6CD382378F4EC0010ACC9 /* ExistingClassCoverageDropped.swift */,
-				4CA6CD7E237F1CFD0010ACC9 /* ExistingClassCoverageDown.swift */,
-				4CA6CD80237F1D770010ACC9 /* ExistingClassCoverageUp.swift */,
 				4CA6CD1B2378F35E0010ACC9 /* Example.h */,
 				4CA6CD1C2378F35E0010ACC9 /* Info.plist */,
-				4CA6CD3C2378F5400010ACC9 /* NewClassNoCoverage.swift */,
-				4CA6CD3E2378F5610010ACC9 /* NewClassCovered.swift */,
+				4C3157AB23A7CC290062EC74 /* Warnings.swift */,
+				4C3157AD23A7CC340062EC74 /* SlowFiles.swift */,
+				4C3157AF23A7CC400062EC74 /* LintWarnings.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -110,11 +88,7 @@
 		4CA6CD252378F35E0010ACC9 /* ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				4CA6CD8A237F1EFB0010ACC9 /* ExistingClassCoverageDownTests.swift */,
-				4CA6CD8B237F1EFB0010ACC9 /* ExistingClassCoverageUpTests.swift */,
-				4CA6CD362378F46E0010ACC9 /* ExistingClassCoveredTests.swift */,
 				4CA6CD282378F35E0010ACC9 /* Info.plist */,
-				4CA6CD402378F56D0010ACC9 /* NewClassCoveredTests.swift */,
 			);
 			path = ExampleTests;
 			sourceTree = "<group>";
@@ -212,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C5A9E4323B9265700C5BA40 /* after.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,13 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA6CD3D2378F5400010ACC9 /* NewClassNoCoverage.swift in Sources */,
-				4CA6CD7F237F1CFD0010ACC9 /* ExistingClassCoverageDown.swift in Sources */,
-				4CA6CD81237F1D770010ACC9 /* ExistingClassCoverageUp.swift in Sources */,
-				4CA6CD352378F4670010ACC9 /* ExistingClassCovered.swift in Sources */,
-				4CA6CD392378F4EC0010ACC9 /* ExistingClassCoverageDropped.swift in Sources */,
-				4CA6CD3F2378F5610010ACC9 /* NewClassCovered.swift in Sources */,
-				4CA6CD342378F4670010ACC9 /* ExistingClassNotCovered.swift in Sources */,
+				4C3157AE23A7CC340062EC74 /* SlowFiles.swift in Sources */,
+				4C3157AC23A7CC290062EC74 /* Warnings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,10 +212,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA6CD372378F46E0010ACC9 /* ExistingClassCoveredTests.swift in Sources */,
-				4CA6CD8C237F1EFB0010ACC9 /* ExistingClassCoverageDownTests.swift in Sources */,
-				4CA6CD8D237F1EFB0010ACC9 /* ExistingClassCoverageUpTests.swift in Sources */,
-				4CA6CD412378F56D0010ACC9 /* NewClassCoveredTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,6 +356,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = NOT_A_REAL_PATH;
 				INFOPLIST_FILE = Example/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -418,6 +383,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = NOT_A_REAL_PATH;
 				INFOPLIST_FILE = Example/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

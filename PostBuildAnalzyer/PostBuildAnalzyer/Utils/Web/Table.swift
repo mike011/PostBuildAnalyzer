@@ -25,7 +25,7 @@ class Table: Element {
         guard !rows.isEmpty else {
             return result
         }
-        result.append("<table>")
+        result.append("<table border=\"1\">")
         result.append("<tr>")
         for header in headers {
             result.append("<th>\(header.title)</th>")

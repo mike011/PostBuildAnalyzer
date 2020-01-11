@@ -118,11 +118,11 @@ class PostBuildComparsion {
     func createHTMLFiles(row: TotalRowView, outputURL: URL) {
         let caller = String(describing: type(of: row.self))
         let beforeURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_before.html")!
-        // let dataToSave = getWarningsTable(rows: before.rows)
-        // Utils.writeToFile(contents: dataToSave, url: beforeURL)
+        let dataToSave = getWarningsTable(rows: before.rows).toHTML()
+        Utils.writeToFile(contents: dataToSave, url: beforeURL)
 
         let afterURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_after.html")!
-        // let dataToSave2 = getWarningsTable(rows: after.rows)
-        // Utils.writeToFile(contents: dataToSave2, url: afterURL)
+        let dataToSave2 = getWarningsTable(rows: after.rows).toHTML()
+        Utils.writeToFile(contents: dataToSave2, url: afterURL)
     }
 }

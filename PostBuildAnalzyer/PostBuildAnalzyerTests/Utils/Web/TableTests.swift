@@ -28,7 +28,7 @@ class TableTests: XCTestCase {
 
         // Then
         var result = [String]()
-        result.append("<table>")
+        result.append("<table border=\"1\">")
         result.append("<tr>")
         result.append("<th>TITLE</th>")
         result.append("</tr>")
@@ -50,7 +50,7 @@ class TableTests: XCTestCase {
 
         // Then
         var result = [String]()
-        result.append("<table>")
+        result.append("<table border=\"1\">")
         result.append("<tr>")
         result.append("<th>Align Test</th>")
         result.append("</tr>")
@@ -58,7 +58,7 @@ class TableTests: XCTestCase {
         result.append("<td align=\"center\">Centered</td>")
         result.append("</tr>")
         result.append("</table>")
-        XCTAssertStringArray(expression1: table.toHTML(), expression2: result)
+        XCTAssertStringArray(table.toHTML(), result)
     }
 
     func testToHTMLMultipleRowsAndColumnsWithAlignment() {
@@ -75,7 +75,7 @@ class TableTests: XCTestCase {
 
         // THen
         var result = [String]()
-        result.append("<table>")
+        result.append("<table border=\"1\">")
         result.append("<tr>")
         result.append("<th>Align</th>")
         result.append("<th>Test</th>")
@@ -89,7 +89,7 @@ class TableTests: XCTestCase {
         result.append("<td align=\"left\">True</td>")
         result.append("</tr>")
         result.append("</table>")
-        XCTAssertStringArray(expression1: table.toHTML(), expression2: result)
+        XCTAssertStringArray(table.toHTML(), result)
     }
 
     // MARK: - toMarkdown
@@ -114,7 +114,7 @@ class TableTests: XCTestCase {
         result.append("|TITLE|")
         result.append("|---|")
         result.append("|One|")
-        XCTAssertStringArray(expression1: table.toMarkdown(), expression2: result)
+        XCTAssertStringArray(table.toMarkdown(), result)
     }
 
     func testToMarkdownOneRowWithAlignment() {
@@ -131,7 +131,7 @@ class TableTests: XCTestCase {
         result.append("|Align Test|")
         result.append("|:---:|")
         result.append("|Centered|")
-        XCTAssertStringArray(expression1: table.toMarkdown(), expression2: result)
+        XCTAssertStringArray(table.toMarkdown(), result)
     }
 
     func testToMarkdownMultipleRowsAndColumnsWithAlignment() {
@@ -152,12 +152,12 @@ class TableTests: XCTestCase {
         result.append("|:---:|:---|")
         result.append("|First|Second|")
         result.append("|Again|True|")
-        XCTAssertStringArray(expression1: table.toMarkdown(), expression2: result)
+        XCTAssertStringArray(table.toMarkdown(), result)
     }
 }
 
 extension XCTest {
-    func XCTAssertStringArray(expression1: [String], expression2: [String], file: StaticString = #file, line: UInt = #line) {
+    func XCTAssertStringArray(_ expression1: [String], _ expression2: [String], file: StaticString = #file, line: UInt = #line) {
         XCTAssertEqual(expression1.count, expression2.count, "size does not match", file: file, line: line)
         for x in 0 ..< expression1.count {
             XCTAssertEqual(expression1[x], expression2[x], "line does not match", file: file, line: line)

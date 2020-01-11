@@ -5,5 +5,5 @@
     "logFileName": "Example-Example (After).log",
     "baseURLPath": "https://mike011.github.io/PostBuildAnalyzer/after/",
     "lintFileName": "lint.html",
-    "buildTimeThresholdInMS": 200
+    "buildTimeThresholdInMS": 10
 }
