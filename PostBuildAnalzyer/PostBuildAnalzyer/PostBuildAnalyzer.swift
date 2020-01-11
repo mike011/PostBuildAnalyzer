@@ -11,10 +11,10 @@ import Foundation
 class PostBuildAnalzyer {
     private var warnings = [String: WarningController]()
 
-    var rows: [String] {
-        var result = [String]()
+    var rows: [TableRowModel] {
+        var result = [TableRowModel]()
         for warning in warnings {
-            result.append(warning.value.printView())
+            result.append(warning.value.view)
         }
         return result
     }

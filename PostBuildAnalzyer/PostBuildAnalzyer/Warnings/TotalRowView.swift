@@ -15,6 +15,13 @@ protocol TotalRowView {
     var after: [WarningController] { get set }
 }
 
+class TotalTableRowModel: TableRowModel {
+    var columns: [String]
+    init(columns: [String]) {
+        self.columns = columns
+    }
+}
+
 extension TotalRowView {
     var change: String {
         var change = ""
@@ -26,10 +33,11 @@ extension TotalRowView {
         return change
     }
 
-    func row(baseURL: URL?) -> String {
+    func row(baseURL: URL?) -> TableRowModel {
         let beforeCount = getAHREF(baseURL: baseURL, page: "before", title: before.count)
         let afterCount = getAHREF(baseURL: baseURL, page: "after", title: after.count)
-        return "|\(change)|\(symbol)|\(description)|\(beforeCount)|\(afterCount)|"
+        let columns = [change, symbol, description, beforeCount, afterCount]
+        return TotalTableRowModel(columns: columns)
     }
 
     private func getAHREF(baseURL: URL?, page: String, title: Int) -> String {

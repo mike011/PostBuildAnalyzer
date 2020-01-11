@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct TableHeader {
-    let title: String
-    let alignment: Alignment?
-}
-
 class Table: Element {
     private var headers: [TableHeader]
     private var rows = [[String]]()
@@ -21,8 +16,8 @@ class Table: Element {
         self.headers = headers
     }
 
-    func addRow(columns: [String]) {
-        rows.append(columns)
+    func add(row: TableRowModel) {
+        rows.append(row.columns)
     }
 
     func toHTML() -> [String] {

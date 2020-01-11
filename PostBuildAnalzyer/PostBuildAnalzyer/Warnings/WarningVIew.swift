@@ -8,19 +8,17 @@
 
 import Foundation
 
-protocol WarningView {
+protocol WarningView: TableRowModel {
     var symbol: String { get }
     func getDetailedDescription(model: WarningModel) -> String
     func getMeasuredValue(model: WarningModel) -> String
-
-    @discardableResult
-    func printRow(model: WarningModel) -> String
+    mutating func fillRow(model: WarningModel)
 }
 
 extension WarningView {
-    func printRow(model: WarningModel) -> String {
-        let row = "|\(symbol)|\(getDetailedDescription(model: model))|\(getMeasuredValue(model: model))|"
-        //  print(row)
-        return row
+    mutating func fillRow(model: WarningModel) {
+        columns.append(symbol)
+        columns.append(getDetailedDescription(model: model))
+        columns.append(getMeasuredValue(model: model))
     }
 }

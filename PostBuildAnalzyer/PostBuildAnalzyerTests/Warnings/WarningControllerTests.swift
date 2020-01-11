@@ -10,35 +10,30 @@ import XCTest
 
 class WarningControllerTests: XCTestCase {
     func testEqualsDifferent() {
-        let model = TestWarningModel()
+        let model = MockWarningModel()
         model.line = "LINE"
-        let controller = WarningController(model: model, view: TestWarningView())
-        let controller2 = WarningController(model: TestWarningModel(), view: TestWarningView())
+        let controller = WarningController(model: model, view: MockWarningView())
+        let controller2 = WarningController(model: MockWarningModel(), view: MockWarningView())
 
         XCTAssertNotEqual(controller, controller2)
     }
 
     func testEqualsSame() {
-        let controller = WarningController(model: TestWarningModel(), view: TestWarningView())
-        let controller2 = WarningController(model: TestWarningModel(), view: TestWarningView())
+        let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
+        let controller2 = WarningController(model: MockWarningModel(), view: MockWarningView())
 
         XCTAssertEqual(controller, controller2)
     }
 
-    func testPrintView() {
-        let controller = WarningController(model: TestWarningModel(), view: TestWarningView())
-        XCTAssertEqual(controller.printView(), "|S|detailed descripton|measured value|")
-    }
-
     func testAmountOfWarnings() {
-        let controller = WarningController(model: TestWarningModel(), view: TestWarningView())
+        let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
         XCTAssertEqual(controller.getTotalWarnings(), 1)
         controller.addDuplicate()
         XCTAssertEqual(controller.getTotalWarnings(), 2)
     }
 
     func testHash() {
-        let controller = WarningController(model: TestWarningModel(), view: TestWarningView())
+        let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
         let hasherBefore = Hasher().finalize()
         var hasher = Hasher()
         controller.hash(into: &hasher)

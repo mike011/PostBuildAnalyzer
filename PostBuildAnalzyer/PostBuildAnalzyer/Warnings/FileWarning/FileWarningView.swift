@@ -9,6 +9,7 @@
 import Foundation
 
 class FileWarningView: WarningView {
+    var columns = [String]()
     let symbol = "⚠️"
 
     func getDetailedDescription(model: WarningModel) -> String {

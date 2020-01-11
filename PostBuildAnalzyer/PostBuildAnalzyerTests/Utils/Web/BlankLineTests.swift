@@ -12,10 +12,10 @@ class BlankLineTests: XCTestCase {
     private let blankLine = BlankLine()
 
     func testToHTML() {
-        XCTAssertEqual(blankLine.toHTML(), ["<BR>"])
+        XCTAssertEqual(blankLine.toHTML(), [" "])
     }
 
     func testToMarkdown() {
-        XCTAssertEqual(blankLine.toMarkdown(), ["<BR>"])
+        XCTAssertEqual(blankLine.toMarkdown(), [" "])
     }
 }

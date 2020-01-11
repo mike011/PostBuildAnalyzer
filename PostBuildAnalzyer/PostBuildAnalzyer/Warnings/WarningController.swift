@@ -10,11 +10,12 @@ import Foundation
 
 class WarningController: Hashable, Equatable {
     var model: WarningModel
-    private var view: WarningView
+    var view: WarningView
 
     init(model: WarningModel, view: WarningView) {
         self.model = model
         self.view = view
+        fillRow()
     }
 
     static func == (lhs: WarningController, rhs: WarningController) -> Bool {
@@ -25,16 +26,15 @@ class WarningController: Hashable, Equatable {
         hasher.combine(model.line)
     }
 
-    @discardableResult
-    func printView() -> String {
-        return view.printRow(model: model)
-    }
-
     func addDuplicate() {
         model.count += 1
     }
 
     func getTotalWarnings() -> Int {
-        return Int(model.count)
+        return model.count
+    }
+
+    func fillRow() {
+        view.fillRow(model: model)
     }
 }

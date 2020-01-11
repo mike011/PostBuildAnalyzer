@@ -8,7 +8,6 @@
 
 import Foundation
 
-// This is the View
 class FileWarningController: WarningController {
     init(repoURL: String, branch: String, line: String) {
         let model = FileWarningModel(repoURL: repoURL, branch: branch, line: line)

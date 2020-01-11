@@ -9,6 +9,7 @@
 import Foundation
 
 class SlowExpressionView: WarningView {
+    var columns = [String]()
     var symbol: String = "⏱"
 
     func getDetailedDescription(model: WarningModel) -> String {

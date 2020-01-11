@@ -23,6 +23,10 @@ class WebModel: Element {
         elements.append(Header(level: level, title: title))
     }
 
+    func add(webModel: WebModel) {
+        elements += webModel.elements
+    }
+
     func toHTML() -> [String] {
         var result = [String]()
         for element in elements {

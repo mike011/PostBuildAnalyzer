@@ -43,6 +43,11 @@
 		4C3355B023C8AFB00005C683 /* HeaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355AF23C8AFB00005C683 /* HeaderTests.swift */; };
 		4C3355B223C8B13B0005C683 /* TableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B123C8B13B0005C683 /* TableTests.swift */; };
 		4C3355B423C92AF80005C683 /* WebModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B323C92AF80005C683 /* WebModelTests.swift */; };
+		4C3355B623C9646E0005C683 /* MockTableRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B523C9646E0005C683 /* MockTableRowModel.swift */; };
+		4C3355B823C9648A0005C683 /* TableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B723C9648A0005C683 /* TableHeader.swift */; };
+		4C3355BA23C9649F0005C683 /* TableRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B923C9649F0005C683 /* TableRowModel.swift */; };
+		4C3355BB23C964AC0005C683 /* TableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B723C9648A0005C683 /* TableHeader.swift */; };
+		4C3355BC23C964AF0005C683 /* TableRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3355B923C9649F0005C683 /* TableRowModel.swift */; };
 		4C5A9E2123B514CF00C5BA40 /* SlowExpressionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E2023B514CF00C5BA40 /* SlowExpressionView.swift */; };
 		4C5A9E2323B514DB00C5BA40 /* SlowExpressionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E2223B514DB00C5BA40 /* SlowExpressionController.swift */; };
 		4C5A9E2523B514E700C5BA40 /* SlowExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E2423B514E700C5BA40 /* SlowExpressionModel.swift */; };
@@ -67,8 +72,8 @@
 		4CECF7EF23BB856E00B0E5E8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7EE23BB856E00B0E5E8 /* Resource.swift */; };
 		4CECF7F123BCE5D600B0E5E8 /* PostBuildComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F023BCE5D600B0E5E8 /* PostBuildComparisonTests.swift */; };
 		4CECF7F323BCF18800B0E5E8 /* TotalRowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F223BCF18800B0E5E8 /* TotalRowViewTests.swift */; };
-		4CECF7F623BCF30400B0E5E8 /* TestTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F523BCF30400B0E5E8 /* TestTotalRowView.swift */; };
-		4CECF7F823BCF4B600B0E5E8 /* TestWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F723BCF4B600B0E5E8 /* TestWarningController.swift */; };
+		4CECF7F623BCF30400B0E5E8 /* MockTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F523BCF30400B0E5E8 /* MockTotalRowView.swift */; };
+		4CECF7F823BCF4B600B0E5E8 /* MockWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F723BCF4B600B0E5E8 /* MockWarningController.swift */; };
 		4CECF7FA23BD0CAD00B0E5E8 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */; };
 		4CECF7FC23BD0CC200B0E5E8 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */; };
 		4CECF7FF23BD0D3C00B0E5E8 /* HMTLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7FE23BD0D3C00B0E5E8 /* HMTLTests.swift */; };
@@ -90,8 +95,8 @@
 		4CF3BA6023B3F7B30087F262 /* LinkerWarningModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA5F23B3F7B30087F262 /* LinkerWarningModelTests.swift */; };
 		4CF3BA6223B436850087F262 /* WarningViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6123B436850087F262 /* WarningViewTests.swift */; };
 		4CF3BA6423B438E00087F262 /* WarningControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6323B438E00087F262 /* WarningControllerTests.swift */; };
-		4CF3BA6623B439110087F262 /* TestWarningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6523B439110087F262 /* TestWarningModel.swift */; };
-		4CF3BA6823B4391C0087F262 /* TestWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6723B4391C0087F262 /* TestWarningView.swift */; };
+		4CF3BA6623B439110087F262 /* MockWarningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6523B439110087F262 /* MockWarningModel.swift */; };
+		4CF3BA6823B4391C0087F262 /* MockWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6723B4391C0087F262 /* MockWarningView.swift */; };
 		4CF3BA6A23B43C8B0087F262 /* URLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6923B43C8B0087F262 /* URLParserTests.swift */; };
 		4CF3BA6C23B43D110087F262 /* URLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6B23B43D110087F262 /* URLParser.swift */; };
 		4CF3BA6D23B43E2D0087F262 /* URLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6B23B43D110087F262 /* URLParser.swift */; };
@@ -136,6 +141,9 @@
 		4C3355AF23C8AFB00005C683 /* HeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTests.swift; sourceTree = "<group>"; };
 		4C3355B123C8B13B0005C683 /* TableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTests.swift; sourceTree = "<group>"; };
 		4C3355B323C92AF80005C683 /* WebModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModelTests.swift; sourceTree = "<group>"; };
+		4C3355B523C9646E0005C683 /* MockTableRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTableRowModel.swift; sourceTree = "<group>"; };
+		4C3355B723C9648A0005C683 /* TableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeader.swift; sourceTree = "<group>"; };
+		4C3355B923C9649F0005C683 /* TableRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowModel.swift; sourceTree = "<group>"; };
 		4C5A9E2023B514CF00C5BA40 /* SlowExpressionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionView.swift; sourceTree = "<group>"; };
 		4C5A9E2223B514DB00C5BA40 /* SlowExpressionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionController.swift; sourceTree = "<group>"; };
 		4C5A9E2423B514E700C5BA40 /* SlowExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowExpressionModel.swift; sourceTree = "<group>"; };
@@ -153,8 +161,8 @@
 		4CECF7EE23BB856E00B0E5E8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		4CECF7F023BCE5D600B0E5E8 /* PostBuildComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBuildComparisonTests.swift; sourceTree = "<group>"; };
 		4CECF7F223BCF18800B0E5E8 /* TotalRowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalRowViewTests.swift; sourceTree = "<group>"; };
-		4CECF7F523BCF30400B0E5E8 /* TestTotalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTotalRowView.swift; sourceTree = "<group>"; };
-		4CECF7F723BCF4B600B0E5E8 /* TestWarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWarningController.swift; sourceTree = "<group>"; };
+		4CECF7F523BCF30400B0E5E8 /* MockTotalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTotalRowView.swift; sourceTree = "<group>"; };
+		4CECF7F723BCF4B600B0E5E8 /* MockWarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarningController.swift; sourceTree = "<group>"; };
 		4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTML.swift; sourceTree = "<group>"; };
 		4CECF7FE23BD0D3C00B0E5E8 /* HMTLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTLTests.swift; sourceTree = "<group>"; };
 		4CF3BA3A23B30E130087F262 /* FileWarningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWarningController.swift; sourceTree = "<group>"; };
@@ -168,8 +176,8 @@
 		4CF3BA5F23B3F7B30087F262 /* LinkerWarningModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkerWarningModelTests.swift; sourceTree = "<group>"; };
 		4CF3BA6123B436850087F262 /* WarningViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningViewTests.swift; sourceTree = "<group>"; };
 		4CF3BA6323B438E00087F262 /* WarningControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningControllerTests.swift; sourceTree = "<group>"; };
-		4CF3BA6523B439110087F262 /* TestWarningModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWarningModel.swift; sourceTree = "<group>"; };
-		4CF3BA6723B4391C0087F262 /* TestWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWarningView.swift; sourceTree = "<group>"; };
+		4CF3BA6523B439110087F262 /* MockWarningModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarningModel.swift; sourceTree = "<group>"; };
+		4CF3BA6723B4391C0087F262 /* MockWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarningView.swift; sourceTree = "<group>"; };
 		4CF3BA6923B43C8B0087F262 /* URLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParserTests.swift; sourceTree = "<group>"; };
 		4CF3BA6B23B43D110087F262 /* URLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,6 +284,8 @@
 				4C33559C23C8AA8E0005C683 /* Element.swift */,
 				4C3355A223C8AACD0005C683 /* Header.swift */,
 				4C3355A023C8AABB0005C683 /* Table.swift */,
+				4C3355B723C9648A0005C683 /* TableHeader.swift */,
+				4C3355B923C9649F0005C683 /* TableRowModel.swift */,
 				4C3355A423C8AAEC0005C683 /* WebModel.swift */,
 			);
 			path = Web;
@@ -288,6 +298,7 @@
 				4C3355AF23C8AFB00005C683 /* HeaderTests.swift */,
 				4C3355B123C8B13B0005C683 /* TableTests.swift */,
 				4C3355B323C92AF80005C683 /* WebModelTests.swift */,
+				4C3355B523C9646E0005C683 /* MockTableRowModel.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -304,10 +315,10 @@
 		4CECF7F423BCF2F800B0E5E8 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				4CF3BA6523B439110087F262 /* TestWarningModel.swift */,
-				4CF3BA6723B4391C0087F262 /* TestWarningView.swift */,
-				4CECF7F523BCF30400B0E5E8 /* TestTotalRowView.swift */,
-				4CECF7F723BCF4B600B0E5E8 /* TestWarningController.swift */,
+				4CF3BA6523B439110087F262 /* MockWarningModel.swift */,
+				4CF3BA6723B4391C0087F262 /* MockWarningView.swift */,
+				4CECF7F523BCF30400B0E5E8 /* MockTotalRowView.swift */,
+				4CECF7F723BCF4B600B0E5E8 /* MockWarningController.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -530,8 +541,10 @@
 				4C33559B23C8AA7F0005C683 /* Alignment.swift in Sources */,
 				4C5A9E2123B514CF00C5BA40 /* SlowExpressionView.swift in Sources */,
 				350DDE6C23AD2E3300F48143 /* Utils.swift in Sources */,
+				4C3355B823C9648A0005C683 /* TableHeader.swift in Sources */,
 				4C5A9E3223B57E3A00C5BA40 /* TotalRowView.swift in Sources */,
 				358857D823A57FC80081F6A2 /* PostBuildAnalyzer.swift in Sources */,
+				4C3355BA23C9649F0005C683 /* TableRowModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,13 +553,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5A9E3F23B5924000C5BA40 /* SlowExpressionTotalRowView.swift in Sources */,
+				4C3355B623C9646E0005C683 /* MockTableRowModel.swift in Sources */,
 				4CF3BA5C23B3E5550087F262 /* FileWarningController.swift in Sources */,
 				4CF3BA5923B3E4590087F262 /* WarningController.swift in Sources */,
 				4C3355B023C8AFB00005C683 /* HeaderTests.swift in Sources */,
 				4CF3BA5623B3E4420087F262 /* FileWarningView.swift in Sources */,
 				4CF3BA6223B436850087F262 /* WarningViewTests.swift in Sources */,
 				4CECF7FF23BD0D3C00B0E5E8 /* HMTLTests.swift in Sources */,
-				4CF3BA6623B439110087F262 /* TestWarningModel.swift in Sources */,
+				4CF3BA6623B439110087F262 /* MockWarningModel.swift in Sources */,
 				4C5A9E2823B5164400C5BA40 /* SlowExpressionView.swift in Sources */,
 				4C3355AE23C8ACED0005C683 /* BlankLineTests.swift in Sources */,
 				4CF3BA4723B3DDBE0087F262 /* LinkerWarningView.swift in Sources */,
@@ -554,18 +568,19 @@
 				4CF3BA6A23B43C8B0087F262 /* URLParserTests.swift in Sources */,
 				4C5A9E3E23B5923C00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */,
 				4C5A9E2623B5164000C5BA40 /* SlowExpressionController.swift in Sources */,
-				4CECF7F623BCF30400B0E5E8 /* TestTotalRowView.swift in Sources */,
+				4CECF7F623BCF30400B0E5E8 /* MockTotalRowView.swift in Sources */,
 				4C3355A823C8ABB90005C683 /* Element.swift in Sources */,
 				4C5A9E2E23B530E200C5BA40 /* SlowExpressionControllerTests.swift in Sources */,
 				350DDE6223AD290400F48143 /* PostBuildAnalzyer+FileWarningTests.swift in Sources */,
 				35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */,
-				4CF3BA6823B4391C0087F262 /* TestWarningView.swift in Sources */,
+				4CF3BA6823B4391C0087F262 /* MockWarningView.swift in Sources */,
 				4CECF7F123BCE5D600B0E5E8 /* PostBuildComparisonTests.swift in Sources */,
+				4C3355BC23C964AF0005C683 /* TableRowModel.swift in Sources */,
 				4C0BC3B223B11DD600DACAB1 /* LintWarning.swift in Sources */,
 				4CF3BA6423B438E00087F262 /* WarningControllerTests.swift in Sources */,
 				4C3355AA23C8ABBD0005C683 /* Table.swift in Sources */,
 				4C5A9E2723B5164200C5BA40 /* SlowExpressionModel.swift in Sources */,
-				4CECF7F823BCF4B600B0E5E8 /* TestWarningController.swift in Sources */,
+				4CECF7F823BCF4B600B0E5E8 /* MockWarningController.swift in Sources */,
 				4C5A9E2C23B5199000C5BA40 /* SlowExpressionViewTests.swift in Sources */,
 				4C3355A923C8ABBB0005C683 /* Header.swift in Sources */,
 				4C3355A723C8ABB60005C683 /* BlankLine.swift in Sources */,
@@ -576,6 +591,7 @@
 				4C5A9E3D23B5923A00C5BA40 /* FileWarningTotalRowView.swift in Sources */,
 				4C3355AB23C8ABC00005C683 /* WebModel.swift in Sources */,
 				4CF3BA5523B3E43B0087F262 /* LinkerWarningModel.swift in Sources */,
+				4C3355BB23C964AC0005C683 /* TableHeader.swift in Sources */,
 				4CF3BA5823B3E4530087F262 /* WarningVIew.swift in Sources */,
 				350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */,
 				4C5A9E3323B57E4E00C5BA40 /* TotalRowView.swift in Sources */,

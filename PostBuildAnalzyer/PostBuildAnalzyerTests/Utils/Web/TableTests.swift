@@ -21,9 +21,10 @@ class TableTests: XCTestCase {
         // Given
         let header = TableHeader(title: "TITLE", alignment: nil)
         let table = Table(headers: [header])
+        let row = MockTableRowModel(columns: ["One"])
 
         // When
-        table.addRow(columns: ["One"])
+        table.add(row: row)
 
         // Then
         var result = [String]()
@@ -42,9 +43,10 @@ class TableTests: XCTestCase {
         // Given
         let header = TableHeader(title: "Align Test", alignment: .Center)
         let table = Table(headers: [header])
+        let row = MockTableRowModel(columns: ["Centered"])
 
         // When
-        table.addRow(columns: ["Centered"])
+        table.add(row: row)
 
         // Then
         var result = [String]()
@@ -64,10 +66,14 @@ class TableTests: XCTestCase {
         let header = TableHeader(title: "Align", alignment: .Center)
         let header2 = TableHeader(title: "Test", alignment: .Left)
         let table = Table(headers: [header, header2])
+        let row = MockTableRowModel(columns: ["First", "Second"])
+        let row2 = MockTableRowModel(columns: ["Again", "True"])
 
         // When
-        table.addRow(columns: ["First", "Second"])
-        table.addRow(columns: ["Again", "True"])
+        table.add(row: row)
+        table.add(row: row2)
+
+        // THen
         var result = [String]()
         result.append("<table>")
         result.append("<tr>")
@@ -98,9 +104,10 @@ class TableTests: XCTestCase {
         // Given
         let header = TableHeader(title: "TITLE", alignment: nil)
         let table = Table(headers: [header])
+        let row = MockTableRowModel(columns: ["One"])
 
         // When
-        table.addRow(columns: ["One"])
+        table.add(row: row)
 
         // Then
         var result = [String]()
@@ -114,9 +121,10 @@ class TableTests: XCTestCase {
         // Given
         let header = TableHeader(title: "Align Test", alignment: .Center)
         let table = Table(headers: [header])
+        let row = MockTableRowModel(columns: ["Centered"])
 
         // When
-        table.addRow(columns: ["Centered"])
+        table.add(row: row)
 
         // Then
         var result = [String]()
@@ -131,10 +139,14 @@ class TableTests: XCTestCase {
         let header = TableHeader(title: "Align", alignment: .Center)
         let header2 = TableHeader(title: "Test", alignment: .Left)
         let table = Table(headers: [header, header2])
+        let row = MockTableRowModel(columns: ["First", "Second"])
+        let row2 = MockTableRowModel(columns: ["Again", "True"])
 
         // When
-        table.addRow(columns: ["First", "Second"])
-        table.addRow(columns: ["Again", "True"])
+        table.add(row: row)
+        table.add(row: row2)
+
+        // Then
         var result = [String]()
         result.append("|Align|Test|")
         result.append("|:---:|:---|")

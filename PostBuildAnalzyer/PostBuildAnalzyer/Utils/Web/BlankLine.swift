@@ -10,10 +10,10 @@ import Foundation
 
 class BlankLine: Element {
     func toHTML() -> [String] {
-        return ["<BR>"]
+        return [" "]
     }
 
     func toMarkdown() -> [String] {
-        return ["<BR>"]
+        return [" "]
     }
 }

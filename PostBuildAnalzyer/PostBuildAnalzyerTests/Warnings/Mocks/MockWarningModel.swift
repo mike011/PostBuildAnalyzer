@@ -1,5 +1,5 @@
 //
-//  TestWarningModel.swift
+//  MockWarningModel.swift
 //  PostBuildAnalzyerTests
 //
 //  Created by Michael Charland on 2019-12-25.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TestWarningModel: WarningModel {
+class MockWarningModel: WarningModel {
     static var lookFor = ""
     var line = ""
     var description = ""

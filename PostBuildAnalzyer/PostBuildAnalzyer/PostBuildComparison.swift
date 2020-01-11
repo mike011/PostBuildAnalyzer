@@ -43,11 +43,10 @@ class PostBuildComparsion {
     }
 
     public func printTable() {
-        for line in getNewWarningsTable().toHTML() {
+        for line in getNewWarningsTable().toMarkdown() {
             print(line)
         }
-        print("<BR>")
-        for line in getTotalWarningsTable() {
+        for line in getTotalWarningsTable().toMarkdown() {
             print(line)
         }
     }
@@ -55,52 +54,49 @@ class PostBuildComparsion {
     func getNewWarningsTable() -> WebModel {
         let model = WebModel()
 
-        var lines = [String]()
         guard !after.rows.isEmpty else {
             return model
         }
 
         model.addHeader(level: 3, title: "New Warnings")
-        lines.append("<H3>New Warnings</H3>")
-        lines.append("<BR>")
-        for line in getWarningsTable(rows: after.rows) {
-            lines.append(line)
-        }
+        model.addBlankLine()
+        model.add(webModel: getWarningsTable(rows: after.rows))
         return model
     }
 
-    func getWarningsTable(rows: [String]) -> [String] {
-        var lines = [String]()
-        lines.append("| |Description|Amount|")
-        lines.append("|:--:|---|:--:|")
+    func getWarningsTable(rows: [TableRowModel]) -> WebModel {
+        let webModel = WebModel()
 
-        for row in rows.sorted() {
-            lines.append(row)
+        let diff = TableHeader(title: "  ", alignment: .Center)
+        let description = TableHeader(title: "Description", alignment: nil)
+        let amount = TableHeader(title: "Amount", alignment: .Center)
+        let table = Table(headers: [diff, description, amount])
+        for row in rows { // }.sorted() {
+            table.add(row: row)
         }
-        return lines
+        webModel.add(table: table)
+
+        return webModel
     }
 
-    func getTotalWarningsTable() -> [String] {
-        var lines = [String]()
+    func getTotalWarningsTable() -> WebModel {
+        let wo = WebModel()
 
         let grandTotal = GrandTotalRowView(before: before.allWarnings, after: after.allWarnings)
 
         guard grandTotal.hasResults else {
-            return lines
+            return wo
         }
 
-        let wo = WebModel()
         wo.addHeader(level: 3, title: "Total Warnings")
         wo.addBlankLine()
-        // TableHeader
-        // let table = Table(headers: )
-        //table.addHeader(titles: [" ", "📉", "Description", "Before", "After"])
-        //table.set(alignment: [.Center, nil, nil, .Center, .Center])
 
-        lines.append("<H3>Total Warnings</H3>")
-        lines.append("")
-        lines.append("| |📉|Description|Before|After|")
-        lines.append("|:-:|---|---|:---:|:--:|")
+        let diff = TableHeader(title: "  ", alignment: .Center)
+        let category = TableHeader(title: "📉", alignment: nil)
+        let description = TableHeader(title: "Description", alignment: nil)
+        let beforeHeader = TableHeader(title: "Before", alignment: .Center)
+        let afterHeader = TableHeader(title: "After", alignment: .Center)
+        let table = Table(headers: [diff, category, description, beforeHeader, afterHeader])
 
         var rows = [TotalRowView]()
         rows.append(SlowExpressionTotalRowView(before: before.slowExpressions, after: after.slowExpressions, buildTimeThresholdInMS: buildTimeThresholdInMS))
@@ -110,22 +106,23 @@ class PostBuildComparsion {
         for row in rows {
             if row.hasResults {
                 createHTMLFiles(row: row, outputURL: outputURL)
-                lines.append(row.row(baseURL: baseURL))
+                table.add(row: row.row(baseURL: baseURL))
             }
         }
+        table.add(row: grandTotal.row(baseURL: nil))
 
-        lines.append(grandTotal.row(baseURL: nil))
-        return lines
+        wo.add(table: table)
+        return wo
     }
 
     func createHTMLFiles(row: TotalRowView, outputURL: URL) {
         let caller = String(describing: type(of: row.self))
         let beforeURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_before.html")!
-        let dataToSave = getWarningsTable(rows: before.rows)
-        Utils.writeToFile(contents: dataToSave, url: beforeURL)
+        // let dataToSave = getWarningsTable(rows: before.rows)
+        // Utils.writeToFile(contents: dataToSave, url: beforeURL)
 
         let afterURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_after.html")!
-        let dataToSave2 = getWarningsTable(rows: after.rows)
-        Utils.writeToFile(contents: dataToSave2, url: afterURL)
+        // let dataToSave2 = getWarningsTable(rows: after.rows)
+        // Utils.writeToFile(contents: dataToSave2, url: afterURL)
     }
 }

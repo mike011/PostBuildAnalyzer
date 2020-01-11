@@ -12,60 +12,65 @@ class TotalRowViewTests: XCTestCase {
     // MARK: - change
 
     func testChangeNoChange() {
-        let totalRowView = TestTotalRowView()
+        let totalRowView = MockTotalRowView()
         XCTAssertEqual(totalRowView.change, "")
     }
 
     func testChangeMoreWarnings() {
-        let totalRowView = TestTotalRowView()
-        totalRowView.after.append(TestWarningController())
+        let totalRowView = MockTotalRowView()
+        totalRowView.after.append(MockWarningController())
         XCTAssertEqual(totalRowView.change, "👎")
     }
 
     func testChangeLessWarnings() {
-        let totalRowView = TestTotalRowView()
-        totalRowView.before.append(TestWarningController())
+        let totalRowView = MockTotalRowView()
+        totalRowView.before.append(MockWarningController())
         XCTAssertEqual(totalRowView.change, "👍")
     }
 
     // MARK: - hasResult
 
     func testHasResultsNoWarnings() {
-        let totalRowView = TestTotalRowView()
+        let totalRowView = MockTotalRowView()
         XCTAssertFalse(totalRowView.hasResults)
     }
 
     func testHasResultsOnlyBeforeWarning() {
-        let totalRowView = TestTotalRowView()
-        totalRowView.before.append(TestWarningController())
+        let totalRowView = MockTotalRowView()
+        totalRowView.before.append(MockWarningController())
         XCTAssertTrue(totalRowView.hasResults)
     }
 
     func testHasResultsOnlyAfterWarning() {
-        let totalRowView = TestTotalRowView()
-        totalRowView.after.append(TestWarningController())
+        let totalRowView = MockTotalRowView()
+        totalRowView.after.append(MockWarningController())
         XCTAssertTrue(totalRowView.hasResults)
     }
 
     func testHasResultsBothBeforeAndAfter() {
-        let totalRowView = TestTotalRowView()
-        totalRowView.before.append(TestWarningController())
-        totalRowView.after.append(TestWarningController())
+        let totalRowView = MockTotalRowView()
+        totalRowView.before.append(MockWarningController())
+        totalRowView.after.append(MockWarningController())
         XCTAssertTrue(totalRowView.hasResults)
     }
 
     func testRow() {
-        let totalRowView = TestTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")), "||S|D|<a href=\"http://a.b/before.html\">0</a>|<a href=\"http://a.b/after.html\">0</a>|")
+        let totalRowView = MockTotalRowView()
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[0], "")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[1], "S")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[2], "D")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[3], "<a href=\"http://a.b/before.html\">0</a>")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[4], "<a href=\"http://a.b/after.html\">0</a>")
     }
 
     func testRowWithExtraSlashes() {
-        let totalRowView = TestTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b/")), "||S|D|<a href=\"http://a.b/before.html\">0</a>|<a href=\"http://a.b/after.html\">0</a>|")
+        let totalRowView = MockTotalRowView()
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b/")).columns[3], "<a href=\"http://a.b/before.html\">0</a>")
     }
 
     func testRowNoURL() {
-        let totalRowView = TestTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: nil), "||S|D|0|0|")
+        let totalRowView = MockTotalRowView()
+        XCTAssertEqual(totalRowView.row(baseURL: nil).columns[3], "0")
+        XCTAssertEqual(totalRowView.row(baseURL: nil).columns[4], "0")
     }
 }

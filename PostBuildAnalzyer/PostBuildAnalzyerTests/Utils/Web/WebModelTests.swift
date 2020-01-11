@@ -30,12 +30,12 @@ class WebModelTests: XCTestCase {
     func testToHTML() {
         let wm = WebModel()
         wm.addBlankLine()
-        XCTAssertEqual(["<BR>"], wm.toHTML())
+        XCTAssertEqual([" "], wm.toHTML())
     }
 
     func testToMarkdown() {
         let wm = WebModel()
         wm.addBlankLine()
-        XCTAssertEqual(["<BR>"], wm.toMarkdown())
+        XCTAssertEqual([" "], wm.toMarkdown())
     }
 }

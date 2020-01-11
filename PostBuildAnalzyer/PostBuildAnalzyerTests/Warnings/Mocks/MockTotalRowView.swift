@@ -1,5 +1,5 @@
 //
-//  TestTotalRowView.swift
+//  MockTotalRowView.swift
 //  PostBuildAnalzyerTests
 //
 //  Created by Michael Charland on 2020-01-01.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TestTotalRowView: TotalRowView {
+class MockTotalRowView: TotalRowView {
     var symbol = "S"
     var description = "D"
     var before = [WarningController]()

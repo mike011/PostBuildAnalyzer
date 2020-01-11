@@ -1,5 +1,5 @@
 //
-//  TestWarningView.swift
+//  MockWarningView.swift
 //  PostBuildAnalzyerTests
 //
 //  Created by Michael Charland on 2019-12-25.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-class TestWarningView: WarningView {
+class MockWarningView: WarningView {
+    var columns = [String]()
+
     var symbol = "S"
 
     func getDetailedDescription(model: WarningModel) -> String {

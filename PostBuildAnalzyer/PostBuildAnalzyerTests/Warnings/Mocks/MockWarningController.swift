@@ -1,5 +1,5 @@
 //
-//  TestWarningController.swift
+//  MockWarningController.swift
 //  PostBuildAnalzyerTests
 //
 //  Created by Michael Charland on 2020-01-01.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class TestWarningController: WarningController {
+class MockWarningController: WarningController {
     init() {
-        super.init(model: TestWarningModel(), view: TestWarningView())
+        super.init(model: MockWarningModel(), view: MockWarningView())
     }
 }

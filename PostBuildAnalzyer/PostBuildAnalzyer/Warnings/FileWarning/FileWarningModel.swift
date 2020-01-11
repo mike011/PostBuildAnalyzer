@@ -7,7 +7,6 @@
 
 import Foundation
 
-// This is the Model
 class FileWarningModel: WarningModel, URLParser {
     var line: String
 

@@ -9,8 +9,8 @@
 import XCTest
 
 class PostBuildComparisonTests: XCTestCase {
-    private let defaultRowsForNewTable = 4
-    private let defaultRowsForTotalTable = 4
+    private let defaultRowsForNewTable = 2
+    private let defaultRowsForTotalTable = 2
     private let grandTotalRow = 1
 
     // MARK: - init
@@ -19,6 +19,8 @@ class PostBuildComparisonTests: XCTestCase {
         let pbc = PostBuildComparsion(before: MOCK_ARGUMENTS, after: MOCK_ARGUMENTS)
         XCTAssertNotNil(pbc)
     }
+
+    /// MOST OF THE FOLLOWING TESTS NEED TO BE MOVED TO TESTING getNewWarningsTable so you can test the differnece in the rows.
 
     // MARK: - getNewWarningsTable
 
@@ -31,7 +33,7 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getNewWarningsTable().elements.isEmpty)
-        XCTAssertEqual(pbc.getNewWarningsTable().elements.count, defaultRowsForNewTable + 1)
+        XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
     }
 
     func testGetNewWarningsTableMultipleWarnings() {
@@ -44,7 +46,7 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getNewWarningsTable().elements.isEmpty)
-        XCTAssertEqual(pbc.getNewWarningsTable().elements.count, defaultRowsForNewTable + 2)
+        XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
     }
 
     func testGetNewWarningsTableNoWarnings() {
@@ -65,14 +67,15 @@ class PostBuildComparisonTests: XCTestCase {
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 3)
+        let elements = pbc.getTotalWarningsTable().elements
+        XCTAssertFalse(elements.isEmpty)
+        XCTAssertEqual(elements.count, 3)
     }
 
     func testGetTotalWarningsTableNoWarnings() {
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertTrue(pbc.getTotalWarningsTable().isEmpty)
+        XCTAssertTrue(pbc.getTotalWarningsTable().elements.isEmpty)
     }
 
     // MARK: - getTotalWarningsTable - slow expressions
@@ -83,8 +86,8 @@ class PostBuildComparisonTests: XCTestCase {
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 1)
+        XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
+        XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
 
     // MARK: - getTotalWarningsTable - file warnings
@@ -95,8 +98,8 @@ class PostBuildComparisonTests: XCTestCase {
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 1)
+        XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
+        XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
 
     // MARK: - getTotalWarningsTable - linker warnings
@@ -107,7 +110,7 @@ class PostBuildComparisonTests: XCTestCase {
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().count, defaultRowsForTotalTable + grandTotalRow + 1)
+        XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
+        XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
 }
