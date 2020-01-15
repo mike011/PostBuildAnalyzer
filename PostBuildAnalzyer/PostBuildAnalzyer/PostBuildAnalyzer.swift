@@ -19,20 +19,12 @@ class PostBuildAnalzyer {
         return result
     }
 
-    var allWarnings: [WarningController] {
-        return getWarningController()
-    }
-
-    var fileWarningController: [FileWarningController] {
-        return getWarningController()
-    }
-
-    var linkerController: [LinkerWarningController] {
-        return getWarningController()
-    }
-
-    var slowExpressions: [SlowExpressionController] {
-        return getWarningController()
+    func getRows<T: WarningController>(forWarnings warnings: [T]) -> [TableRowModel] {
+        var result = [TableRowModel]()
+        for warning in warnings {
+            result.append(warning.view)
+        }
+        return result
     }
 
     func getWarningController<T: WarningController>() -> [T] {

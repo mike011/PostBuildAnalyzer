@@ -82,7 +82,7 @@ class PostBuildComparsion {
     func getTotalWarningsTable() -> WebModel {
         let wo = WebModel()
 
-        let grandTotal = GrandTotalRowView(before: before.allWarnings, after: after.allWarnings)
+        let grandTotal = GrandTotalRowView(before: before.getWarningController(), after: after.getWarningController())
 
         guard grandTotal.hasResults else {
             return wo
@@ -99,9 +99,17 @@ class PostBuildComparsion {
         let table = Table(headers: [diff, category, description, beforeHeader, afterHeader])
 
         var rows = [TotalRowView]()
-        rows.append(SlowExpressionTotalRowView(before: before.slowExpressions, after: after.slowExpressions, buildTimeThresholdInMS: buildTimeThresholdInMS))
-        rows.append(FileWarningTotalRowView(before: before.fileWarningController, after: after.fileWarningController))
-        rows.append(LinkerWarningTotalRowView(before: before.linkerController, after: after.linkerController))
+        let bse = before.getWarningController() as [SlowExpressionController]
+        let ase = after.getWarningController() as [SlowExpressionController]
+        rows.append(SlowExpressionTotalRowView(before: bse, after: ase, buildTimeThresholdInMS: buildTimeThresholdInMS))
+
+        let bfw = before.getWarningController() as [FileWarningController]
+        let afw = after.getWarningController() as [FileWarningController]
+        rows.append(FileWarningTotalRowView(before: bfw, after: afw))
+
+        let blc = before.getWarningController() as [LinkerWarningController]
+        let alc = after.getWarningController() as [LinkerWarningController]
+        rows.append(LinkerWarningTotalRowView(before: blc, after: alc))
 
         for row in rows {
             if row.hasResults {
@@ -117,12 +125,12 @@ class PostBuildComparsion {
 
     func createHTMLFiles(row: TotalRowView, outputURL: URL) {
         let caller = String(describing: type(of: row.self))
-        let beforeURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_before.html")!
-        let dataToSave = getWarningsTable(rows: before.rows).toHTML()
+        let beforeURL = URL(fileURLWithPath: "\(outputURL.absoluteString)\(caller)_before.html")
+        let dataToSave = getWarningsTable(rows: before.getRows(forWarnings: row.before)).toHTML()
         Utils.writeToFile(contents: dataToSave, url: beforeURL)
 
-        let afterURL = URL(string: "file://\(outputURL.absoluteString)\(caller)_after.html")!
-        let dataToSave2 = getWarningsTable(rows: after.rows).toHTML()
+        let afterURL = URL(fileURLWithPath: "\(outputURL.absoluteString)\(caller)_after.html")
+        let dataToSave2 = getWarningsTable(rows: after.getRows(forWarnings: row.after)).toHTML()
         Utils.writeToFile(contents: dataToSave2, url: afterURL)
     }
 }
