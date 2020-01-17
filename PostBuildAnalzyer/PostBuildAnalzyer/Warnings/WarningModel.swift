@@ -12,5 +12,5 @@ protocol WarningModel {
     static var lookFor: String { get }
     var line: String { get }
     var description: String { get }
-    var count: Int { get set }
+    var count: Double { get set }
 }

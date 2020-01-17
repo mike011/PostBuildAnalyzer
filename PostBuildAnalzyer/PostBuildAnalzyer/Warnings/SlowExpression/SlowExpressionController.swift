@@ -14,6 +14,20 @@ class SlowExpressionController: WarningController {
         let view = SlowExpressionView()
         super.init(model: model, view: view)
     }
+
+    override func getTotalWarnings() -> Double {
+        guard let model = model as? SlowExpressionModel else {
+            return 0.0
+        }
+        return model.timeInMS
+    }
+
+    override func add(amount: Double) {
+        guard let model = model as? SlowExpressionModel else {
+            return
+        }
+        model.timeInMS += amount
+    }
 }
 
 extension PostBuildAnalzyer {

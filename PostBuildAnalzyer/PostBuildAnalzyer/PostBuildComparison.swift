@@ -46,22 +46,67 @@ class PostBuildComparsion {
         for line in getNewWarningsTable().toMarkdown() {
             print(line)
         }
+        for line in getFixedWarningsTable().toMarkdown() {
+            print(line)
+        }
         for line in getTotalWarningsTable().toMarkdown() {
             print(line)
         }
     }
 
     func getNewWarningsTable() -> WebModel {
+        return getWarningsTable(withTitle: "New Warnings", warnings: getNewWarnings())
+    }
+
+    func getFixedWarningsTable() -> WebModel {
+        return getWarningsTable(withTitle: "Fixed Warnings", warnings: getFixedWarnings())
+    }
+
+    func getWarningsTable(withTitle: String, warnings: [TableRowModel]) -> WebModel {
         let model = WebModel()
 
         guard !after.rows.isEmpty else {
             return model
         }
 
-        model.addHeader(level: 3, title: "New Warnings")
+        model.addHeader(level: 3, title: withTitle)
         model.addBlankLine()
-        model.add(webModel: getWarningsTable(rows: after.rows))
+        model.add(webModel: getWarningsTable(rows: warnings))
         return model
+    }
+
+    func getNewWarnings() -> [TableRowModel] {
+        var warnings = [TableRowModel]()
+        for row in after.rows {
+            var found = false
+            for b in before.rows {
+                if row.columns == b.columns {
+                    found = true
+                    break
+                }
+            }
+            if !found {
+                warnings.append(row)
+            }
+        }
+        return warnings
+    }
+
+    func getFixedWarnings() -> [TableRowModel] {
+        var warnings = [TableRowModel]()
+        for row in before.rows {
+            var found = false
+            for b in after.rows {
+                if row.columns == b.columns {
+                    found = true
+                    break
+                }
+            }
+            if !found {
+                warnings.append(row)
+            }
+        }
+        return warnings
     }
 
     func getWarningsTable(rows: [TableRowModel]) -> WebModel {

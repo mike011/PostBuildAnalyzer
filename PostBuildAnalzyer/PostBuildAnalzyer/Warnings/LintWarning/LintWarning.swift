@@ -15,7 +15,7 @@ class LintWarning: WarningModel {
 
     var description = ""
 
-    var count = 0
+    var count = 1.0
 
     var symbol = ""
 

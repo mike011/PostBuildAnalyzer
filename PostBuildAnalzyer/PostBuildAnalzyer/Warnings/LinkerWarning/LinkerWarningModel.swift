@@ -11,7 +11,7 @@ import Foundation
 class LinkerWarningModel: WarningModel {
     var line: String
 
-    var count = 1
+    var count = 1.0
 
     static let lookFor = "ld: warning: "
     var description: String

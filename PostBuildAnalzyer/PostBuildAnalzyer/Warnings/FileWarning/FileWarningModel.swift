@@ -32,7 +32,7 @@ class FileWarningModel: WarningModel, URLParser {
     var description: String
 
     /// How many times the error occurred
-    var count = 1
+    var count = 1.0
 
     init(repoURL: String, branch: String, line: String) {
         self.line = line

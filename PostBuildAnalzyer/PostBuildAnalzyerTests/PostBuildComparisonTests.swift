@@ -114,4 +114,94 @@ class PostBuildComparisonTests: XCTestCase {
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
+
+    // MARK: - New Warnings
+
+    func testGetNewWarnings() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append("2.55ms\tfilet\tmethod")
+        logFile.append("ld: warning: ")
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+
+        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let elements = pbc.getNewWarnings()
+        XCTAssertEqual(elements.count, 3)
+    }
+
+    func testGetNewWarningsSameAsBefore() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append("2.55ms\tfilet\tmethod")
+        logFile.append("ld: warning: ")
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let elements = pbc.getNewWarnings()
+        XCTAssertEqual(elements.count, 0)
+    }
+
+    func testGetNewWarningsLessWarnings() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append("2.55ms\tfilet\tmethod")
+        logFile.append("ld: warning: ")
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+
+        var logFile2 = [String]()
+        logFile2.append(": warning: ")
+        logFile2.append("2.55ms\tfilet\tmethod")
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
+
+        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let elements = pbc.getNewWarnings()
+        XCTAssertEqual(elements.count, 0)
+    }
+
+    func testGetFixedWarnings() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append("2.55ms\tfilet\tmethod")
+        logFile.append("ld: warning: ")
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+
+        var logFile2 = [String]()
+        logFile2.append(": warning: ")
+        logFile2.append("2.55ms\tfilet\tmethod")
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
+
+        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let elements = pbc.getFixedWarnings()
+        XCTAssertEqual(elements.count, 1)
+    }
+
+    func testGetFixedWarningsSameAsBefore() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append("2.55ms\tfilet\tmethod")
+        logFile.append("ld: warning: ")
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+
+        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let elements = pbc.getFixedWarnings()
+        XCTAssertEqual(elements.count, 0)
+    }
+
+    func testGetFixedWarningsMoreWarnings() {
+        var logFile = [String]()
+        logFile.append(": warning: ")
+        logFile.append("2.55ms\tfilet\tmethod")
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+
+        var logFile2 = [String]()
+        logFile2.append(": warning: ")
+        logFile2.append("2.55ms\tfilet\tmethod")
+        logFile.append("ld: warning: ")
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
+
+        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let elements = pbc.getFixedWarnings()
+        XCTAssertEqual(elements.count, 0)
+    }
 }

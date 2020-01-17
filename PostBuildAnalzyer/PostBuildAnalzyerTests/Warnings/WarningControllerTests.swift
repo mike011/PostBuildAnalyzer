@@ -28,7 +28,7 @@ class WarningControllerTests: XCTestCase {
     func testAmountOfWarnings() {
         let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
         XCTAssertEqual(controller.getTotalWarnings(), 1)
-        controller.addDuplicate()
+        controller.add(amount: 1)
         XCTAssertEqual(controller.getTotalWarnings(), 2)
     }
 

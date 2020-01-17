@@ -24,4 +24,23 @@ class SlowExpressionControllerTests: XCTestCase {
     func testIsSlowExpressionInvalidLocation() {
         XCTAssertFalse(PostBuildAnalzyer.isSlowExpression(line: "0.94ms invalid loc", buildTimeThresholdInMS: 0.90))
     }
+
+    func testEquals() {
+        let line = "41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
+        let sec = SlowExpressionController(repoURL: "", branch: "", line: line)
+
+        let line2 = "31.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
+        let sec2 = SlowExpressionController(repoURL: "", branch: "", line: line2)
+
+        XCTAssertEqual(sec, sec2)
+    }
+
+    func testAmountOfWarnings() {
+        let line = "41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
+        let controller = SlowExpressionController(repoURL: "", branch: "", line: line)
+
+        XCTAssertEqual(controller.getTotalWarnings(), 41.38)
+        controller.add(amount: 58.62)
+        XCTAssertEqual(controller.getTotalWarnings(), 100.00)
+    }
 }

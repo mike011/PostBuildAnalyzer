@@ -9,30 +9,12 @@
 import Foundation
 
 class PostBuildAnalzyer {
-    private var warnings = [String: WarningController]()
+    var allWarnings = [WarningController]()
 
     var rows: [TableRowModel] {
         var result = [TableRowModel]()
-        for warning in warnings {
-            result.append(warning.value.view)
-        }
-        return result
-    }
-
-    func getRows<T: WarningController>(forWarnings warnings: [T]) -> [TableRowModel] {
-        var result = [TableRowModel]()
-        for warning in warnings {
+        for warning in allWarnings {
             result.append(warning.view)
-        }
-        return result
-    }
-
-    func getWarningController<T: WarningController>() -> [T] {
-        var result = [T]()
-        for warning in warnings {
-            if let warning = warning.value as? T {
-                result.append(warning)
-            }
         }
         return result
     }
@@ -54,17 +36,39 @@ class PostBuildAnalzyer {
 
     init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
         for line in logFile {
-            if let warning = warnings[line] {
-                warning.addDuplicate()
-            } else {
-                if PostBuildAnalzyer.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
-                    warnings[line] = SlowExpressionController(repoURL: repoURL, branch: branch, line: line)
-                } else if isLinkerWarning(line: line) {
-                    warnings[line] = LinkerWarningController(line: line)
-                } else if isFileWarning(line: line) {
-                    warnings[line] = FileWarningController(repoURL: repoURL, branch: branch, line: line)
+            var warning: WarningController?
+            if PostBuildAnalzyer.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
+                warning = SlowExpressionController(repoURL: repoURL, branch: branch, line: line)
+            } else if isLinkerWarning(line: line) {
+                warning = LinkerWarningController(line: line)
+            } else if isFileWarning(line: line) {
+                warning = FileWarningController(repoURL: repoURL, branch: branch, line: line)
+            }
+            if let warning = warning {
+                if allWarnings.contains(warning) {
+                    warning.add(amount: warning.getTotalWarnings())
+                } else {
+                    allWarnings.append(warning)
                 }
             }
         }
+    }
+
+    func getRows<T: WarningController>(forWarnings warnings: [T]) -> [TableRowModel] {
+        var result = [TableRowModel]()
+        for warning in warnings {
+            result.append(warning.view)
+        }
+        return result
+    }
+
+    func getWarningController<T: WarningController>() -> [T] {
+        var result = [T]()
+        for warning in allWarnings {
+            if let warning = warning as? T {
+                result.append(warning)
+            }
+        }
+        return result
     }
 }

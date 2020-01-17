@@ -13,7 +13,7 @@ class SlowExpressionModel: WarningModel, URLParser {
 
     var line: String
     var description: String
-    var count = 1
+    var count = 1.0
 
     /// The file in which the error occurred
     var file: String
@@ -24,18 +24,17 @@ class SlowExpressionModel: WarningModel, URLParser {
     /// The line number on which the error occurred
     var lineNumber: Int
 
-    /// How long it took to compile
+    /// How long it took to compile?
     var timeInMS: Double
 
     init(repoURL: String, branch: String, line: String) {
-        self.line = line
-
         let splits = Utils.getSplits(description: line)
 
         self.timeInMS = Self.parseTimeInMS(line: splits[0])
         self.file = splits[1]
         self.url = URL(fileURLWithPath: file)
         self.lineNumber = 0
+        self.line = "\(file) \(lineNumber)"
 
         self.description = splits[2]
 

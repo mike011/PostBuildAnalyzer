@@ -26,11 +26,11 @@ class WarningController: Hashable, Equatable {
         hasher.combine(model.line)
     }
 
-    func addDuplicate() {
-        model.count += 1
+    func add(amount: Double) {
+        model.count += amount
     }
 
-    func getTotalWarnings() -> Int {
+    func getTotalWarnings() -> Double {
         return model.count
     }
 

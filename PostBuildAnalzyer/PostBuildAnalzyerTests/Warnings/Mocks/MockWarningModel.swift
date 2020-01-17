@@ -12,5 +12,5 @@ class MockWarningModel: WarningModel {
     static var lookFor = ""
     var line = ""
     var description = ""
-    var count = 1
+    var count = 1.0
 }
