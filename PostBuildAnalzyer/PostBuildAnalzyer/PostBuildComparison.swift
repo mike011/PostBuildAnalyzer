@@ -65,7 +65,7 @@ class PostBuildComparsion {
     func getWarningsTable(withTitle: String, warnings: [TableRowModel]) -> WebModel {
         let model = WebModel()
 
-        guard !after.rows.isEmpty else {
+        guard !warnings.isEmpty else {
             return model
         }
 
@@ -77,16 +77,16 @@ class PostBuildComparsion {
 
     func getNewWarnings() -> [TableRowModel] {
         var warnings = [TableRowModel]()
-        for row in after.rows {
+        for afterW in after.allWarnings {
             var found = false
-            for b in before.rows {
-                if row.columns == b.columns {
+            for beforeW in before.allWarnings {
+                if afterW.model.description == beforeW.model.description {
                     found = true
                     break
                 }
             }
             if !found {
-                warnings.append(row)
+                warnings.append(afterW.view)
             }
         }
         return warnings
@@ -94,16 +94,16 @@ class PostBuildComparsion {
 
     func getFixedWarnings() -> [TableRowModel] {
         var warnings = [TableRowModel]()
-        for row in before.rows {
+        for beforeW in before.allWarnings {
             var found = false
-            for b in after.rows {
-                if row.columns == b.columns {
+            for afterW in after.allWarnings {
+                if beforeW.model.description == afterW.model.description {
                     found = true
                     break
                 }
             }
             if !found {
-                warnings.append(row)
+                warnings.append(beforeW.view)
             }
         }
         return warnings

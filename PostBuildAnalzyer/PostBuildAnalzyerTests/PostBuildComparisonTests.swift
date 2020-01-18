@@ -144,13 +144,13 @@ class PostBuildComparisonTests: XCTestCase {
 
     func testGetNewWarningsLessWarnings() {
         var logFile = [String]()
-        logFile.append(": warning: ")
+        logFile.append(": warning: duplicate")
         logFile.append("2.55ms\tfilet\tmethod")
-        logFile.append("ld: warning: ")
+        logFile.append("ld: warning: not found")
         let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         var logFile2 = [String]()
-        logFile2.append(": warning: ")
+        logFile2.append(": warning: duplicate")
         logFile2.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
 
@@ -161,13 +161,13 @@ class PostBuildComparisonTests: XCTestCase {
 
     func testGetFixedWarnings() {
         var logFile = [String]()
-        logFile.append(": warning: ")
+        logFile.append(": warning: duplicate")
         logFile.append("2.55ms\tfilet\tmethod")
-        logFile.append("ld: warning: ")
+        logFile.append("ld: warning: not found")
         let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
 
         var logFile2 = [String]()
-        logFile2.append(": warning: ")
+        logFile2.append(": warning: duplicate")
         logFile2.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
 

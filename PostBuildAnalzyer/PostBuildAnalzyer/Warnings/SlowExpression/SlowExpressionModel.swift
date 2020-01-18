@@ -24,7 +24,7 @@ class SlowExpressionModel: WarningModel, URLParser {
     /// The line number on which the error occurred
     var lineNumber: Int
 
-    /// How long it took to compile?
+    /// How long it took to compile
     var timeInMS: Double
 
     init(repoURL: String, branch: String, line: String) {
@@ -38,7 +38,7 @@ class SlowExpressionModel: WarningModel, URLParser {
 
         self.description = splits[2]
 
-        // Does the file contains the line and line and index numbers?
+        // Does the file contains the line and index numbers?
         if let regex = try? NSRegularExpression(pattern: ":\\d+:\\d+"),
             regex.matches(file) {
             if let colonIndex = file.firstIndex(of: ":") {
