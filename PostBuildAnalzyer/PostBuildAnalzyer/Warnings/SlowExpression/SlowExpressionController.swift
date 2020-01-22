@@ -32,11 +32,14 @@ class SlowExpressionController: WarningController {
 
 extension PostBuildAnalzyer {
     static func isSlowExpression(line: String, buildTimeThresholdInMS: Double) -> Bool {
+        // 0.01ms    /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:11:7    initializer init()
         if let regex = try? NSRegularExpression(pattern: "\\d+\\.\\d{2}ms") {
             return regex.matches(line) &&
                 SlowExpressionModel.parseTimeInMS(line: line) > buildTimeThresholdInMS &&
                 !line.contains("invalid loc")
         }
+
+        // Need to handle this in the future: `// : warning: expression took`
         return false
     }
 }

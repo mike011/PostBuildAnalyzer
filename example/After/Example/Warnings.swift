@@ -11,15 +11,6 @@ import Foundation
 class Warnings {
     func firstWarning() {
         let short = "adffds"
-        if let index = short.index(of: "a") {
-            return
-        }
-    }
-
-    func secondWarning() {
-        let short = "adffds"
-        if let index = short.index(of: "a") {
-            return
-        }
+        let index = short.flatMap { $0 }
     }
 }
