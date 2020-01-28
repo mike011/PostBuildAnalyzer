@@ -25,11 +25,11 @@ class PostBuildComparisonTests: XCTestCase {
     // MARK: - getNewWarningsTable
 
     func testGetNewWarningsTableWithAWarning() {
-        let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
+        let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String]())
 
         var logFile = [String]()
         logFile.append(": warning: ")
-        let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let table = pbc.getNewWarningsTable()
@@ -38,12 +38,12 @@ class PostBuildComparisonTests: XCTestCase {
     }
 
     func testGetNewWarningsTableMultipleWarnings() {
-        let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
+        let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String]())
 
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append(": warning: 2")
-        let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getNewWarningsTable().elements.isEmpty)
@@ -51,8 +51,8 @@ class PostBuildComparisonTests: XCTestCase {
     }
 
     func testGetNewWarningsTableNoWarnings() {
-        let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
-        let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
+        let before = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String]())
+        let after = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertTrue(pbc.getNewWarningsTable().elements.isEmpty)
@@ -65,7 +65,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: ")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getTotalWarningsTable().elements
@@ -74,7 +74,7 @@ class PostBuildComparisonTests: XCTestCase {
     }
 
     func testGetTotalWarningsTableNoWarnings() {
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String]())
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertTrue(pbc.getTotalWarningsTable().elements.isEmpty)
     }
@@ -84,7 +84,7 @@ class PostBuildComparisonTests: XCTestCase {
     func testGetTotalWarningsTableOnlySlowExpressions() {
         var logFile = [String]()
         logFile.append("2.55ms\tfilet\tmethod")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
@@ -96,7 +96,7 @@ class PostBuildComparisonTests: XCTestCase {
     func testGetTotalWarningsTableOnlyFileWarnings() {
         var logFile = [String]()
         logFile.append(": warning: ")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
@@ -108,7 +108,7 @@ class PostBuildComparisonTests: XCTestCase {
     func testGetTotalWarningsTableOnlyLinkerWarnings() {
         var logFile = [String]()
         logFile.append("ld: warning: ")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
@@ -122,8 +122,8 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: ")
-        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String]())
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String]())
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
@@ -135,7 +135,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: ")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
@@ -147,12 +147,12 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: duplicate")
         logFile.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: not found")
-        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         var logFile2 = [String]()
         logFile2.append(": warning: duplicate")
         logFile2.append("2.55ms\tfilet\tmethod")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
@@ -164,12 +164,12 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: duplicate")
         logFile.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: not found")
-        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         var logFile2 = [String]()
         logFile2.append(": warning: duplicate")
         logFile2.append("2.55ms\tfilet\tmethod")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
@@ -181,7 +181,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: ")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
@@ -192,13 +192,13 @@ class PostBuildComparisonTests: XCTestCase {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
-        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pbb = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
 
         var logFile2 = [String]()
         logFile2.append(": warning: ")
         logFile2.append("2.55ms\tfilet\tmethod")
         logFile.append("ld: warning: ")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String]())
 
         let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()

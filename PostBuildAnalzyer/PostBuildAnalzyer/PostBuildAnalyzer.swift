@@ -20,21 +20,36 @@ class PostBuildAnalzyer {
     }
 
     convenience init(args: Arguments) {
-        var logFileName = args.outputFolder
+        var folder = args.outputFolder
         if args.outputFolder.last != "/" {
-            logFileName += "/"
+            folder += "/"
         }
-        logFileName += args.logFileName
+        let logFileName = folder + args.logFileName
         let logFileContents = Utils.load(file: logFileName)
+        let lintFileContents = Self.load(lintFile: args.lintFileName, folder: folder)
+
         self.init(
             repoURL: args.repoURL,
             branch: args.branch,
             buildTimeThresholdInMS: args.buildTimeThresholdInMS,
-            logFile: logFileContents
+            logFile: logFileContents,
+            lintFile: lintFileContents
         )
     }
 
-    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
+    private class func load(lintFile file: String?, folder: String) -> [String] {
+        guard let file = file else {
+            return [String]()
+        }
+        return Utils.load(file: folder + file)
+    }
+
+    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String], lintFile: [String]) {
+        parseLogFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, logFile: logFile)
+        parseLintFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, lintFile: lintFile)
+    }
+
+    private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
         for line in logFile {
             var warning: WarningController?
             if PostBuildAnalzyer.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
@@ -52,6 +67,10 @@ class PostBuildAnalzyer {
                 }
             }
         }
+    }
+
+    private func parseLintFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, lintFile: [String]) {
+        for line in lintFile {}
     }
 
     func getRows<T: WarningController>(forWarnings warnings: [T]) -> [TableRowModel] {

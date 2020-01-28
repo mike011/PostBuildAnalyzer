@@ -41,7 +41,7 @@ class PostBuildAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append("41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()")
         logFile.append("31.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()")
-        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile)
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
         let se = pba.getWarningController() as [SlowExpressionController]
         XCTAssertEqual(se.count, 1)
     }
