@@ -46,7 +46,7 @@ class PostBuildAnalzyer {
 
     init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String], lintFile: [String]) {
         parseLogFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, logFile: logFile)
-        parseLintFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, lintFile: lintFile)
+        parseLintFile(repoURL: repoURL, branch: branch, lintFile: lintFile)
     }
 
     private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
@@ -69,8 +69,26 @@ class PostBuildAnalzyer {
         }
     }
 
-    private func parseLintFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, lintFile: [String]) {
-        for line in lintFile {}
+    private func parseLintFile(repoURL: String, branch: String, lintFile: [String]) {
+        var index = 0
+        while index < lintFile.count {
+            if isLintWarning(line: lintFile[index]) {
+                let warning = LintWarningController(
+                    repoURL: repoURL,
+                    branch: branch,
+                    line: lintFile[index + 1],
+                    file: lintFile[index - 2],
+                    location: lintFile[index - 1]
+                )
+                if allWarnings.contains(warning) {
+                    warning.add(amount: warning.getTotalWarnings())
+                } else {
+                    allWarnings.append(warning)
+                }
+                index = index + 1
+            }
+            index = index + 1
+        }
     }
 
     func getRows<T: WarningController>(forWarnings warnings: [T]) -> [TableRowModel] {

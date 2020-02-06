@@ -77,6 +77,13 @@
 		4CECF7FA23BD0CAD00B0E5E8 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */; };
 		4CECF7FC23BD0CC200B0E5E8 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */; };
 		4CECF7FF23BD0D3C00B0E5E8 /* HMTLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7FE23BD0D3C00B0E5E8 /* HMTLTests.swift */; };
+		4CF008A323EBA39300B0B446 /* LintWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A223EBA39300B0B446 /* LintWarningController.swift */; };
+		4CF008A523EBA3C100B0B446 /* LintWarningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */; };
+		4CF008A723EBA3C900B0B446 /* LintWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A623EBA3C900B0B446 /* LintWarningView.swift */; };
+		4CF008A823EBA75100B0B446 /* LintWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A223EBA39300B0B446 /* LintWarningController.swift */; };
+		4CF008A923EBA75300B0B446 /* LintWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A623EBA3C900B0B446 /* LintWarningView.swift */; };
+		4CF008AA23EBA75500B0B446 /* LintWarningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */; };
+		4CF008AC23EBA9E200B0B446 /* LintWarningModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */; };
 		4CF3BA3C23B30E130087F262 /* FileWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3A23B30E130087F262 /* FileWarningController.swift */; };
 		4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3D23B30ED60087F262 /* WarningController.swift */; };
 		4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */; };
@@ -165,6 +172,10 @@
 		4CECF7F723BCF4B600B0E5E8 /* MockWarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarningController.swift; sourceTree = "<group>"; };
 		4CECF7F923BD0CAD00B0E5E8 /* HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTML.swift; sourceTree = "<group>"; };
 		4CECF7FE23BD0D3C00B0E5E8 /* HMTLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMTLTests.swift; sourceTree = "<group>"; };
+		4CF008A223EBA39300B0B446 /* LintWarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningController.swift; sourceTree = "<group>"; };
+		4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningModel.swift; sourceTree = "<group>"; };
+		4CF008A623EBA3C900B0B446 /* LintWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningView.swift; sourceTree = "<group>"; };
+		4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningModelTests.swift; sourceTree = "<group>"; };
 		4CF3BA3A23B30E130087F262 /* FileWarningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWarningController.swift; sourceTree = "<group>"; };
 		4CF3BA3D23B30ED60087F262 /* WarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningController.swift; sourceTree = "<group>"; };
 		4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningVIew.swift; sourceTree = "<group>"; };
@@ -382,6 +393,9 @@
 			isa = PBXGroup;
 			children = (
 				4C0BC3A723B11ACD00DACAB1 /* LintWarning.swift */,
+				4CF008A223EBA39300B0B446 /* LintWarningController.swift */,
+				4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */,
+				4CF008A623EBA3C900B0B446 /* LintWarningView.swift */,
 			);
 			path = LintWarning;
 			sourceTree = "<group>";
@@ -408,6 +422,7 @@
 		4CF3BA5323B3E3A40087F262 /* LintWarning */ = {
 			isa = PBXGroup;
 			children = (
+				4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */,
 			);
 			path = LintWarning;
 			sourceTree = "<group>";
@@ -521,6 +536,7 @@
 				35DE8A27238CA79600F9D48C /* main.swift in Sources */,
 				4C5A9E3523B57E7500C5BA40 /* SlowExpressionTotalRowView.swift in Sources */,
 				4CF3BA4223B3D73D0087F262 /* LinkerWarningView.swift in Sources */,
+				4CF008A323EBA39300B0B446 /* LintWarningController.swift in Sources */,
 				4C3355A123C8AABB0005C683 /* Table.swift in Sources */,
 				4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */,
 				4C3355A323C8AACD0005C683 /* Header.swift in Sources */,
@@ -529,6 +545,7 @@
 				4CECF7FA23BD0CAD00B0E5E8 /* HTML.swift in Sources */,
 				4C5A9E2323B514DB00C5BA40 /* SlowExpressionController.swift in Sources */,
 				4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */,
+				4CF008A523EBA3C100B0B446 /* LintWarningModel.swift in Sources */,
 				4C5A9E3723B57EAA00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */,
 				4C5A9E3B23B582C000C5BA40 /* GrandTotalRowView.swift in Sources */,
 				4C0BC3A623B117BF00DACAB1 /* PostBuildComparison.swift in Sources */,
@@ -542,6 +559,7 @@
 				4C5A9E2123B514CF00C5BA40 /* SlowExpressionView.swift in Sources */,
 				350DDE6C23AD2E3300F48143 /* Utils.swift in Sources */,
 				4C3355B823C9648A0005C683 /* TableHeader.swift in Sources */,
+				4CF008A723EBA3C900B0B446 /* LintWarningView.swift in Sources */,
 				4C5A9E3223B57E3A00C5BA40 /* TotalRowView.swift in Sources */,
 				358857D823A57FC80081F6A2 /* PostBuildAnalyzer.swift in Sources */,
 				4C3355BA23C9649F0005C683 /* TableRowModel.swift in Sources */,
@@ -552,11 +570,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CF008A923EBA75300B0B446 /* LintWarningView.swift in Sources */,
 				4C5A9E3F23B5924000C5BA40 /* SlowExpressionTotalRowView.swift in Sources */,
 				4C3355B623C9646E0005C683 /* MockTableRowModel.swift in Sources */,
 				4CF3BA5C23B3E5550087F262 /* FileWarningController.swift in Sources */,
+				4CF008AA23EBA75500B0B446 /* LintWarningModel.swift in Sources */,
 				4CF3BA5923B3E4590087F262 /* WarningController.swift in Sources */,
 				4C3355B023C8AFB00005C683 /* HeaderTests.swift in Sources */,
+				4CF008A823EBA75100B0B446 /* LintWarningController.swift in Sources */,
 				4CF3BA5623B3E4420087F262 /* FileWarningView.swift in Sources */,
 				4CF3BA6223B436850087F262 /* WarningViewTests.swift in Sources */,
 				4CECF7FF23BD0D3C00B0E5E8 /* HMTLTests.swift in Sources */,
@@ -588,6 +609,7 @@
 				4C3355A623C8ABB30005C683 /* Alignment.swift in Sources */,
 				4CECF7FC23BD0CC200B0E5E8 /* HTML.swift in Sources */,
 				4C5A9E2A23B5198600C5BA40 /* SlowExpressionModelTests.swift in Sources */,
+				4CF008AC23EBA9E200B0B446 /* LintWarningModelTests.swift in Sources */,
 				4C5A9E3D23B5923A00C5BA40 /* FileWarningTotalRowView.swift in Sources */,
 				4C3355AB23C8ABC00005C683 /* WebModel.swift in Sources */,
 				4CF3BA5523B3E43B0087F262 /* LinkerWarningModel.swift in Sources */,

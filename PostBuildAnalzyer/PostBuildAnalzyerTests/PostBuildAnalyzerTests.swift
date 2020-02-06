@@ -46,6 +46,15 @@ class PostBuildAnalyzerTests: XCTestCase {
         XCTAssertEqual(se.count, 1)
     }
 
+    func testInitWithDuplicateLintWarnings() {
+        var lintFile = [String]()
+        lintFile.append("         <td class=\"warning\">Warning</td>")
+        lintFile.append("<td>Collection literals should not have trailing commas.</td>")
+        let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile)
+        let se = pba.getWarningController() as [LintWarningController]
+        XCTAssertEqual(se.count, 1)
+    }
+
     func testGetWarningControllerNoWarnings() {
         let args = Arguments(
             repoURL: "repo",
