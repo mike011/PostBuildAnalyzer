@@ -52,6 +52,12 @@ class PostBuildComparsion {
         for line in getTotalWarningsTable().toMarkdown() {
             print(line)
         }
+
+        let reportURL = URL(fileURLWithPath: "\(outputURL.absoluteString)report.html")
+        var html = getNewWarningsTable().toHTML()
+        html += getFixedWarningsTable().toHTML()
+        html += getTotalWarningsTable().toHTML()
+        Utils.writeToFile(contents: html, url: reportURL)
     }
 
     func getNewWarningsTable() -> WebModel {
