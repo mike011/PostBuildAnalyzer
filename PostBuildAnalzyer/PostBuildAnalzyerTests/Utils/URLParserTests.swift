@@ -17,12 +17,6 @@ class URLParserTests: XCTestCase {
         XCTAssertEqual(url, URL(string: "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15"))
     }
 
-    func testGetURLNoColons() {
-        let line = "No colons"
-        let url = TestParser.getURL(file: line, lineNumber: nil, repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master")
-        XCTAssertNil(url)
-    }
-
     func testGetRepoPath() {
         XCTAssertEqual(TestParser.getRepoName(fromRepoURL: "NO_SLASHES"), "NO_SLASHES")
         XCTAssertEqual(TestParser.getRepoName(fromRepoURL: "a/b/c"), "c")
@@ -37,11 +31,15 @@ class URLParserTests: XCTestCase {
     }
 
     func testGetPathNotParsedInvalidFolder() {
-        XCTAssertNil(TestParser.getPath(file: "/Users/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""))
+        let line = "/Users/project/example/Before/Example/ExistingClassCovered.swift"
+        let url = TestParser.getPath(file: line, repoName: "")
+        XCTAssertEqual(url, line)
     }
 
     func testGetPathNotParsedNoColon() {
-        XCTAssertNil(TestParser.getPath(file: "/Users/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""))
+        let line = "/Users/project/example/Before/Example/ExistingClassCovered.swift"
+        let url = TestParser.getPath(file: line, repoName: "")
+        XCTAssertEqual(url, line)
     }
 
     func testGetLineNumber() {

@@ -1,5 +1,5 @@
 //
-//  FileWarningTests.swift
+//  FileWarningModelTests.swift
 //  PostBuildAnalzyerTests
 //
 //  Created by Michael Charland on 2019-12-20.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class FileWarningTests: XCTestCase {
+class FileWarningModelTests: XCTestCase {
     func testWarning() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
         let warning = FileWarningModel(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", line: description)

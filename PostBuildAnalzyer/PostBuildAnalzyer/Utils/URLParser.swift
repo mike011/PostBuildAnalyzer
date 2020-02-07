@@ -13,10 +13,7 @@ protocol URLParser {}
 extension URLParser {
     static func getURL(file: String, lineNumber: Int?, repoURL: String, branch: String) -> URL? {
         let repoName = Self.getRepoName(fromRepoURL: repoURL)
-
-        guard let path = Self.getPath(file: file, repoName: repoName) else {
-            return nil
-        }
+        let path = Self.getPath(file: file, repoName: repoName)
 
         var urlString = "\(repoURL)/blob/\(branch)/\(path)"
         if let lineNumber = lineNumber {
@@ -37,7 +34,7 @@ extension URLParser {
         return repoURL
     }
 
-    static func getPath(file: String, repoName: String) -> String? {
+    static func getPath(file: String, repoName: String) -> String {
         let circleFolder = "/Users/distiller/project/"
         if file.contains(repoName),
             let range = file.range(of: repoName + "/") {
@@ -45,7 +42,7 @@ extension URLParser {
         } else if let range = file.range(of: circleFolder) {
             return String(file[range.upperBound...])
         }
-        return nil
+        return file
     }
 
     static func getLineNumber(line: String) -> Int? {

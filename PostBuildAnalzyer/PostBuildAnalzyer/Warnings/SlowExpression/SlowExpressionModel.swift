@@ -58,9 +58,7 @@ class SlowExpressionModel: WarningModel, URLParser {
             self.url = url
         }
 
-        if let file = Self.getPath(file: file, repoName: Self.getRepoName(fromRepoURL: repoURL)) {
-            self.file = file
-        }
+        self.file = Self.getPath(file: file, repoName: Self.getRepoName(fromRepoURL: repoURL))
     }
 
     static func parseTimeInMS(line: String) -> Double {

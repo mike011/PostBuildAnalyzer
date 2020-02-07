@@ -22,9 +22,18 @@ class LintWarningModel: WarningModel, URLParser {
     init(repoURL: String, branch: String, line: String, file: String, location: String) {
         self.line = line
         self.file = file.stripTDs()
-        self.lineNumber = Int(file.stripCenterTDs())
+        self.lineNumber = Self.getLineNumber(location: location)
         self.description = line.stripTDs()
-        self.url = Self.getURL(file: file, lineNumber: lineNumber, repoURL: repoURL, branch: branch)
+        self.url = Self.getURL(file: self.file, lineNumber: lineNumber, repoURL: repoURL, branch: branch)
+    }
+
+    static func getLineNumber(location: String) -> Int? {
+        let parsed = location.stripCenterTDs()
+        if let colon = parsed.firstIndex(of: ":") {
+            let end = parsed.index(before: colon)
+            return Int(parsed[...end])
+        }
+        return nil
     }
 
     func getFilename() -> String {

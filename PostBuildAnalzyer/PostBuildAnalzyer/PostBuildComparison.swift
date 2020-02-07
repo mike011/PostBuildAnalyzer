@@ -156,6 +156,10 @@ class PostBuildComparsion {
         let alc = after.getWarningController() as [LinkerWarningController]
         rows.append(LinkerWarningTotalRowView(before: blc, after: alc))
 
+        let blwc = before.getWarningController() as [LintWarningController]
+        let alwc = after.getWarningController() as [LintWarningController]
+        rows.append(LintWarningTotalRowView(before: blwc, after: alwc))
+
         for row in rows {
             if row.hasResults {
                 createHTMLFiles(row: row, outputURL: outputURL)

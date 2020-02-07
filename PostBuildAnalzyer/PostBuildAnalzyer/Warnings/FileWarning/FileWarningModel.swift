@@ -65,10 +65,7 @@ class FileWarningModel: WarningModel, URLParser {
         }
 
         self.url = Self.getURL(file: file, lineNumber: lineNumber, repoURL: repoURL, branch: branch)
-
-        if let file = Self.getPath(file: file, repoName: Self.getRepoName(fromRepoURL: repoURL)) {
-            self.file = file
-        }
+        self.file = Self.getPath(file: file, repoName: Self.getRepoName(fromRepoURL: repoURL))
     }
 
     func getFilename() -> String {

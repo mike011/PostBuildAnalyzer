@@ -84,6 +84,9 @@
 		4CF008A923EBA75300B0B446 /* LintWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A623EBA3C900B0B446 /* LintWarningView.swift */; };
 		4CF008AA23EBA75500B0B446 /* LintWarningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */; };
 		4CF008AC23EBA9E200B0B446 /* LintWarningModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */; };
+		4CF008AE23ECF35300B0B446 /* LintWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008AD23ECF35300B0B446 /* LintWarningTotalRowView.swift */; };
+		4CF008B023ECF3FA00B0B446 /* LintWarningViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008AF23ECF3FA00B0B446 /* LintWarningViewTests.swift */; };
+		4CF008B123ECF4C200B0B446 /* LintWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF008AD23ECF35300B0B446 /* LintWarningTotalRowView.swift */; };
 		4CF3BA3C23B30E130087F262 /* FileWarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3A23B30E130087F262 /* FileWarningController.swift */; };
 		4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3D23B30ED60087F262 /* WarningController.swift */; };
 		4CF3BA4023B39ECA0087F262 /* WarningVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */; };
@@ -176,6 +179,8 @@
 		4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningModel.swift; sourceTree = "<group>"; };
 		4CF008A623EBA3C900B0B446 /* LintWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningView.swift; sourceTree = "<group>"; };
 		4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningModelTests.swift; sourceTree = "<group>"; };
+		4CF008AD23ECF35300B0B446 /* LintWarningTotalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningTotalRowView.swift; sourceTree = "<group>"; };
+		4CF008AF23ECF3FA00B0B446 /* LintWarningViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LintWarningViewTests.swift; sourceTree = "<group>"; };
 		4CF3BA3A23B30E130087F262 /* FileWarningController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWarningController.swift; sourceTree = "<group>"; };
 		4CF3BA3D23B30ED60087F262 /* WarningController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningController.swift; sourceTree = "<group>"; };
 		4CF3BA3F23B39ECA0087F262 /* WarningVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningVIew.swift; sourceTree = "<group>"; };
@@ -395,6 +400,7 @@
 				4C0BC3A723B11ACD00DACAB1 /* LintWarning.swift */,
 				4CF008A223EBA39300B0B446 /* LintWarningController.swift */,
 				4CF008A423EBA3C100B0B446 /* LintWarningModel.swift */,
+				4CF008AD23ECF35300B0B446 /* LintWarningTotalRowView.swift */,
 				4CF008A623EBA3C900B0B446 /* LintWarningView.swift */,
 			);
 			path = LintWarning;
@@ -423,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */,
+				4CF008AF23ECF3FA00B0B446 /* LintWarningViewTests.swift */,
 			);
 			path = LintWarning;
 			sourceTree = "<group>";
@@ -541,6 +548,7 @@
 				4CF3BA3E23B30ED60087F262 /* WarningController.swift in Sources */,
 				4C3355A323C8AACD0005C683 /* Header.swift in Sources */,
 				4CF3BA5023B3DF180087F262 /* FileWarningModel.swift in Sources */,
+				4CF008AE23ECF35300B0B446 /* LintWarningTotalRowView.swift in Sources */,
 				4C33559F23C8AAA30005C683 /* BlankLine.swift in Sources */,
 				4CECF7FA23BD0CAD00B0E5E8 /* HTML.swift in Sources */,
 				4C5A9E2323B514DB00C5BA40 /* SlowExpressionController.swift in Sources */,
@@ -622,6 +630,7 @@
 				350DDE7C23AD62C900F48143 /* LinkerWarningViewTests.swift in Sources */,
 				4C1C0BCE23ADA20B004DC5F3 /* FileWarningModelTests.swift in Sources */,
 				4CECF7ED23BB83DA00B0E5E8 /* PostBuildAnalyzerTests.swift in Sources */,
+				4CF008B023ECF3FA00B0B446 /* LintWarningViewTests.swift in Sources */,
 				350DDE7923AD61D100F48143 /* WarningModel.swift in Sources */,
 				4CECF7EF23BB856E00B0E5E8 /* Resource.swift in Sources */,
 				4C063E6A23B990B500BFAD86 /* ArgumentsTests.swift in Sources */,
@@ -633,6 +642,7 @@
 				4C5A9E3C23B5923500C5BA40 /* GrandTotalRowView.swift in Sources */,
 				4C0BC3B123B11D6000DACAB1 /* PostBuildAnalyzer.swift in Sources */,
 				4C3355B223C8B13B0005C683 /* TableTests.swift in Sources */,
+				4CF008B123ECF4C200B0B446 /* LintWarningTotalRowView.swift in Sources */,
 				4CF3BA6023B3F7B30087F262 /* LinkerWarningModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

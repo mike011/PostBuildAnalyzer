@@ -48,7 +48,9 @@ class PostBuildAnalyzerTests: XCTestCase {
 
     func testInitWithDuplicateLintWarnings() {
         var lintFile = [String]()
-        lintFile.append("         <td class=\"warning\">Warning</td>")
+        lintFile.append("<td>Example/SlowFiles.swift</td>")
+        lintFile.append("<td style=\"text-align: center;\">32:46</td>")
+        lintFile.append("<td class=\"warning\">Warning</td>")
         lintFile.append("<td>Collection literals should not have trailing commas.</td>")
         let pba = PostBuildAnalzyer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile)
         let se = pba.getWarningController() as [LintWarningController]
