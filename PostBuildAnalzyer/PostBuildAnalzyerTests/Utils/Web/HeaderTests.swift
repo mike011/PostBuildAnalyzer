@@ -16,9 +16,9 @@ class HeaderTests: XCTestCase {
     }
 
     func testToMarkdown() {
-        XCTAssertEqual(header.toMarkdown(), ["##title##"])
+        XCTAssertEqual(header.toMarkdown(), ["<H2>title</H2>"])
 
         let header4 = Header(level: 4, title: "monkey")
-        XCTAssertEqual(header4.toMarkdown(), ["####monkey####"])
+        XCTAssertEqual(header4.toMarkdown(), ["<H4>monkey</H4>"])
     }
 }

@@ -49,7 +49,8 @@ extension TotalRowView {
         if url.last != "/" {
             url += "/"
         }
-        let urlString = "\(url)\(page).html"
+        let caller = String(describing: type(of: self))
+        let urlString = "\(url)\(caller)_\(page).html"
         return HTML.getAHREF(url: URL(string: urlString)!, title: String(title))
     }
 

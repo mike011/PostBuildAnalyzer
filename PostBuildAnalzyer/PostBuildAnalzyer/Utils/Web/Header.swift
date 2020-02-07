@@ -21,7 +21,6 @@ class Header: Element {
     }
 
     func toMarkdown() -> [String] {
-        let tier = String(repeating: "#", count: level)
-        return ["\(tier)\(title)\(tier)"]
+        return ["<H\(level)>\(title)</H\(level)>"]
     }
 }

@@ -59,13 +59,13 @@ class TotalRowViewTests: XCTestCase {
         XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[0], "")
         XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[1], "S")
         XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[2], "D")
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[3], "<a href=\"http://a.b/before.html\">0</a>")
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[4], "<a href=\"http://a.b/after.html\">0</a>")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[3], "<a href=\"http://a.b/MockTotalRowView_before.html\">0</a>")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[4], "<a href=\"http://a.b/MockTotalRowView_after.html\">0</a>")
     }
 
     func testRowWithExtraSlashes() {
         let totalRowView = MockTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b/")).columns[3], "<a href=\"http://a.b/before.html\">0</a>")
+        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b/")).columns[3], "<a href=\"http://a.b/MockTotalRowView_before.html\">0</a>")
     }
 
     func testRowNoURL() {
