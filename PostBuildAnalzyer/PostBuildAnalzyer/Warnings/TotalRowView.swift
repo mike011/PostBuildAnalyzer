@@ -41,7 +41,7 @@ extension TotalRowView {
     }
 
     private func getAHREF(baseURL: URL?, page: String, title: Int) -> String {
-        guard let baseURL = baseURL else {
+        guard let baseURL = baseURL, title > 0 else {
             return String(title)
         }
 
