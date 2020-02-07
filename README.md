@@ -1,6 +1,11 @@
 # PostBuildAnalyzer
 After an iOS build has completed parse the log file and provide any other helpful logging information.
 
+# Live Example
+https://mike011.github.io/PostBuildAnalyzer/example.html
+
+# Example
+
 <h3>New Warnings</h3>
  
 |  |Description|Amount|
