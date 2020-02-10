@@ -38,7 +38,5 @@ extension PostBuildAnalyzer {
         return slowExpressionRegex.matches(line) &&
             SlowExpressionModel.parseTimeInMS(line: line) > buildTimeThresholdInMS &&
             !line.contains("invalid loc")
-
-        // Need to handle this in the future: `// : warning: expression took`
     }
 }

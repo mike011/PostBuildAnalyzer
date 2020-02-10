@@ -61,7 +61,12 @@ class PostBuildAnalyzer {
             }
             if let warning = warning {
                 if allWarnings.contains(warning) {
-                    warning.add(amount: warning.getTotalWarnings())
+                    let wc = allWarnings.first { (wc) -> Bool in
+                        return wc == warning
+                    }
+                    if let wc = wc {
+                        wc.add(amount: warning.getTotalWarnings())
+                    }
                 } else {
                     allWarnings.append(warning)
                 }
