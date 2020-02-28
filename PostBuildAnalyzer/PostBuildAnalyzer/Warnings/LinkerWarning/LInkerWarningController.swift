@@ -17,7 +17,7 @@ class LinkerWarningController: WarningController {
 }
 
 extension PostBuildAnalyzer {
-    func isLinkerWarning(line: String) -> Bool {
+    static func isLinkerWarning(line: String) -> Bool {
         return line.contains(LinkerWarningModel.lookFor)
     }
 }

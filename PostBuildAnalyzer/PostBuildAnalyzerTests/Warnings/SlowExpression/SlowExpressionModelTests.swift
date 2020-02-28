@@ -38,4 +38,10 @@ class SlowExpressionModelTests: XCTestCase {
 
         XCTAssertEqual(slowExpression.description, "instance method secondWarning()")
     }
+
+    func testWarningFormat() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: "Serializer.swift:98:63: warning: expression took 108ms to type-check (limit: 100ms)")
+
+        XCTAssertEqual(slowExpression.count, 1)
+    }
 }

@@ -31,11 +31,19 @@ class SlowExpressionModel: WarningModel, URLParser {
         let splits = Utils.getSplits(description: line)
 
         self.timeInMS = Self.parseTimeInMS(line: splits[0])
+        guard splits.count > 1 else {
+            let warning = FileWarningModel(repoURL: repoURL, branch: branch, line: line)
+            self.file = warning.file
+            self.url = URL(fileURLWithPath: file)
+            self.line = warning.line
+            self.lineNumber = warning.lineNumber ?? 0
+            self.description = warning.description
+            return
+        }
         self.file = splits[1]
         self.url = URL(fileURLWithPath: file)
         self.lineNumber = 0
         self.line = "\(file) \(lineNumber)"
-
         self.description = splits[2]
 
         // Does the file contains the line and index numbers?

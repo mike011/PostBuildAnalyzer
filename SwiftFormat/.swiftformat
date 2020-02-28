@@ -1,6 +1,6 @@
 # file options
 
---exclude /**/Carthage/**/*.swift,/**/Pods/**/*.swift,/**/gems/**/*.swift
+--exclude /**/Carthage/**/*.swift,/**/Pods/**/*.swift,/**/External/**/*.swift,/**/gems/**/*.swift
 
 # format options
 

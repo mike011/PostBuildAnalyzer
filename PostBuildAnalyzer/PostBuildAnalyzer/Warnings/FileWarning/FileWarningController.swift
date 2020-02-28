@@ -17,7 +17,8 @@ class FileWarningController: WarningController {
 }
 
 extension PostBuildAnalyzer {
-    func isFileWarning(line: String) -> Bool {
+    static func isFileWarning(line: String) -> Bool {
         return line.contains(FileWarningModel.lookFor)
+            && !line.contains(SlowExpressionController.slowCompileFile)
     }
 }

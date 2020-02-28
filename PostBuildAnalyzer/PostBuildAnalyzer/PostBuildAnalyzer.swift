@@ -52,11 +52,11 @@ class PostBuildAnalyzer {
     private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
         for line in logFile {
             var warning: WarningController?
-            if PostBuildAnalyzer.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
+            if Self.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
                 warning = SlowExpressionController(repoURL: repoURL, branch: branch, line: line)
-            } else if isLinkerWarning(line: line) {
+            } else if Self.isLinkerWarning(line: line) {
                 warning = LinkerWarningController(line: line)
-            } else if isFileWarning(line: line) {
+            } else if Self.isFileWarning(line: line) {
                 warning = FileWarningController(repoURL: repoURL, branch: branch, line: line)
             }
             if let warning = warning {
@@ -77,7 +77,7 @@ class PostBuildAnalyzer {
     private func parseLintFile(repoURL: String, branch: String, lintFile: [String]) {
         var index = 0
         while index < lintFile.count {
-            if isLintWarning(line: lintFile[index]) {
+            if Self.isLintWarning(line: lintFile[index]) {
                 let warning = LintWarningController(
                     repoURL: repoURL,
                     branch: branch,

@@ -9,6 +9,9 @@
 import Foundation
 
 class SlowExpressionController: WarningController {
+    static let invalidLocation = "invalid loc"
+    static let slowCompileFile = "expression took"
+
     init(repoURL: String, branch: String, line: String) {
         let model = SlowExpressionModel(repoURL: repoURL, branch: branch, line: line)
         let view = SlowExpressionView()
@@ -34,9 +37,18 @@ extension PostBuildAnalyzer {
     static let slowExpressionRegex = try! NSRegularExpression(pattern: "\\d+\\.\\d{2}ms")
 
     static func isSlowExpression(line: String, buildTimeThresholdInMS: Double) -> Bool {
-        // 0.01ms    /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:11:7    initializer init()
+        return isTimingSummary(line: line, thresholdInMS: buildTimeThresholdInMS)
+            || isWarning(line: line)
+    }
+
+    private static func isTimingSummary(line: String, thresholdInMS: Double) -> Bool {
         return slowExpressionRegex.matches(line) &&
-            SlowExpressionModel.parseTimeInMS(line: line) > buildTimeThresholdInMS &&
-            !line.contains("invalid loc")
+            SlowExpressionModel.parseTimeInMS(line: line) > thresholdInMS &&
+            !line.contains(SlowExpressionController.invalidLocation)
+    }
+
+    private static func isWarning(line: String) -> Bool {
+        return line.contains(FileWarningModel.lookFor) &&
+            line.contains(SlowExpressionController.slowCompileFile)
     }
 }

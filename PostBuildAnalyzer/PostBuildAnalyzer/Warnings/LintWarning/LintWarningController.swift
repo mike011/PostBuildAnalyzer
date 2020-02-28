@@ -17,7 +17,7 @@ class LintWarningController: WarningController {
 }
 
 extension PostBuildAnalyzer {
-    func isLintWarning(line: String) -> Bool {
+    static func isLintWarning(line: String) -> Bool {
         return line.contains(LintWarningModel.lookFor)
     }
 }

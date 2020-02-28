@@ -9,22 +9,6 @@
 import XCTest
 
 class SlowExpressionControllerTests: XCTestCase {
-    func testIsSlowExpressionFileCompiledBelowThreshold() {
-        XCTAssertFalse(PostBuildAnalyzer.isSlowExpression(line: "0.94ms", buildTimeThresholdInMS: 1.00))
-    }
-
-    func testIsSlowExpressionFileCompiledAboveThreshold() {
-        XCTAssertTrue(PostBuildAnalyzer.isSlowExpression(line: "0.94ms", buildTimeThresholdInMS: 0.90))
-    }
-
-    func testIsSlowExpressionInvalidFile() {
-        XCTAssertFalse(PostBuildAnalyzer.isSlowExpression(line: "Invalid String", buildTimeThresholdInMS: 1.00))
-    }
-
-    func testIsSlowExpressionInvalidLocation() {
-        XCTAssertFalse(PostBuildAnalyzer.isSlowExpression(line: "0.94ms invalid loc", buildTimeThresholdInMS: 0.90))
-    }
-
     func testEquals() {
         let line = "41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
         let sec = SlowExpressionController(repoURL: "", branch: "", line: line)

@@ -68,6 +68,10 @@
 		4C5A9E3E23B5923C00C5BA40 /* LinkerWarningTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3623B57EAA00C5BA40 /* LinkerWarningTotalRowView.swift */; };
 		4C5A9E3F23B5924000C5BA40 /* SlowExpressionTotalRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E3423B57E7500C5BA40 /* SlowExpressionTotalRowView.swift */; };
 		4C5A9E4523B926AF00C5BA40 /* Arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A9E4423B926AF00C5BA40 /* Arguments.swift */; };
+		4CC91436240955D300CB7FEB /* PostBuildAnalyzer+FileWarningControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC91435240955D300CB7FEB /* PostBuildAnalyzer+FileWarningControllerTests.swift */; };
+		4CC914382409570800CB7FEB /* PostBuildAnalyzer+SlowExpressionControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC914372409570800CB7FEB /* PostBuildAnalyzer+SlowExpressionControllerTests.swift */; };
+		4CC9143A2409574D00CB7FEB /* PostBuildAnalyzer+LinkerWarningControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC914392409574D00CB7FEB /* PostBuildAnalyzer+LinkerWarningControllerTests.swift */; };
+		4CC9143C2409575C00CB7FEB /* PostBuildAnalyzer+LintControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC9143B2409575C00CB7FEB /* PostBuildAnalyzer+LintControllerTests.swift */; };
 		4CECF7ED23BB83DA00B0E5E8 /* PostBuildAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7EC23BB83DA00B0E5E8 /* PostBuildAnalyzerTests.swift */; };
 		4CECF7EF23BB856E00B0E5E8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7EE23BB856E00B0E5E8 /* Resource.swift */; };
 		4CECF7F123BCE5D600B0E5E8 /* PostBuildComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CECF7F023BCE5D600B0E5E8 /* PostBuildComparisonTests.swift */; };
@@ -166,6 +170,10 @@
 		4C5A9E3823B57EFE00C5BA40 /* FileWarningTotalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWarningTotalRowView.swift; sourceTree = "<group>"; };
 		4C5A9E3A23B582C000C5BA40 /* GrandTotalRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrandTotalRowView.swift; sourceTree = "<group>"; };
 		4C5A9E4423B926AF00C5BA40 /* Arguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arguments.swift; sourceTree = "<group>"; };
+		4CC91435240955D300CB7FEB /* PostBuildAnalyzer+FileWarningControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostBuildAnalyzer+FileWarningControllerTests.swift"; sourceTree = "<group>"; };
+		4CC914372409570800CB7FEB /* PostBuildAnalyzer+SlowExpressionControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostBuildAnalyzer+SlowExpressionControllerTests.swift"; sourceTree = "<group>"; };
+		4CC914392409574D00CB7FEB /* PostBuildAnalyzer+LinkerWarningControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostBuildAnalyzer+LinkerWarningControllerTests.swift"; sourceTree = "<group>"; };
+		4CC9143B2409575C00CB7FEB /* PostBuildAnalyzer+LintControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostBuildAnalyzer+LintControllerTests.swift"; sourceTree = "<group>"; };
 		4CECF7EA23BB819000B0E5E8 /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		4CECF7EC23BB83DA00B0E5E8 /* PostBuildAnalyzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBuildAnalyzerTests.swift; sourceTree = "<group>"; };
 		4CECF7EE23BB856E00B0E5E8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
@@ -411,6 +419,7 @@
 			children = (
 				4C1C0BCD23ADA20B004DC5F3 /* FileWarningModelTests.swift */,
 				4CF3BA5D23B3F6B90087F262 /* FileWarningViewTests.swift */,
+				4CC91435240955D300CB7FEB /* PostBuildAnalyzer+FileWarningControllerTests.swift */,
 				350DDE6123AD290400F48143 /* PostBuildAnalyzer+FileWarningTests.swift */,
 			);
 			path = FileWarning;
@@ -421,6 +430,7 @@
 			children = (
 				4CF3BA5F23B3F7B30087F262 /* LinkerWarningModelTests.swift */,
 				350DDE7B23AD62C900F48143 /* LinkerWarningViewTests.swift */,
+				4CC914392409574D00CB7FEB /* PostBuildAnalyzer+LinkerWarningControllerTests.swift */,
 			);
 			path = LinkerWarning;
 			sourceTree = "<group>";
@@ -430,6 +440,7 @@
 			children = (
 				4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */,
 				4CF008AF23ECF3FA00B0B446 /* LintWarningViewTests.swift */,
+				4CC9143B2409575C00CB7FEB /* PostBuildAnalyzer+LintControllerTests.swift */,
 			);
 			path = LintWarning;
 			sourceTree = "<group>";
@@ -437,10 +448,11 @@
 		4CF3BA5423B3E3A70087F262 /* SlowExpression */ = {
 			isa = PBXGroup;
 			children = (
+				4CC914372409570800CB7FEB /* PostBuildAnalyzer+SlowExpressionControllerTests.swift */,
 				4C0BC39223B10A9200DACAB1 /* PostBuildAnalyzer+SlowExpressionTests.swift */,
+				4C5A9E2D23B530E200C5BA40 /* SlowExpressionControllerTests.swift */,
 				4C5A9E2923B5198600C5BA40 /* SlowExpressionModelTests.swift */,
 				4C5A9E2B23B5199000C5BA40 /* SlowExpressionViewTests.swift */,
-				4C5A9E2D23B530E200C5BA40 /* SlowExpressionControllerTests.swift */,
 			);
 			path = SlowExpression;
 			sourceTree = "<group>";
@@ -589,6 +601,7 @@
 				4CF3BA5623B3E4420087F262 /* FileWarningView.swift in Sources */,
 				4CF3BA6223B436850087F262 /* WarningViewTests.swift in Sources */,
 				4CECF7FF23BD0D3C00B0E5E8 /* HMTLTests.swift in Sources */,
+				4CC914382409570800CB7FEB /* PostBuildAnalyzer+SlowExpressionControllerTests.swift in Sources */,
 				4CF3BA6623B439110087F262 /* MockWarningModel.swift in Sources */,
 				4C5A9E2823B5164400C5BA40 /* SlowExpressionView.swift in Sources */,
 				4C3355AE23C8ACED0005C683 /* BlankLineTests.swift in Sources */,
@@ -612,6 +625,7 @@
 				4CECF7F823BCF4B600B0E5E8 /* MockWarningController.swift in Sources */,
 				4C5A9E2C23B5199000C5BA40 /* SlowExpressionViewTests.swift in Sources */,
 				4C3355A923C8ABBB0005C683 /* Header.swift in Sources */,
+				4CC9143C2409575C00CB7FEB /* PostBuildAnalyzer+LintControllerTests.swift in Sources */,
 				4C3355A723C8ABB60005C683 /* BlankLine.swift in Sources */,
 				4CF3BA6D23B43E2D0087F262 /* URLParser.swift in Sources */,
 				4C3355A623C8ABB30005C683 /* Alignment.swift in Sources */,
@@ -623,6 +637,7 @@
 				4CF3BA5523B3E43B0087F262 /* LinkerWarningModel.swift in Sources */,
 				4C3355BB23C964AC0005C683 /* TableHeader.swift in Sources */,
 				4CF3BA5823B3E4530087F262 /* WarningVIew.swift in Sources */,
+				4CC91436240955D300CB7FEB /* PostBuildAnalyzer+FileWarningControllerTests.swift in Sources */,
 				350DDE6D23AD2E6A00F48143 /* Utils.swift in Sources */,
 				4C5A9E3323B57E4E00C5BA40 /* TotalRowView.swift in Sources */,
 				4CF3BA5E23B3F6B90087F262 /* FileWarningViewTests.swift in Sources */,
@@ -640,6 +655,7 @@
 				4C0BC3B023B11D5D00DACAB1 /* PostBuildComparison.swift in Sources */,
 				4C0BC39323B10A9200DACAB1 /* PostBuildAnalyzer+SlowExpressionTests.swift in Sources */,
 				4C5A9E3C23B5923500C5BA40 /* GrandTotalRowView.swift in Sources */,
+				4CC9143A2409574D00CB7FEB /* PostBuildAnalyzer+LinkerWarningControllerTests.swift in Sources */,
 				4C0BC3B123B11D6000DACAB1 /* PostBuildAnalyzer.swift in Sources */,
 				4C3355B223C8B13B0005C683 /* TableTests.swift in Sources */,
 				4CF008B123ECF4C200B0B446 /* LintWarningTotalRowView.swift in Sources */,
