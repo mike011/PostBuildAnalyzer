@@ -9,21 +9,37 @@
 import XCTest
 
 class SlowExpressionModelTests: XCTestCase {
+    private let timingSummary = "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:19:10\tinstance method secondWarning()"
+    private let warning = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2010ms to type-check (limit: 100ms)"
+
     func testCount() {
-        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:19:10\tinstance method secondWarning()")
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
 
         XCTAssertEqual(slowExpression.count, 1)
     }
 
-    func testTimeInMS() {
-        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:19:10\tinstance method secondWarning()")
+    func testCountFromWarning() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: warning)
+        XCTAssertEqual(slowExpression.count, 1)
+    }
 
+    func testTimeInMS() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
         XCTAssertEqual(slowExpression.timeInMS, 0.94)
     }
 
-    func testFile() {
-        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:19:10\tinstance method secondWarning()")
+    func testTimeInMSFromWarning() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: warning)
+        XCTAssertEqual(slowExpression.timeInMS, 2010)
+    }
 
+    func testFile() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
+        XCTAssertEqual(slowExpression.file, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift")
+    }
+
+    func testFileFromWarning() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: warning)
         XCTAssertEqual(slowExpression.file, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift")
     }
 
@@ -34,14 +50,21 @@ class SlowExpressionModelTests: XCTestCase {
     }
 
     func testDescription() {
-        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:19:10\tinstance method secondWarning()")
-
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
         XCTAssertEqual(slowExpression.description, "instance method secondWarning()")
     }
 
-    func testWarningFormat() {
-        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: "Serializer.swift:98:63: warning: expression took 108ms to type-check (limit: 100ms)")
+    func testDescriptionFromWarning() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: warning)
+        XCTAssertEqual(slowExpression.description, "expression took 2010ms to type-check (limit: 100ms)")
+    }
 
-        XCTAssertEqual(slowExpression.count, 1)
+    func testParseTimeInMS() {
+        XCTAssertEqual(SlowExpressionModel.parseTimeInMS(line: "am"), 0)
+        XCTAssertEqual(SlowExpressionModel.parseTimeInMS(line: "4m"), 4)
+    }
+
+    func testParseTimeInMSFromWarning() {
+        XCTAssertEqual(SlowExpressionModel.parseTimeInMSFromWarning(line: "expression took 2010ms to type-check (limit: 100ms)"), 2010)
     }
 }

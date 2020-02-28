@@ -29,8 +29,6 @@ class SlowExpressionModel: WarningModel, URLParser {
 
     init(repoURL: String, branch: String, line: String) {
         let splits = Utils.getSplits(description: line)
-
-        self.timeInMS = Self.parseTimeInMS(line: splits[0])
         guard splits.count > 1 else {
             let warning = FileWarningModel(repoURL: repoURL, branch: branch, line: line)
             self.file = warning.file
@@ -38,8 +36,10 @@ class SlowExpressionModel: WarningModel, URLParser {
             self.line = warning.line
             self.lineNumber = warning.lineNumber ?? 0
             self.description = warning.description
+            self.timeInMS = Self.parseTimeInMSFromWarning(line: description)
             return
         }
+        self.timeInMS = Self.parseTimeInMS(line: splits[0])
         self.file = splits[1]
         self.url = URL(fileURLWithPath: file)
         self.lineNumber = 0
@@ -72,6 +72,15 @@ class SlowExpressionModel: WarningModel, URLParser {
     static func parseTimeInMS(line: String) -> Double {
         let start = line.firstIndex(of: "m")!
         let time = String(line[..<start])
+        return Double(time) ?? 0.0
+    }
+
+    static func parseTimeInMSFromWarning(line: String) -> Double {
+        let range = line.range(of: "expression took ")!
+        let index = line.distance(from: line.startIndex, to: range.upperBound)
+        let start = line.index(line.startIndex, offsetBy: index)
+        let end = line.firstIndex(of: "m")!
+        let time = String(line[start ..< end])
         return Double(time) ?? 0.0
     }
 
