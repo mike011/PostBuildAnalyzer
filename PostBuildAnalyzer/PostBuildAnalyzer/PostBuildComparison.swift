@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Compares 2 sets of analzyer data. For example the linting of two builds, slow expressions, and warnings.
+/// Compares 2 sets of analyzer data. For example the linting of two builds, slow expressions, and warnings.
 class PostBuildComparsion {
     private let before: PostBuildAnalyzer
     private let after: PostBuildAnalyzer
@@ -86,7 +86,7 @@ class PostBuildComparsion {
         for afterW in after.allWarnings {
             var found = false
             for beforeW in before.allWarnings {
-                if afterW.model.description == beforeW.model.description {
+                if afterW.model.compareTo(line: beforeW.model.line) {
                     found = true
                     break
                 }
@@ -103,7 +103,7 @@ class PostBuildComparsion {
         for beforeW in before.allWarnings {
             var found = false
             for afterW in after.allWarnings {
-                if beforeW.model.description == afterW.model.description {
+                if beforeW.model.compareTo(line: afterW.model.line) {
                     found = true
                     break
                 }

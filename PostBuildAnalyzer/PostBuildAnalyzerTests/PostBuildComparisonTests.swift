@@ -204,4 +204,19 @@ class PostBuildComparisonTests: XCTestCase {
         let elements = pbc.getFixedWarnings()
         XCTAssertEqual(elements.count, 0)
     }
+
+    func testGetNewWarningsSlowExpression() {
+        var logFile = [String]()
+        logFile.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2010ms to type-check (limit: 100ms)")
+        let pbb = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+
+        var logFile2 = [String]()
+        logFile2.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/After/Example/Warnings.swift:36:63: warning: expression took 2030ms to type-check (limit: 100ms)")
+        let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String]())
+
+        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        XCTAssertEqual(pbc.getNewWarnings().count, 0)
+        XCTAssertEqual(pbc.getFixedWarnings().count, 0)
+
+    }
 }

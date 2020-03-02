@@ -1,9 +1,0 @@
-ExistingClassCoverageDownTests.swift
-ExistingClassCoverageDown.swift
-ExistingClassCoverageDroppedTests.swift
-ExistingClassCoverageDropped.swift
-ExistingClassCoverageUpTests.swift
-ExistingClassCoverageUp.swift
-NewClassCoveredTests.swift
-NewClassCovered.swift
-NewClassNoCoverage.swift

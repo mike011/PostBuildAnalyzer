@@ -33,12 +33,11 @@ class SlowExpressionModel: WarningModel, URLParser {
             let warning = FileWarningModel(repoURL: repoURL, branch: branch, line: line)
             self.file = warning.file
             self.url = URL(fileURLWithPath: file)
-            self.line = "\(file) \(lineNumber)"
             self.lineNumber = warning.lineNumber ?? 0
+            self.line = "\(url.lastPathComponent) \(lineNumber)"
             if let url = Self.getURL(file: file, lineNumber: lineNumber, repoURL: repoURL, branch: branch) {
                 self.url = url
             }
-
             self.description = warning.description
             self.timeInMS = Self.parseTimeInMSFromWarning(line: description)
             return

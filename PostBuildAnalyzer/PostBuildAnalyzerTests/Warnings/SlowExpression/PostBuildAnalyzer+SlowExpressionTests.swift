@@ -26,6 +26,16 @@ class SlowExpressionAnalyzerTests: XCTestCase {
         XCTAssertEqual(slowExpressionController![0].getTotalWarnings(), 0.02)
     }
 
+    func testASlowExpressionTwiceFromWarning() {
+        var logFile = [String]()
+        logFile.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2010ms to type-check (limit: 100ms)")
+        logFile.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2050ms to type-check (limit: 100ms)")
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let slowExpressionController = wa.getWarningController() as? [SlowExpressionController]
+        XCTAssertEqual(slowExpressionController?.count, 1)
+        XCTAssertEqual(slowExpressionController![0].getTotalWarnings(), 4060.0)
+    }
+
     func testASlowExpressionInvalidString() {
         var logFile = [String]()
         logFile.append("Not a slow expression")
