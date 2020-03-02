@@ -37,6 +37,16 @@ class PostBuildAnalyzerTests: XCTestCase {
         XCTAssertFalse(pba.allWarnings.isEmpty)
     }
 
+    func testInitWithDuplicateWarnings() {
+        var logFile = [String]()
+        logFile.append("AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        logFile.append("AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
+        let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let se = pba.getWarningController() as [WarningController]
+        XCTAssertEqual(se.count, 1)
+        XCTAssertEqual(se[0].getTotalWarnings(), 2)
+    }
+
     func testInitWithDuplicateSlowExpression() {
         var logFile = [String]()
         logFile.append("41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()")
@@ -44,6 +54,17 @@ class PostBuildAnalyzerTests: XCTestCase {
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
         let se = pba.getWarningController() as [SlowExpressionController]
         XCTAssertEqual(se.count, 1)
+        XCTAssertEqual(se[0].getTotalWarnings(), 72.76)
+    }
+
+    func testInitWithDuplicateSlowExpressionWithDifferentTimes() {
+        var logFile = [String]()
+        logFile.append("SlowFiles.swift:36:63: warning: expression took 2010ms to type-check (limit: 100ms)")
+        logFile.append("SlowFiles.swift:36:63: warning: expression took 2015ms to type-check (limit: 100ms)")
+        let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let se = pba.getWarningController() as [SlowExpressionController]
+        XCTAssertEqual(se.count, 1)
+        XCTAssertEqual(se[0].getTotalWarnings(), 4025)
     }
 
     func testInitWithDuplicateLintWarnings() {
@@ -52,9 +73,14 @@ class PostBuildAnalyzerTests: XCTestCase {
         lintFile.append("<td style=\"text-align: center;\">32:46</td>")
         lintFile.append("<td class=\"warning\">Warning</td>")
         lintFile.append("<td>Collection literals should not have trailing commas.</td>")
+        lintFile.append("<td>Example/SlowFiles.swift</td>")
+        lintFile.append("<td style=\"text-align: center;\">32:46</td>")
+        lintFile.append("<td class=\"warning\">Warning</td>")
+        lintFile.append("<td>Collection literals should not have trailing commas.</td>")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile)
         let se = pba.getWarningController() as [LintWarningController]
         XCTAssertEqual(se.count, 1)
+        XCTAssertEqual(se[0].getTotalWarnings(), 2)
     }
 
     func testGetWarningControllerNoWarnings() {

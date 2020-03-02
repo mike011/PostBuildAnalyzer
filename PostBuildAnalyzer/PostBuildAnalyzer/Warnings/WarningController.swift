@@ -19,7 +19,7 @@ class WarningController: Hashable, Equatable {
     }
 
     static func == (lhs: WarningController, rhs: WarningController) -> Bool {
-        return lhs.model.line == rhs.model.line
+        return lhs.model.compareTo(line: rhs.model.line)
     }
 
     func hash(into hasher: inout Hasher) {

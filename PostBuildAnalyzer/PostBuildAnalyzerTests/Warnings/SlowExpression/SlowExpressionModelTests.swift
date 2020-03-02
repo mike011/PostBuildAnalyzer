@@ -67,4 +67,30 @@ class SlowExpressionModelTests: XCTestCase {
     func testParseTimeInMSFromWarning() {
         XCTAssertEqual(SlowExpressionModel.parseTimeInMSFromWarning(line: "expression took 2010ms to type-check (limit: 100ms)"), 2010)
     }
+
+    func testCompareToSame() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
+        let slowExpression2 = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
+        XCTAssertTrue(slowExpression.compareTo(line: slowExpression2.line))
+    }
+
+    func testCompareToDifferentFiles() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
+        let slowExpression2 = SlowExpressionModel(repoURL: "", branch: "", line: "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Envelope.swift:19:10\tinstance method secondWarning()")
+        XCTAssertFalse(slowExpression.compareTo(line: slowExpression2.line))
+    }
+
+    func testCompareToDifferentLines() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: timingSummary)
+        let slowExpression2 = SlowExpressionModel(repoURL: "", branch: "", line: "0.94ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Envelope.swift:18:10\tinstance method secondWarning()")
+        XCTAssertFalse(slowExpression.compareTo(line: slowExpression2.line))
+    }
+
+    func testCompareToDifferentCompileTimes() {
+        let slowExpression = SlowExpressionModel(repoURL: "", branch: "", line: warning)
+        let slowExpression2 = SlowExpressionModel(repoURL: "", branch: "", line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2015ms to type-check (limit: 100ms)")
+        XCTAssertTrue(slowExpression.compareTo(line: slowExpression2.line))
+    }
+
+    // Why is the file url incorrect for the slow expression file from a warning
 }

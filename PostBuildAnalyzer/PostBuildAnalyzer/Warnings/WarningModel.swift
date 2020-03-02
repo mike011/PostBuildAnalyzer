@@ -13,4 +13,11 @@ protocol WarningModel {
     var line: String { get }
     var description: String { get }
     var count: Double { get set }
+    func compareTo(line: String) -> Bool
+}
+
+extension WarningModel {
+    func compareTo(line: String) -> Bool {
+        return self.line == line
+    }
 }
