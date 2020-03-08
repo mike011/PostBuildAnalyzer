@@ -15,7 +15,6 @@ class WarningController: Hashable, Equatable {
     init(model: WarningModel, view: WarningView) {
         self.model = model
         self.view = view
-        fillRow()
     }
 
     static func == (lhs: WarningController, rhs: WarningController) -> Bool {

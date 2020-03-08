@@ -47,6 +47,7 @@ class PostBuildAnalyzer {
     init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String], lintFile: [String]) {
         parseLogFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, logFile: logFile)
         parseLintFile(repoURL: repoURL, branch: branch, lintFile: lintFile)
+        fillRows()
     }
 
     private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
@@ -98,6 +99,12 @@ class PostBuildAnalyzer {
                 index = index + 1
             }
             index = index + 1
+        }
+    }
+
+    func fillRows() {
+        for wc in allWarnings {
+            wc.fillRow()
         }
     }
 
