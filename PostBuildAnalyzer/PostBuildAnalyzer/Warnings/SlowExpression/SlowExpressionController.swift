@@ -36,7 +36,10 @@ class SlowExpressionController: WarningController {
 extension PostBuildAnalyzer {
     static let slowExpressionRegex = try! NSRegularExpression(pattern: "\\d+\\.\\d{2}ms")
 
-    static func isSlowExpression(line: String, buildTimeThresholdInMS: Double) -> Bool {
+    static func isSlowExpression(line: String, buildTimeThresholdInMS: Double?) -> Bool {
+        guard let buildTimeThresholdInMS = buildTimeThresholdInMS else {
+            return false
+        }
         return isTimingSummary(line: line, thresholdInMS: buildTimeThresholdInMS)
             || isWarning(line: line)
     }

@@ -13,7 +13,7 @@ class PostBuildComparsion {
     private let before: PostBuildAnalyzer
     private let after: PostBuildAnalyzer
     private var baseURL: URL
-    private var buildTimeThresholdInMS: Double
+    private var buildTimeThresholdInMS: Double?
     private var outputURL: URL
 
     convenience init(before: Arguments, after: Arguments) {
@@ -32,7 +32,7 @@ class PostBuildComparsion {
         before: PostBuildAnalyzer,
         after: PostBuildAnalyzer,
         baseURLPath: String,
-        buildTimeThresholdInMS: Double,
+        buildTimeThresholdInMS: Double?,
         outputFolder: String
     ) {
         self.before = before
@@ -150,9 +150,11 @@ class PostBuildComparsion {
         let table = Table(headers: [diff, category, description, beforeHeader, afterHeader])
 
         var rows = [TotalRowView]()
-        let bse = before.getWarningController() as [SlowExpressionController]
-        let ase = after.getWarningController() as [SlowExpressionController]
-        rows.append(SlowExpressionTotalRowView(before: bse, after: ase, buildTimeThresholdInMS: buildTimeThresholdInMS))
+        if let buildTime = buildTimeThresholdInMS {
+            let bse = before.getWarningController() as [SlowExpressionController]
+            let ase = after.getWarningController() as [SlowExpressionController]
+            rows.append(SlowExpressionTotalRowView(before: bse, after: ase, buildTimeThresholdInMS: buildTime))
+        }
 
         let bfw = before.getWarningController() as [FileWarningController]
         let afw = after.getWarningController() as [FileWarningController]

@@ -42,4 +42,46 @@ class ArgumentsTests: XCTestCase {
         XCTAssertEqual(args.lintFileName, "lint.html")
         XCTAssertEqual(args.buildTimeThresholdInMS, 200)
     }
+    
+    func testExampleNoLogFile() throws {
+        let jsonString = """
+        {
+        "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
+        "branch": "master",
+        "outputFolder": "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/",
+        "baseURLPath": "https://mike011.github.io/CodeCoverageCompare/before/",
+        "lintFileName": "lint.html",
+        "buildTimeThresholdInMS": 200
+        }
+        """
+
+        let data = jsonString.data(using: .utf8)!
+        let args = try XCTUnwrap(JSONDecoder().decode(Arguments.self, from: data))
+        XCTAssertEqual(args.repoURL, "https://github.com/mike011/PostBuildAnalyzer")
+        XCTAssertEqual(args.branch, "master")
+        XCTAssertEqual(args.outputFolder, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
+        XCTAssertEqual(args.baseURLPath, "https://mike011.github.io/CodeCoverageCompare/before/")
+        XCTAssertEqual(args.lintFileName, "lint.html")
+        XCTAssertEqual(args.buildTimeThresholdInMS, 200)
+    }
+    
+    func testExampleNoBuildTime() throws {
+        let jsonString = """
+        {
+        "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
+        "branch": "master",
+        "outputFolder": "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/",
+        "baseURLPath": "https://mike011.github.io/CodeCoverageCompare/before/",
+        "lintFileName": "lint.html"
+        }
+        """
+
+        let data = jsonString.data(using: .utf8)!
+        let args = try XCTUnwrap(JSONDecoder().decode(Arguments.self, from: data))
+        XCTAssertEqual(args.repoURL, "https://github.com/mike011/PostBuildAnalyzer")
+        XCTAssertEqual(args.branch, "master")
+        XCTAssertEqual(args.outputFolder, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
+        XCTAssertEqual(args.baseURLPath, "https://mike011.github.io/CodeCoverageCompare/before/")
+        XCTAssertEqual(args.lintFileName, "lint.html")
+    }
 }
