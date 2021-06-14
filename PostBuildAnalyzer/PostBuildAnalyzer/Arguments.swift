@@ -20,7 +20,7 @@ struct Arguments: Decodable {
     let branch: String
     let outputFolder: String
     let logFileName: String?
-    let baseURLPath: String
+    let baseURLPath: String?
     let lintFileName: String?
     let buildTimeThresholdInMS: Double?
 }

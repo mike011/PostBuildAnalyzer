@@ -12,7 +12,7 @@ import Foundation
 class PostBuildComparsion {
     private let before: PostBuildAnalyzer
     private let after: PostBuildAnalyzer
-    private var baseURL: URL
+    private var baseURL: URL?
     private var buildTimeThresholdInMS: Double?
     private var outputURL: URL
 
@@ -31,25 +31,31 @@ class PostBuildComparsion {
     init(
         before: PostBuildAnalyzer,
         after: PostBuildAnalyzer,
-        baseURLPath: String,
+        baseURLPath: String?,
         buildTimeThresholdInMS: Double?,
         outputFolder: String
     ) {
         self.before = before
         self.after = after
-        self.baseURL = URL(string: baseURLPath)!
+        if let baseURLPath = baseURLPath {
+            self.baseURL = URL(string: baseURLPath)!
+        }
         self.buildTimeThresholdInMS = buildTimeThresholdInMS
         self.outputURL = URL(string: outputFolder)!
     }
 
     public func printTable() {
+        var empty = true
         for line in getNewWarningsTable().toMarkdown() {
+            empty = false
             print(line)
         }
         for line in getFixedWarningsTable().toMarkdown() {
+            empty = false
             print(line)
         }
         for line in getTotalWarningsTable().toMarkdown() {
+            empty = false
             print(line)
         }
 
@@ -57,6 +63,10 @@ class PostBuildComparsion {
         var html = getNewWarningsTable().toHTML()
         html += getFixedWarningsTable().toHTML()
         html += getTotalWarningsTable().toHTML()
+        
+        if empty {
+            print("🎉🎉 No Warnings Found. 🎉🎉")
+        }
         Utils.writeToFile(contents: html, url: reportURL)
     }
 
