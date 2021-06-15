@@ -115,6 +115,7 @@
 		4CF3BA6A23B43C8B0087F262 /* URLParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6923B43C8B0087F262 /* URLParserTests.swift */; };
 		4CF3BA6C23B43D110087F262 /* URLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6B23B43D110087F262 /* URLParser.swift */; };
 		4CF3BA6D23B43E2D0087F262 /* URLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF3BA6B23B43D110087F262 /* URLParser.swift */; };
+		C392F3BF267133B9002D3C2E /* PostBuildAnalayzer+LintWarningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C392F3BE267133B9002D3C2E /* PostBuildAnalayzer+LintWarningTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -207,6 +208,7 @@
 		4CF3BA6723B4391C0087F262 /* MockWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWarningView.swift; sourceTree = "<group>"; };
 		4CF3BA6923B43C8B0087F262 /* URLParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParserTests.swift; sourceTree = "<group>"; };
 		4CF3BA6B23B43D110087F262 /* URLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParser.swift; sourceTree = "<group>"; };
+		C392F3BE267133B9002D3C2E /* PostBuildAnalayzer+LintWarningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostBuildAnalayzer+LintWarningTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -446,6 +448,7 @@
 				4CF008AB23EBA9E200B0B446 /* LintWarningModelTests.swift */,
 				4CF008AF23ECF3FA00B0B446 /* LintWarningViewTests.swift */,
 				4CC9143B2409575C00CB7FEB /* PostBuildAnalyzer+LintControllerTests.swift */,
+				C392F3BE267133B9002D3C2E /* PostBuildAnalayzer+LintWarningTests.swift */,
 			);
 			path = LintWarning;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				35B8AB56239499CF00A90A56 /* UtilsTests.swift in Sources */,
 				4CF3BA6823B4391C0087F262 /* MockWarningView.swift in Sources */,
 				4CECF7F123BCE5D600B0E5E8 /* PostBuildComparisonTests.swift in Sources */,
+				C392F3BF267133B9002D3C2E /* PostBuildAnalayzer+LintWarningTests.swift in Sources */,
 				4C3355BC23C964AF0005C683 /* TableRowModel.swift in Sources */,
 				4C0BC3B223B11DD600DACAB1 /* LintWarning.swift in Sources */,
 				4CF3BA6423B438E00087F262 /* WarningControllerTests.swift in Sources */,
@@ -792,7 +796,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CY96495443;
+				DEVELOPMENT_TEAM = M583F5CT96;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -804,7 +808,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CY96495443;
+				DEVELOPMENT_TEAM = M583F5CT96;
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -816,7 +820,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CY96495443;
+				DEVELOPMENT_TEAM = M583F5CT96;
 				INFOPLIST_FILE = PostBuildAnalyzerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -835,7 +839,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CY96495443;
+				DEVELOPMENT_TEAM = M583F5CT96;
 				INFOPLIST_FILE = PostBuildAnalyzerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

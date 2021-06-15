@@ -24,7 +24,10 @@ class PostBuildAnalyzer {
         if args.outputFolder.last != "/" {
             folder += "/"
         }
-        let logFileName = folder + args.logFileName
+        var logFileName: String?
+        if let fileName = args.logFileName {
+            logFileName = folder + fileName
+        }
         let logFileContents = Utils.load(file: logFileName)
         let lintFileContents = Self.load(lintFile: args.lintFileName, folder: folder)
 
@@ -44,13 +47,13 @@ class PostBuildAnalyzer {
         return Utils.load(file: folder + file)
     }
 
-    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String], lintFile: [String]) {
+    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double?, logFile: [String], lintFile: [String]) {
         parseLogFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, logFile: logFile)
         parseLintFile(repoURL: repoURL, branch: branch, lintFile: lintFile)
         fillRows()
     }
 
-    private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double, logFile: [String]) {
+    private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double?, logFile: [String]) {
         for line in logFile {
             var warning: WarningController?
             if Self.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {

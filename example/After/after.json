@@ -1,7 +1,7 @@
 {
     "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
-    "branch": "master",
-    "outputFolder": "/Users/michael/Documents/git/PostBuildAnalyzer/example/After/fastlane/test_output/",
+    "branch": "main",
+    "outputFolder": "/Users/michael.charland320/git/PostBuildAnalyzer/example/After/fastlane/test_output/",
     "logFileName": "Example-Example (After).log",
     "baseURLPath": "https://mike011.github.io/PostBuildAnalyzer/after/",
     "lintFileName": "lint.html",

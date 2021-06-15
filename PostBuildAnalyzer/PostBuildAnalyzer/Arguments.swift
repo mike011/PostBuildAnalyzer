@@ -19,8 +19,8 @@ struct Arguments: Decodable {
     let repoURL: String
     let branch: String
     let outputFolder: String
-    let logFileName: String
+    let logFileName: String?
     let baseURLPath: String
     let lintFileName: String?
-    let buildTimeThresholdInMS: Double
+    let buildTimeThresholdInMS: Double?
 }
