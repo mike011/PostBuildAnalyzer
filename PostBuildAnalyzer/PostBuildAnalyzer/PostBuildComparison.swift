@@ -66,8 +66,10 @@ class PostBuildComparsion {
         
         if empty {
             print("🎉🎉 No Warnings Found. 🎉🎉")
+        } else {
+            Utils.writeToFile(contents: html, url: reportURL)
         }
-        Utils.writeToFile(contents: html, url: reportURL)
+
     }
 
     func getNewWarningsTable() -> WebModel {
