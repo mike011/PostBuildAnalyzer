@@ -29,6 +29,10 @@ class URLParserTests: XCTestCase {
     func testGetPathCircle() {
         XCTAssertEqual(TestParser.getPath(file: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
     }
+    
+    func testGetPathBitrise() {
+        XCTAssertEqual(TestParser.getPath(file: "/Users/vagrant/git/example/Before/Example/ExistingClassCovered.swift", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
+    }
 
     func testGetPathNotParsedInvalidFolder() {
         let line = "/Users/project/example/Before/Example/ExistingClassCovered.swift"
