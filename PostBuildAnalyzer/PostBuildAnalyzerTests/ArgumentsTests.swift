@@ -15,7 +15,8 @@ let MOCK_ARGUMENTS = Arguments(
     logFileName: EXAMPLE_LOG_FILE_NAME,
     baseURLPath: "http://a.b/",
     lintFileName: nil,
-    buildTimeThresholdInMS: 0
+    buildTimeThresholdInMS: 0,
+    ignorePaths: ["Pods"]
 )
 
 class ArgumentsTests: XCTestCase {
@@ -28,7 +29,8 @@ class ArgumentsTests: XCTestCase {
         "logFileName": "Example-Example (Before).log",
         "baseURLPath": "https://mike011.github.io/CodeCoverageCompare/before/",
         "lintFileName": "lint.html",
-        "buildTimeThresholdInMS": 200
+        "buildTimeThresholdInMS": 200,
+        "ignorePaths": ["Pods"]
         }
         """
 
@@ -41,6 +43,7 @@ class ArgumentsTests: XCTestCase {
         XCTAssertEqual(args.baseURLPath, "https://mike011.github.io/CodeCoverageCompare/before/")
         XCTAssertEqual(args.lintFileName, "lint.html")
         XCTAssertEqual(args.buildTimeThresholdInMS, 200)
+        XCTAssertEqual(args.ignorePaths, ["Pods"])
     }
     
     func testExampleNoLogFile() throws {

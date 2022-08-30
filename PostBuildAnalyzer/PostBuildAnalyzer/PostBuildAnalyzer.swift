@@ -10,6 +10,7 @@ import Foundation
 
 class PostBuildAnalyzer {
     var allWarnings = [WarningController]()
+    private var ignorePaths: [String]
 
     var rows: [TableRowModel] {
         var result = [TableRowModel]()
@@ -30,13 +31,19 @@ class PostBuildAnalyzer {
         }
         let logFileContents = Utils.load(file: logFileName)
         let lintFileContents = Self.load(lintFile: args.lintFileName, folder: folder)
-
+        
+        var ignorePaths = [String]()
+        if let argsIgnorePaths = args.ignorePaths {
+            ignorePaths = argsIgnorePaths
+        }
+        
         self.init(
             repoURL: args.repoURL,
             branch: args.branch,
             buildTimeThresholdInMS: args.buildTimeThresholdInMS,
             logFile: logFileContents,
-            lintFile: lintFileContents
+            lintFile: lintFileContents,
+            ignorePaths: ignorePaths
         )
     }
 
@@ -47,7 +54,8 @@ class PostBuildAnalyzer {
         return Utils.load(file: folder + file)
     }
 
-    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double?, logFile: [String], lintFile: [String]) {
+    init(repoURL: String, branch: String, buildTimeThresholdInMS: Double?, logFile: [String], lintFile: [String], ignorePaths: [String]) {
+        self.ignorePaths = ignorePaths
         parseLogFile(repoURL: repoURL, branch: branch, buildTimeThresholdInMS: buildTimeThresholdInMS, logFile: logFile)
         parseLintFile(repoURL: repoURL, branch: branch, lintFile: lintFile)
         fillRows()
@@ -55,6 +63,9 @@ class PostBuildAnalyzer {
 
     private func parseLogFile(repoURL: String, branch: String, buildTimeThresholdInMS: Double?, logFile: [String]) {
         for line in logFile {
+            guard !isIgnored(line: line) else {
+                continue
+            }
             var warning: WarningController?
             if Self.isSlowExpression(line: line, buildTimeThresholdInMS: buildTimeThresholdInMS) {
                 warning = SlowExpressionController(repoURL: repoURL, branch: branch, line: line)
@@ -76,6 +87,15 @@ class PostBuildAnalyzer {
                 }
             }
         }
+    }
+    
+    private func isIgnored(line: String) -> Bool {
+        for ignorePath in ignorePaths {
+            if line.contains(ignorePath) {
+                return true
+            }
+        }
+        return false
     }
 
     private func parseLintFile(repoURL: String, branch: String, lintFile: [String]) {

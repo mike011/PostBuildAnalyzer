@@ -12,21 +12,21 @@ class WarningAnalyzerTests: XCTestCase {
     func testNotAWarning() {
         var logFile = [String]()
         logFile.append("Not a warning")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertTrue(wa.allWarnings.isEmpty)
     }
 
     func testAWarningKeyboard() {
         var logFile = [String]()
         logFile.append(": warning: ")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
     }
 
     func testAWarningFullLine() {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Personal/Resources/Media.xcassets:./Inhouse Ad/Personal_Avatar-1.imageset: warning: The image set name \"Personal_Avatar-1\" is used by multiple image sets.")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
         XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
     }
@@ -37,7 +37,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
         let warning = try XCTUnwrap(wa.allWarnings[0])
         XCTAssertNotNil(warning)
@@ -53,7 +53,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
         XCTAssertEqual(wa.allWarnings.count, 2)
     }
@@ -61,7 +61,7 @@ class WarningAnalyzerTests: XCTestCase {
     func testLinkerWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
         XCTAssertEqual(wa.allWarnings.count, 1)
         XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
@@ -71,7 +71,7 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo2'")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
         XCTAssertEqual(wa.allWarnings.count, 2)
     }
@@ -85,7 +85,7 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertEqual(wa.allWarnings.count, 1)
     }
 
@@ -93,7 +93,7 @@ class WarningAnalyzerTests: XCTestCase {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append(": warning: ")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String]())
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
     }
 }

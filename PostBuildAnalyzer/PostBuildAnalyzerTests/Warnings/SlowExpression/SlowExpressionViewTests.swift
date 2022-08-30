@@ -14,7 +14,7 @@ class SlowExpressionViewTests: XCTestCase {
         XCTAssertEqual(warning.symbol, "⏱")
     }
 
-    func testDetailedDescripiton() {
+    func testDetailedDescription() {
         let warning = SlowExpressionView()
         let model = SlowExpressionModel(repoURL: "http://w.a/repo", branch: "b", line: "0.01ms\t /Users/michael/Documents/git/repo/example/Before/Example/ExistingClassCovered.swift:11:7\tmethod initializer init()")
         let ahref = "<a href=\"http://w.a/repo/blob/b/example/Before/Example/ExistingClassCovered.swift#L11\">ExistingClassCovered.swift</a>"

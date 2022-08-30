@@ -23,4 +23,5 @@ struct Arguments: Decodable {
     let baseURLPath: String?
     let lintFileName: String?
     let buildTimeThresholdInMS: Double?
+    let ignorePaths: [String]?
 }

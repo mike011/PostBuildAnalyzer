@@ -13,7 +13,7 @@ class PostBuildAnalayzer_LintWarningTests: XCTestCase {
     func testNotAWarning() {
         var lintFile = [String]()
         lintFile.append("Not a warning")
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile)
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile, ignorePaths: [])
         XCTAssertTrue(wa.allWarnings.isEmpty)
     }
     
@@ -24,7 +24,7 @@ class PostBuildAnalayzer_LintWarningTests: XCTestCase {
         lintFile.append("<td class=\"warning\">Warning</td>")
         lintFile.append("<td>Collection literals should not have trailing commas.</td>")
         
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile)
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile, ignorePaths: [])
         XCTAssertFalse(wa.allWarnings.isEmpty)
     }
     
@@ -35,7 +35,7 @@ class PostBuildAnalayzer_LintWarningTests: XCTestCase {
         lintFile.append("<td class=\"error\">Error</td>")
         lintFile.append("<td>Line should be 200 characters or less: currently 252 characters.</td>")
         
-        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile)
+        let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: lintFile, ignorePaths: [])
         XCTAssertTrue(wa.allWarnings.isEmpty)
     }
 }
