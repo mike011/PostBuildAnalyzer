@@ -1,5 +1,5 @@
 //
-//  PostBuildComparison.swift
+//  PostBuildComparsion.swift
 //  PostBuildAnalyzer
 //
 //  Created by Michael Charland on 2019-12-23.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Compares 2 sets of analyzer data. For example the linting of two builds, slow expressions, and warnings.
-class PostBuildComparsion {
+class PostBuildComparison {
     private let before: PostBuildAnalyzer
     private let after: PostBuildAnalyzer
     private var baseURL: URL?

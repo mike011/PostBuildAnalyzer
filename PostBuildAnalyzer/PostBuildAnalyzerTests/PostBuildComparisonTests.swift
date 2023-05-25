@@ -16,7 +16,7 @@ class PostBuildComparisonTests: XCTestCase {
     // MARK: - init
 
     func testInit() {
-        let pbc = PostBuildComparsion(before: MOCK_ARGUMENTS, after: MOCK_ARGUMENTS)
+        let pbc = PostBuildComparison(before: MOCK_ARGUMENTS, after: MOCK_ARGUMENTS)
         XCTAssertNotNil(pbc)
     }
 
@@ -31,7 +31,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         let after = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let table = pbc.getNewWarningsTable()
         XCTAssertFalse(table.elements.isEmpty)
         XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
@@ -45,7 +45,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: 2")
         let after = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getNewWarningsTable().elements.isEmpty)
         XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
     }
@@ -54,7 +54,7 @@ class PostBuildComparisonTests: XCTestCase {
         let before = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
         let after = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertTrue(pbc.getNewWarningsTable().elements.isEmpty)
     }
 
@@ -67,7 +67,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getTotalWarningsTable().elements
         XCTAssertFalse(elements.isEmpty)
         XCTAssertEqual(elements.count, 3)
@@ -75,7 +75,7 @@ class PostBuildComparisonTests: XCTestCase {
 
     func testGetTotalWarningsTableNoWarnings() {
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertTrue(pbc.getTotalWarningsTable().elements.isEmpty)
     }
 
@@ -86,7 +86,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
@@ -98,7 +98,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append(": warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
@@ -110,7 +110,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
         XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
     }
@@ -125,7 +125,7 @@ class PostBuildComparisonTests: XCTestCase {
         let pbb = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
         XCTAssertEqual(elements.count, 3)
     }
@@ -137,7 +137,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
         XCTAssertEqual(elements.count, 0)
     }
@@ -154,7 +154,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile2.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
         XCTAssertEqual(elements.count, 0)
     }
@@ -171,7 +171,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile2.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
         XCTAssertEqual(elements.count, 1)
     }
@@ -183,7 +183,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
         XCTAssertEqual(elements.count, 0)
     }
@@ -200,7 +200,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
         XCTAssertEqual(elements.count, 0)
     }
@@ -214,7 +214,7 @@ class PostBuildComparisonTests: XCTestCase {
         logFile2.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/After/Example/Warnings.swift:36:63: warning: expression took 2030ms to type-check (limit: 100ms)")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String](), ignorePaths: [])
 
-        let pbc = PostBuildComparsion(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
+        let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         XCTAssertEqual(pbc.getNewWarnings().count, 0)
         XCTAssertEqual(pbc.getFixedWarnings().count, 0)
 

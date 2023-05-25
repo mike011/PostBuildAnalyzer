@@ -35,14 +35,19 @@ extension URLParser {
     }
 
     static func getPath(file: String, repoName: String) -> String {
+
         let circleFolder = "/Users/distiller/project/"
         let bitriseFolder = "/Users/vagrant/git/"
+        let codemagicFolder = "/Users/builder/clone/"
+        
         if file.contains(repoName),
             let range = file.range(of: repoName + "/") {
             return String(file[range.upperBound...])
         } else if let range = file.range(of: circleFolder) {
             return String(file[range.upperBound...])
         } else if let range = file.range(of: bitriseFolder) {
+            return String(file[range.upperBound...])
+        } else if let range = file.range(of: codemagicFolder) {
             return String(file[range.upperBound...])
         }
         return file
