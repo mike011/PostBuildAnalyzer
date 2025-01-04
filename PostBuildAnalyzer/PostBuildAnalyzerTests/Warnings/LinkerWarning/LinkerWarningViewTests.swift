@@ -6,11 +6,11 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class LinkerWarningTests: XCTestCase {
-    func testLinkerWarning() {
+@Suite struct LinkerWarningTests {
+    @Test func linkerWarning() {
         let warning = LinkerWarningModel(line: "ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/SDKs/BOB'")
-        XCTAssertEqual(warning.description, "directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/SDKs/BOB'")
+        #expect(warning.description == "directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/SDKs/BOB'")
     }
 }

@@ -6,12 +6,12 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class WarningViewTests: XCTestCase {
-    func testFillRow() {
+@Suite struct WarningViewTests {
+    @Test func fillRow() {
         var view = MockWarningView()
         view.fillRow(model: MockWarningModel())
-        XCTAssertEqual(view.columns, ["S", "detailed descripton", "measured value"])
+        #expect(view.columns == ["S", "detailed descripton", "measured value"])
     }
 }

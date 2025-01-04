@@ -6,76 +6,77 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Foundation
+import Testing
 
-class TotalRowViewTests: XCTestCase {
+@Suite struct TotalRowViewTests {
     // MARK: - change
 
-    func testChangeNoChange() {
+    @Test func changeNoChange() {
         let totalRowView = MockTotalRowView()
-        XCTAssertEqual(totalRowView.change, "")
+        #expect(totalRowView.change == "")
     }
 
-    func testChangeMoreWarnings() {
+    @Test func changeMoreWarnings() {
         let totalRowView = MockTotalRowView()
         totalRowView.after.append(MockWarningController())
-        XCTAssertEqual(totalRowView.change, "👎")
+        #expect(totalRowView.change == "👎")
     }
 
-    func testChangeLessWarnings() {
+    @Test func changeLessWarnings() {
         let totalRowView = MockTotalRowView()
         totalRowView.before.append(MockWarningController())
-        XCTAssertEqual(totalRowView.change, "👍")
+        #expect(totalRowView.change == "👍")
     }
 
     // MARK: - hasResult
 
-    func testHasResultsNoWarnings() {
+    @Test func hasResultsNoWarnings() {
         let totalRowView = MockTotalRowView()
-        XCTAssertFalse(totalRowView.hasResults)
+        #expect(!totalRowView.hasResults)
     }
 
-    func testHasResultsNoWarningsNoLink() {
+    @Test func hasResultsNoWarningsNoLink() {
         let totalRowView = MockTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "www.nba.com")).columns[3], "0")
+        #expect(totalRowView.row(baseURL: URL(string: "www.nba.com")).columns[3] == "0")
     }
 
-    func testHasResultsOnlyBeforeWarning() {
+    @Test func hasResultsOnlyBeforeWarning() {
         let totalRowView = MockTotalRowView()
         totalRowView.before.append(MockWarningController())
-        XCTAssertTrue(totalRowView.hasResults)
+        #expect(totalRowView.hasResults)
     }
 
-    func testHasResultsOnlyAfterWarning() {
+    @Test func hasResultsOnlyAfterWarning() {
         let totalRowView = MockTotalRowView()
         totalRowView.after.append(MockWarningController())
-        XCTAssertTrue(totalRowView.hasResults)
+        #expect(totalRowView.hasResults)
     }
 
-    func testHasResultsBothBeforeAndAfter() {
+    @Test func hasResultsBothBeforeAndAfter() {
         let totalRowView = MockTotalRowView()
         totalRowView.before.append(MockWarningController())
         totalRowView.after.append(MockWarningController())
-        XCTAssertTrue(totalRowView.hasResults)
+        #expect(totalRowView.hasResults)
     }
 
-    func testRow() {
+    @Test func row() {
         let totalRowView = MockTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[0], "")
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[1], "S")
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[2], "D")
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[3], "0")
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[4], "0")
+        #expect(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[0] == "")
+        #expect(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[1] == "S")
+        #expect(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[2] == "D")
+        #expect(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[3] == "0")
+        #expect(totalRowView.row(baseURL: URL(string: "http://a.b")).columns[4] == "0")
     }
 
-    func testRowWithExtraSlashes() {
+    @Test func rowWithExtraSlashes() {
         let totalRowView = MockTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: URL(string: "http://a.b/")).columns[3], "0")
+        #expect(totalRowView.row(baseURL: URL(string: "http://a.b/")).columns[3] == "0")
     }
 
-    func testRowNoURL() {
+    @Test func rowNoURL() {
         let totalRowView = MockTotalRowView()
-        XCTAssertEqual(totalRowView.row(baseURL: nil).columns[3], "0")
-        XCTAssertEqual(totalRowView.row(baseURL: nil).columns[4], "0")
+        #expect(totalRowView.row(baseURL: nil).columns[3] == "0")
+        #expect(totalRowView.row(baseURL: nil).columns[4] == "0")
     }
 }

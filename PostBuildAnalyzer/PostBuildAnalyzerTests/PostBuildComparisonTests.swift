@@ -6,25 +6,26 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Foundation
+import Testing
 
-class PostBuildComparisonTests: XCTestCase {
+@Suite struct PostBuildComparisonTests {
     private let defaultRowsForNewTable = 2
     private let defaultRowsForTotalTable = 2
     private let grandTotalRow = 1
 
     // MARK: - init
 
-    func testInit() {
+    @Test func test_init() {
         let pbc = PostBuildComparison(before: MOCK_ARGUMENTS, after: MOCK_ARGUMENTS)
-        XCTAssertNotNil(pbc)
+        #expect(pbc != nil)
     }
 
     /// MOST OF THE FOLLOWING TESTS NEED TO BE MOVED TO TESTING getNewWarningsTable so you can test the differnece in the rows.
 
     // MARK: - getNewWarningsTable
 
-    func testGetNewWarningsTableWithAWarning() {
+    @Test func getNewWarningsTableWithAWarning() {
         let before = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
 
         var logFile = [String]()
@@ -33,11 +34,11 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let table = pbc.getNewWarningsTable()
-        XCTAssertFalse(table.elements.isEmpty)
-        XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
+        #expect(!table.elements.isEmpty)
+        #expect(pbc.getNewWarningsTable().elements.count == 3)
     }
 
-    func testGetNewWarningsTableMultipleWarnings() {
+    @Test func getNewWarningsTableMultipleWarnings() {
         let before = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
 
         var logFile = [String]()
@@ -46,21 +47,21 @@ class PostBuildComparisonTests: XCTestCase {
         let after = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
         let pbc = PostBuildComparison(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getNewWarningsTable().elements.isEmpty)
-        XCTAssertEqual(pbc.getNewWarningsTable().elements.count, 3)
+        #expect(!pbc.getNewWarningsTable().elements.isEmpty)
+        #expect(pbc.getNewWarningsTable().elements.count == 3)
     }
 
-    func testGetNewWarningsTableNoWarnings() {
+    @Test func getNewWarningsTableNoWarnings() {
         let before = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
         let after = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
 
         let pbc = PostBuildComparison(before: before, after: after, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertTrue(pbc.getNewWarningsTable().elements.isEmpty)
+        #expect(pbc.getNewWarningsTable().elements.isEmpty)
     }
 
     // MARK: - getTotalWarningsTable
 
-    func testGetTotalWarningsTableAllWarnings() {
+    @Test func getTotalWarningsTableAllWarnings() {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -69,55 +70,55 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getTotalWarningsTable().elements
-        XCTAssertFalse(elements.isEmpty)
-        XCTAssertEqual(elements.count, 3)
+        #expect(!elements.isEmpty)
+        #expect(elements.count == 3)
     }
 
-    func testGetTotalWarningsTableNoWarnings() {
+    @Test func getTotalWarningsTableNoWarnings() {
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: [String](), lintFile: [String](), ignorePaths: [])
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertTrue(pbc.getTotalWarningsTable().elements.isEmpty)
+        #expect(pbc.getTotalWarningsTable().elements.isEmpty)
     }
 
     // MARK: - getTotalWarningsTable - slow expressions
 
-    func testGetTotalWarningsTableOnlySlowExpressions() {
+    @Test func getTotalWarningsTableOnlySlowExpressions() {
         var logFile = [String]()
         logFile.append("2.55ms\tfilet\tmethod")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
+        #expect(!pbc.getTotalWarningsTable().elements.isEmpty)
+        #expect(pbc.getTotalWarningsTable().elements.count == 3)
     }
 
     // MARK: - getTotalWarningsTable - file warnings
 
-    func testGetTotalWarningsTableOnlyFileWarnings() {
+    @Test func getTotalWarningsTableOnlyFileWarnings() {
         var logFile = [String]()
         logFile.append(": warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
+        #expect(!pbc.getTotalWarningsTable().elements.isEmpty)
+        #expect(pbc.getTotalWarningsTable().elements.count == 3)
     }
 
     // MARK: - getTotalWarningsTable - linker warnings
 
-    func testGetTotalWarningsTableOnlyLinkerWarnings() {
+    @Test func getTotalWarningsTableOnlyLinkerWarnings() {
         var logFile = [String]()
         logFile.append("ld: warning: ")
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
 
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertFalse(pbc.getTotalWarningsTable().elements.isEmpty)
-        XCTAssertEqual(pbc.getTotalWarningsTable().elements.count, 3)
+        #expect(!pbc.getTotalWarningsTable().elements.isEmpty)
+        #expect(pbc.getTotalWarningsTable().elements.count == 3)
     }
 
     // MARK: - New Warnings
 
-    func testGetNewWarnings() {
+    @Test func getNewWarnings() {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -127,10 +128,10 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
-        XCTAssertEqual(elements.count, 3)
+        #expect(elements.count == 3)
     }
 
-    func testGetNewWarningsSameAsBefore() {
+    @Test func getNewWarningsSameAsBefore() {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -139,10 +140,10 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
-        XCTAssertEqual(elements.count, 0)
+        #expect(elements.count == 0)
     }
 
-    func testGetNewWarningsLessWarnings() {
+    @Test func getNewWarningsLessWarnings() {
         var logFile = [String]()
         logFile.append(": warning: duplicate")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -156,10 +157,10 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getNewWarnings()
-        XCTAssertEqual(elements.count, 0)
+        #expect(elements.count == 0)
     }
 
-    func testGetFixedWarnings() {
+    @Test func getFixedWarnings() {
         var logFile = [String]()
         logFile.append(": warning: duplicate")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -173,10 +174,10 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
-        XCTAssertEqual(elements.count, 1)
+        #expect(elements.count == 1)
     }
 
-    func testGetFixedWarningsSameAsBefore() {
+    @Test func getFixedWarningsSameAsBefore() {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -185,10 +186,10 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pba, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
-        XCTAssertEqual(elements.count, 0)
+        #expect(elements.count == 0)
     }
 
-    func testGetFixedWarningsMoreWarnings() {
+    @Test func getFixedWarningsMoreWarnings() {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append("2.55ms\tfilet\tmethod")
@@ -202,10 +203,10 @@ class PostBuildComparisonTests: XCTestCase {
 
         let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
         let elements = pbc.getFixedWarnings()
-        XCTAssertEqual(elements.count, 0)
+        #expect(elements.count == 0)
     }
 
-    func testGetNewWarningsSlowExpression() {
+    @Test func getNewWarningsSlowExpression() {
         var logFile = [String]()
         logFile.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2010ms to type-check (limit: 100ms)")
         let pbb = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
@@ -215,8 +216,8 @@ class PostBuildComparisonTests: XCTestCase {
         let pba = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile2, lintFile: [String](), ignorePaths: [])
 
         let pbc = PostBuildComparison(before: pbb, after: pba, baseURLPath: "http://a.b/", buildTimeThresholdInMS: 0, outputFolder: FileManager.default.temporaryDirectory.absoluteString)
-        XCTAssertEqual(pbc.getNewWarnings().count, 0)
-        XCTAssertEqual(pbc.getFixedWarnings().count, 0)
+        #expect(pbc.getNewWarnings().count == 0)
+        #expect(pbc.getFixedWarnings().count == 0)
 
     }
 }

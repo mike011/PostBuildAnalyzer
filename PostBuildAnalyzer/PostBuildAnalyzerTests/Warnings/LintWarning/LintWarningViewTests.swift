@@ -7,15 +7,15 @@
 //
 
 import Foundation
-import XCTest
+import Testing
 
-class LintWarningViewTests: XCTestCase {
-    func testSymbol() {
+@Suite struct LintWarningViewTests {
+    @Test func symbol() {
         let warning = LintWarningView()
-        XCTAssertEqual(warning.symbol, "🧽")
+        #expect(warning.symbol == "🧽")
     }
 
-    func testDetailedDescripiton() {
+    @Test func detailedDescripiton() {
         let warning = LintWarningView()
         let model = LintWarningModel(
             repoURL: "https://github.com/mike011/PostBuildAnalyzer",
@@ -26,12 +26,12 @@ class LintWarningViewTests: XCTestCase {
         )
         let ahref = "<a href=\"https://github.com/mike011/PostBuildAnalyzer/blob/branch/file.swift#L1\">file.swift</a>"
         let expected = "\(ahref) on line 1<br><i>'index(of:)' is deprecated: renamed to 'firstIndex(of:)'</i>"
-        XCTAssertEqual(warning.getDetailedDescription(model: model), expected)
+        #expect(warning.getDetailedDescription(model: model) == expected)
     }
 
-    func testMeasuredValue() {
+    @Test func measuredValue() {
         let warning = LintWarningView()
         let model = LintWarningModel(repoURL: "", branch: "", line: "", file: "", location: "")
-        XCTAssertEqual(warning.getMeasuredValue(model: model), "1 times")
+        #expect(warning.getMeasuredValue(model: model) == "1 times")
     }
 }

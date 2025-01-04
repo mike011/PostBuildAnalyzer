@@ -6,20 +6,20 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class PostBuildAnalyzerLinkerWarningControllerTests: XCTestCase {
-    func testIsLinkerWarning() {
-        XCTAssertTrue(
+@Suite struct PostBuildAnalyzerLinkerWarningControllerTests {
+    @Test func isLinkerWarning() {
+        #expect(
             PostBuildAnalyzer.isLinkerWarning(
                 line: "Serializer.swift:98:63: ld: warning: Kablooey"
             )
         )
     }
 
-    func testIsLinkerWarningFalse() {
-        XCTAssertFalse(
-            PostBuildAnalyzer.isLinkerWarning(
+    @Test func isLinkerWarningFalse() {
+        #expect(
+            !PostBuildAnalyzer.isLinkerWarning(
                 line: "Serializer.swift:98:63: warning: expression took 108ms to type-check (limit: 100ms)"
             )
         )

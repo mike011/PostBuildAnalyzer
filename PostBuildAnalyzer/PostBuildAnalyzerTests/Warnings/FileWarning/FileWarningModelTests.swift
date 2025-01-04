@@ -6,27 +6,27 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class FileWarningModelTests: XCTestCase {
-    func testWarning() {
+@Suite struct FileWarningModelTests {
+    @Test func warning() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
         let warning = FileWarningModel(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", line: description)
-        XCTAssertEqual(warning.url?.absoluteString, "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15")
-        XCTAssertEqual(warning.lineNumber, 15)
-        XCTAssertEqual(warning.description, "'index(of:)' is deprecated: renamed to 'firstIndex(of:)'")
+        #expect(warning.url?.absoluteString == "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15")
+        #expect(warning.lineNumber == 15)
+        #expect(warning.description == "'index(of:)' is deprecated: renamed to 'firstIndex(of:)'")
     }
 
-    func testWarningSingleDigitNumbers() {
+    @Test func warningSingleDigitNumbers() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:1:2: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
         let warning = FileWarningModel(repoURL: "", branch: "", line: description)
-        XCTAssertEqual(warning.lineNumber, 1)
+        #expect(warning.lineNumber == 1)
     }
 
-    func testWarningTripleDigitNumbers() {
+    @Test func warningTripleDigitNumbers() {
         let description = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:145:267: warning: 'index(of:)' is deprecated: renamed to 'firstIndex(of:)'"
         let warning = FileWarningModel(repoURL: "", branch: "", line: description)
-        XCTAssertEqual(warning.lineNumber, 145)
+        #expect(warning.lineNumber == 145)
     }
 
     func getSampleWarning() -> FileWarningModel {
@@ -40,47 +40,47 @@ class FileWarningModelTests: XCTestCase {
         return warning
     }
 
-    func testGetFileName() {
+    @Test func getFileName() {
         let warning = FileWarningModel(repoURL: "", branch: "", line: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated")
-        XCTAssertEqual(warning.getFilename(), "ExistingClassCovered.swift")
+        #expect(warning.getFilename() == "ExistingClassCovered.swift")
     }
 
-    func testGetURL() {
+    @Test func getURL() {
         let warning = getSampleWarning()
-        XCTAssertEqual(warning.url?.absoluteString, "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15")
+        #expect(warning.url?.absoluteString == "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15")
     }
 
-    func testGetURLCircleFolder() {
+    @Test func getURLCircleFolder() {
         let warning = FileWarningModel(repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master", line: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift:15:26: warning: 'index(of:)' is deprecated")
-        XCTAssertEqual(warning.url?.absoluteString, "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15")
+        #expect(warning.url?.absoluteString == "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15")
     }
 
-    func testGetRepo() {
-        XCTAssertEqual(FileWarningModel.getRepoName(fromRepoURL: "junk"), "junk")
-        XCTAssertEqual(FileWarningModel.getRepoName(fromRepoURL: "https://github.com/mike011/PostBuildAnalyzer"), "PostBuildAnalyzer")
+    @Test func getRepo() {
+        #expect(FileWarningModel.getRepoName(fromRepoURL: "junk") == "junk")
+        #expect(FileWarningModel.getRepoName(fromRepoURL: "https://github.com/mike011/PostBuildAnalyzer") == "PostBuildAnalyzer")
     }
 
-    func testInitWithFile() {
+    @Test func initWithFile() {
         let warning = FileWarningModel(repoURL: "http://a.c/repo", branch: "b", line: "repo/file: warning: error")
-        XCTAssertEqual(warning.file, "file")
-        XCTAssertEqual(warning.url?.absoluteString, "http://a.c/repo/blob/b/file")
-        XCTAssertNil(warning.lineNumber)
-        XCTAssertEqual(warning.description, "error")
+        #expect(warning.file == "file")
+        #expect(warning.url?.absoluteString == "http://a.c/repo/blob/b/file")
+        #expect(warning.lineNumber == nil)
+        #expect(warning.description == "error")
     }
 
-    func testInitWithFileWithLine() {
+    @Test func initWithFileWithLine() {
         let warning = FileWarningModel(repoURL: "http://a.c/repo", branch: "b", line: "repo/file:1:2: warning: error")
-        XCTAssertEqual(warning.file, "file")
-        XCTAssertEqual(warning.url?.absoluteString, "http://a.c/repo/blob/b/file#L1")
-        XCTAssertEqual(warning.lineNumber, 1)
-        XCTAssertEqual(warning.description, "error")
+        #expect(warning.file == "file")
+        #expect(warning.url?.absoluteString == "http://a.c/repo/blob/b/file#L1")
+        #expect(warning.lineNumber == 1)
+        #expect(warning.description == "error")
     }
 
-    func testInitWithCoreData() {
+    @Test func initWithCoreData() {
         let line = "/Users/distiller/project/application/A/A/Core Data/A.xcdatamodeld/A 6.1.4.xcdatamodel:TMOAccountInfo.premiumState: warning: error"
         let warning = FileWarningModel(repoURL: "http://a.c/A", branch: "b", line: line)
-        XCTAssertEqual(warning.file, "A/Core Data/A.xcdatamodeld/A 6.1.4.xcdatamodel:TMOAccountInfo.premiumState")
-        XCTAssertNil(warning.lineNumber)
-        XCTAssertEqual(warning.description, "error")
+        #expect(warning.file == "A/Core Data/A.xcdatamodeld/A 6.1.4.xcdatamodel:TMOAccountInfo.premiumState")
+        #expect(warning.lineNumber == nil)
+        #expect(warning.description == "error")
     }
 }

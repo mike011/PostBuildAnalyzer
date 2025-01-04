@@ -6,25 +6,25 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class SlowExpressionControllerTests: XCTestCase {
-    func testEquals() {
+@Suite struct SlowExpressionControllerTests {
+    @Test func equals() {
         let line = "41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
         let sec = SlowExpressionController(repoURL: "", branch: "", line: line)
 
         let line2 = "31.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
         let sec2 = SlowExpressionController(repoURL: "", branch: "", line: line2)
 
-        XCTAssertEqual(sec, sec2)
+        #expect(sec == sec2)
     }
 
-    func testAmountOfWarnings() {
+    @Test func amountOfWarnings() {
         let line = "41.38ms\t/Users/michael/Warnings.swift:12:10\tinstance method firstWarning()"
         let controller = SlowExpressionController(repoURL: "", branch: "", line: line)
 
-        XCTAssertEqual(controller.getTotalWarnings(), 41.38)
+        #expect(controller.getTotalWarnings() == 41.38)
         controller.add(amount: 58.62)
-        XCTAssertEqual(controller.getTotalWarnings(), 100.00)
+        #expect(controller.getTotalWarnings() == 100.00)
     }
 }

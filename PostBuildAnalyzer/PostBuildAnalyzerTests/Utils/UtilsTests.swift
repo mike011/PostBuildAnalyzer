@@ -6,49 +6,50 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Foundation
+import Testing
 
-class UtilsTests: XCTestCase {
-    func testGetParentFileNameWithSlashReturnsFolder() {
-        XCTAssertEqual(Utils.getParentURL(file: "a/b.json").absoluteString, URL(fileURLWithPath: "a").absoluteString + "/")
+@Suite struct UtilsTests {
+    @Test func getParentFileNameWithSlashReturnsFolder() {
+        #expect(Utils.getParentURL(file: "a/b.json").absoluteString == URL(fileURLWithPath: "a").absoluteString + "/")
     }
 
-    func testGetParentFileForURL() {
-        XCTAssertEqual(Utils.getParentURL(web: "http://www.nba.com/b.json").absoluteString, URL(string: "http://www.nba.com/")?.absoluteURL.absoluteString)
+    @Test func getParentFileForURL() {
+        #expect(Utils.getParentURL(web: "http://www.nba.com/b.json").absoluteString == URL(string: "http://www.nba.com/")?.absoluteURL.absoluteString)
     }
 
-    func testTrimSpaces() {
-        XCTAssertEqual(" ".trimSpaces(), "")
-        XCTAssertEqual("a ".trimSpaces(), "a")
-        XCTAssertEqual(" a".trimSpaces(), "a")
-        XCTAssertEqual(" a ".trimSpaces(), "a")
-        XCTAssertEqual("       a                     ".trimSpaces(), "a")
+    @Test func trimSpaces() {
+        #expect(" ".trimSpaces() == "")
+        #expect("a ".trimSpaces() == "a")
+        #expect(" a".trimSpaces() == "a")
+        #expect(" a ".trimSpaces() == "a")
+        #expect("       a                     ".trimSpaces() == "a")
     }
 
-    func testSplits() {
-        XCTAssertEqual(Utils.getSplits(description: ""), [String]())
-        XCTAssertEqual(Utils.getSplits(description: " "), [String]())
-        XCTAssertEqual(Utils.getSplits(description: "   "), [String]())
-        XCTAssertEqual(Utils.getSplits(description: "a"), ["a"])
-        XCTAssertEqual(Utils.getSplits(description: " a "), ["a"])
-        XCTAssertEqual(Utils.getSplits(description: " a\tb"), ["a", "b"])
+    @Test func splits() {
+        #expect(Utils.getSplits(description: "") == [String]())
+        #expect(Utils.getSplits(description: " ") == [String]())
+        #expect(Utils.getSplits(description: "   ") == [String]())
+        #expect(Utils.getSplits(description: "a") == ["a"])
+        #expect(Utils.getSplits(description: " a ") == ["a"])
+        #expect(Utils.getSplits(description: " a\tb") == ["a", "b"])
     }
 
-    func testLoadData() {
-        XCTAssertNil(Utils.loadData(type: Arguments.self, file: nil))
-        XCTAssertNil(Utils.loadData(type: Arguments.self, file: "File does not exist"))
-        XCTAssertNotNil(Utils.loadData(type: Arguments.self, file: EXAMPLE_JSON))
+    @Test func loadData() {
+        #expect(Utils.loadData(type: Arguments.self, file: nil) == nil)
+        #expect(Utils.loadData(type: Arguments.self, file: "File does not exist") == nil)
+        #expect(Utils.loadData(type: Arguments.self, file: EXAMPLE_JSON) != nil)
     }
 
-    func testLoad() {
-        XCTAssertTrue(Utils.load(file: nil).isEmpty)
-        XCTAssertFalse(Utils.load(file: EXAMPLE_JSON).isEmpty)
+    @Test func load() {
+        #expect(Utils.load(file: nil).isEmpty)
+        #expect(!Utils.load(file: EXAMPLE_JSON).isEmpty)
     }
 
-    func testWriteToFile() {
+    @Test func writeToFile() {
         let url = URL(fileURLWithPath: "temp.txt", relativeTo: FileManager.default.temporaryDirectory)
         Utils.writeToFile(contents: ["a", "b"], url: url)
         let contents = Utils.load(file: url.path)
-        XCTAssertFalse(contents.isEmpty)
+        #expect(!contents.isEmpty)
     }
 }

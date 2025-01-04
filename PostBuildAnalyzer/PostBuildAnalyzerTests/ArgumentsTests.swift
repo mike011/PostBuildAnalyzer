@@ -6,7 +6,8 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Foundation
+import Testing
 
 let MOCK_ARGUMENTS = Arguments(
     repoURL: "repo",
@@ -19,8 +20,8 @@ let MOCK_ARGUMENTS = Arguments(
     ignorePaths: ["Pods"]
 )
 
-class ArgumentsTests: XCTestCase {
-    func testExample() throws {
+@Suite struct ArgumentsTests {
+    @Test func example() throws {
         let jsonString = """
         {
         "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
@@ -35,18 +36,18 @@ class ArgumentsTests: XCTestCase {
         """
 
         let data = jsonString.data(using: .utf8)!
-        let args = try XCTUnwrap(JSONDecoder().decode(Arguments.self, from: data))
-        XCTAssertEqual(args.repoURL, "https://github.com/mike011/PostBuildAnalyzer")
-        XCTAssertEqual(args.branch, "master")
-        XCTAssertEqual(args.outputFolder, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
-        XCTAssertEqual(args.logFileName, "Example-Example (Before).log")
-        XCTAssertEqual(args.baseURLPath, "https://mike011.github.io/CodeCoverageCompare/before/")
-        XCTAssertEqual(args.lintFileName, "lint.html")
-        XCTAssertEqual(args.buildTimeThresholdInMS, 200)
-        XCTAssertEqual(args.ignorePaths, ["Pods"])
+        let args = try JSONDecoder().decode(Arguments.self, from: data)
+        #expect(args.repoURL == "https://github.com/mike011/PostBuildAnalyzer")
+        #expect(args.branch == "master")
+        #expect(args.outputFolder == "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
+        #expect(args.logFileName == "Example-Example (Before).log")
+        #expect(args.baseURLPath == "https://mike011.github.io/CodeCoverageCompare/before/")
+        #expect(args.lintFileName == "lint.html")
+        #expect(args.buildTimeThresholdInMS == 200)
+        #expect(args.ignorePaths == ["Pods"])
     }
     
-    func testExampleNoLogFile() throws {
+    @Test func exampleNoLogFile() throws {
         let jsonString = """
         {
         "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
@@ -59,16 +60,16 @@ class ArgumentsTests: XCTestCase {
         """
 
         let data = jsonString.data(using: .utf8)!
-        let args = try XCTUnwrap(JSONDecoder().decode(Arguments.self, from: data))
-        XCTAssertEqual(args.repoURL, "https://github.com/mike011/PostBuildAnalyzer")
-        XCTAssertEqual(args.branch, "master")
-        XCTAssertEqual(args.outputFolder, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
-        XCTAssertEqual(args.baseURLPath, "https://mike011.github.io/CodeCoverageCompare/before/")
-        XCTAssertEqual(args.lintFileName, "lint.html")
-        XCTAssertEqual(args.buildTimeThresholdInMS, 200)
+        let args = try JSONDecoder().decode(Arguments.self, from: data)
+        #expect(args.repoURL == "https://github.com/mike011/PostBuildAnalyzer")
+        #expect(args.branch == "master")
+        #expect(args.outputFolder == "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
+        #expect(args.baseURLPath == "https://mike011.github.io/CodeCoverageCompare/before/")
+        #expect(args.lintFileName == "lint.html")
+        #expect(args.buildTimeThresholdInMS == 200)
     }
     
-    func testExampleNoBuildTime() throws {
+    @Test func exampleNoBuildTime() throws {
         let jsonString = """
         {
         "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
@@ -80,15 +81,15 @@ class ArgumentsTests: XCTestCase {
         """
 
         let data = jsonString.data(using: .utf8)!
-        let args = try XCTUnwrap(JSONDecoder().decode(Arguments.self, from: data))
-        XCTAssertEqual(args.repoURL, "https://github.com/mike011/PostBuildAnalyzer")
-        XCTAssertEqual(args.branch, "master")
-        XCTAssertEqual(args.outputFolder, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
-        XCTAssertEqual(args.baseURLPath, "https://mike011.github.io/CodeCoverageCompare/before/")
-        XCTAssertEqual(args.lintFileName, "lint.html")
+        let args = try JSONDecoder().decode(Arguments.self, from: data)
+        #expect(args.repoURL == "https://github.com/mike011/PostBuildAnalyzer")
+        #expect(args.branch == "master")
+        #expect(args.outputFolder == "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
+        #expect(args.baseURLPath == "https://mike011.github.io/CodeCoverageCompare/before/")
+        #expect(args.lintFileName == "lint.html")
     }
     
-    func testExampleNoBaseURLPath() throws {
+    @Test func exampleNoBaseURLPath() throws {
         let jsonString = """
         {
         "repoURL": "https://github.com/mike011/PostBuildAnalyzer",
@@ -99,10 +100,10 @@ class ArgumentsTests: XCTestCase {
         """
 
         let data = jsonString.data(using: .utf8)!
-        let args = try XCTUnwrap(JSONDecoder().decode(Arguments.self, from: data))
-        XCTAssertEqual(args.repoURL, "https://github.com/mike011/PostBuildAnalyzer")
-        XCTAssertEqual(args.branch, "master")
-        XCTAssertEqual(args.outputFolder, "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
-        XCTAssertEqual(args.lintFileName, "lint.html")
+        let args = try JSONDecoder().decode(Arguments.self, from: data)
+        #expect(args.repoURL == "https://github.com/mike011/PostBuildAnalyzer")
+        #expect(args.branch == "master")
+        #expect(args.outputFolder == "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/fastlane/test_output/")
+        #expect(args.lintFileName == "lint.html")
     }
 }

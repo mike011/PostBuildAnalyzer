@@ -6,45 +6,45 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class WarningAnalyzerTests: XCTestCase {
-    func testNotAWarning() {
+@Suite struct WarningAnalyzerTests {
+    @Test func notAWarning() {
         var logFile = [String]()
         logFile.append("Not a warning")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertTrue(wa.allWarnings.isEmpty)
+        #expect(wa.allWarnings.isEmpty)
     }
 
-    func testAWarningKeyboard() {
+    @Test func aWarningKeyboard() {
         var logFile = [String]()
         logFile.append(": warning: ")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
+        #expect(!wa.allWarnings.isEmpty)
     }
 
-    func testAWarningFullLine() {
+    @Test func aWarningFullLine() {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Personal/Resources/Media.xcassets:./Inhouse Ad/Personal_Avatar-1.imageset: warning: The image set name \"Personal_Avatar-1\" is used by multiple image sets.")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
-        XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
+        #expect(!wa.allWarnings.isEmpty)
+        #expect(wa.allWarnings[0] != nil)
     }
 
-    func testAWarningMultiline() throws {
+    @Test func aWarningMultiline() throws {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" ^")
 
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
-        let warning = try XCTUnwrap(wa.allWarnings[0])
-        XCTAssertNotNil(warning)
-        XCTAssertEqual(warning.getTotalWarnings(), 1)
+        #expect(!wa.allWarnings.isEmpty)
+        let warning = wa.allWarnings[0]
+        #expect(warning != nil)
+        #expect(warning.getTotalWarnings() == 1)
     }
 
-    func testMultipleFileWarningThatAreMultiline() throws {
+    @Test func multipleFileWarningThatAreMultiline() throws {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
@@ -54,29 +54,29 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
-        XCTAssertEqual(wa.allWarnings.count, 2)
+        #expect(!wa.allWarnings.isEmpty)
+        #expect(wa.allWarnings.count == 2)
     }
 
-    func testLinkerWarning() {
+    @Test func linkerWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
-        XCTAssertEqual(wa.allWarnings.count, 1)
-        XCTAssertNotNil(try XCTUnwrap(wa.allWarnings[0]))
+        #expect(!wa.allWarnings.isEmpty)
+        #expect(wa.allWarnings.count == 1)
+        #expect(wa.allWarnings[0] != nil)
     }
 
-    func testMultipleLinkerWarning() {
+    @Test func multipleLinkerWarning() {
         var logFile = [String]()
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo'")
         logFile.append("ld: warning: directory not found for option '-F/Users/distiller/project/application/Personal/Personal/Features/Ads/SDKs/IASDKVideo2'")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
-        XCTAssertEqual(wa.allWarnings.count, 2)
+        #expect(!wa.allWarnings.isEmpty)
+        #expect(wa.allWarnings.count == 2)
     }
 
-    func testMultipleFileWarningThatAreMultilineGetReport() throws {
+    @Test func multipleFileWarningThatAreMultilineGetReport() throws {
         var logFile = [String]()
         logFile.append("/Users/distiller/project/application/Personal/Pods/AFNetworking/AFNetworking/AFHTTPClient.h:89:2: warning: MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
         logFile.append(" #warning MobileCoreServices framework not found in project, or not included in precompiled header. Automatic MIME type detection when uploading files in multipart requests will not be available.")
@@ -86,14 +86,14 @@ class WarningAnalyzerTests: XCTestCase {
         logFile.append(" ^")
 
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertEqual(wa.allWarnings.count, 1)
+        #expect(wa.allWarnings.count == 1)
     }
 
-    func testMultipleWarningsRepeated() {
+    @Test func multipleWarningsRepeated() {
         var logFile = [String]()
         logFile.append(": warning: ")
         logFile.append(": warning: ")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
+        #expect(!wa.allWarnings.isEmpty)
     }
 }

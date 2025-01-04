@@ -6,23 +6,23 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class LinkerWarningModelTests: XCTestCase {
-    func testSymbol() {
+@Suite struct LinkerWarningModelTests {
+    @Test func symbol() {
         let warning = LinkerWarningView()
-        XCTAssertEqual(warning.symbol, "🚨")
+        #expect(warning.symbol == "🚨")
     }
 
-    func testDetailedDescripiton() {
+    @Test func detailedDescripiton() {
         let warning = LinkerWarningView()
         let model = LinkerWarningModel(line: "ld: warning: directory not found for option")
-        XCTAssertEqual(warning.getDetailedDescription(model: model), "directory not found for option")
+        #expect(warning.getDetailedDescription(model: model) == "directory not found for option")
     }
 
-    func testMeasuredValue() {
+    @Test func measuredValue() {
         let warning = LinkerWarningView()
         let model = LinkerWarningModel(line: "")
-        XCTAssertEqual(warning.getMeasuredValue(model: model), "1 times")
+        #expect(warning.getMeasuredValue(model: model) == "1 times")
     }
 }

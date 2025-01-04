@@ -1,0 +1,16 @@
+{
+  "arguments" : [
+    "-project",
+    "PostBuildAnalyzer.xcodeproj",
+    "-scheme",
+    "PostBuildAnalyzer",
+    "test"
+  ],
+  "exclude" : [
+
+  ],
+  "excludeCalls" : [
+
+  ],
+  "executable" : "\/usr\/bin\/xcodebuild"
+}

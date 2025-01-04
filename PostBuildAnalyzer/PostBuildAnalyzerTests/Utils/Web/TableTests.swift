@@ -6,18 +6,18 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class TableTests: XCTestCase {
+@Suite struct TableTests {
     // MARK: - toHTML
 
-    func testToHTMLEmptyTable() {
+    @Test func toHTMLEmptyTable() {
         let header = TableHeader(title: "TITLE", alignment: nil)
         let table = Table(headers: [header])
-        XCTAssertEqual(table.toHTML(), [])
+        #expect(table.toHTML() == [])
     }
 
-    func testToHTMLOneRow() {
+    @Test func toHTMLOneRow() {
         // Given
         let header = TableHeader(title: "TITLE", alignment: nil)
         let table = Table(headers: [header])
@@ -36,10 +36,10 @@ class TableTests: XCTestCase {
         result.append("<td>One</td>")
         result.append("</tr>")
         result.append("</table>")
-        XCTAssertEqual(table.toHTML(), result)
+        #expect(table.toHTML() == result)
     }
 
-    func testToHTMLOneRowWithAlignment() {
+    @Test func toHTMLOneRowWithAlignment() {
         // Given
         let header = TableHeader(title: "Align Test", alignment: .Center)
         let table = Table(headers: [header])
@@ -61,7 +61,7 @@ class TableTests: XCTestCase {
         XCTAssertStringArray(table.toHTML(), result)
     }
 
-    func testToHTMLMultipleRowsAndColumnsWithAlignment() {
+    @Test func toHTMLMultipleRowsAndColumnsWithAlignment() {
         // Given
         let header = TableHeader(title: "Align", alignment: .Center)
         let header2 = TableHeader(title: "Test", alignment: .Left)
@@ -94,13 +94,13 @@ class TableTests: XCTestCase {
 
     // MARK: - toMarkdown
 
-    func testToMarkdownEmptyTable() {
+    @Test func toMarkdownEmptyTable() {
         let header = TableHeader(title: "TITLE", alignment: nil)
         let table = Table(headers: [header])
-        XCTAssertEqual(table.toMarkdown(), [])
+        #expect(table.toMarkdown() == [])
     }
 
-    func testToMarkdownOneRow() {
+    @Test func toMarkdownOneRow() {
         // Given
         let header = TableHeader(title: "TITLE", alignment: nil)
         let table = Table(headers: [header])
@@ -117,7 +117,7 @@ class TableTests: XCTestCase {
         XCTAssertStringArray(table.toMarkdown(), result)
     }
 
-    func testToMarkdownOneRowWithAlignment() {
+    @Test func toMarkdownOneRowWithAlignment() {
         // Given
         let header = TableHeader(title: "Align Test", alignment: .Center)
         let table = Table(headers: [header])
@@ -134,7 +134,7 @@ class TableTests: XCTestCase {
         XCTAssertStringArray(table.toMarkdown(), result)
     }
 
-    func testToMarkdownMultipleRowsAndColumnsWithAlignment() {
+    @Test func toMarkdownMultipleRowsAndColumnsWithAlignment() {
         // Given
         let header = TableHeader(title: "Align", alignment: .Center)
         let header2 = TableHeader(title: "Test", alignment: .Left)
@@ -156,11 +156,9 @@ class TableTests: XCTestCase {
     }
 }
 
-extension XCTest {
-    func XCTAssertStringArray(_ expression1: [String], _ expression2: [String], file: StaticString = #file, line: UInt = #line) {
-        XCTAssertEqual(expression1.count, expression2.count, "size does not match", file: file, line: line)
-        for x in 0 ..< expression1.count {
-            XCTAssertEqual(expression1[x], expression2[x], "line does not match", file: file, line: line)
-        }
+func XCTAssertStringArray(_ expression1: [String], _ expression2: [String]) {
+    #expect(expression1.count == expression2.count, "size does not match")
+    for x in 0..<expression1.count {
+        #expect(expression1[x] == expression2[x], "line does not match")
     }
 }

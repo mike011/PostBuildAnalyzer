@@ -6,40 +6,40 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class SlowExpressionAnalyzerTests: XCTestCase {
-    func testASlowExpression() {
+@Suite struct SlowExpressionAnalyzerTests {
+    @Test func aSlowExpression() {
         var logFile = [String]()
         logFile.append("0.01ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:11:7\tinitializer init()")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertFalse(wa.allWarnings.isEmpty)
+        #expect(!wa.allWarnings.isEmpty)
     }
 
-    func testASlowExpressionTwice() {
+    @Test func aSlowExpressionTwice() {
         var logFile = [String]()
         logFile.append("0.01ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:11:7\tinitializer init()")
         logFile.append("0.01ms\t /Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:11:7\tinitializer init()")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         let slowExpressionController = wa.getWarningController() as? [SlowExpressionController]
-        XCTAssertEqual(slowExpressionController?.count, 1)
-        XCTAssertEqual(slowExpressionController![0].getTotalWarnings(), 0.02)
+        #expect(slowExpressionController?.count == 1)
+        #expect(slowExpressionController![0].getTotalWarnings() == 0.02)
     }
 
-    func testASlowExpressionTwiceFromWarning() {
+    @Test func aSlowExpressionTwiceFromWarning() {
         var logFile = [String]()
         logFile.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2010ms to type-check (limit: 100ms)")
         logFile.append("/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/Warnings.swift:36:63: warning: expression took 2050ms to type-check (limit: 100ms)")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
         let slowExpressionController = wa.getWarningController() as? [SlowExpressionController]
-        XCTAssertEqual(slowExpressionController?.count, 1)
-        XCTAssertEqual(slowExpressionController![0].getTotalWarnings(), 4060.0)
+        #expect(slowExpressionController?.count == 1)
+        #expect(slowExpressionController![0].getTotalWarnings() == 4060.0)
     }
 
-    func testASlowExpressionInvalidString() {
+    @Test func aSlowExpressionInvalidString() {
         var logFile = [String]()
         logFile.append("Not a slow expression")
         let wa = PostBuildAnalyzer(repoURL: "", branch: "", buildTimeThresholdInMS: 0, logFile: logFile, lintFile: [String](), ignorePaths: [])
-        XCTAssertTrue(wa.allWarnings.isEmpty)
+        #expect(wa.allWarnings.isEmpty)
     }
 }

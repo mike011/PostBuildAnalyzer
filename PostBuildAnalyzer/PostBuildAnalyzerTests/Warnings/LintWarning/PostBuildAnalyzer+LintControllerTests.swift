@@ -6,20 +6,20 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class PostBuildAnalyzerLintControllerTests: XCTestCase {
-    func testIsLinkerWarning() {
-        XCTAssertTrue(
+@Suite struct PostBuildAnalyzerLintControllerTests {
+    @Test func isLinkerWarning() {
+        #expect(
             PostBuildAnalyzer.isLintWarning(
                 line: "<td class=\"warning\">Warning</td>"
             )
         )
     }
 
-    func testIsLinkerWarningFalse() {
-        XCTAssertFalse(
-            PostBuildAnalyzer.isLintWarning(
+    @Test func isLinkerWarningFalse() {
+        #expect(
+            !PostBuildAnalyzer.isLintWarning(
                 line: "<td class=\"error\">Error</td>"
             )
         )

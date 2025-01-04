@@ -98,7 +98,7 @@ extension Runner {
         self.dispatchGroup.leave()
     }
     
-    fileprivate func testDispatchTimeoutResult(_ timeoutResult: DispatchTimeoutResult, failureMessage: String, timeToWait: DispatchTimeInterval) -> Bool {
+    @Test fileprivate func dispatchTimeoutResult(_ timeoutResult: DispatchTimeoutResult, failureMessage: String, timeToWait: DispatchTimeInterval) -> Bool {
         switch timeoutResult {
         case .success:
             return true

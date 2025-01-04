@@ -13,7 +13,7 @@
 // -----------------------------------------------------
 
 import Foundation
-import XCTest
+import Testing
 
 var deviceLanguage = ""
 var locale = ""

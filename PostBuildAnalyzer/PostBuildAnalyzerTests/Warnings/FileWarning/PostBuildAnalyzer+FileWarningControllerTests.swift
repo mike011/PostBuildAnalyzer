@@ -6,20 +6,18 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class FileWarningControllerTests: XCTestCase {
-    func testIsFileWarning() {
-        XCTAssertTrue(
-            PostBuildAnalyzer.isFileWarning(
+@Suite struct FileWarningControllerTests {
+    @Test func isFileWarning() {
+        #expect(PostBuildAnalyzer.isFileWarning(
                 line: "Serializer.swift:98:63: warning: Kablooey"
             )
         )
     }
 
-    func testIsFileWarningSlowCompileTime() {
-        XCTAssertFalse(
-            PostBuildAnalyzer.isFileWarning(
+    @Test() func isFileWarningSlowCompileTime() {
+        #expect(!PostBuildAnalyzer.isFileWarning(
                 line: "Serializer.swift:98:63: warning: expression took 108ms to type-check (limit: 100ms)"
             )
         )

@@ -6925,7 +6925,7 @@ func teamName() {
 
  You can retrieve your API key on [your settings page](https://free.testfairy.com/settings/)
 */
-func testfairy(apiKey: String,
+@Test func fairy(apiKey: String,
                ipa: String? = nil,
                apk: String? = nil,
                symbolsFile: String? = nil,
@@ -6990,7 +6990,7 @@ func testfairy(apiKey: String,
  More details can be found on https://docs.fastlane.tools/actions/pilot/.
  This integration will only do the TestFlight upload.
 */
-func testflight(username: String,
+@Test func flight(username: String,
                 appIdentifier: String? = nil,
                 appPlatform: String = "ios",
                 appleId: String? = nil,

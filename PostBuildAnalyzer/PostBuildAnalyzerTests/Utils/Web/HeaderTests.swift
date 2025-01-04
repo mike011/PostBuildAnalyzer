@@ -6,19 +6,19 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class HeaderTests: XCTestCase {
+@Suite struct HeaderTests {
     private let header = Header(level: 2, title: "title")
 
-    func testToHTML() {
-        XCTAssertEqual(header.toHTML(), ["<H2>title</H2>"])
+    @Test func toHTML() {
+        #expect(header.toHTML() == ["<H2>title</H2>"])
     }
 
-    func testToMarkdown() {
-        XCTAssertEqual(header.toMarkdown(), ["<H2>title</H2>"])
+    @Test func toMarkdown() {
+        #expect(header.toMarkdown() == ["<H2>title</H2>"])
 
         let header4 = Header(level: 4, title: "monkey")
-        XCTAssertEqual(header4.toMarkdown(), ["<H4>monkey</H4>"])
+        #expect(header4.toMarkdown() == ["<H4>monkey</H4>"])
     }
 }

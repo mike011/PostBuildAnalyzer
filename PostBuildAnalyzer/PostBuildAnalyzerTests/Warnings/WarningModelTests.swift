@@ -6,16 +6,16 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class WarningModelTests: XCTestCase {
-    func testCompareToSame() {
+@Suite struct WarningModelTests {
+    @Test func compareToSame() {
         let model = MockWarningModel()
-        XCTAssertTrue(model.compareTo(line: ""))
+        #expect(model.compareTo(line: ""))
     }
 
-    func testCompareToDifferent() {
+    @Test func compareToDifferent() {
         let model = MockWarningModel()
-        XCTAssertFalse(model.compareTo(line: "different"))
+        #expect(!model.compareTo(line: "different"))
     }
 }

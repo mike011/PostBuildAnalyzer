@@ -6,59 +6,60 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Foundation
+import Testing
 
 class TestParser: URLParser {}
 
-class URLParserTests: XCTestCase {
-    func testGetURLRealLifeExample() {
+@Suite struct URLParserTests {
+    @Test func getURLRealLifeExample() {
         let line = "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift"
         let url = TestParser.getURL(file: line, lineNumber: 15, repoURL: "https://github.com/mike011/PostBuildAnalyzer", branch: "master")
-        XCTAssertEqual(url, URL(string: "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15"))
+        #expect(url == URL(string: "https://github.com/mike011/PostBuildAnalyzer/blob/master/example/Before/Example/ExistingClassCovered.swift#L15"))
     }
 
-    func testGetRepoPath() {
-        XCTAssertEqual(TestParser.getRepoName(fromRepoURL: "NO_SLASHES"), "NO_SLASHES")
-        XCTAssertEqual(TestParser.getRepoName(fromRepoURL: "a/b/c"), "c")
+    @Test func getRepoPath() {
+        #expect(TestParser.getRepoName(fromRepoURL: "NO_SLASHES") == "NO_SLASHES")
+        #expect(TestParser.getRepoName(fromRepoURL: "a/b/c") == "c")
     }
 
-    func testGetPath() {
-        XCTAssertEqual(TestParser.getPath(file: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift", repoName: "PostBuildAnalyzer"), "example/Before/Example/ExistingClassCovered.swift")
+    @Test func getPath() {
+        #expect(TestParser.getPath(file: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift", repoName: "PostBuildAnalyzer") == "example/Before/Example/ExistingClassCovered.swift")
     }
 
-    func testGetPathCircle() {
-        XCTAssertEqual(TestParser.getPath(file: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
+    @Test func getPathCircle() {
+        #expect(TestParser.getPath(file: "/Users/distiller/project/example/Before/Example/ExistingClassCovered.swift", repoName: "") == "example/Before/Example/ExistingClassCovered.swift")
     }
     
-    func testGetPathBitrise() {
-        XCTAssertEqual(TestParser.getPath(file: "/Users/vagrant/git/example/Before/Example/ExistingClassCovered.swift", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
+    @Test func getPathBitrise() {
+        #expect(TestParser.getPath(file: "/Users/vagrant/git/example/Before/Example/ExistingClassCovered.swift", repoName: "") == "example/Before/Example/ExistingClassCovered.swift")
     }
     
-    func testGetPathCodemagic() {
-        XCTAssertEqual(TestParser.getPath(file: "/Users/builder/clone/example/Before/Example/ExistingClassCovered.swift", repoName: ""), "example/Before/Example/ExistingClassCovered.swift")
+    @Test func getPathCodemagic() {
+        #expect(TestParser.getPath(file: "/Users/builder/clone/example/Before/Example/ExistingClassCovered.swift", repoName: "") == "example/Before/Example/ExistingClassCovered.swift")
     }
 
-    func testGetPathNotParsedInvalidFolder() {
+    @Test func getPathNotParsedInvalidFolder() {
         let line = "/Users/project/example/Before/Example/ExistingClassCovered.swift"
         let url = TestParser.getPath(file: line, repoName: "")
-        XCTAssertEqual(url, line)
+        #expect(url == line)
     }
 
-    func testGetPathNotParsedNoColon() {
+    @Test func getPathNotParsedNoColon() {
         let line = "/Users/project/example/Before/Example/ExistingClassCovered.swift"
         let url = TestParser.getPath(file: line, repoName: "")
-        XCTAssertEqual(url, line)
+        #expect(url == line)
     }
 
-    func testGetLineNumber() {
-        XCTAssertEqual(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:11"), 15)
+    @Test func getLineNumber() {
+        #expect(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:15:11") == 15)
     }
 
-    func testGetLineNumberNoStartColon() {
-        XCTAssertNil(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift"))
+    @Test func getLineNumberNoStartColon() {
+        #expect(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift") == nil)
     }
 
-    func testGetLineNumberNoEndColon() {
-        XCTAssertNil(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:1"))
+    @Test func getLineNumberNoEndColon() {
+        #expect(TestParser.getLineNumber(line: "/Users/michael/Documents/git/PostBuildAnalyzer/example/Before/Example/ExistingClassCovered.swift:1") == nil)
     }
 }

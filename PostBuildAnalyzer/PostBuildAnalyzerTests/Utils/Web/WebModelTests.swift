@@ -6,40 +6,40 @@
 //  Copyright © 2020 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class WebModelTests: XCTestCase {
-    func testAddBlankLine() {
+@Suite struct WebModelTests {
+    @Test func addBlankLine() {
         let wm = WebModel()
         wm.addBlankLine()
-        XCTAssertEqual(wm.elements.count, 1)
+        #expect(wm.elements.count == 1)
     }
 
-    func testAddTable() {
+    @Test func addTable() {
         let wm = WebModel()
         wm.add(table: Table(headers: [TableHeader(title: "", alignment: nil)]))
-        XCTAssertEqual(wm.elements.count, 1)
+        #expect(wm.elements.count == 1)
     }
 
-    func testAddHeader() {
+    @Test func addHeader() {
         let wm = WebModel()
         wm.addHeader(level: 3, title: "H")
-        XCTAssertEqual(wm.elements.count, 1)
+        #expect(wm.elements.count == 1)
     }
 
-    func testToHTML() {
+    @Test func toHTML() {
         let wm = WebModel()
         wm.addBlankLine()
-        XCTAssertEqual(["<head><meta charset='utf-8'></head>", " "], wm.toHTML())
+        #expect(["<head><meta charset='utf-8'></head>", " "] == wm.toHTML())
     }
 
-    func testToMarkdown() {
+    @Test func toMarkdown() {
         let wm = WebModel()
         wm.addBlankLine()
-        XCTAssertEqual([" "], wm.toMarkdown())
+        #expect([" "] == wm.toMarkdown())
     }
 
-    func testTableToHTML() {
+    @Test func tableToHTML() {
         // Given
         let header = TableHeader(title: "Title", alignment: .Center)
         let table = Table(headers: [header])

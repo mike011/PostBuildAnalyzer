@@ -6,37 +6,37 @@
 //  Copyright © 2019 Michael Charland. All rights reserved.
 //
 
-import XCTest
+import Testing
 
-class WarningControllerTests: XCTestCase {
-    func testEqualsDifferent() {
+@Suite struct WarningControllerTests {
+    @Test func equalsDifferent() {
         let model = MockWarningModel()
         model.line = "LINE"
         let controller = WarningController(model: model, view: MockWarningView())
         let controller2 = WarningController(model: MockWarningModel(), view: MockWarningView())
 
-        XCTAssertNotEqual(controller, controller2)
+        #expect(controller != controller2)
     }
 
-    func testEqualsSame() {
+    @Test func equalsSame() {
         let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
         let controller2 = WarningController(model: MockWarningModel(), view: MockWarningView())
 
-        XCTAssertEqual(controller, controller2)
+        #expect(controller == controller2)
     }
 
-    func testAmountOfWarnings() {
+    @Test func amountOfWarnings() {
         let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
-        XCTAssertEqual(controller.getTotalWarnings(), 1)
+        #expect(controller.getTotalWarnings() == 1)
         controller.add(amount: 1)
-        XCTAssertEqual(controller.getTotalWarnings(), 2)
+        #expect(controller.getTotalWarnings() == 2)
     }
 
-    func testHash() {
+    @Test func hash() {
         let controller = WarningController(model: MockWarningModel(), view: MockWarningView())
         let hasherBefore = Hasher().finalize()
         var hasher = Hasher()
         controller.hash(into: &hasher)
-        XCTAssertNotEqual(hasherBefore, hasher.finalize())
+        #expect(hasherBefore != hasher.finalize())
     }
 }

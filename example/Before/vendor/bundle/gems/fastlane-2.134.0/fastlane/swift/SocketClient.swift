@@ -117,7 +117,7 @@ class SocketClient: NSObject {
         closeSession(sendAbort: true)
     }
     
-    private func testDispatchTimeoutResult(_ timeoutResult: DispatchTimeoutResult, failureMessage: String, timeToWait: DispatchTimeInterval) -> Bool {
+    @Test private func dispatchTimeoutResult(_ timeoutResult: DispatchTimeoutResult, failureMessage: String, timeToWait: DispatchTimeInterval) -> Bool {
         switch timeoutResult {
         case .success:
             return true
