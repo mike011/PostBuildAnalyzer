@@ -10,7 +10,7 @@ import Foundation
 class FileWarningModel: WarningModel, URLParser {
     var line: String
 
-    static var lookFor = ": warning: "
+    nonisolated(unsafe) static var lookFor = ": warning: "
 
     /// The url of repository
     /// eg: https://github.com/mike011/PostBuildAnalyzer

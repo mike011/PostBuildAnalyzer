@@ -49,7 +49,7 @@ private extension String {
     func stripTDs() -> String {
         if let start = range(of: "<td>")?.upperBound,
             let end = range(of: "</td>")?.lowerBound {
-            return substring(to: end).substring(from: start)
+            return String(self[start..<end])
         }
         return ""
     }
@@ -57,7 +57,7 @@ private extension String {
     func stripCenterTDs() -> String {
         if let start = range(of: "<td style=\"text-align: center;\">")?.upperBound,
             let end = range(of: "</td>")?.lowerBound {
-            return substring(to: end).substring(from: start)
+            return String(self[start..<end])
         }
         return ""
     }

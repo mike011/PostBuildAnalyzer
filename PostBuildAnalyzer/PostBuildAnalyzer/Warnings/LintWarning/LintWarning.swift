@@ -9,7 +9,7 @@
 import Foundation
 
 class LintWarning: WarningModel {
-    static var lookFor: String = ""
+    nonisolated(unsafe) static var lookFor: String = ""
 
     var line = ""
 

@@ -9,7 +9,7 @@
 import Foundation
 
 class MockWarningModel: WarningModel {
-    static var lookFor = ""
+    nonisolated(unsafe) static var lookFor = ""
     var line = ""
     var description = ""
     var count = 1.0

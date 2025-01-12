@@ -9,7 +9,7 @@
 import Foundation
 
 class SlowExpressionModel: WarningModel, URLParser {
-    static var lookFor = "⏱"
+    nonisolated(unsafe) static var lookFor = "⏱"
 
     var line: String
     var description: String

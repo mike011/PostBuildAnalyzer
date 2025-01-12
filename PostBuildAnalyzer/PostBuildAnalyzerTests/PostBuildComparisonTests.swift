@@ -21,7 +21,7 @@ import Testing
         #expect(pbc != nil)
     }
 
-    /// MOST OF THE FOLLOWING TESTS NEED TO BE MOVED TO TESTING getNewWarningsTable so you can test the differnece in the rows.
+    /// MOST OF THE FOLLOWING TESTS NEED TO BE MOVED TO TESTING getNewWarningsTable so you can test the difference in the rows.
 
     // MARK: - getNewWarningsTable
 
