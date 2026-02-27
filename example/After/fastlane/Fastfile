@@ -32,6 +32,14 @@ platform :ios do
       lint
   end
 
+  desc "Build PostBuildAnalyzer via SPM"
+  lane :analyze do
+    analyzer_root = File.expand_path("../../..", __dir__)
+    sh "cd '#{analyzer_root}' && swift build -c release"
+    binary = File.join(analyzer_root, ".build", "release", "PostBuildAnalyzer")
+    UI.success "PostBuildAnalyzer binary: #{binary}"
+  end
+
   desc "Check style and conventions (swiftlint)"
   lane :lint do
     if !(File.directory?("./test_output/"))
